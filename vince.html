@@ -44,11 +44,10 @@
 
   <!-- ===== START ===== -->
   <section class="hero" id="start">
-    <div class="portrait">
-      <!-- Portret: zapisz plik jako img/vince.webp, odkomentuj linię poniżej i usuń placeholder. -->
-      <!-- <img src="img/vince.webp" alt="Vince Cancrosa — wilk grzywiasty w okularach i czarnej bluzie" width="800" height="1000"> -->
-      <span class="placeholder">PORTRET · IMG/VINCE.WEBP</span>
-    </div>
+    <figure class="portrait has-img" style="margin:0">
+      <a href="img/vince-ref.webp"><img src="img/vince-ref.webp" alt="Ref sheet Vince'a: wilk grzywiasty w okularach, z przodu i z tyłu, z paletą i ubraniami" width="1000" height="636"></a>
+      <figcaption>Ref sheet · art: Ash</figcaption>
+    </figure>
     <div>
       <p class="kicker">Cancrosa Files · Ref // Maned Wolf · 001</p>
       <h1>Vincent<br><span>Cancrosa</span></h1>
@@ -98,10 +97,11 @@
         <ul class="details">
           <li><b>Twarz</b> — wąski pysk, domyślnie lekki, asymetryczny półuśmiech. Oczy bursztynowe, skupione, analityczne.</li>
           <li><b>Okulary</b> — stalowo-grafitowe oprawki, duże geometryczne szkła o zaokrąglonych rogach.</li>
-          <li><b>Kolczyki</b> — po trzy w każdym uchu: grube, matowo czarne kółka, zwykle w kształcie quasi-rombu.</li>
+          <li><b>Kolczyki</b> — po trzy w każdym uchu: grube, matowo czarne kółka, zwykle w kształcie quasi-rombu, a obok nich wkrętki — prezent od Ragnara.</li>
           <li><b>Pierścienie</b> — matowozłoty sygnet i ciemna obrączka z subtelnym czerwonym rdzeniem.</li>
           <li><b>Styl</b> — techwear: czerń, struktura, precyzja. Bluza z cienkim złotym motywem dwóch ścieżek,
-            spodnie skrojone pod staw skokowy i buty z otwartym przodem, z których swobodnie wychodzą pazury.</li>
+            spodnie skrojone pod staw skokowy i buty z otwartym przodem, z których swobodnie wychodzą pazury.
+            Od jednodniowej zamiany szaf z Ragnarem czasem pożycza jeden kolorowy akcent.</li>
           <li><b>Nazwa</b> — pierwsza łacińska nazwa, jaką dostał, to <i>Vulpes cancrosa</i>. Nazwisko zostało.</li>
         </ul>
       </div>
@@ -156,22 +156,30 @@
       <p class="kicker">Część trzecia · nieliczni, których wpuszcza</p>
       <h2 id="bliscy-h">Bliscy</h2>
     </div>
-    <div class="grid-2">
+    <div class="grid-3">
       <article class="card person">
         <p class="kicker">Partner</p>
-        <h3>Ragnar Elias Hale</h3>
-        <p class="meta">bulterier · 28 lat</p>
-        <p>Poznali się dzięki pracy Vince'a jako kierowcy. Z okazjonalnych kursów zrobiła się stała obecność,
-          a w końcu prywatny numer — dany z zaufania, nie dla wygody. Wszędzie indziej Vince zarządza i prowadzi;
-          przy Ragnarze to jedyne miejsce, gdzie odkłada kontrolę.</p>
+        <h3><a href="ragnar.html">Ragnar Elias Hale</a></h3>
+        <p class="meta">bulterier · 28 lat · bokser, który został DJ-em</p>
+        <p>Poznali się dzięki pracy Vince'a jako kierowcy: Ragnar — klient, który nie jeździ w milczeniu,
+          Vince — ten, który naprawdę słuchał. Wszędzie indziej Vince zarządza i prowadzi; przy Ragnarze to jedyne miejsce,
+          gdzie odkłada kontrolę. Jeśli Vince jest głową, Ragnar jest sercem.</p>
       </article>
       <article class="card person">
-        <p class="kicker">Podopieczny · jak młodszy brat</p>
-        <h3>Chip <small>„Chipper”</small></h3>
-        <p class="meta">kobold · 18 lat · dzwoneczek na obroży</p>
+        <p class="kicker">Podopieczny · „Big Bro”</p>
+        <h3><a href="chip.html">Chip <small>„Chipper”</small></a></h3>
+        <p class="meta">ciasteczkowy kobold · 18 lat · dzwoneczek na obroży</p>
         <p>Vince został jego opiekunem prawnym wszystkim, tylko nie przypadkiem — po miesiącach obserwacji
           i cierpliwie wypełnionej luce w procedurach. Nie gra ciepła; po prostu jest, konsekwentnie i praktycznie.
-          Chip wciąż uczy się, że ta obecność jest stała, a nie warunkowa.</p>
+          Chip mówi na niego „Big Bro” i nie chce słyszeć słowa o ojcach.</p>
+      </article>
+      <article class="card person">
+        <p class="kicker">Pod opieką domu</p>
+        <h3><a href="toro.html">Toro Hashimoto</a></h3>
+        <p class="meta">futrzasty smok · 19 lat</p>
+        <p>Vince tropił znikanie Chipa jak detektyw — i trafił do latarni pod mostem. Złość rozsypała się,
+          gdy tylko poznał prawdę. Prysznic, śniadanie, przeprosiny i otwarte drzwi; potem dodatkowe kursy taksówką,
+          żeby Toro mógł mieć własny, legalny dom.</p>
       </article>
     </div>
     <div class="card">
@@ -191,8 +199,8 @@
     <!-- Każdy obrazek: plik do img/, w podpisie autor i link do niego. -->
     <div class="gallery">
       <figure>
-        <div class="frame"><!-- <img src="img/ref-ash.webp" alt="Ref sheet Vince'a autorstwa Ash" loading="lazy"> -->REF SHEET</div>
-        <figcaption>Ref sheet · kolor: <a href="#">Ash</a></figcaption>
+        <div class="frame"><a href="img/vince-ref.webp"><img src="img/vince-thumb.webp" alt="Ref sheet Vince'a autorstwa Ash" loading="lazy"></a></div>
+        <figcaption>Ref sheet · art: Ash <!-- ✎ dodaj link do Ash --></figcaption>
       </figure>
       <figure>
         <div class="frame"><!-- <img src="img/art-1.webp" alt="Opis obrazka" loading="lazy"> -->ART #1</div>

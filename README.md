@@ -3,7 +3,7 @@
 Strona z postaciami (fursonami) i projektami. Statyczna, bez zależności z zewnątrz, hostowana na GitHub Pages.
 
 - `index.html` — strona główna: postacie, projekty (muzyka, TTRPG, przyszłe streamy), kontakt
-- `vince.html` — karta postaci Vincenta „Vince'a” Cancrosy
+- `vince.html`, `chip.html`, `ragnar.html`, `toro.html` — karty postaci z Cancrosa Files
 - `styles.css` — wspólny wygląd wszystkich stron
 - `img/` — portrety i arty (zawsze z podpisem autora)
 - `fonts/` — Archivo, Inter, Space Mono (SIL Open Font License, pliki licencji obok)
