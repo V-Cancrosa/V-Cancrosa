@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vince Cancrosa</title>
+<meta name="description" content="Strona Vincenta „Vince” Cancrosy — wilka grzywiastego i głównej fursony. Karta postaci, galeria, projekty i kontakt.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#030604">
+
+<!-- Podgląd linku (Discord, Telegram, Mastodon…). Podmień domenę i obrazek. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vince Cancrosa">
+<meta property="og:description" content="Wilk grzywiasty Vince — karta postaci, galeria, projekty i kontakt.">
+<meta property="og:url" content="https://TWOJA-DOMENA.pl/">
+<meta property="og:image" content="https://TWOJA-DOMENA.pl/img/vince.webp">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030604'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' text-anchor='middle' fill='%234dff8a'%3EV%3C/text%3E%3C/svg%3E">
+
+<style>
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("fonts/VT323-Regular.ttf") format("truetype"); font-display: swap; }
+
+:root {
+  /* Zmień --pip, żeby przemalować całą stronę (np. #ffb642 = bursztynowy PipBuck). */
+  --pip: #4dff8a;
+  --pip-alert: #ff6a4d;
+  --pip-bright: color-mix(in srgb, var(--pip) 70%, white);
+  --pip-dim: color-mix(in srgb, var(--pip) 62%, black);
+  --pip-line: color-mix(in srgb, var(--pip) 35%, transparent);
+  --pip-faint: color-mix(in srgb, var(--pip) 10%, transparent);
+  --pip-glow: color-mix(in srgb, var(--pip) 55%, transparent);
+  --bg: color-mix(in srgb, var(--pip) 4%, #030604);
+  --bg-hi: color-mix(in srgb, var(--pip) 11%, #050a07);
+  --mono: "Plex Mono", "IBM Plex Mono", Consolas, monospace;
+  --crt: "VT323", var(--mono);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--pip);
+  font: 400 1rem/1.6 var(--mono);
+  text-shadow: 0 0 6px var(--pip-glow);
+  -webkit-font-smoothing: antialiased;
+}
+/* Linie kineskopu i winieta */
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0,0,0,.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.6) 100%);
+}
+::selection { background: var(--pip); color: var(--bg); text-shadow: none; }
+a { color: var(--pip-bright); text-underline-offset: 3px; }
+a:hover { color: var(--bg); background: var(--pip); text-shadow: none; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pip-bright); outline-offset: 3px; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--crt); font-weight: 400; letter-spacing: .04em; line-height: 1.1; margin: 0; }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--pip); color: var(--bg); padding: .4rem .8rem; }
+
+/* ---------- Nawigacja w stylu zakładek PipBucka ---------- */
+header.top {
+  position: sticky; top: 0; z-index: 40;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--pip-line);
+}
+.top-inner {
+  max-width: 64rem; margin: 0 auto; padding: .6rem 1rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.brand { font-family: var(--crt); font-size: 1.6rem; text-decoration: none; color: var(--pip); }
+.brand:hover { background: none; color: var(--pip-bright); }
+nav.tabs { display: flex; gap: .25rem; flex-wrap: wrap; margin-left: auto; }
+nav.tabs a {
+  font-family: var(--crt); font-size: 1.3rem; text-decoration: none; color: var(--pip);
+  padding: .1rem .7rem; border: 1px solid transparent;
+}
+nav.tabs a:hover, nav.tabs a[aria-current="true"] { border-color: var(--pip); background: var(--pip-faint); color: var(--pip-bright); }
+
+main { max-width: 64rem; margin: 0 auto; padding: 0 1rem 4rem; }
+section { padding-top: 3.5rem; }
+.section-title { display: flex; align-items: center; gap: .75rem; font-size: 2.2rem; margin-bottom: 1.25rem; }
+.section-title::after { content: ""; flex: 1; height: 2px; background: linear-gradient(to right, var(--pip-line), transparent); }
+
+.panel { border: 1px solid var(--pip-line); background: var(--bg-hi); padding: 1.25rem; position: relative; }
+.panel + .panel { margin-top: 1rem; }
+.sheet > .panel, .projects > .panel { margin-top: 0; }
+.label { color: var(--pip-dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+.todo { color: var(--pip-alert); text-shadow: 0 0 6px color-mix(in srgb, var(--pip-alert) 50%, transparent); }
+
+/* ---------- Ekran powitalny ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 2rem; align-items: center; padding-top: 2.5rem; }
+.portrait {
+  aspect-ratio: 1; border: 2px solid var(--pip); background: var(--bg-hi);
+  display: grid; place-items: center; overflow: hidden; position: relative;
+  box-shadow: 0 0 24px var(--pip-faint), inset 0 0 40px rgba(0,0,0,.6);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.portrait .placeholder { font-family: var(--crt); font-size: 1.4rem; text-align: center; padding: 1rem; color: var(--pip-dim); }
+.boot { font-size: .85rem; color: var(--pip-dim); margin: 0 0 .75rem; }
+.hero h1 { font-size: clamp(2.8rem, 9vw, 5rem); color: var(--pip-bright); }
+.hero .aka { font-family: var(--crt); font-size: 1.6rem; margin: .25rem 0 1rem; }
+.hero p.lead { margin: 0 0 1.25rem; max-width: 34rem; }
+.cursor::after { content: "▮"; animation: blink 1s steps(1) infinite; margin-left: .15em; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.btn {
+  display: inline-block; font-family: var(--crt); font-size: 1.35rem; text-decoration: none;
+  border: 1px solid var(--pip); padding: .2rem 1rem; margin: 0 .4rem .4rem 0; color: var(--pip);
+}
+.btn::before { content: "> "; }
+
+/* ---------- Karta postaci ---------- */
+.sheet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1rem; margin: 0; }
+dl.facts dt { color: var(--pip-dim); }
+dl.facts dd { margin: 0; }
+.special { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.special li { display: grid; grid-template-columns: 1.6rem 1fr 2rem; align-items: center; gap: .6rem; }
+.special .key { font-family: var(--crt); font-size: 1.5rem; }
+.special .bar { height: .7rem; border: 1px solid var(--pip-line); position: relative; }
+.special .bar span { position: absolute; inset: 0 auto 0 0; background: var(--pip); box-shadow: 0 0 8px var(--pip-glow); width: calc(var(--v) * 10%); }
+.special .val { font-family: var(--crt); font-size: 1.5rem; text-align: right; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+.tags li { border: 1px solid var(--pip-line); padding: 0 .5rem; font-size: .85rem; }
+.swatches { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
+.swatch { display: flex; align-items: center; gap: .45rem; font-size: .85rem; }
+.swatch i { width: 1.4rem; height: 1.4rem; border: 1px solid var(--pip); background: var(--c); display: inline-block; }
+
+/* ---------- Galeria ---------- */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }
+.gallery figure { margin: 0; border: 1px solid var(--pip-line); background: var(--bg-hi); }
+.gallery .frame { aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; color: var(--pip-dim); font-family: var(--crt); font-size: 1.2rem; }
+.gallery .frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9); }
+.gallery figcaption { padding: .5rem .75rem; font-size: .85rem; border-top: 1px solid var(--pip-line); }
+
+/* ---------- Projekty ---------- */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; }
+.projects h3 { font-size: 1.6rem; margin-bottom: .4rem; color: var(--pip-bright); }
+.projects p { margin: 0 0 .75rem; }
+
+/* ---------- Kontakt ---------- */
+.links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .6rem; }
+.links a { display: flex; justify-content: space-between; gap: 1rem; border: 1px solid var(--pip-line); padding: .6rem .9rem; text-decoration: none; }
+.links a span:last-child { color: var(--pip-dim); }
+.links a:hover span:last-child { color: var(--bg); }
+
+footer { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; border-top: 1px solid var(--pip-line); font-size: .8rem; color: var(--pip-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+@media (max-width: 720px) {
+  .hero, .sheet { grid-template-columns: 1fr; }
+  .hero .portrait { max-width: 20rem; }
+  nav.tabs { margin-left: 0; width: 100%; }
+  nav.tabs a { font-size: 1.15rem; padding: .1rem .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cursor::after { animation: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#start">V.CANCROSA</a>
+    <nav class="tabs" aria-label="Sekcje strony">
+      <a href="#vince">VINCE</a>
+      <a href="#o-mnie">O MNIE</a>
+      <a href="#galeria">GALERIA</a>
+      <a href="#projekty">PROJEKTY</a>
+      <a href="#kontakt">KONTAKT</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== START ===== -->
+  <section class="hero" id="start">
+    <div class="portrait">
+      <!-- Wstaw portret Vince'a: zapisz plik jako img/vince.webp i odkomentuj linię poniżej (a placeholder usuń). -->
+      <!-- <img src="img/vince.webp" alt="Vince Cancrosa — portret" width="800" height="800"> -->
+      <div class="placeholder">[ PORTRET VINCE'A ]<br>img/vince.webp</div>
+    </div>
+    <div>
+      <p class="boot">ROBCO IND. TERMLINK — ŁĄCZENIE… OK</p>
+      <h1>Vincent<br>Cancrosa</h1>
+      <p class="aka cursor">aka Vince</p>
+      <p class="lead">
+        Hej! To wspólny kąt w sieci — mój i mojej głównej fursony — Vince'a, wilka grzywiastego.
+        <span class="todo">[Jedno–dwa zdania powitania: kim jesteście i co tu można znaleźć.]</span>
+      </p>
+      <a class="btn" href="#vince">Karta postaci</a>
+      <a class="btn" href="#kontakt">Kontakt</a>
+    </div>
+  </section>
+
+  <!-- ===== KARTA POSTACI ===== -->
+  <section id="vince" aria-labelledby="vince-h">
+    <h2 class="section-title" id="vince-h">KARTA POSTACI</h2>
+    <div class="sheet">
+      <div class="panel">
+        <p class="label">Dane</p>
+        <dl class="facts">
+          <dt>Imię</dt>       <dd>Vincent „Vince” Cancrosa</dd>
+          <dt>Gatunek</dt>    <dd>wilk grzywiasty (pampasowiec grzywiasty)</dd>
+          <dt>Łacina</dt>     <dd><i>Vulpes cancrosa</i> — pierwsza łacińska nazwa, jaką dostał</dd>
+          <dt>Zaimki</dt>     <dd>on/jego</dd>
+          <dt>Wiek</dt>       <dd class="todo">[uzupełnij]</dd>
+          <dt>Wzrost</dt>     <dd class="todo">[uzupełnij]</dd>
+          <dt>Charakter</dt>  <dd class="todo">[2–3 słowa]</dd>
+        </dl>
+
+        <p class="label" style="margin-top:1.25rem">Paleta futra</p>
+        <!-- Typowe barwy wilka grzywiastego. Popraw w --c, jeśli Vince ma inne. -->
+        <div class="swatches">
+          <span class="swatch"><i style="--c:#c4622d"></i>rude futro</span>
+          <span class="swatch"><i style="--c:#1c1714"></i>grzywa / łapy / pyszczek</span>
+          <span class="swatch"><i style="--c:#f1e8da"></i>gardło / koniec ogona / uszy</span>
+          <span class="swatch"><i style="--c:#c98a2e"></i>oczy</span>
+        </div>
+
+        <p class="label" style="margin-top:1.25rem">Lubi</p>
+        <ul class="tags">
+          <li>Fallout: Equestria</li>
+          <li>sesje RPG</li>
+          <li class="todo">[dopisz]</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <p class="label">S.P.E.C.I.A.L.</p>
+        <!-- Wartości 1–10: zmień --v i liczbę obok. -->
+        <ul class="special">
+          <li><span class="key" title="Strength">S</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
+          <li><span class="key" title="Perception">P</span><span class="bar"><span style="--v:7"></span></span><span class="val">7</span></li>
+          <li><span class="key" title="Endurance">E</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
+          <li><span class="key" title="Charisma">C</span><span class="bar"><span style="--v:6"></span></span><span class="val">6</span></li>
+          <li><span class="key" title="Intelligence">I</span><span class="bar"><span style="--v:8"></span></span><span class="val">8</span></li>
+          <li><span class="key" title="Agility">A</span><span class="bar"><span style="--v:7"></span></span><span class="val">7</span></li>
+          <li><span class="key" title="Luck">L</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
+        </ul>
+        <p class="label" style="margin-top:1.25rem">Historia</p>
+        <p style="margin:.25rem 0 0" class="todo">[Krótka historia Vince'a — skąd pochodzi, czym się zajmuje, co go wyróżnia.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O MNIE ===== -->
+  <section id="o-mnie" aria-labelledby="o-mnie-h">
+    <h2 class="section-title" id="o-mnie-h">O MNIE</h2>
+    <div class="panel">
+      <p style="margin-top:0">
+        Za Vince'em stoi człowiek z Polski, który prowadzi sesje RPG i pisze do nich narzędzia —
+        m.in. system Fallout: Equestria do Foundry VTT.
+      </p>
+      <p style="margin-bottom:0" class="todo">[Dopisz o sobie tyle, ile chcesz pokazać publicznie: zainteresowania, fandomy, czym się zajmujesz.]</p>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section id="galeria" aria-labelledby="galeria-h">
+    <h2 class="section-title" id="galeria-h">GALERIA</h2>
+    <!-- Każdy obrazek: plik do folderu img/, w podpisie autor i link do niego. Zawsze podpisuj artystów. -->
+    <div class="gallery">
+      <figure>
+        <div class="frame"><!-- <img src="img/art-1.webp" alt="Opis obrazka" loading="lazy"> -->[ ART #1 ]</div>
+        <figcaption>art: <a href="#">@artysta</a></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><!-- <img src="img/art-2.webp" alt="Opis obrazka" loading="lazy"> -->[ ART #2 ]</div>
+        <figcaption>art: <a href="#">@artysta</a></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><!-- <img src="img/ref.webp" alt="Ref sheet Vince'a" loading="lazy"> -->[ REF SHEET ]</div>
+        <figcaption>ref sheet: <a href="#">@artysta</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== PROJEKTY ===== -->
+  <section id="projekty" aria-labelledby="projekty-h">
+    <h2 class="section-title" id="projekty-h">PROJEKTY</h2>
+    <div class="projects">
+      <article class="panel">
+        <h3>Fallout: Equestria — Foundry VTT</h3>
+        <p>Nieoficjalny, fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L., SATS, katalog ponad tysiąca przedmiotów, tracker walki, a nawet kasyno z blackjackiem i Texas Hold'em.</p>
+        <a class="btn" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
+      </article>
+      <article class="panel">
+        <h3 class="todo">[Kolejny projekt]</h3>
+        <p class="todo">[Opis — albo usuń ten blok.]</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section id="kontakt" aria-labelledby="kontakt-h">
+    <h2 class="section-title" id="kontakt-h">KONTAKT</h2>
+    <!-- Podmień href i nazwy; zbędne pozycje usuń. -->
+    <ul class="links">
+      <li><a href="https://github.com/V-Cancrosa"><span>GitHub</span><span>V-Cancrosa</span></a></li>
+      <li><a href="#"><span>Telegram</span><span>@…</span></a></li>
+      <li><a href="#"><span>Bluesky</span><span>@…</span></a></li>
+      <li><a href="#"><span>FurAffinity</span><span>…</span></a></li>
+      <li><a href="#"><span>Discord</span><span>…</span></a></li>
+      <li><a href="mailto:kontakt@TWOJA-DOMENA.pl"><span>E-mail</span><span>kontakt@…</span></a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year">2026</span> Vince Cancrosa. Arty należą do ich autorów.</span>
+  <span>Fallout: Equestria to fanowskie dzieło — strona niezwiązana z Bethesdą ani Hasbro.</span>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Podświetla w menu sekcję, która jest właśnie na ekranie.
+  const links = [...document.querySelectorAll("nav.tabs a")];
+  const observer = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+    }
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
