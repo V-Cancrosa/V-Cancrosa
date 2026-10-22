@@ -3,38 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vince Cancrosa</title>
-<meta name="description" content="Strona Vincenta „Vince” Cancrosy — wilka grzywiastego i głównej fursony. Karta postaci, galeria, projekty i kontakt.">
+<title>Vincent Cancrosa</title>
+<meta name="description" content="Vincent „Vince” Cancrosa — antropomorficzny wilk grzywiasty. Karta postaci, świat, muzyka V_Cancrosa i kontakt.">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#030604">
+<meta name="theme-color" content="#0b0c0e">
 
-<!-- Podgląd linku (Discord, Telegram, Mastodon…). Podmień domenę i obrazek. -->
+<!-- Podgląd linku (Discord, Telegram, Bluesky…). Podmień domenę i obrazek. -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vince Cancrosa">
-<meta property="og:description" content="Wilk grzywiasty Vince — karta postaci, galeria, projekty i kontakt.">
+<meta property="og:title" content="Vincent „Vince” Cancrosa">
+<meta property="og:description" content="Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/">
 <meta property="og:image" content="https://TWOJA-DOMENA.pl/img/vince.webp">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030604'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' text-anchor='middle' fill='%234dff8a'%3EV%3C/text%3E%3C/svg%3E">
+<!-- Ikona: motyw „dwóch ścieżek” z bluzy Vince'a -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Cpath d='M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8' fill='none' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
 
 <style>
-@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "VT323"; src: url("fonts/VT323-Regular.ttf") format("truetype"); font-display: swap; }
-
 :root {
-  /* Zmień --pip, żeby przemalować całą stronę (np. #ffb642 = bursztynowy PipBuck). */
-  --pip: #4dff8a;
-  --pip-alert: #ff6a4d;
-  --pip-bright: color-mix(in srgb, var(--pip) 70%, white);
-  --pip-dim: color-mix(in srgb, var(--pip) 62%, black);
-  --pip-line: color-mix(in srgb, var(--pip) 35%, transparent);
-  --pip-faint: color-mix(in srgb, var(--pip) 10%, transparent);
-  --pip-glow: color-mix(in srgb, var(--pip) 55%, transparent);
-  --bg: color-mix(in srgb, var(--pip) 4%, #030604);
-  --bg-hi: color-mix(in srgb, var(--pip) 11%, #050a07);
-  --mono: "Plex Mono", "IBM Plex Mono", Consolas, monospace;
-  --crt: "VT323", var(--mono);
+  /* Barwy z karty referencyjnej Vince'a */
+  --gold: #c98a3c;      /* miedziane złoto: barki, boki, uda */
+  --gold-b: #e6ac60;
+  --cream: #ece3d3;     /* krem: pierś, brzuch, podbródek */
+  --jet: #050506;       /* czerń: dolne części kończyn, linia kręgosłupa */
+  --amber: #e0932b;     /* oczy */
+
+  --bg: #0b0c0e;
+  --bg2: #101217;
+  --card: #15171d;
+  --ink: #d6d0c4;
+  --muted: #8f887b;
+  --line: rgba(201, 138, 60, .24);
+  --line-s: rgba(201, 138, 60, .10);
+
+  --disp: "Archivo", system-ui, sans-serif;
+  --body: "Inter", system-ui, sans-serif;
+  --mono: "Space Mono", ui-monospace, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -42,128 +46,148 @@ html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--pip);
-  font: 400 1rem/1.6 var(--mono);
-  text-shadow: 0 0 6px var(--pip-glow);
+  color: var(--ink);
+  font: 400 1rem/1.7 var(--body);
   -webkit-font-smoothing: antialiased;
 }
-/* Linie kineskopu i winieta */
-body::before {
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
-  background:
-    repeating-linear-gradient(to bottom, rgba(0,0,0,.22) 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.6) 100%);
-}
-::selection { background: var(--pip); color: var(--bg); text-shadow: none; }
-a { color: var(--pip-bright); text-underline-offset: 3px; }
-a:hover { color: var(--bg); background: var(--pip); text-shadow: none; text-decoration: none; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--pip-bright); outline-offset: 3px; }
+::selection { background: var(--gold); color: var(--jet); }
+a { color: var(--gold-b); text-underline-offset: 3px; text-decoration-color: var(--line); }
+a:hover { color: var(--cream); text-decoration-color: var(--gold); }
+a:focus-visible { outline: 2px solid var(--gold-b); outline-offset: 3px; border-radius: 2px; }
 img { max-width: 100%; display: block; }
-h1, h2, h3 { font-family: var(--crt); font-weight: 400; letter-spacing: .04em; line-height: 1.1; margin: 0; }
+h1, h2, h3 { font-family: var(--disp); color: var(--cream); margin: 0; line-height: 1.1; }
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
 
 .skip { position: absolute; left: -999px; }
-.skip:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--pip); color: var(--bg); padding: .4rem .8rem; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--gold); color: var(--jet); padding: .4rem .8rem; }
 
-/* ---------- Nawigacja w stylu zakładek PipBucka ---------- */
+.kicker {
+  font: 700 .72rem/1.4 var(--mono); letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
+  margin: 0 0 .75rem;
+}
+.todo { color: var(--amber); font-style: italic; }
+.todo::before { content: "✎ "; font-style: normal; }
+
+/* ---------- Pasek nawigacji ---------- */
 header.top {
   position: sticky; top: 0; z-index: 40;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(4px);
-  border-bottom: 2px solid var(--pip-line);
+  background: rgba(11, 12, 14, .86);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-s);
 }
-.top-inner {
-  max-width: 64rem; margin: 0 auto; padding: .6rem 1rem;
-  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-}
-.brand { font-family: var(--crt); font-size: 1.6rem; text-decoration: none; color: var(--pip); }
-.brand:hover { background: none; color: var(--pip-bright); }
-nav.tabs { display: flex; gap: .25rem; flex-wrap: wrap; margin-left: auto; }
+.top-inner { max-width: 68rem; margin: 0 auto; padding: .7rem 1rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--cream); font: 800 1rem var(--disp); letter-spacing: .14em; }
+.brand svg { width: 1.4rem; height: 1.4rem; }
+nav.tabs { display: flex; gap: .2rem; flex-wrap: wrap; margin-left: auto; }
 nav.tabs a {
-  font-family: var(--crt); font-size: 1.3rem; text-decoration: none; color: var(--pip);
-  padding: .1rem .7rem; border: 1px solid transparent;
+  font: 700 .72rem var(--mono); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  color: var(--muted); padding: .4rem .65rem; border-radius: 3px;
 }
-nav.tabs a:hover, nav.tabs a[aria-current="true"] { border-color: var(--pip); background: var(--pip-faint); color: var(--pip-bright); }
+nav.tabs a:hover, nav.tabs a[aria-current="true"] { color: var(--gold-b); background: var(--line-s); }
 
-main { max-width: 64rem; margin: 0 auto; padding: 0 1rem 4rem; }
-section { padding-top: 3.5rem; }
-.section-title { display: flex; align-items: center; gap: .75rem; font-size: 2.2rem; margin-bottom: 1.25rem; }
-.section-title::after { content: ""; flex: 1; height: 2px; background: linear-gradient(to right, var(--pip-line), transparent); }
+main { max-width: 68rem; margin: 0 auto; padding: 0 1rem 5rem; }
+section { padding-top: 5rem; }
+.section-head { display: grid; gap: .25rem; margin-bottom: 2rem; }
+.section-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.01em; }
+.intro { max-width: 44rem; margin-bottom: 2rem; }
 
-.panel { border: 1px solid var(--pip-line); background: var(--bg-hi); padding: 1.25rem; position: relative; }
-.panel + .panel { margin-top: 1rem; }
-.sheet > .panel, .projects > .panel { margin-top: 0; }
-.label { color: var(--pip-dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
-.todo { color: var(--pip-alert); text-shadow: 0 0 6px color-mix(in srgb, var(--pip-alert) 50%, transparent); }
+.card { background: var(--card); border: 1px solid var(--line-s); border-radius: 6px; padding: 1.5rem; }
+.card + .card, .grid-2 + .card { margin-top: 1.25rem; }
+.grid-2 > .card, .grid-3 > .card { margin-top: 0; }
 
 /* ---------- Ekran powitalny ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 2rem; align-items: center; padding-top: 2.5rem; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 3rem; align-items: center; padding-top: 3.5rem; }
 .portrait {
-  aspect-ratio: 1; border: 2px solid var(--pip); background: var(--bg-hi);
-  display: grid; place-items: center; overflow: hidden; position: relative;
-  box-shadow: 0 0 24px var(--pip-faint), inset 0 0 40px rgba(0,0,0,.6);
+  aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden;
+  /* Czarna „oś kręgosłupa” przez środek, dopóki nie ma portretu */
+  background:
+    linear-gradient(to right, transparent calc(50% - 1px), var(--jet) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+    radial-gradient(ellipse at 50% 35%, rgba(201,138,60,.22), transparent 65%),
+    var(--bg2);
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
 }
 .portrait img { width: 100%; height: 100%; object-fit: cover; }
-.portrait .placeholder { font-family: var(--crt); font-size: 1.4rem; text-align: center; padding: 1rem; color: var(--pip-dim); }
-.boot { font-size: .85rem; color: var(--pip-dim); margin: 0 0 .75rem; }
-.hero h1 { font-size: clamp(2.8rem, 9vw, 5rem); color: var(--pip-bright); }
-.hero .aka { font-family: var(--crt); font-size: 1.6rem; margin: .25rem 0 1rem; }
-.hero p.lead { margin: 0 0 1.25rem; max-width: 34rem; }
-.cursor::after { content: "▮"; animation: blink 1s steps(1) infinite; margin-left: .15em; }
-@keyframes blink { 50% { opacity: 0; } }
+.portrait .placeholder { font: 700 .75rem var(--mono); letter-spacing: .2em; color: var(--muted); text-align: center; background: var(--bg2); padding: .5rem .8rem; }
+.hero h1 { font-size: clamp(3rem, 8vw, 5.4rem); font-weight: 800; letter-spacing: -.02em; }
+.hero h1 span { color: var(--gold); }
+.hero .aka { font: 400 .95rem var(--mono); color: var(--muted); margin: .6rem 0 1.6rem; }
+.motto { border-left: 2px solid var(--gold); padding: .2rem 0 .2rem 1rem; margin: 0 0 1.6rem; }
+.motto q { font: 600 1.15rem/1.5 var(--disp); color: var(--cream); quotes: none; display: block; }
+.motto small { display: block; color: var(--muted); font-size: .88rem; margin-top: .3rem; }
+.lead { max-width: 36rem; margin-bottom: 1rem; }
 
 .btn {
-  display: inline-block; font-family: var(--crt); font-size: 1.35rem; text-decoration: none;
-  border: 1px solid var(--pip); padding: .2rem 1rem; margin: 0 .4rem .4rem 0; color: var(--pip);
+  display: inline-block; font: 700 .75rem var(--mono); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--gold); color: var(--gold-b); padding: .7rem 1.1rem; border-radius: 3px; margin: .4rem .5rem 0 0;
 }
-.btn::before { content: "> "; }
+.btn:hover { background: var(--gold); color: var(--jet); }
+.btn.ghost { border-color: var(--line); color: var(--ink); }
 
 /* ---------- Karta postaci ---------- */
-.sheet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
-dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1rem; margin: 0; }
-dl.facts dt { color: var(--pip-dim); }
-dl.facts dd { margin: 0; }
-.special { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
-.special li { display: grid; grid-template-columns: 1.6rem 1fr 2rem; align-items: center; gap: .6rem; }
-.special .key { font-family: var(--crt); font-size: 1.5rem; }
-.special .bar { height: .7rem; border: 1px solid var(--pip-line); position: relative; }
-.special .bar span { position: absolute; inset: 0 auto 0 0; background: var(--pip); box-shadow: 0 0 8px var(--pip-glow); width: calc(var(--v) * 10%); }
-.special .val { font-family: var(--crt); font-size: 1.5rem; text-align: right; }
-.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 0; padding: 0; list-style: none; }
-.tags li { border: 1px solid var(--pip-line); padding: 0 .5rem; font-size: .85rem; }
-.swatches { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
-.swatch { display: flex; align-items: center; gap: .45rem; font-size: .85rem; }
-.swatch i { width: 1.4rem; height: 1.4rem; border: 1px solid var(--pip); background: var(--c); display: inline-block; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line-s); border: 1px solid var(--line-s); border-radius: 6px; overflow: hidden; margin: 0 0 1.25rem; }
+.stats div { background: var(--card); padding: 1rem 1.2rem; }
+.stats dt { font: 700 .66rem var(--mono); letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+.stats dd { margin: .2rem 0 0; font: 600 1.05rem var(--disp); color: var(--cream); }
+.stats dd i { font-family: var(--body); font-weight: 400; color: var(--ink); }
+
+.grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: .6rem; }
+
+.swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1.2rem; }
+.swatch { display: grid; gap: .4rem; align-content: start; }
+.swatch i { display: block; height: 3.2rem; border-radius: 4px; background: var(--c); border: 1px solid rgba(255,255,255,.08); }
+.swatch b { font: 600 .9rem/1.3 var(--disp); color: var(--cream); }
+.swatch span { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+
+ul.details { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem; }
+ul.details li { padding-left: 1.1rem; position: relative; }
+ul.details li::before { content: ""; position: absolute; left: 0; top: .8em; width: .45rem; height: 1px; background: var(--gold); }
+ul.details b { color: var(--cream); font-weight: 600; }
+
+/* ---------- Charakter ---------- */
+.trait.shadow { border-color: rgba(158, 43, 37, .4); }
+.trait.shadow .kicker { color: #d0675e; }
+
+/* ---------- Bliscy ---------- */
+.person h3 { font-size: 1.5rem; margin-bottom: .2rem; }
+.person h3 small { color: var(--muted); font-size: 1rem; font-weight: 600; }
+.person .meta { font: 400 .8rem var(--mono); color: var(--muted); margin-bottom: 1rem; }
+
+/* ---------- Muzyka ---------- */
+.cat h3 { font-size: 1.3rem; }
+.cat h3 small { display: block; font: 700 .7rem var(--mono); letter-spacing: .2em; color: var(--gold); margin-top: .35rem; }
+.cat p { margin-top: .8rem; }
+.note { margin: 1.5rem 0 1rem; border-left: 2px solid var(--line); padding-left: 1rem; color: var(--muted); font-size: .92rem; max-width: 50rem; }
 
 /* ---------- Galeria ---------- */
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }
-.gallery figure { margin: 0; border: 1px solid var(--pip-line); background: var(--bg-hi); }
-.gallery .frame { aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; color: var(--pip-dim); font-family: var(--crt); font-size: 1.2rem; }
-.gallery .frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9); }
-.gallery figcaption { padding: .5rem .75rem; font-size: .85rem; border-top: 1px solid var(--pip-line); }
-
-/* ---------- Projekty ---------- */
-.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; }
-.projects h3 { font-size: 1.6rem; margin-bottom: .4rem; color: var(--pip-bright); }
-.projects p { margin: 0 0 .75rem; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1.25rem; }
+.gallery figure { margin: 0; background: var(--card); border: 1px solid var(--line-s); border-radius: 6px; overflow: hidden; }
+.gallery .frame { aspect-ratio: 1; display: grid; place-items: center; background: var(--bg2); font: 700 .72rem var(--mono); letter-spacing: .2em; color: var(--muted); }
+.gallery .frame img { width: 100%; height: 100%; object-fit: cover; }
+.gallery figcaption { padding: .7rem 1rem; font-size: .85rem; }
 
 /* ---------- Kontakt ---------- */
-.links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .6rem; }
-.links a { display: flex; justify-content: space-between; gap: 1rem; border: 1px solid var(--pip-line); padding: .6rem .9rem; text-decoration: none; }
-.links a span:last-child { color: var(--pip-dim); }
-.links a:hover span:last-child { color: var(--bg); }
+.links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .75rem; }
+.links a { display: flex; justify-content: space-between; gap: 1rem; background: var(--card); border: 1px solid var(--line-s); border-radius: 4px; padding: .9rem 1.1rem; text-decoration: none; color: var(--cream); }
+.links a:hover { border-color: var(--gold); }
+.links a span:last-child { color: var(--muted); font: 400 .85rem var(--mono); }
 
-footer { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; border-top: 1px solid var(--pip-line); font-size: .8rem; color: var(--pip-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+footer { max-width: 68rem; margin: 0 auto; padding: 2rem 1rem 3rem; border-top: 1px solid var(--line-s); font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 2rem; }
 
-@media (max-width: 720px) {
-  .hero, .sheet { grid-template-columns: 1fr; }
-  .hero .portrait { max-width: 20rem; }
+@media (max-width: 860px) {
+  .hero, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .stats, .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { gap: 2rem; }
+  .hero .portrait { max-width: 22rem; }
+}
+@media (max-width: 560px) {
   nav.tabs { margin-left: 0; width: 100%; }
-  nav.tabs a { font-size: 1.15rem; padding: .1rem .5rem; }
+  nav.tabs a { padding: .35rem .45rem; letter-spacing: .1em; }
 }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .cursor::after { animation: none; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -171,13 +195,17 @@ footer { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; border-t
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#start">V.CANCROSA</a>
+    <a class="brand" href="#start" aria-label="Vincent Cancrosa — początek strony">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8" fill="none" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
+      V_CANCROSA
+    </a>
     <nav class="tabs" aria-label="Sekcje strony">
-      <a href="#vince">VINCE</a>
-      <a href="#o-mnie">O MNIE</a>
-      <a href="#galeria">GALERIA</a>
-      <a href="#projekty">PROJEKTY</a>
-      <a href="#kontakt">KONTAKT</a>
+      <a href="#vince">Vince</a>
+      <a href="#charakter">Charakter</a>
+      <a href="#bliscy">Bliscy</a>
+      <a href="#muzyka">Muzyka</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -187,140 +215,242 @@ footer { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; border-t
   <!-- ===== START ===== -->
   <section class="hero" id="start">
     <div class="portrait">
-      <!-- Wstaw portret Vince'a: zapisz plik jako img/vince.webp i odkomentuj linię poniżej (a placeholder usuń). -->
-      <!-- <img src="img/vince.webp" alt="Vince Cancrosa — portret" width="800" height="800"> -->
-      <div class="placeholder">[ PORTRET VINCE'A ]<br>img/vince.webp</div>
+      <!-- Portret: zapisz plik jako img/vince.webp, odkomentuj linię poniżej i usuń placeholder. -->
+      <!-- <img src="img/vince.webp" alt="Vince Cancrosa — wilk grzywiasty w okularach i czarnej bluzie" width="800" height="1000"> -->
+      <span class="placeholder">PORTRET · IMG/VINCE.WEBP</span>
     </div>
     <div>
-      <p class="boot">ROBCO IND. TERMLINK — ŁĄCZENIE… OK</p>
-      <h1>Vincent<br>Cancrosa</h1>
-      <p class="aka cursor">aka Vince</p>
-      <p class="lead">
-        Hej! To wspólny kąt w sieci — mój i mojej głównej fursony — Vince'a, wilka grzywiastego.
-        <span class="todo">[Jedno–dwa zdania powitania: kim jesteście i co tu można znaleźć.]</span>
-      </p>
+      <p class="kicker">Cancrosa Files · Ref // Maned Wolf · 001</p>
+      <h1>Vincent<br><span>Cancrosa</span></h1>
+      <p class="aka">„Vince” · antropomorficzny wilk grzywiasty · on/jego</p>
+      <blockquote class="motto">
+        <q>Walls have endings. Tunnels have exits. Bridges have a reason.</q>
+        <small>Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.</small>
+      </blockquote>
+      <div class="lead">
+        <p>Nazywam się Vincent Cancrosa. Możesz mówić mi Vince.</p>
+        <p>To miejsce należy do dwóch osób — do mnie i do człowieka, który daje mi głos.
+          Tu jest wszystko, co trzeba o nas wiedzieć: kim jestem, skąd przychodzę i dokąd zmierzam.</p>
+      </div>
       <a class="btn" href="#vince">Karta postaci</a>
-      <a class="btn" href="#kontakt">Kontakt</a>
+      <a class="btn ghost" href="#kontakt">Kontakt</a>
     </div>
   </section>
 
   <!-- ===== KARTA POSTACI ===== -->
   <section id="vince" aria-labelledby="vince-h">
-    <h2 class="section-title" id="vince-h">KARTA POSTACI</h2>
-    <div class="sheet">
-      <div class="panel">
-        <p class="label">Dane</p>
-        <dl class="facts">
-          <dt>Imię</dt>       <dd>Vincent „Vince” Cancrosa</dd>
-          <dt>Gatunek</dt>    <dd>wilk grzywiasty (pampasowiec grzywiasty)</dd>
-          <dt>Łacina</dt>     <dd><i>Vulpes cancrosa</i> — pierwsza łacińska nazwa, jaką dostał</dd>
-          <dt>Zaimki</dt>     <dd>on/jego</dd>
-          <dt>Wiek</dt>       <dd class="todo">[uzupełnij]</dd>
-          <dt>Wzrost</dt>     <dd class="todo">[uzupełnij]</dd>
-          <dt>Charakter</dt>  <dd class="todo">[2–3 słowa]</dd>
-        </dl>
+    <div class="section-head">
+      <p class="kicker">Część pierwsza</p>
+      <h2 id="vince-h">Karta postaci</h2>
+    </div>
 
-        <p class="label" style="margin-top:1.25rem">Paleta futra</p>
-        <!-- Typowe barwy wilka grzywiastego. Popraw w --c, jeśli Vince ma inne. -->
+    <dl class="stats">
+      <div><dt>Gatunek</dt><dd>Wilk grzywiasty <i>(Chrysocyon brachyurus)</i></dd></div>
+      <div><dt>Wiek</dt><dd>28 lat</dd></div>
+      <div><dt>Wzrost</dt><dd>193 cm <i>(6′4″)</i></dd></div>
+      <div><dt>Budowa</dt><dd>Smukła · digitigradalna</dd></div>
+    </dl>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Futro — zbudowane na kontraście</h3>
         <div class="swatches">
-          <span class="swatch"><i style="--c:#c4622d"></i>rude futro</span>
-          <span class="swatch"><i style="--c:#1c1714"></i>grzywa / łapy / pyszczek</span>
-          <span class="swatch"><i style="--c:#f1e8da"></i>gardło / koniec ogona / uszy</span>
-          <span class="swatch"><i style="--c:#c98a2e"></i>oczy</span>
+          <div class="swatch"><i style="--c:#c98a3c"></i><b>Miedziane złoto</b><span>barki, boki, uda</span></div>
+          <div class="swatch"><i style="--c:#ece3d3"></i><b>Krem</b><span>pierś, brzuch, podbródek</span></div>
+          <div class="swatch"><i style="--c:#050506"></i><b>Czerń</b><span>dolne części kończyn, linia kręgosłupa</span></div>
+          <div class="swatch"><i style="--c:#e0932b"></i><b>Bursztyn</b><span>oczy</span></div>
         </div>
-
-        <p class="label" style="margin-top:1.25rem">Lubi</p>
-        <ul class="tags">
-          <li>Fallout: Equestria</li>
-          <li>sesje RPG</li>
-          <li class="todo">[dopisz]</li>
-        </ul>
+        <p>Głęboka czarna linia biegnie od uszu do nasady ogona — oś całej sylwetki.
+          Grzywa otula barki jak naturalny kołnierz; w spoczynku ułożona, pod napięciem lekko się unosi.
+          Ogon ciemny u nasady, złoty pośrodku, z jasną końcówką.</p>
       </div>
 
-      <div class="panel">
-        <p class="label">S.P.E.C.I.A.L.</p>
-        <!-- Wartości 1–10: zmień --v i liczbę obok. -->
-        <ul class="special">
-          <li><span class="key" title="Strength">S</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
-          <li><span class="key" title="Perception">P</span><span class="bar"><span style="--v:7"></span></span><span class="val">7</span></li>
-          <li><span class="key" title="Endurance">E</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
-          <li><span class="key" title="Charisma">C</span><span class="bar"><span style="--v:6"></span></span><span class="val">6</span></li>
-          <li><span class="key" title="Intelligence">I</span><span class="bar"><span style="--v:8"></span></span><span class="val">8</span></li>
-          <li><span class="key" title="Agility">A</span><span class="bar"><span style="--v:7"></span></span><span class="val">7</span></li>
-          <li><span class="key" title="Luck">L</span><span class="bar"><span style="--v:5"></span></span><span class="val">5</span></li>
+      <div class="card">
+        <h3>Szczegóły</h3>
+        <ul class="details">
+          <li><b>Twarz</b> — wąski pysk, domyślnie lekki, asymetryczny półuśmiech. Oczy bursztynowe, skupione, analityczne.</li>
+          <li><b>Okulary</b> — stalowo-grafitowe oprawki, duże geometryczne szkła o zaokrąglonych rogach.</li>
+          <li><b>Kolczyki</b> — po trzy w każdym uchu: grube, matowo czarne kółka, zwykle w kształcie quasi-rombu.</li>
+          <li><b>Pierścienie</b> — matowozłoty sygnet i ciemna obrączka z subtelnym czerwonym rdzeniem.</li>
+          <li><b>Styl</b> — techwear: czerń, struktura, precyzja. Bluza z cienkim złotym motywem dwóch ścieżek,
+            spodnie skrojone pod staw skokowy i buty z otwartym przodem, z których swobodnie wychodzą pazury.</li>
+          <li><b>Nazwa</b> — pierwsza łacińska nazwa, jaką dostał, to <i>Vulpes cancrosa</i>. Nazwisko zostało.</li>
         </ul>
-        <p class="label" style="margin-top:1.25rem">Historia</p>
-        <p style="margin:.25rem 0 0" class="todo">[Krótka historia Vince'a — skąd pochodzi, czym się zajmuje, co go wyróżnia.]</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== O MNIE ===== -->
-  <section id="o-mnie" aria-labelledby="o-mnie-h">
-    <h2 class="section-title" id="o-mnie-h">O MNIE</h2>
-    <div class="panel">
-      <p style="margin-top:0">
-        Za Vince'em stoi człowiek z Polski, który prowadzi sesje RPG i pisze do nich narzędzia —
-        m.in. system Fallout: Equestria do Foundry VTT.
-      </p>
-      <p style="margin-bottom:0" class="todo">[Dopisz o sobie tyle, ile chcesz pokazać publicznie: zainteresowania, fandomy, czym się zajmujesz.]</p>
+  <!-- ===== CHARAKTER ===== -->
+  <section id="charakter" aria-labelledby="charakter-h">
+    <div class="section-head">
+      <p class="kicker">Część druga · jak się porusza</p>
+      <h2 id="charakter-h">Charakter</h2>
     </div>
+    <p class="intro">Ktoś w ruchu — zmierza świadomie w konkretną stronę i dokładnie wie, ile drogi jeszcze przed nim.
+      Nie definiuje go to, gdzie jest, tylko to, jak idzie.</p>
+    <div class="grid-2">
+      <div class="card trait">
+        <p class="kicker">01 · Ambicja</p>
+        <h3>Nie na pokaz</h3>
+        <p>Chce rozwoju — materialnego, intelektualnego, społecznego — i nie przeprasza za to.
+          Lepsza wersja samego siebie to dla niego punkt odniesienia, nie fantazja. Nie ufa skrótom:
+          każdy krok tworzy grunt pod następny.</p>
+      </div>
+      <div class="card trait">
+        <p class="kicker">02 · Filozofia</p>
+        <h3>Przeszkody, nie problemy</h3>
+        <p>Większość tego, co inni nazywają problemami, to dla niego przeszkody — konstrukcje z krawędziami,
+          sytuacje z wyjściami. Wierzy w spojrzenie z zewnątrz, choć poprosić wprost o pomoc wciąż jest mu naprawdę trudno.</p>
+      </div>
+      <div class="card trait">
+        <p class="kicker">03 · Myślenie</p>
+        <h3>Najpierw kształt problemu</h3>
+        <p>Domyślnie analityczny: najpierw rozumie, potem reaguje. Rzadko działa pod wpływem impulsu i nie wpada w katastrofizowanie.</p>
+      </div>
+      <div class="card trait shadow">
+        <p class="kicker">04 · Cień</p>
+        <h3>Pętla o trzeciej w nocy</h3>
+        <p>Analiza potrafi zamienić się w pętlę — powrót do danych, kolejne przeformułowanie, szukanie lepszej drogi,
+          choć ta była jasna dwadzieścia minut temu. To jedyna pętla, której nie umie przegadać od środka.</p>
+      </div>
+    </div>
+    <div class="card">
+      <p class="kicker">05 · Wśród innych</p>
+      <p>Szeroka sieć znajomych — uważny, umie odczytać salę i się do niej dostroić. Prawdziwą bliskość daje jednak
+        bardzo nielicznym. Trzyma te drzwi wąskie z troski i właśnie dlatego bywa brany za chłodnego.
+        Łatwo go z początku nie docenić; trudno potem zlekceważyć.</p>
+    </div>
+  </section>
+
+  <!-- ===== BLISCY ===== -->
+  <section id="bliscy" aria-labelledby="bliscy-h">
+    <div class="section-head">
+      <p class="kicker">Część trzecia · nieliczni, których wpuszcza</p>
+      <h2 id="bliscy-h">Bliscy</h2>
+    </div>
+    <div class="grid-2">
+      <article class="card person">
+        <p class="kicker">Partner</p>
+        <h3>Ragnar Elias Hale</h3>
+        <p class="meta">bulterier · 28 lat</p>
+        <p>Poznali się dzięki pracy Vince'a jako kierowcy. Z okazjonalnych kursów zrobiła się stała obecność,
+          a w końcu prywatny numer — dany z zaufania, nie dla wygody. Wszędzie indziej Vince zarządza i prowadzi;
+          przy Ragnarze to jedyne miejsce, gdzie odkłada kontrolę.</p>
+      </article>
+      <article class="card person">
+        <p class="kicker">Podopieczny · jak młodszy brat</p>
+        <h3>Chip <small>„Chipper”</small></h3>
+        <p class="meta">kobold · 18 lat · dzwoneczek na obroży</p>
+        <p>Vince został jego opiekunem prawnym wszystkim, tylko nie przypadkiem — po miesiącach obserwacji
+          i cierpliwie wypełnionej luce w procedurach. Nie gra ciepła; po prostu jest, konsekwentnie i praktycznie.
+          Chip wciąż uczy się, że ta obecność jest stała, a nie warunkowa.</p>
+      </article>
+    </div>
+    <div class="card">
+      <p class="kicker">Świat</p>
+      <p>Vince żyje w świecie w pełni digitigradalnym — same antropomorficzne gatunki, bez ludzi.
+        Jego ubrania i buty są projektowane pod tę anatomię od podstaw, a nie do niej dopasowywane.</p>
+    </div>
+  </section>
+
+  <!-- ===== MUZYKA ===== -->
+  <section id="muzyka" aria-labelledby="muzyka-h">
+    <div class="section-head">
+      <p class="kicker">Kanał V_Cancrosa</p>
+      <h2 id="muzyka-h">Muzyka</h2>
+    </div>
+    <p class="intro">Gameplay, krótkie rozmowy, długie rozmowy, muzyka — wszystko, co znajdzie tu drogę.
+      Muzyka ma już swój kształt i trzy kategorie. Nie są sztywne: utwór może żyć w więcej niż jednej.</p>
+    <div class="grid-3">
+      <div class="card cat">
+        <h3>Ranger <small>SYGNAŁ</small></h3>
+        <p>Podróż. Lekka, żeby cię niosła, ale zbudowana do ruchu. Nie liczy się cel — liczy się to,
+          że gdzieś między pierwszym a ostatnim taktem zabiera cię ze sobą.</p>
+      </div>
+      <div class="card cat">
+        <h3>Manifesto <small>DOWÓD</small></h3>
+        <p>Filozofia z kanapy. Rozmowa, w której nikt się nie spieszy. Bez dobrych odpowiedzi —
+          coś ląduje na stole, a pytanie brzmi: co ty o tym myślisz?</p>
+      </div>
+      <div class="card cat">
+        <h3>Blueprint <small>MECHANIZM</small></h3>
+        <p>Zabawa formą. Nie tylko jak muzyka brzmi, ale jak przychodzi: struktura, kontekst, kształt całości —
+          warstwa, którą większość pomija. Tutaj to ona jest sednem.</p>
+      </div>
+    </div>
+    <p class="note">Muzyka na kanale powstaje z pomocą AI — i mówię o tym otwarcie. Oprawa wizualna jest zamawiana u artystów,
+      nie generowana, a każdy artysta wie z góry, że jego praca stanie obok czegoś stworzonego z AI.
+      Jego świadoma decyzja to nie uprzejmość, tylko priorytet.</p>
+    <!-- Podmień href na link do kanału. -->
+    <a class="btn" href="#">Kanał YouTube</a>
   </section>
 
   <!-- ===== GALERIA ===== -->
   <section id="galeria" aria-labelledby="galeria-h">
-    <h2 class="section-title" id="galeria-h">GALERIA</h2>
-    <!-- Każdy obrazek: plik do folderu img/, w podpisie autor i link do niego. Zawsze podpisuj artystów. -->
+    <div class="section-head">
+      <p class="kicker">Zamówione u artystów</p>
+      <h2 id="galeria-h">Galeria</h2>
+    </div>
+    <!-- Każdy obrazek: plik do img/, w podpisie autor i link do niego. -->
     <div class="gallery">
       <figure>
-        <div class="frame"><!-- <img src="img/art-1.webp" alt="Opis obrazka" loading="lazy"> -->[ ART #1 ]</div>
+        <div class="frame"><!-- <img src="img/ref-ash.webp" alt="Ref sheet Vince'a autorstwa Ash" loading="lazy"> -->REF SHEET</div>
+        <figcaption>Ref sheet · kolor: <a href="#">Ash</a></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><!-- <img src="img/art-1.webp" alt="Opis obrazka" loading="lazy"> -->ART #1</div>
         <figcaption>art: <a href="#">@artysta</a></figcaption>
       </figure>
       <figure>
-        <div class="frame"><!-- <img src="img/art-2.webp" alt="Opis obrazka" loading="lazy"> -->[ ART #2 ]</div>
+        <div class="frame"><!-- <img src="img/art-2.webp" alt="Opis obrazka" loading="lazy"> -->ART #2</div>
         <figcaption>art: <a href="#">@artysta</a></figcaption>
-      </figure>
-      <figure>
-        <div class="frame"><!-- <img src="img/ref.webp" alt="Ref sheet Vince'a" loading="lazy"> -->[ REF SHEET ]</div>
-        <figcaption>ref sheet: <a href="#">@artysta</a></figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ===== PROJEKTY ===== -->
-  <section id="projekty" aria-labelledby="projekty-h">
-    <h2 class="section-title" id="projekty-h">PROJEKTY</h2>
-    <div class="projects">
-      <article class="panel">
+  <!-- ===== CZŁOWIEK ZA GŁOSEM ===== -->
+  <section id="o-mnie" aria-labelledby="o-mnie-h">
+    <div class="section-head">
+      <p class="kicker">Człowiek za głosem</p>
+      <h2 id="o-mnie-h">O mnie</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <p>Nie mam talentu muzycznego ani plastycznego — mam kreatywność i cenię ją u siebie tak, jak cenię ją u artystów.
+          Vince to sposób, żeby coś z nią zrobić.</p>
+        <p class="todo">Dopisz o sobie tyle, ile chcesz pokazać publicznie.</p>
+      </div>
+      <article class="card">
+        <p class="kicker">Projekt</p>
         <h3>Fallout: Equestria — Foundry VTT</h3>
-        <p>Nieoficjalny, fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L., SATS, katalog ponad tysiąca przedmiotów, tracker walki, a nawet kasyno z blackjackiem i Texas Hold'em.</p>
-        <a class="btn" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
-      </article>
-      <article class="panel">
-        <h3 class="todo">[Kolejny projekt]</h3>
-        <p class="todo">[Opis — albo usuń ten blok.]</p>
+        <p>Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L., SATS, katalog ponad tysiąca przedmiotów,
+          tracker walki i kasyno z blackjackiem i Texas Hold'em.</p>
+        <a class="btn ghost" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
       </article>
     </div>
   </section>
 
   <!-- ===== KONTAKT ===== -->
   <section id="kontakt" aria-labelledby="kontakt-h">
-    <h2 class="section-title" id="kontakt-h">KONTAKT</h2>
+    <div class="section-head">
+      <p class="kicker">Drzwi są otwarte</p>
+      <h2 id="kontakt-h">Kontakt</h2>
+    </div>
     <!-- Podmień href i nazwy; zbędne pozycje usuń. -->
     <ul class="links">
+      <li><a href="#"><span>YouTube</span><span>V_Cancrosa</span></a></li>
       <li><a href="https://github.com/V-Cancrosa"><span>GitHub</span><span>V-Cancrosa</span></a></li>
       <li><a href="#"><span>Telegram</span><span>@…</span></a></li>
       <li><a href="#"><span>Bluesky</span><span>@…</span></a></li>
       <li><a href="#"><span>FurAffinity</span><span>…</span></a></li>
-      <li><a href="#"><span>Discord</span><span>…</span></a></li>
       <li><a href="mailto:kontakt@TWOJA-DOMENA.pl"><span>E-mail</span><span>kontakt@…</span></a></li>
     </ul>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> Vince Cancrosa. Arty należą do ich autorów.</span>
-  <span>Fallout: Equestria to fanowskie dzieło — strona niezwiązana z Bethesdą ani Hasbro.</span>
+  <span>© <span id="year">2026</span> Vincent Cancrosa · V_Cancrosa</span>
+  <span>Ilustracje należą do ich autorów.</span>
 </footer>
 
 <script>
