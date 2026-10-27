@@ -1,175 +1,643 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zarin Patchcurio · The One Above Them</title>
-<meta name="description" content="Zarin Patchcurio — Avali, mechanik. Rozkłada na części to, co inni wyrzucają, żeby sprawdzić, czy jeszcze działa.">
+<title>Zarin Patchcurio</title>
+<meta name="description" content="Zarin Patchcurio — Avali mechanic from the scrapyards of Kerra-4. He never sold any of it. He only wanted to know whether it would still run.">
+<meta name="theme-color" content="#14171b">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Zarin Patchcurio">
-<meta property="og:description" content="Avali bierze imię od swojego stada. Zarin dostał swoje u stóp rampy, od załogi, która nie była jego gatunku.">
+<meta property="og:description" content="He never sold any of it. He only wanted to know whether it would still run.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/zarin.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='3' fill='%237d8186'/%3E%3Crect x='1' y='8' width='30' height='5' fill='%235e7a5a'/%3E%3Cg fill='%23101214'%3E%3Ccircle cx='5' cy='5' r='1.6'/%3E%3Ccircle cx='27' cy='5' r='1.6'/%3E%3Ccircle cx='5' cy='27' r='1.6'/%3E%3Ccircle cx='27' cy='27' r='1.6'/%3E%3C/g%3E%3Cpath d='M8 21 H24' stroke='%23e6e1d3' stroke-width='3'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Akcent Zarina: opalizująca zieleń przechodząca w turkus */
-  :root { --gold: #2fd46b; --gold-b: #6fe8c9; --line: rgba(47,212,107,.26); --line-s: rgba(31,199,181,.10); }
-  .hull-plate { background: linear-gradient(170deg, #7d8186, #5d6166 55%, #474b50); }
-  .hull-plate::before { content: ""; position: absolute; left: 0; right: 0; top: 22%; height: 13%; background: #5e7a5a; opacity: .85; }
-  .hull-plate .patch { position: relative; font: 700 clamp(2.6rem, 8vw, 4.4rem) var(--mono); letter-spacing: .22em; color: #e6e1d3; margin-top: 4%; padding-left: .22em; }
-  .hull-plate .curio {
-    position: relative; display: block; font: 400 clamp(1.6rem, 4.5vw, 2.4rem) "Comic Sans MS", "Segoe Print", cursive;
-    color: #17191b; transform: rotate(-4deg); margin-top: .2rem; text-shadow: 0 0 1px rgba(0,0,0,.6);
-  }
-  .hull-plate .grime { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(0,0,0,.25), transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(255,255,255,.08), transparent 40%); }
-  .story p { max-width: 46rem; }
-  .story p + p { margin-top: 1rem; }
-</style>
+<link rel="stylesheet" href="char.css">
+<link rel="stylesheet" href="zarin.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start">ZARIN</a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#karta">Karta</a>
-      <a href="#historia">Historia</a>
-      <a href="#myr">Myr</a>
-    </nav>
+<header class="nav">
+  <a class="logo" href="#top"><i aria-hidden="true"></i>Zarin</a>
+  <nav aria-label="Sections">
+    <a href="#kerra">Kerra-4</a>
+    <a href="#patch">Patch</a>
+    <a href="#gear"><span lang="en">Gear</span><span lang="pl">Sprzęt</span></a>
+    <a href="#name"><span lang="en">Name</span><span lang="pl">Imię</span></a>
+    <a href="#station"><span lang="en">Station</span><span lang="pl">Stacja</span></a>
+  </nav>
+  <div class="tools">
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
+  <a class="back" href="index.html#postacie">← <span lang="en">All characters</span><span lang="pl">Postacie</span></a>
 </header>
 
 <main id="main">
-  <section class="hero" id="start">
-    <figure class="plate hull-plate" style="margin:0" aria-label="Płyta z kadłuba statku Patch: szary metal, wyblakły zielony pas, szablonowy napis PATCH i wydrapane ręcznie słowo curio">
-      <span class="grime"></span>
-      <div><span class="patch">PATCH</span><span class="curio">curio</span></div>
-      <span class="bolt"></span><span class="bolt"></span><span class="bolt"></span><span class="bolt"></span>
-      <figcaption class="credit" style="background:rgba(11,12,14,.75)">Płyta z kadłuba statku Patch · art: wkrótce</figcaption>
-    </figure>
-    <div>
-      <p class="kicker">Cancrosa Verse · Avali · Character Reference</p>
-      <h1>Zarin<br><span>Patchcurio</span></h1>
-      <p class="aka">Avali · on/jego · mechanik</p>
-      <blockquote class="motto">
-        <q>He never sold any of it. He only wanted to know whether it would still run.</q>
-        <small>Nigdy niczego z tego nie sprzedał. Chciał tylko wiedzieć, czy to jeszcze działa.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Przyjazny, ciekawski, odrobinę psotny. Najlepiej widać go przy majsterkowaniu, w pół rozmowy albo gdy rozkłada coś na części, żeby zobaczyć, jak działa.</p>
-      </div>
-      <a class="btn" href="#karta">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
-    </div>
-  </section>
 
-  <section id="karta" aria-labelledby="karta-h">
-    <div class="section-head">
-      <p class="kicker">Część pierwsza</p>
-      <h2 id="karta-h">Karta postaci</h2>
-    </div>
-    <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Avali</dd></div>
-      <div><dt>Płeć</dt><dd>Samiec</dd></div>
-      <div><dt>Wzrost</dt><dd>1–1,2 m <i>(standard Avali)</i></dd></div>
-      <div><dt>Budowa</dt><dd>Zwarta · bardzo puszysta</dd></div>
-    </dl>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Grafit z zielonym błyskiem</h3>
-        <div class="swatches">
-          <div class="swatch"><i style="--c:#2e3236"></i><b>Grafit</b><span>pióra</span></div>
-          <div class="swatch"><i style="--c:#2fd46b"></i><b>Zieleń</b><span>opalizujące pasy</span></div>
-          <div class="swatch"><i style="--c:#1fc7b5"></i><b>Turkus</b><span>tam, gdzie zieleń się mieni</span></div>
-          <div class="swatch"><i style="--c:#cfe8f2"></i><b>Lodowy błękit</b><span>oczy</span></div>
+  <!-- ================= POCZĄTEK ================= -->
+  <section class="hero" id="top">
+    <canvas id="snow" aria-hidden="true"></canvas>
+    <svg class="roofs" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g fill="#0c0e11">
+        <path d="M-20 220 V122 Q150 40 320 122 V220Z"/>
+        <path d="M350 220 V104 Q560 12 770 104 V220Z"/>
+        <path d="M790 220 V158 L905 136 V220Z"/>
+        <path d="M905 220 L928 176 L955 188 L986 150 L1022 178 L1050 162 L1084 220Z"/>
+        <path d="M1090 220 V116 Q1280 34 1460 116 V220Z"/>
+      </g>
+      <g fill="none" stroke="#9aa3ab" stroke-opacity=".32" stroke-width="7" stroke-linecap="round">
+        <path d="M-20 122 Q150 40 320 122"/>
+        <path d="M350 104 Q560 12 770 104"/>
+        <path d="M790 158 L905 136"/>
+        <path d="M1090 116 Q1280 34 1460 116"/>
+      </g>
+      <g fill="#cfe8f2" fill-opacity=".14">
+        <rect x="520" y="150" width="70" height="8"/><rect x="1230" y="160" width="56" height="8"/><rect x="120" y="168" width="40" height="7"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div>
+        <p class="kicker"><span lang="en">Cancrosa Verse / deep-space setting</span><span lang="pl">Cancrosa Verse / głęboki kosmos</span></p>
+        <h1>Zarin</h1>
+        <p class="surname" aria-label="Patchcurio"><span class="p" aria-hidden="true">PATCH</span><span class="c" aria-hidden="true">curio</span></p>
+        <p class="sub"><span lang="en">Avali · he/him · mechanic · 1–1.2 m</span><span lang="pl">Avali · on/jego · mechanik · 1–1,2 m</span></p>
+        <p class="tag"><span lang="en">He never sold any of it. He only wanted to know whether it would still run.</span><span lang="pl">Nigdy niczego z tego nie sprzedał. Chciał tylko wiedzieć, czy to jeszcze działa.</span></p>
+        <p class="temper"><span lang="en">Friendly, curious, a bit mischievous.</span><span lang="pl">Przyjazny, ciekawski, odrobinę psotny.</span></p>
+        <div class="actions">
+          <a class="btn" href="#kerra"><span lang="en">To the scrapyard</span><span lang="pl">Na złomowisko</span></a>
+          <a class="btn ghost" href="#station"><span lang="en">Where he lives now</span><span lang="pl">Gdzie mieszka teraz</span></a>
         </div>
-        <p>Zieleń pojawia się tylko w trzech miejscach: pas przez każde górne ucho, brzegi lotek na przedramionach i jeden–dwa pasy przy końcu ogona.
-          Cała reszta to grafit, z jaśniejszym odcieniem na gardle i brzuchu. Bladofioletowa krew barwi pyszczek, język, opuszki i podeszwy.</p>
       </div>
-      <div class="card">
-        <h3>Sprzęt</h3>
-        <ul class="details">
-          <li><b>Uprząż chłodząca</b> — płaski pakiet na plecach z żeberkami radiatora i małym wentylatorem. Wyraźnie przerabiana, z niepasującymi częściami przykręconymi na boki.</li>
-          <li><b>Płyta z kadłuba</b> — szary, wytarty metal z wyblakłym przemysłowym zielonym pasem. PATCH w złamanobiałym szablonie, jak na kadłubie statku,
-            a pod spodem „curio” — wydrapane ręcznie nierównymi małymi literami i poprawione ciemnym markerem, żeby się nie starło.</li>
-          <li><b>Gogle robocze</b> — ciemnoszare, zsunięte na czoło między uszy.</li>
-          <li><b>Avali w skrócie</b> — mały, raptorowaty, w gęstych izolujących piórach; cztery pierzaste uszy, lotki na przedramionach, trzy palce, ogon długi na pół ciała.</li>
-        </ul>
+      <div class="plate-stage">
+        <button type="button" class="hull" id="hull" aria-pressed="false"
+          data-en-label="Hull plate from the ship Patch: worn grey metal, faded green stripe, PATCH in stencil, curio scratched by hand. Press to go over it in marker."
+          data-pl-label="Płyta z kadłuba statku Patch: wytarty szary metal, wyblakły zielony pas, PATCH z szablonu, curio wydrapane ręcznie. Naciśnij, żeby poprawić je markerem."
+          aria-label="Hull plate from the ship Patch">
+          <span class="stripe"></span>
+          <span class="word">PATCH</span>
+          <span class="curio">curio</span>
+          <i class="hole"></i><i class="hole"></i><i class="hole"></i><i class="hole"></i>
+        </button>
+        <p class="plate-cap mono" id="plateCap" aria-live="polite"></p>
       </div>
     </div>
   </section>
 
-  <section id="historia" aria-labelledby="historia-h">
-    <div class="section-head">
-      <p class="kicker">Część druga · Kerra-4</p>
-      <h2 id="historia-h">Historia</h2>
-    </div>
-    <div class="card story">
-      <p>Na Kerra-4 śnieg leciał bokiem z grani i osiadał szarą skorupą na dachach hangarów. Zarin mieszkał w przybudówce za złomowiskiem,
-        w jedynej szopie, której nikt nie chciał, bo izolacja dawno siadła. Całe dnie rozbierał to, co inni wyrzucili: regulatory ciśnienia,
-        martwe drony zwiadowcze, raz cały moduł nawigacyjny, który budził się trzy tygodnie.</p>
-      <p>Frachtowiec wylądował we wtorek, kaszląc. Drugiego wieczoru Zarin siedział na zaspie za złomowiskiem i liczył przerwy między kaszlnięciami pompy chłodzącej.
-        Czterdzieści sekund. Trzydzieści dziewięć. Trzydzieści osiem. Na kadłubie, w łuszczącej się farbie: PATCH. Czwartego wieczoru wszedł przez niezamknięty właz serwisowy.
-        Chciał tylko popatrzeć. Silniki zapaliły się o świcie.</p>
-      <p>Znalazł chłód za ładownią, gdzie przewody chłodziwa ciekły od lat, wcisnął się w niego i zaczął naprawiać. Maro, który nią latał, w kilka dni zorientował się,
-        że za rurami mieszka coś małego i pierzastego. Bett latała już kiedyś z Avali i od pierwszej nocy wiedziała, kim jest. Kapitan Oskar dowiedział się ostatni —
-        a wtedy statek chodził lepiej niż od dekady, więc nic nie powiedział.</p>
-      <p>Ciepłe statki to problem dla Avali. Uprząż chłodząca kosztowała więcej, niż Patch miał — dopóki Oskar nie policzył, ile zaoszczędzili na paliwie, odkąd Zarin
-        przebudował wymiennik ciepła. Wyszło mniej więcej tyle.</p>
-      <p>Pożegnali się w jakimś doku po drodze. Bett dała mu suszone mięso i puszkę brzoskwiń. Maro — swój ulubiony klucz nasadowy, udając, że ma drugi taki sam.
-        Oskar wręczył mu płytę z kadłuba, wymienioną przy remoncie, przyciętą w kwadrat i nawierconą tak, by pasowała do uprzęży, bo Maro zmierzył ją, gdy Zarin spał.
-        Pod szablonowym napisem ktoś wydrapał: curio.</p>
-      <p><b style="color:var(--cream)">Avali biorą imiona od swoich stad. Zarin dostał swoje u stóp rampy, od załogi, która nie była jego gatunku, w dniu, w którym odlatywali.</b></p>
-      <p>W dolnych poziomach stacji szybko się nauczył, że nikt tam na nikogo nie uważa — i że jest jeden sektor, do którego się nie wchodzi, jeśli chce się z niego wyjść.</p>
+  <!-- ================= KERRA-4 ================= -->
+  <section id="kerra">
+    <div class="wrap">
+      <p class="kicker" data-reveal>01 <b>/</b> Kerra-4</p>
+      <h2 data-reveal><span lang="en">The snow came <em>sideways</em>.</span><span lang="pl">Śnieg leciał <em>bokiem</em>.</span></h2>
+      <p class="intro" data-reveal="2" lang="en">On Kerra-4 the snow came sideways off the ridge and settled on the hangar roofs in a grey crust. Zarin lived in a lean-to behind the scrapyard — the one shed nobody else wanted, because the insulation had failed years ago. He spent his days taking apart what other people threw away.</p>
+      <p class="intro" data-reveal="2" lang="pl">Na Kerra-4 śnieg leciał bokiem z grani i osiadał szarą skorupą na dachach hangarów. Zarin mieszkał w przybudówce za złomowiskiem — w jedynej szopie, której nikt nie chciał, bo izolacja dawno siadła. Całe dnie rozbierał to, co inni wyrzucili.</p>
+
+      <div class="shelf">
+        <article class="junk" data-k="reg" data-reveal>
+          <svg viewBox="0 0 240 150" aria-hidden="true">
+            <g class="part" style="--dx:-34px;--dy:8px;--rot:-14deg"><rect x="22" y="70" width="60" height="16" rx="3" fill="#5a6068"/><rect x="16" y="64" width="9" height="28" rx="2" fill="#8d9196"/></g>
+            <g class="part" style="--dx:34px;--dy:10px;--rot:12deg"><rect x="158" y="70" width="60" height="16" rx="3" fill="#5a6068"/><rect x="215" y="64" width="9" height="28" rx="2" fill="#8d9196"/></g>
+            <g class="part" style="--dx:0px;--dy:16px"><rect x="78" y="58" width="84" height="40" rx="8" fill="#3a3f45" stroke="#7d8186" stroke-width="2"/><circle cx="90" cy="70" r="2.5" fill="#8d9196"/><circle cx="150" cy="70" r="2.5" fill="#8d9196"/><circle cx="90" cy="86" r="2.5" fill="#8d9196"/><circle cx="150" cy="86" r="2.5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:-6px;--dy:-30px;--rot:28deg"><circle cx="120" cy="36" r="22" fill="#e6e1d3" stroke="#5a6068" stroke-width="4"/><path d="M120 36 L132 24" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/><circle cx="120" cy="36" r="3" fill="#2e3236"/></g>
+            <g class="part" style="--dx:30px;--dy:-24px;--rot:50deg"><path d="M150 112 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" fill="none" stroke="#1fc7b5" stroke-width="2.5"/></g>
+            <g class="part" style="--dx:-4px;--dy:30px;--rot:-20deg"><rect x="108" y="98" width="24" height="18" rx="3" fill="#2e3236" stroke="#7d8186" stroke-width="2"/><rect x="104" y="114" width="32" height="8" rx="3" fill="#5a6068"/></g>
+          </svg>
+          <h3><span lang="en">Pressure regulator</span><span lang="pl">Regulator ciśnienia</span></h3>
+          <p class="state" aria-live="polite"></p>
+          <button type="button" class="btn ghost"></button>
+        </article>
+
+        <article class="junk" data-k="drone" data-reveal="2">
+          <svg viewBox="0 0 240 150" aria-hidden="true">
+            <g class="part" style="--dx:-30px;--dy:-22px;--rot:-40deg"><path d="M120 76 L64 44" stroke="#5a6068" stroke-width="6" stroke-linecap="round"/><ellipse cx="62" cy="40" rx="26" ry="5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:30px;--dy:-22px;--rot:40deg"><path d="M120 76 L176 44" stroke="#5a6068" stroke-width="6" stroke-linecap="round"/><ellipse cx="178" cy="40" rx="26" ry="5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:-28px;--dy:22px;--rot:30deg"><path d="M120 80 L64 112" stroke="#5a6068" stroke-width="6" stroke-linecap="round"/><ellipse cx="62" cy="116" rx="26" ry="5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:28px;--dy:22px;--rot:-30deg"><path d="M120 80 L176 112" stroke="#5a6068" stroke-width="6" stroke-linecap="round"/><ellipse cx="178" cy="116" rx="26" ry="5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:0px;--dy:0px"><ellipse cx="120" cy="78" rx="32" ry="17" fill="#3a3f45" stroke="#7d8186" stroke-width="2"/><path d="M98 72 H142" stroke="#5e7a5a" stroke-width="4"/></g>
+            <g class="part" style="--dx:0px;--dy:34px;--rot:20deg"><circle cx="120" cy="96" r="8" fill="#14171b" stroke="#cfe8f2" stroke-width="2"/><circle cx="122" cy="94" r="2.5" fill="#cfe8f2"/></g>
+          </svg>
+          <h3><span lang="en">Dead survey drone</span><span lang="pl">Martwy dron zwiadowczy</span></h3>
+          <p class="state" aria-live="polite"></p>
+          <button type="button" class="btn ghost"></button>
+        </article>
+
+        <article class="junk" data-k="nav" data-reveal="3">
+          <svg viewBox="0 0 240 150" aria-hidden="true">
+            <g class="part" style="--dx:0px;--dy:6px"><rect x="46" y="42" width="148" height="82" rx="6" fill="#2e3236" stroke="#7d8186" stroke-width="2"/><circle cx="56" cy="52" r="2.5" fill="#8d9196"/><circle cx="184" cy="52" r="2.5" fill="#8d9196"/><circle cx="56" cy="114" r="2.5" fill="#8d9196"/><circle cx="184" cy="114" r="2.5" fill="#8d9196"/></g>
+            <g class="part" style="--dx:-22px;--dy:-26px;--rot:-8deg"><rect class="screen" x="62" y="56" width="74" height="46" rx="3" fill="#0b0d0f" stroke="#5a6068" stroke-width="2"/><path d="M70 90 L84 76 L96 84 L112 66 L128 72" fill="none" stroke="#14171b" stroke-width="2"/></g>
+            <g class="part" style="--dx:30px;--dy:-8px;--rot:60deg"><circle cx="160" cy="66" r="8" fill="#5a6068"/><path d="M160 60 V66" stroke="#e6e1d3" stroke-width="2"/></g>
+            <g class="part" style="--dx:34px;--dy:18px;--rot:-50deg"><circle cx="160" cy="96" r="8" fill="#5a6068"/><path d="M160 90 V96" stroke="#e6e1d3" stroke-width="2"/></g>
+            <g class="part" style="--dx:20px;--dy:-30px;--rot:24deg"><path d="M176 42 L196 12" stroke="#8d9196" stroke-width="3"/><circle cx="197" cy="10" r="4" fill="#2fd46b"/></g>
+            <g class="part" style="--dx:-30px;--dy:30px;--rot:12deg"><rect x="70" y="108" width="60" height="12" rx="2" fill="#2f5a3a"/><path d="M76 114 H92 M98 114 H110 M116 114 H124" stroke="#e6c46a" stroke-width="2"/></g>
+          </svg>
+          <h3><span lang="en">Navigation module</span><span lang="pl">Moduł nawigacyjny</span></h3>
+          <div class="wake" hidden><i></i></div>
+          <p class="state" aria-live="polite"></p>
+          <button type="button" class="btn ghost"></button>
+        </article>
+      </div>
+      <p class="mono ledger" id="ledger" aria-live="polite"></p>
     </div>
   </section>
 
-  <section id="myr" aria-labelledby="myr-h">
-    <div class="section-head">
-      <p class="kicker">Część trzecia</p>
-      <h2 id="myr-h">Za grodzią</h2>
+  <!-- ================= PATCH ================= -->
+  <section id="patch">
+    <div class="wrap">
+      <p class="kicker" data-reveal>02 <b>/</b> <span lang="en">The freighter</span><span lang="pl">Frachtowiec</span></p>
+      <h2 data-reveal><span lang="en">She came down <em>coughing</em>.</span><span lang="pl">Wylądował, <em>kaszląc</em>.</span></h2>
+      <div class="patch-grid">
+        <div class="story" data-reveal>
+          <p lang="en">The freighter came down on a Tuesday, coughing. Zarin heard her before he saw her, and by the second evening he was sitting on the snow bank behind the yard, counting the gap between the cooling pump's coughs. The name was stencilled across her hull in peeling paint: <b>PATCH</b>. Her crew had gone to the canteen without looking back at her once.</p>
+          <p lang="pl">Frachtowiec wylądował we wtorek, kaszląc. Zarin usłyszał go, zanim go zobaczył, a drugiego wieczoru siedział już na zaspie za złomowiskiem i liczył przerwy między kaszlnięciami pompy chłodzącej. Na kadłubie, łuszczącą się farbą z szablonu: <b>PATCH</b>. Załoga poszła do stołówki, ani razu się na niego nie oglądając.</p>
+          <p lang="en">On the fourth evening he pulled his goggles down and climbed in through a service hatch that nobody had bothered to lock. He meant to look. The engines lit at dawn.</p>
+          <p lang="pl">Czwartego wieczoru opuścił gogle i wszedł przez właz serwisowy, którego nikt nie zadał sobie trudu zamknąć. Chciał tylko popatrzeć. Silniki zapaliły się o świcie.</p>
+          <p lang="en">He found the cold behind the hold, where the coolant lines had been weeping for years, tucked himself into it — and started fixing things.</p>
+          <p lang="pl">Znalazł chłód za ładownią, gdzie od lat sączyły się przewody chłodziwa, wcisnął się w niego — i zaczął naprawiać.</p>
+        </div>
+
+        <div class="pump" id="pump" data-reveal="2">
+          <div class="pump-top">
+            <div class="pump-num" id="pumpNum">40<small>s</small></div>
+            <p class="mono"><span lang="en">Cooling pump · PATCH</span><span lang="pl">Pompa chłodząca · PATCH</span></p>
+          </div>
+          <p class="mono" id="pumpUnit"></p>
+          <svg class="pump-line" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><path id="trace" d="M0 28 H300"/></svg>
+          <div class="pump-log" id="pumpLog" aria-label="Gaps between coughs"></div>
+          <p class="pump-msg" id="pumpMsg" aria-live="polite"></p>
+          <div class="pump-btns">
+            <button type="button" class="btn ghost" id="listenBtn"></button>
+            <button type="button" class="btn" id="fixBtn" disabled><span lang="en">Rebuild the heat exchanger</span><span lang="pl">Przebuduj wymiennik ciepła</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="crew">
+        <article data-reveal>
+          <span class="role"><span lang="en">Flew her, kept her running</span><span lang="pl">Latał nim, trzymał go na chodzie</span></span>
+          <h3>Maro</h3>
+          <p lang="en">Worked out within days that something small and feathered was living behind the pipes.</p>
+          <p lang="pl">W kilka dni zorientował się, że za rurami mieszka coś małego i pierzastego.</p>
+        </article>
+        <article data-reveal="2">
+          <span class="role"><span lang="en">Crew</span><span lang="pl">Załoga</span></span>
+          <h3>Bett</h3>
+          <p lang="en">Had flown with Avali before and knew what he was from the first night.</p>
+          <p lang="pl">Latała już kiedyś z Avali i od pierwszej nocy wiedziała, kim jest.</p>
+        </article>
+        <article data-reveal="3">
+          <span class="role"><span lang="en">Captain</span><span lang="pl">Kapitan</span></span>
+          <h3>Oskar</h3>
+          <p lang="en">Found out last. By then the ship was running better than she had in a decade, so he said nothing about it.</p>
+          <p lang="pl">Dowiedział się ostatni. Statek chodził wtedy lepiej niż od dekady, więc nic na ten temat nie powiedział.</p>
+        </article>
+      </div>
     </div>
-    <div class="grid-2">
-      <article class="card person">
-        <p class="kicker">Partner w pracy · sąsiad zza drzwi</p>
-        <h3><a href="myr.html">Myr-35</a></h3>
-        <p class="meta">Protogen · ok. 210 cm</p>
-        <p>Gang zagonił go do tamtego sektora. Zamknął się za pierwszą grodzią i dopiero wtedy zrozumiał, że nie jest sam: legenda okazała się prawdziwa.
-          Gdy ktoś przeciął gródź, jednostka przeszła przez gang tak, jak ją zbudowano. Potem poprosiła o diagnostykę. Zarin podłączył sondę,
-          przedstawił się porządnie i zapytał, czy może mówić do niej Myr. Odpowiedź brzmiała jednym słowem: „I.”</p>
-        <p>Dziś zarabiają razem — Myr robi to, co wymaga siły, Zarin naprawia to, co zostaje. Zarin śpi w Chłodni 3, Myr w ciepłej maszynowni obok.
-          Na dłuższych spacerach jedzie na plecach Myr.</p>
-      </article>
-      <article class="card">
-        <p class="kicker">Gość</p>
-        <h3>Wśród innych Avali</h3>
-        <p>Gdy trafia na inne Avali — jak wtedy, gdy w porcie zacumował statek stada — mówi bardzo dużo, pomaga przy wszystkim i nadrabia lata rozmów naraz.
-          Nigdy nie nauczył się prywatnych sygnałów, które dzieli stado, więc zostaje gościem. Gdy ich statek odlatuje, wraca do Chłodni 3.</p>
-      </article>
+  </section>
+
+  <!-- ================= SPRZĘT ================= -->
+  <section id="gear">
+    <div class="wrap">
+      <p class="kicker" data-reveal>03 <b>/</b> <span lang="en">Gear</span><span lang="pl">Sprzęt</span></p>
+      <h2 data-reveal><span lang="en">Warm ships are <em>a problem</em>.</span><span lang="pl">Ciepłe statki to <em>problem</em>.</span></h2>
+      <p class="intro" data-reveal="2" lang="en">For an Avali, anyway. A cooling harness cost more than Patch had — until Oskar worked out what she had saved on fuel since Zarin rebuilt the heat exchanger. It came to roughly enough. They fitted the core into the harness overnight, Maro passing tools before Zarin asked for them.</p>
+      <p class="intro" data-reveal="2" lang="pl">Przynajmniej dla Avali. Uprząż chłodząca kosztowała więcej, niż Patch miał w kasie — dopóki Oskar nie policzył, ile zaoszczędzili na paliwie, odkąd Zarin przebudował wymiennik ciepła. Wyszło mniej więcej tyle. Rdzeń wmontowali w uprząż przez jedną noc, a Maro podawał narzędzia, zanim Zarin zdążył o nie poprosić.</p>
+
+      <div class="gear">
+        <div class="harness" id="harness" data-reveal>
+          <svg viewBox="0 0 320 290" role="img" data-en-label="Cooling harness: a flat pack with radiator fins, a small fan and mismatched parts bolted on" data-pl-label="Uprząż chłodząca: płaski pakiet z żeberkami radiatora, małym wentylatorem i przykręconymi niepasującymi częściami" aria-label="Cooling harness">
+            <rect x="84" y="4" width="26" height="56" rx="9" fill="#23272b"/>
+            <rect x="210" y="4" width="26" height="56" rx="9" fill="#23272b"/>
+            <rect x="56" y="38" width="208" height="226" rx="18" fill="#2e3236" stroke="#5a6068" stroke-width="2"/>
+            <g id="fins">
+              <rect x="76" y="64" width="6" height="176" rx="3"/><rect x="88" y="64" width="6" height="176" rx="3"/><rect x="100" y="64" width="6" height="176" rx="3"/>
+              <rect x="112" y="64" width="6" height="176" rx="3"/><rect x="124" y="64" width="6" height="176" rx="3"/><rect x="136" y="64" width="6" height="176" rx="3"/>
+              <rect x="148" y="64" width="6" height="176" rx="3"/><rect x="160" y="64" width="6" height="176" rx="3"/>
+            </g>
+            <circle cx="220" cy="104" r="34" fill="#14171b" stroke="#7d8186" stroke-width="3"/>
+            <g id="fan">
+              <path d="M220 104 C214 86 220 74 230 72 C232 86 228 96 220 104Z" fill="#8d9196"/>
+              <path d="M220 104 C238 98 250 104 252 114 C238 116 228 112 220 104Z" fill="#8d9196"/>
+              <path d="M220 104 C226 122 220 134 210 136 C208 122 212 112 220 104Z" fill="#8d9196"/>
+              <path d="M220 104 C202 110 190 104 188 94 C202 92 212 96 220 104Z" fill="#8d9196"/>
+              <circle cx="220" cy="104" r="6" fill="#5a6068"/>
+            </g>
+            <path d="M186 104 H254 M220 70 V138" stroke="#7d8186" stroke-width="1.5" opacity=".6"/>
+            <rect x="186" y="164" width="60" height="44" rx="4" fill="#4b5743" stroke="#6f7d62" stroke-width="2" transform="rotate(-3 216 186)"/>
+            <circle cx="193" cy="171" r="2.5" fill="#c9c4b4"/><circle cx="239" cy="168" r="2.5" fill="#c9c4b4"/><circle cx="194" cy="203" r="2.5" fill="#c9c4b4"/><circle cx="240" cy="200" r="2.5" fill="#c9c4b4"/>
+            <path d="M186 186 H170" stroke="#8d9196" stroke-width="7" stroke-linecap="round"/>
+            <path d="M246 196 C268 206 262 236 236 240 C214 244 204 252 204 262" fill="none" stroke="#1fc7b5" stroke-width="2.5"/>
+            <rect x="226" y="232" width="22" height="10" rx="2" fill="#cfb76a" opacity=".85" transform="rotate(14 237 237)"/>
+            <rect x="196" y="222" width="30" height="22" rx="3" fill="#3f454c" stroke="#7d8186" stroke-width="1.5"/>
+            <circle id="led" cx="242" cy="54" r="4" fill="#2fd46b"/>
+            <g fill="#8d9196"><circle cx="70" cy="52" r="3"/><circle cx="250" cy="250" r="3"/><circle cx="70" cy="250" r="3"/></g>
+          </svg>
+          <div class="temp">
+            <div class="temp-read"><span id="tempPlace"></span><b id="fanRead"></b></div>
+            <input type="range" id="temp" min="0" max="100" value="12" data-en-label="Ambient temperature" data-pl-label="Temperatura otoczenia" aria-label="Ambient temperature">
+            <div class="ends"><span lang="en">Cold Store 3</span><span lang="pl">Chłodnia 3</span><span lang="en">Warm ship's hold</span><span lang="pl">Ciepła ładownia</span></div>
+            <p class="temp-msg" id="tempMsg" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="gear-list">
+          <article class="gear-item" data-reveal>
+            <h3><span lang="en">Cooling harness</span><span lang="pl">Uprząż chłodząca</span></h3>
+            <p lang="en">A flat pack on the back with radiator fins and a small fan. Clearly modified, with mismatched parts bolted on.</p>
+            <p lang="pl">Płaski pakiet na plecach z żeberkami radiatora i małym wentylatorem. Wyraźnie przerabiana, z niepasującymi częściami przykręconymi po bokach.</p>
+          </article>
+          <article class="gear-item" data-reveal="2">
+            <h3><span lang="en">Hull plate</span><span lang="pl">Płyta z kadłuba</span></h3>
+            <p lang="en">Worn grey metal with a faded industrial green stripe, fixed over the cooling pack. PATCH in off-white stencil; underneath, <i>curio</i> scratched in by hand and gone over in dark marker so it would not wear away.</p>
+            <p lang="pl">Wytarty szary metal z wyblakłym przemysłowym zielonym pasem, przykręcony nad pakietem chłodzącym. PATCH białawym szablonem; pod spodem ręcznie wydrapane <i>curio</i>, poprawione ciemnym markerem, żeby się nie starło.</p>
+          </article>
+          <article class="gear-item" data-reveal="3">
+            <h3><span lang="en">Work goggles</span><span lang="pl">Gogle robocze</span></h3>
+            <p lang="en">Dark grey, pushed up on the forehead between the ears. He pulls them down right before he goes somewhere he shouldn't.</p>
+            <p lang="pl">Ciemnoszare, zsunięte na czoło między uszy. Opuszcza je tuż przed tym, jak wejdzie tam, gdzie nie powinien.</p>
+            <p><button type="button" class="btn ghost" id="gogglesBtn" aria-pressed="false"></button></p>
+          </article>
+        </div>
+      </div>
+
+      <div class="palette" id="palette">
+        <button type="button" class="sw" style="--c:#2E3236" data-hex="#2E3236" data-reveal><i></i><b lang="en">Graphite</b><b lang="pl">Grafit</b><span lang="en">#2E3236 · feathers</span><span lang="pl">#2E3236 · pióra</span></button>
+        <button type="button" class="sw" style="--c:#5A6068" data-hex="#5A6068" data-reveal><i></i><b lang="en">Light graphite</b><b lang="pl">Jasny grafit</b><span lang="en">#5A6068 · throat, belly</span><span lang="pl">#5A6068 · gardło, brzuch</span></button>
+        <button type="button" class="sw iri" data-hex="#2FD46B" data-reveal="2"><i></i><b lang="en">Vivid green</b><b lang="pl">Żywa zieleń</b><span lang="en">#2FD46B · iridescent bands</span><span lang="pl">#2FD46B · opalizujące pasy</span></button>
+        <button type="button" class="sw" style="--c:#1FC7B5" data-hex="#1FC7B5" data-reveal="2"><i></i><b lang="en">Turquoise</b><b lang="pl">Turkus</b><span lang="en">#1FC7B5 · where the green shifts</span><span lang="pl">#1FC7B5 · tam, gdzie zieleń się mieni</span></button>
+        <button type="button" class="sw" style="--c:#CFE8F2" data-hex="#CFE8F2" data-reveal="3"><i></i><b lang="en">Pale ice blue</b><b lang="pl">Lodowy błękit</b><span lang="en">#CFE8F2 · eyes</span><span lang="pl">#CFE8F2 · oczy</span></button>
+        <button type="button" class="sw" style="--c:#C9A6E0" data-hex="#C9A6E0" data-reveal="3"><i></i><b lang="en">Pale violet</b><b lang="pl">Blady fiolet</b><span lang="en">#C9A6E0 · mouth, pads (blood tint)</span><span lang="pl">#C9A6E0 · pyszczek, opuszki (kolor krwi)</span></button>
+      </div>
+      <div class="marks" data-reveal>
+        <span lang="en">green · a band across each upper ear</span><span lang="pl">zieleń · pas przez każde górne ucho</span>
+        <span lang="en">green · edges of the forearm flight feathers</span><span lang="pl">zieleń · brzegi lotek na przedramionach</span>
+        <span lang="en">green · 1–2 bands near the tail tip</span><span lang="pl">zieleń · 1–2 pasy przy końcu ogona</span>
+      </div>
+      <p class="mono plate-colours" data-reveal><span lang="en">Everything else is graphite. Hull plate: stripe #5E7A5A, stencil #E6E1D3.</span><span lang="pl">Cała reszta to grafit. Płyta z kadłuba: pas #5E7A5A, szablon #E6E1D3.</span></p>
+    </div>
+  </section>
+
+  <!-- ================= IMIĘ ================= -->
+  <section id="name">
+    <div class="wrap">
+      <p class="kicker" data-reveal>04 <b>/</b> <span lang="en">The name</span><span lang="pl">Imię</span></p>
+      <h2 data-reveal><span lang="en">Given at <em>the foot of a ramp</em>.</span><span lang="pl">Dane u stóp <em>rampy</em>.</span></h2>
+      <p class="intro" data-reveal="2" lang="en">They said goodbye at a dock somewhere along the route. Each of them had something for him.</p>
+      <p class="intro" data-reveal="2" lang="pl">Pożegnali się w jakimś doku po drodze. Każde z nich miało coś dla niego.</p>
+
+      <div class="gifts">
+        <button type="button" class="gift" aria-expanded="false" data-reveal>
+          <span class="tap"><span lang="en">open</span><span lang="pl">otwórz</span></span>
+          <b>Bett</b><span class="what"><span lang="en">Crew</span><span lang="pl">Załoga</span></span>
+          <span class="reveal"><span lang="en">Dried meat and a tin of peaches.</span><span lang="pl">Suszone mięso i puszka brzoskwiń.</span></span>
+        </button>
+        <button type="button" class="gift" aria-expanded="false" data-reveal="2">
+          <span class="tap"><span lang="en">open</span><span lang="pl">otwórz</span></span>
+          <b>Maro</b><span class="what"><span lang="en">Pilot · mechanic</span><span lang="pl">Pilot · mechanik</span></span>
+          <span class="reveal"><span lang="en">His favourite socket wrench. He pretended he had another one like it.</span><span lang="pl">Jego ulubiony klucz nasadowy. Udawał, że ma drugi taki sam.</span></span>
+        </button>
+        <button type="button" class="gift" aria-expanded="false" data-reveal="3">
+          <span class="tap"><span lang="en">open</span><span lang="pl">otwórz</span></span>
+          <b>Oskar</b><span class="what"><span lang="en">Captain</span><span lang="pl">Kapitan</span></span>
+          <span class="reveal"><span lang="en">A hull plate replaced in the overhaul, cut square and drilled with four holes that lined up with the harness — Maro had measured while Zarin slept. Under the stencil, scratched in with something sharp and gone over in marker: <i>curio</i>.</span><span lang="pl">Płyta z kadłuba wymieniona przy remoncie, przycięta w kwadrat i nawiercona w czterech miejscach tak, by pasowała do uprzęży — Maro zmierzył, kiedy Zarin spał. Pod szablonem, wydrapane czymś ostrym i poprawione markerem: <i>curio</i>.</span></span>
+        </button>
+      </div>
+
+      <div class="naming" id="naming" aria-live="polite">
+        <p class="full">Zarin <span class="p">PATCH</span><span class="c">curio</span></p>
+        <p class="mono hint"><span lang="en">Open all three.</span><span lang="pl">Otwórz wszystkie trzy.</span></p>
+        <p lang="en">Avali take their names from their packs. Zarin got his at the foot of a ramp, from a crew that was not his kind, on the day they left. He bolted the plate on there and then, and the cold metal sat on his chest between the green bands.</p>
+        <p lang="pl">Avali biorą imiona od swoich stad. Zarin dostał swoje u stóp rampy, od załogi, która nie była jego gatunku, w dniu, w którym odlatywali. Przykręcił płytę od razu, na miejscu, i zimny metal spoczął mu na piersi między zielonymi pasami.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACJA ================= -->
+  <section id="station">
+    <div class="wrap">
+      <p class="kicker" data-reveal>05 <b>/</b> <span lang="en">The station</span><span lang="pl">Stacja</span></p>
+      <h2 data-reveal><span lang="en">Below, <em>where it was cold</em>.</span><span lang="pl">Na dole, <em>gdzie było zimno</em>.</span></h2>
+      <p class="intro" data-reveal="2" lang="en">Patch lifted an hour after the goodbye. Zarin pulled his goggles down and went below, into the lower levels of the station, where it was cold and where he learned quickly that nobody looked out for anybody. People down there talked about one sector you did not walk into if you meant to walk out.</p>
+      <p class="intro" data-reveal="2" lang="pl">Patch odleciał godzinę po pożegnaniu. Zarin opuścił gogle i zszedł na dół, do dolnych poziomów stacji — tam, gdzie było zimno i gdzie szybko się nauczył, że nikt na nikogo nie uważa. Mówiło się tam o jednym sektorze, do którego się nie wchodzi, jeśli chce się z niego wyjść.</p>
+
+      <div class="station">
+        <article class="myr-card" data-reveal>
+          <p class="tagline"><span lang="en">Partner · one door along</span><span lang="pl">Wspólniczka · jedne drzwi dalej</span></p>
+          <h3><a href="myr.html">Myr-35</a></h3>
+          <p lang="en">A gang ran him down the corridors into that sector. He sealed himself behind the first bulkhead he found — and only then understood he was not alone. The legend was a Protogen, a former boarding unit well over two metres tall. When the gang cut through the bulkhead, the Protogen went through them the way they had been built to.</p>
+          <p lang="pl">Gang zagonił go korytarzami do tamtego sektora. Zamknął się za pierwszą grodzią, jaką znalazł — i dopiero wtedy zrozumiał, że nie jest sam. Legenda okazała się Protogenem, byłą jednostką abordażową wysoką na ponad dwa metry. Kiedy gang przeciął gródź, jednostka przeszła przez nich tak, jak ją zbudowano.</p>
+          <p lang="en">Afterwards the Protogen asked for diagnostics. Zarin had a probe and nothing else to offer, so he plugged in, introduced himself properly and asked whether he could call them Myr, from their designation. Myr, who had only ever called themselves “this unit”, answered with one word:</p>
+          <p lang="pl">Potem poprosiła o diagnostykę. Zarin miał sondę i nic więcej, więc się podłączył, przedstawił porządnie i zapytał, czy może mówić do niej Myr — od oznaczenia. Myr, która dotąd mówiła o sobie tylko „ta jednostka”, odpowiedziała jednym słowem:</p>
+          <span class="first-i"><span lang="en">“I.”</span><span lang="pl">„Ja.”</span></span>
+          <p lang="en">Somewhere in the readouts he found the factory lock that had held Myr's claws extended. Now Myr opens and Zarin repairs. They left the lower levels for somewhere quieter: Zarin sleeps in Cold Store 3, Myr in the warm machine room one door along. On longer walks he rides on Myr's back. <a href="myr.html">Myr's page →</a></p>
+          <p lang="pl">Gdzieś w odczytach znalazł fabryczną blokadę, która trzymała pazury Myr wysunięte. Teraz Myr otwiera, a Zarin naprawia. Wynieśli się z dolnych poziomów w spokojniejsze miejsce: Zarin śpi w Chłodni 3, Myr w ciepłej maszynowni jedne drzwi dalej. Na dłuższych trasach jedzie na plecach Myr. <a href="myr.html">Strona Myr →</a></p>
+        </article>
+
+        <article class="guest" data-reveal="2">
+          <p class="kicker"><span lang="en">Among other Avali</span><span lang="pl">Wśród innych Avali</span></p>
+          <h3><span lang="en">A guest</span><span lang="pl">Gość</span></h3>
+          <p lang="en">When he falls in with other Avali — as he did when a pack ship docked at the port — he talks a great deal, helps with everything and catches up on years of conversation at once.</p>
+          <p lang="pl">Kiedy trafia na inne Avali — jak wtedy, gdy w porcie zacumował statek stada — mówi bardzo dużo, pomaga przy wszystkim i nadrabia lata rozmów naraz.</p>
+          <p lang="en">He never learned the private signals a pack shares, so he stays a guest. When their ship leaves, he walks back to Cold Store 3.</p>
+          <p lang="pl">Nigdy nie nauczył się prywatnych sygnałów, które dzieli stado, więc zostaje gościem. Kiedy ich statek odlatuje, wraca do Chłodni 3.</p>
+        </article>
+      </div>
+
+      <details class="primer" data-reveal>
+        <summary><span lang="en">New to the Avali? A short species primer</span><span lang="pl">Nie znasz Avali? Krótko o gatunku</span></summary>
+        <dl>
+          <dt><span lang="en">Size</span><span lang="pl">Wzrost</span></dt><dd><span lang="en">1 to 1.2 m tall. Small and compact.</span><span lang="pl">1–1,2 m. Mali i zwarci.</span></dd>
+          <dt><span lang="en">Body</span><span lang="pl">Ciało</span></dt><dd><span lang="en">Bipedal, raptor-like, covered in thick insulating feathers. Very fluffy.</span><span lang="pl">Dwunożne, raptorowate, w gęstych izolujących piórach. Bardzo puszyste.</span></dd>
+          <dt><span lang="en">Legs</span><span lang="pl">Nogi</span></dt><dd><span lang="en">Digitigrade, with bird-like clawed feet.</span><span lang="pl">Palcochodne, z ptasimi stopami zakończonymi pazurami.</span></dd>
+          <dt><span lang="en">Head</span><span lang="pl">Głowa</span></dt><dd><span lang="en">Short rounded snout with small teeth.</span><span lang="pl">Krótki zaokrąglony pyszczek z małymi zębami.</span></dd>
+          <dt><span lang="en">Ears</span><span lang="pl">Uszy</span></dt><dd><span lang="en">Four long feathered ears: a larger upper pair and a smaller lower pair.</span><span lang="pl">Cztery długie, pierzaste uszy: większa para u góry, mniejsza niżej.</span></dd>
+          <dt><span lang="en">Arms</span><span lang="pl">Ręce</span></dt><dd><span lang="en">Wing-like flight feathers along the forearms. Small hands with three fingers.</span><span lang="pl">Lotki wzdłuż przedramion, jak skrzydła. Małe dłonie z trzema palcami.</span></dd>
+          <dt><span lang="en">Tail</span><span lang="pl">Ogon</span></dt><dd><span lang="en">Long and feathered, about half the total body length.</span><span lang="pl">Długi i pierzasty, mniej więcej połowa długości ciała.</span></dd>
+          <dt><span lang="en">Blood</span><span lang="pl">Krew</span></dt><dd><span lang="en">Pale violet, which tints the mouth, tongue and bare skin.</span><span lang="pl">Bladofioletowa — barwi pyszczek, język i nagą skórę.</span></dd>
+          <dt><span lang="en">Plumage</span><span lang="pl">Upierzenie</span></dt><dd><span lang="en">Males have bright, iridescent bands across the feathers; females have muted two-tone plumage.</span><span lang="pl">Samce mają jaskrawe, opalizujące pasy na piórach; samice — stonowane, dwubarwne upierzenie.</span></dd>
+        </dl>
+      </details>
     </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Avali — gatunek stworzony przez RyuujinZERO.</span>
+  <div class="wrap foot">
+    <div>
+      <p lang="en">Everything here is working canon and may change as the character develops. The Avali are a species created by RyuujinZERO. No artwork yet — the hull plate on this page is drawn in code.</p>
+      <p lang="pl">Wszystko tutaj to kanon roboczy i może się zmienić razem z postacią. Avali to gatunek stworzony przez RyuujinZERO. Grafiki jeszcze nie ma — płyta z kadłuba na tej stronie jest narysowana w kodzie.</p>
+    </div>
+    <div class="others">
+      <a href="myr.html">Myr-35</a><a href="vince.html">Vince</a><a href="chip.html">Chip</a><a href="ragnar.html">Ragnar</a><a href="toro.html">Toro</a><a href="index.html">The One Above Them</a>
+    </div>
+  </div>
 </footer>
 
+<script src="char.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  const t = CHAR.t;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Śnieg niesiony bokiem z grani ----------
+  const hero = document.querySelector(".hero");
+  const snow = document.getElementById("snow");
+  if (!reduced && snow.getContext) {
+    const ctx = snow.getContext("2d");
+    let W = 0, H = 0, flakes = [], running = true, last = 0;
+    const flake = x => {
+      const z = Math.random();
+      return { x, y: Math.random() * H, r: .6 + z * 1.7, vx: -(70 + z * 230), vy: 16 + z * 36, ph: Math.random() * 6.3, a: .2 + z * .55 };
+    };
+    function size() {
+      const r = hero.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+      if (Math.abs(r.width - W) < 1 && Math.abs(r.height - H) < 80) return;
+      W = r.width; H = r.height;
+      snow.width = W * d; snow.height = H * d;
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+      flakes = Array.from({ length: Math.round(Math.min(240, W * H / 6500)) }, () => flake(Math.random() * W));
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+    function frame(now) {
+      const dt = Math.min(.05, (now - last) / 1000 || 0);
+      last = now;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#e8f0f3";
+      for (const f of flakes) {
+        f.ph += dt * 2.2;
+        f.x += f.vx * dt;
+        f.y += (f.vy + Math.sin(f.ph) * 14) * dt;
+        if (f.x < -12 || f.y > H + 12) { Object.assign(f, flake(W + 12)); f.y = Math.random() * H * .85; }
+        ctx.globalAlpha = f.a;
+        ctx.beginPath();
+        ctx.ellipse(f.x, f.y, f.r * 1.9, f.r, -.22, 0, 6.2832);
+        ctx.fill();
+      }
+      if (running) requestAnimationFrame(frame);
+    }
+    size();
+    addEventListener("resize", size);
+    new IntersectionObserver(([e]) => {
+      const was = running;
+      running = e.isIntersecting;
+      if (running && !was) { last = performance.now(); requestAnimationFrame(frame); }
+    }).observe(hero);
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Płyta z kadłuba: przechyla się pod kursorem, klik poprawia „curio” markerem ----------
+  const hull = document.getElementById("hull");
+  const stage = document.querySelector(".plate-stage");
+  if (!reduced) {
+    stage.addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse") return;
+      const r = hull.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      hull.style.transform = `rotateX(${(-y * 16).toFixed(1)}deg) rotateY(${(x * 20).toFixed(1)}deg)`;
+    });
+    stage.addEventListener("pointerleave", () => hull.style.transform = "");
+  }
+  function renderPlate() {
+    document.getElementById("plateCap").textContent = hull.classList.contains("marker")
+      ? t({ en: "…then gone over in dark marker, so it would not wear away.", pl: "…a potem poprawione ciemnym markerem, żeby się nie starło." })
+      : t({ en: "curio — scratched into the paint by hand. Press the plate.", pl: "curio — wydrapane ręcznie w farbie. Naciśnij płytę." });
+  }
+  hull.addEventListener("click", () => {
+    hull.setAttribute("aria-pressed", String(hull.classList.toggle("marker")));
+    renderPlate();
+  });
+
+  // ---------- Złomowisko: rozbierz i złóż ----------
+  const JUNK = {
+    reg: { found: { en: "Thrown out: leaks at the seal.", pl: "Wyrzucony: cieknie na uszczelce." }, ok: { en: "Holds pressure.", pl: "Trzyma ciśnienie." } },
+    drone: { found: { en: "Thrown out: won't fly.", pl: "Wyrzucony: nie lata." }, ok: { en: "Flies. Badly. Good enough.", pl: "Lata. Kiepsko. Wystarczy." } },
+    nav: { found: { en: "Thrown out: dead.", pl: "Wyrzucony: martwy." }, ok: { en: "Awake now. It took three weeks.", pl: "Już się obudził. Zajęło to trzy tygodnie." } },
+  };
+  const junks = [...document.querySelectorAll(".junk")];
+  function renderJunk(j) {
+    const k = j.dataset.k, s = j.dataset.state || "found";
+    const state = j.querySelector(".state"), btn = j.querySelector(".btn");
+    state.classList.toggle("ok", s === "ok");
+    state.textContent = s === "open" ? t({ en: "Apart. Every piece laid out on the bench.", pl: "Rozebrany. Każda część rozłożona na stole." })
+      : s === "waking" ? t({ en: `Waking up… day ${j.dataset.day} of 21.`, pl: `Budzi się… dzień ${j.dataset.day} z 21.` })
+      : t(JUNK[k][s]);
+    btn.disabled = s === "waking";
+    btn.textContent = s === "open" ? t({ en: "Put it back together", pl: "Złóż z powrotem" })
+      : s === "waking" ? t({ en: "Waiting…", pl: "Czekam…" })
+      : t({ en: "Take it apart", pl: "Rozbierz" });
+  }
+  function renderLedger() {
+    const n = junks.filter(j => j.dataset.state === "ok").length;
+    document.getElementById("ledger").innerHTML = t({ en: "Running again: ", pl: "Znów działa: " }) + `<b>${n}</b> · ` + t({ en: "Sold: 0", pl: "Sprzedane: 0" });
+  }
+  junks.forEach(j => j.querySelector(".btn").addEventListener("click", () => {
+    const s = j.dataset.state || "found";
+    if (s !== "open") {
+      j.dataset.state = "open";
+      j.classList.add("open");
+      j.classList.remove("awake");
+    } else {
+      j.classList.remove("open");
+      if (j.dataset.k === "nav") {
+        const wake = j.querySelector(".wake"), bar = wake.querySelector("i");
+        wake.hidden = false;
+        j.dataset.state = "waking"; j.dataset.day = 1;
+        const timer = setInterval(() => {
+          const d = +j.dataset.day + 1;
+          bar.style.width = (d / 21 * 100).toFixed(1) + "%";
+          if (d > 21) {
+            clearInterval(timer);
+            wake.hidden = true; bar.style.width = "0";
+            j.dataset.state = "ok";
+            j.classList.add("awake");
+            renderLedger();
+          } else j.dataset.day = d;
+          renderJunk(j);
+        }, 150);
+      } else j.dataset.state = "ok";
+    }
+    renderJunk(j);
+    renderLedger();
+  }));
+
+  // ---------- Pompa chłodząca: liczenie przerw między kaszlnięciami ----------
+  const pump = document.getElementById("pump");
+  const pumpNum = document.getElementById("pumpNum");
+  const pumpLog = document.getElementById("pumpLog");
+  const listenBtn = document.getElementById("listenBtn");
+  const fixBtn = document.getElementById("fixBtn");
+  const trace = document.getElementById("trace");
+  let pState = "idle", gap = 40, left = 40, coughs = 0, pTimer = null;
+  let pts = Array(61).fill(0);
+  function drawTrace() {
+    trace.setAttribute("d", pts.map((v, i) => (i ? "L" : "M") + i * 5 + " " + (28 + v).toFixed(1)).join(" "));
+  }
+  function renderPump() {
+    pumpNum.innerHTML = pState === "fixed" ? `OK<small>${t({ en: "steady", pl: "równo" })}</small>` : `${left}<small>s</small>`;
+    document.getElementById("pumpUnit").textContent = pState === "fixed"
+      ? t({ en: "no coughs", pl: "bez kaszlnięć" })
+      : t({ en: "to the next cough", pl: "do następnego kaszlnięcia" });
+    const M = pState === "fixed" ? { en: "Running better than she had in a decade.", pl: "Chodzi lepiej niż od dekady." }
+      : pState === "idle" ? { en: "Sit on the snow bank behind the yard and listen.", pl: "Usiądź na zaspie za złomowiskiem i posłuchaj." }
+      : coughs >= 3 ? { en: "Forty. Thirty-nine. Thirty-eight. It's getting worse — the heat exchanger.", pl: "Czterdzieści. Trzydzieści dziewięć. Trzydzieści osiem. Coraz gorzej — to wymiennik ciepła." }
+      : { en: "Counting the gap between the cooling pump's coughs…", pl: "Liczę przerwy między kaszlnięciami pompy chłodzącej…" };
+    document.getElementById("pumpMsg").textContent = t(M);
+    listenBtn.textContent = pState === "listening" ? t({ en: "Stop listening", pl: "Przestań słuchać" })
+      : pState === "paused" ? t({ en: "Keep listening", pl: "Słuchaj dalej" })
+      : pState === "fixed" ? t({ en: "Listen again", pl: "Posłuchaj od nowa" })
+      : t({ en: "Listen", pl: "Słuchaj" });
+    pumpLog.setAttribute("aria-label", t({ en: "Gaps between coughs", pl: "Przerwy między kaszlnięciami" }));
+  }
+  function cough() {
+    coughs++;
+    const s = document.createElement("span");
+    s.textContent = gap + " s";
+    pumpLog.append(s);
+    if (pumpLog.children.length > 7) pumpLog.firstElementChild.remove();
+    pts.splice(-5, 5, -6, -24, 22, -12, 5);
+    pump.classList.remove("cough"); void pump.offsetWidth; pump.classList.add("cough");
+    gap = Math.max(25, gap - 1);
+    left = gap;
+    if (coughs >= 3) fixBtn.disabled = false;
+  }
+  function tick() {
+    left--;
+    pts.shift();
+    pts.push((Math.random() - .5) * 4);
+    if (left <= 0) cough();
+    drawTrace();
+    renderPump();
+  }
+  listenBtn.addEventListener("click", () => {
+    if (pState === "listening") { clearInterval(pTimer); pState = "paused"; renderPump(); return; }
+    if (pState === "fixed") {
+      gap = 40; left = 40; coughs = 0; pumpLog.textContent = "";
+      pts = Array(61).fill(0); pump.classList.remove("fixed"); fixBtn.disabled = true;
+    }
+    pState = "listening";
+    pTimer = setInterval(tick, 55);
+    renderPump();
+  });
+  fixBtn.addEventListener("click", () => {
+    clearInterval(pTimer);
+    pState = "fixed";
+    pump.classList.add("fixed");
+    fixBtn.disabled = true;
+    pts = pts.map((_, i) => Math.sin(i / 4.2) * 6);
+    drawTrace();
+    renderPump();
+  });
+
+  // ---------- Uprząż: wentylator kręci się tym szybciej, im cieplej ----------
+  const fan = document.getElementById("fan");
+  const temp = document.getElementById("temp");
+  const fins = document.getElementById("fins");
+  let speed = 0, angle = 0, fanLast = 0, fanOn = false;
+  const mix = (a, b, k) => "#" + [0, 2, 4].map(i => Math.round(parseInt(a.substr(i + 1, 2), 16) * (1 - k) + parseInt(b.substr(i + 1, 2), 16) * k).toString(16).padStart(2, "0")).join("");
+  function renderTemp() {
+    const k = +temp.value / 100;
+    speed = 30 + Math.pow(k, 1.5) * 1400;
+    fins.setAttribute("fill", mix("#7d8186", "#d9823f", Math.pow(k, 1.3)));
+    document.getElementById("led").setAttribute("fill", k > .8 ? "#d9823f" : "#2fd46b");
+    document.getElementById("fanRead").textContent = t({ en: "fan ", pl: "wentylator " }) + Math.round(5 + Math.pow(k, 1.5) * 95) + "%";
+    const P = k < .25 ? [{ en: "Cold Store 3", pl: "Chłodnia 3" }, { en: "Where he sleeps. The fan barely turns.", pl: "Tu śpi. Wentylator ledwo się kręci." }]
+      : k < .55 ? [{ en: "Station corridor", pl: "Korytarz stacji" }, { en: "The fins do most of the work.", pl: "Większość roboty robią żeberka radiatora." }]
+      : k < .8 ? [{ en: "Myr's machine room", pl: "Maszynownia Myr" }, { en: "One door along, and warm. Fan at full speed.", pl: "Jedne drzwi dalej i ciepło. Wentylator na pełnych obrotach." }]
+      : [{ en: "Warm ship's hold", pl: "Ciepła ładownia" }, { en: "Warm ships are a problem for an Avali. This is what the harness is for.", pl: "Ciepłe statki to problem dla Avali. Po to jest uprząż." }];
+    document.getElementById("tempPlace").textContent = t(P[0]);
+    document.getElementById("tempMsg").textContent = t(P[1]);
+    if (reduced) fan.setAttribute("transform", `rotate(${Math.round(k * 90)} 220 104)`);
+  }
+  function spin(now) {
+    const dt = Math.min(.05, (now - fanLast) / 1000 || 0);
+    fanLast = now;
+    angle = (angle + speed * dt) % 360;
+    fan.setAttribute("transform", `rotate(${angle.toFixed(1)} 220 104)`);
+    if (fanOn) requestAnimationFrame(spin);
+  }
+  temp.addEventListener("input", renderTemp);
+  if (!reduced) new IntersectionObserver(([e]) => {
+    const was = fanOn;
+    fanOn = e.isIntersecting;
+    if (fanOn && !was) { fanLast = performance.now(); requestAnimationFrame(spin); }
+  }).observe(document.getElementById("harness"));
+
+  // ---------- Gogle ----------
+  const gogglesBtn = document.getElementById("gogglesBtn");
+  function renderGoggles() {
+    const on = document.documentElement.classList.contains("goggles");
+    gogglesBtn.setAttribute("aria-pressed", String(on));
+    gogglesBtn.textContent = on ? t({ en: "Push them back up", pl: "Podnieś je z powrotem" }) : t({ en: "Pull the goggles down", pl: "Opuść gogle" });
+  }
+  gogglesBtn.addEventListener("click", () => { document.documentElement.classList.toggle("goggles"); renderGoggles(); });
+
+  // ---------- Paleta ----------
+  document.querySelectorAll(".sw").forEach(b => b.addEventListener("click", async () => {
+    const ok = await CHAR.copy(b.dataset.hex);
+    CHAR.toast(ok ? t({ en: "Copied " + b.dataset.hex, pl: "Skopiowano " + b.dataset.hex }) : b.dataset.hex);
+  }));
+
+  // ---------- Prezenty i imię ----------
+  const gifts = [...document.querySelectorAll(".gift")];
+  gifts.forEach(g => g.addEventListener("click", () => {
+    g.setAttribute("aria-expanded", "true");
+    if (gifts.every(x => x.getAttribute("aria-expanded") === "true")) document.getElementById("naming").classList.add("done");
+  }));
+
+  CHAR.onLang(() => {
+    renderPlate(); junks.forEach(renderJunk); renderLedger(); renderPump(); renderTemp(); renderGoggles();
+  });
+  drawTrace();
+  CHAR.init();
 </script>
 </body>
 </html>
