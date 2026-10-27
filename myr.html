@@ -1,209 +1,564 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Myr-35 · The One Above Them</title>
-<meta name="description" content="Myr-35 — kolosalny Protogen z DNA mrówkojada. Była jednostka abordażowa. Zdezerterowała.">
+<title>Myr-35</title>
+<meta name="description" content="Myr-35 — colossal Protogen, halfway to an anteater. Former breaching unit. Deserted. Breaks only as a last resort — and only what is needed.">
+<meta name="theme-color" content="#1c1f23">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Myr-35">
-<meta property="og:description" content="Łamie tylko w ostateczności — i tylko to, co trzeba.">
+<meta property="og:description" content="This unit has inspected the hatch. The lock is intact. It does not need to be broken.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/myr.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1f23'/%3E%3Cpath d='M-4 22 L36 8 L36 14 L-4 28Z' fill='%230b0b0c' stroke='%23ede6d6' stroke-width='1.5'/%3E%3Cpath d='M7 12 H13 M19 12 H25' stroke='%23ede6d6' stroke-width='2.4'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Akcent Myr: kość wizjera na ciepłym metalu maszynowni */
-  :root { --gold: #d9cbab; --gold-b: #efe4c8; --line: rgba(217,203,171,.26); --line-s: rgba(217,203,171,.10); }
-  .torso-plate {
-    background:
-      repeating-linear-gradient(115deg, transparent 0 46px, rgba(0,0,0,.18) 46px 48px),
-      linear-gradient(160deg, #4a4d50, #2b2d30 60%, #1d1f21);
-  }
-  .torso-plate .scrape {
-    position: absolute; inset: 18% 10% auto 10%; height: 34%;
-    background: repeating-linear-gradient(170deg, rgba(120,128,90,.35) 0 6px, transparent 6px 11px, rgba(255,255,255,.06) 11px 13px, transparent 13px 22px);
-    filter: blur(.4px); opacity: .8;
-  }
-  .torso-plate .stencil {
-    font: 700 clamp(2.4rem, 7vw, 4rem) var(--mono); letter-spacing: .12em; color: #e9e2cf;
-    position: relative; margin-top: 18%; text-shadow: 0 0 1px #000;
-  }
-  .torso-plate .band { position: absolute; left: -10%; right: -10%; top: 6%; height: 12%; background: #0d0d0e; transform: rotate(-8deg); border-block: 3px solid #e9e2cf; }
-  .speech { font: 400 1rem/1.6 var(--mono); color: var(--cream); }
-  .canon { font: 700 .66rem var(--mono); letter-spacing: .2em; color: var(--muted); border: 1px dashed var(--line); padding: .15rem .5rem; border-radius: 3px; }
-</style>
+<link rel="stylesheet" href="char.css">
+<link rel="stylesheet" href="myr.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start">MYR-35</a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#karta">Karta</a>
-      <a href="#charakter">Charakter</a>
-      <a href="#syndrom">Syndrom</a>
-      <a href="#zarin">Zarin</a>
-    </nav>
+<header class="nav">
+  <a class="logo" href="#top">MYR-35</a>
+  <nav aria-label="Sections">
+    <a href="#identity"><span lang="en">Identity</span><span lang="pl">Tożsamość</span></a>
+    <a href="#voice"><span lang="en">Voice</span><span lang="pl">Mowa</span></a>
+    <a href="#sense"><span lang="en">Sense</span><span lang="pl">Zmysł</span></a>
+    <a href="#syndrome"><span lang="en">Syndrome</span><span lang="pl">Syndrom</span></a>
+    <a href="#zarin">Zarin</a>
+  </nav>
+  <div class="tools">
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
+  <a class="back" href="index.html#postacie">← <span lang="en">All characters</span><span lang="pl">Postacie</span></a>
 </header>
 
 <main id="main">
-  <section class="hero" id="start">
-    <figure class="plate torso-plate" style="margin:0" aria-label="Płyta piersiowa z zeskrobanym oznaczeniem jednostki; czytelny został tylko szablonowy napis MYR-35">
-      <span class="band"></span>
-      <span class="scrape"></span>
-      <span class="stencil">MYR-35</span>
-      <span class="bolt"></span><span class="bolt"></span><span class="bolt"></span><span class="bolt"></span>
-      <figcaption class="credit">Płyta piersiowa · art: wkrótce</figcaption>
-    </figure>
-    <div>
-      <p class="kicker">Cancrosa Verse · Breach Division // Asset Class IV</p>
-      <h1>Myr<span>-35</span></h1>
-      <p class="aka">Protogen · kolosalny · w połowie mrówkojad · they/them</p>
-      <blockquote class="motto">
-        <q>This unit has inspected the hatch. The lock is intact. It does not need to be broken.</q>
-        <small>Jednostka sprawdziła właz. Zamek jest cały. Nie trzeba go łamać.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Była jednostka abordażowa. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba.</p>
+
+  <!-- ================= REKORD ================= -->
+  <section class="hero" id="top">
+    <div class="band" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <p class="kicker"><span lang="en">Cancrosa Verse / deep-space setting</span><span lang="pl">Cancrosa Verse / głęboki kosmos</span></p>
+        <p class="ghost-line" aria-hidden="true">Breach Division // Asset Class IV</p>
+        <h1 class="stencil-title">MYR-35</h1>
+        <p class="sub"><span lang="en">Protogen · Colossal · Halfway to an anteater</span><span lang="pl">Protogen · kolosalna · w połowie mrówkojad</span></p>
+        <p class="tag"><span lang="en">Former breaching unit. Deserted. Breaks only as a last resort — and only what is needed.</span><span lang="pl">Była jednostka abordażowa. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba.</span></p>
+        <dl class="readout">
+          <div><dt lang="en">Designation / name</dt><dt lang="pl">Oznaczenie / imię</dt><dd><span lang="en">Myr-35 — read as the name “Myr”</span><span lang="pl">Myr-35 — czytane jako imię „Myr”</span></dd></div>
+          <div><dt lang="en">Pronunciation</dt><dt lang="pl">Wymowa</dt><dd><span lang="en">Polish “y” — close to the “i” in “with”. Not “meer”, not “mire”.</span><span lang="pl">Polskie „y”. Nie „mir”, nie „majer”.</span></dd></div>
+          <div><dt lang="en">Pronouns</dt><dt lang="pl">Zaimki</dt><dd><span lang="en">they / them</span><span lang="pl">they/them · po polsku „jednostka”</span></dd></div>
+          <div><dt lang="en">DNA infusion</dt><dt lang="pl">Wszczepione DNA</dt><dd><span lang="en">Giant anteater</span><span lang="pl">Mrówkojad olbrzymi</span> <i>(Myrmecophaga tridactyla)</i></dd></div>
+          <div><dt lang="en">Height</dt><dt lang="pl">Wzrost</dt><dd><span lang="en">c. 210 cm — Colossal Protogen</span><span lang="pl">ok. 210 cm — kolosalny Protogen</span></dd></div>
+          <div><dt lang="en">Home</dt><dt lang="pl">Dom</dt><dd><span lang="en">Station lower levels — warm machine room beside Zarin's cold store</span><span lang="pl">Dolne poziomy stacji — ciepła maszynownia obok chłodni Zarina</span></dd></div>
+          <div><dt lang="en">Canon status</dt><dt lang="pl">Status kanonu</dt><dd class="cursor"><span lang="en">Working canon (B1) — subject to change</span><span lang="pl">Kanon roboczy (B1) — może się zmienić</span></dd></div>
+        </dl>
       </div>
-      <p><span class="canon">KANON ROBOCZY (B1) · MOŻE SIĘ ZMIENIĆ</span></p>
-      <a class="btn" href="#karta">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
+
+      <div class="visor-box">
+        <svg class="visor" id="visor" viewBox="0 0 340 160" role="img" aria-label="Myr's visor">
+          <defs>
+            <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".09"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <clipPath id="visorClip"><path d="M18 74 C18 32 60 16 120 16 L236 20 C286 24 326 46 332 80 C326 112 286 134 236 138 L120 144 C60 144 18 114 18 74 Z"/></clipPath>
+          </defs>
+          <path class="cheek" d="M8 96 L26 128 L70 146 L60 120 Z"/>
+          <path class="shell" d="M18 74 C18 32 60 16 120 16 L236 20 C286 24 326 46 332 80 C326 112 286 134 236 138 L120 144 C60 144 18 114 18 74 Z"/>
+          <g id="leds" clip-path="url(#visorClip)"></g>
+          <path class="gloss" d="M30 60 C40 30 80 22 130 22 L230 26 C270 30 300 42 316 60 Z" clip-path="url(#visorClip)"/>
+        </svg>
+        <div class="visor-ctl" role="group" aria-label="Expression">
+          <button type="button" data-face="factory" aria-pressed="true"><span lang="en">Factory</span><span lang="pl">Fabryczna</span></button>
+          <button type="button" data-face="calm" aria-pressed="false"><span lang="en">Calm</span><span lang="pl">Spokój</span></button>
+          <button type="button" data-face="curious" aria-pressed="false"><span lang="en">Curious</span><span lang="pl">Ciekawość</span></button>
+          <button type="button" data-face="sad" aria-pressed="false"><span lang="en">Brief sadness</span><span lang="pl">Krótki smutek</span></button>
+          <button type="button" data-face="focused" aria-pressed="false"><span lang="en">Focused</span><span lang="pl">Skupienie</span></button>
+        </div>
+        <p class="visor-note" id="visorNote" aria-live="polite"></p>
+        <p class="mono"><span lang="en">Visor · warm bone-white · nanite coating, not hard glass</span><span lang="pl">Wizjer · ciepła kość · powłoka z nanitów, nie szkło</span></p>
+      </div>
     </div>
   </section>
 
-  <section id="karta" aria-labelledby="karta-h">
-    <div class="section-head">
-      <p class="kicker">Tożsamość</p>
-      <h2 id="karta-h">Karta postaci</h2>
-    </div>
-    <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Protogen <i>(Zenith's Outer Reach)</i></dd></div>
-      <div><dt>DNA</dt><dd>Mrówkojad olbrzymi <i>(Myrmecophaga tridactyla)</i></dd></div>
-      <div><dt>Wzrost</dt><dd>ok. 210 cm <i>(Colossal)</i></dd></div>
-      <div><dt>Zaimki</dt><dd>they/them <i>· po polsku „jednostka”</i></dd></div>
-    </dl>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Imię</h3>
-        <p>Myr — oznaczenie jednostki (MYR-35) czytane jak imię. Krótkie, neutralne, celowo niepodobne do imienia nadanego.
-          Wymowa: polskie „y” — nie „mir”, nie „majer”.</p>
-        <h3 style="margin-top:1.2rem">Zasada projektu</h3>
-        <p>Protogen w połowie drogi do mrówkojada: każda cecha mrówkojada jest widoczna, żadna nie jest pełna.
-          Jedyny wyjątek to wachlarzowaty ogon — w całości mrówkojadzi, główny znak rozpoznawczy.
-          Cała reszta wciąż czyta się jednoznacznie jako Protogen: płyty, mechaniczne uda, widoczne porty.</p>
+  <!-- ================= TOŻSAMOŚĆ ================= -->
+  <section id="identity">
+    <div class="wrap">
+      <p class="kicker" data-reveal>01 / <span lang="en">Design principle</span><span lang="pl">Zasada projektu</span></p>
+      <h2 data-reveal><span lang="en">Halfway to<br><em>an anteater.</em></span><span lang="pl">W połowie drogi<br><em>do mrówkojada.</em></span></h2>
+      <div class="principle" data-reveal="2">
+        <span lang="en">A Protogen halfway to an anteater: every anteater trait is visible, none is complete.</span>
+        <span lang="pl">Protogen w połowie drogi do mrówkojada: każda cecha mrówkojada jest widoczna, żadna nie jest pełna.</span>
+        <small lang="en">One rule for the whole body. The single exception is the fan tail — fully anteater, the main identifying feature.</small>
+        <small lang="pl">Jedna zasada dla całego ciała. Jedyny wyjątek to wachlarzowaty ogon — w całości mrówkojadzi, główny znak rozpoznawczy.</small>
       </div>
-      <div class="card">
-        <h3>Szczegóły</h3>
-        <ul class="details">
-          <li><b>Sylwetka</b> — taran, który stoi jak skała. Masywny przód, lżejszy tył, szeroka postawa. Siła w barkach i przedramionach: mięśnie do kopania, nie z siłowni.</li>
-          <li><b>Wizjer</b> — wyraźnie dłuższy niż zwykle, zwężający się do przodu: w połowie drogi do pyska mrówkojada. Powłoka z nanitów w kolorze ciepłej kości.</li>
-          <li><b>Mimika</b> — seria abordażowa miała dwie płaskie linie i nic więcej. Każdą inną minę jednostka nauczyła się po buncie — małą, lekko krzywą, wypracowaną po jednej.</li>
-          <li><b>Uszy i język</b> — dwie pary małych, okrągłych, biologicznych uszu. Słabo widzi, dobrze słyszy. Długi, chwytny język wysuwa się z czubka wizjera.</li>
-          <li><b>Dłonie</b> — trzy pazury, środkowy największy. Pięść kłykciami w dół to postawa mrówkojada — i stary nawyk, który wraca pod presją.</li>
-          <li><b>Znaki</b> — ukośny czarny pas z białą obwódką przez barki. Na płycie piersiowej zeskrobane, porysowane, zamalowane oznaczenie oddziału — czytelny został tylko napis MYR-35. Dezercję widać na ciele.</li>
-        </ul>
+
+      <div class="halfway">
+        <div class="side" data-reveal>
+          <h3>Protogen</h3>
+          <ul lang="en"><li>Torso plate closing over the ribs like a frontal shield</li><li>Groin and hip plates</li><li>Thick mechanical thighs — where the ram's mass lives</li><li>Five visible ports: shoulders, hips, tail base</li><li>Nanite visor, warm bone-white, with a cheek panel</li></ul>
+          <ul lang="pl"><li>Płyta piersiowa zamykająca się na żebrach jak przednia tarcza</li><li>Płyty krocza i bioder</li><li>Grube mechaniczne uda — tam mieszka masa taranu</li><li>Pięć widocznych portów: barki, biodra, nasada ogona</li><li>Wizjer z nanitów w kolorze ciepłej kości, z panelem policzkowym</li></ul>
+        </div>
+        <div class="mid" aria-hidden="true"><span lang="en">HALFWAY</span><span lang="pl">W POŁOWIE</span></div>
+        <div class="side anteater" data-reveal="2">
+          <h3><span lang="en">Anteater</span><span lang="pl">Mrówkojad</span></h3>
+          <ul lang="en"><li>Visor tapering forward — halfway to a snout</li><li>Three dominant claws, the middle one largest</li><li>Two pairs of small, rounded ears; poor eyesight, keen hearing</li><li>Long prehensile tongue, from the tip of the visor</li><li>Plantigrade feet — stability over speed</li><li>Fan tail, fully anteater — Myr sleeps under it</li></ul>
+          <ul lang="pl"><li>Wizjer zwężający się do przodu — w połowie drogi do pyska</li><li>Trzy dominujące pazury, środkowy największy</li><li>Dwie pary małych, okrągłych uszu; słaby wzrok, czuły słuch</li><li>Długi, chwytny język, wysuwany z czubka wizjera</li><li>Stopy plantigradalne — stabilność ponad szybkość</li><li>Wachlarzowaty ogon, w całości mrówkojadzi — Myr śpi pod nim</li></ul>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <p class="kicker">Zmysł struktury</p>
-      <p>Nanity Myr czytają wnętrze materiału: strukturę, naprężenia, zmęczenie, miejsce, w którym ustąpi. Działają przez dotyk — dłonie, pazury, język.
-        Jednostka nie przekształca ani nie rozpuszcza materii. Nie zgaduje, gdzie pęknie gródź; ona to czuje. To zmysł, nie moc.</p>
+
+      <div class="ram" data-reveal>
+        <p lang="en"><b>A battering ram that stands like a rock.</b> Around 210 cm, heavy, low centre of gravity. The strength sits in the shoulders and forearms — digging muscle, not gym muscle. Massive front, lighter rear, wide planted stance.</p>
+        <p lang="pl"><b>Taran, który stoi jak skała.</b> Około 210 cm, ciężka, z nisko osadzonym środkiem ciężkości. Siła siedzi w barkach i przedramionach — mięśnie do kopania, nie z siłowni. Masywny przód, lżejszy tył, szeroka, pewna postawa.</p>
+        <p lang="en">A diagonal black band edged in white across the shoulders. On the torso plate, the remains of a military unit marking — scraped, gouged, painted over. Only the stencilled MYR-35 is still legible. The desertion is visible on the body. Fur colour isn't fixed yet; suggested: a grizzled grey-brown body with pale, dark-banded forelimbs.</p>
+        <p lang="pl">Ukośny czarny pas z białą obwódką przez barki. Na płycie piersiowej resztki oznaczenia jednostki wojskowej — zeskrobane, porysowane, zamalowane. Czytelny został tylko szablonowy napis MYR-35. Dezercję widać na ciele. Kolor futra nie jest jeszcze ustalony; propozycja: szarobrązowe, szpakowate ciało i jasne przednie kończyny w ciemne pasy.</p>
+      </div>
+
+      <details class="zor">
+        <summary><span lang="en">Trait compliance · ZOR Protogen trait list</span><span lang="pl">Zgodność cech · lista cech Protogenów ZOR</span></summary>
+        <table>
+          <thead><tr><th lang="en">Trait</th><th lang="pl">Cecha</th><th lang="en">Tier</th><th lang="pl">Poziom</th><th>Myr</th></tr></thead>
+          <tbody id="zorBody"></tbody>
+        </table>
+        <p class="mono" style="padding:.9rem 1.3rem;margin:0"><span lang="en">No Restricted or Non-Canon traits: the design stays canon-compliant and bipedal.</span><span lang="pl">Żadnych cech zastrzeżonych ani niekanonicznych: projekt zostaje zgodny z kanonem i dwunożny.</span></p>
+      </details>
     </div>
   </section>
 
-  <section id="charakter" aria-labelledby="charakter-h">
-    <div class="section-head">
-      <p class="kicker">Charakter</p>
-      <h2 id="charakter-h">Taran z domieszką skały</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kicker">Temperament</p>
-        <p>Raz zdecydowana, idzie prosto przez wszystko; pod ostrzałem się nie rusza. Walka to rzemiosło — nie gniew i nie serce,
-          tylko procedura wykonana precyzyjnie, bez teatru. Inteligencja praktyczna, nie geniusz. W spoczynku niespieszna i oszczędna; gdy przychodzi chwila — natychmiastowa.</p>
+  <!-- ================= MOWA ================= -->
+  <section id="voice">
+    <div class="wrap">
+      <p class="kicker" data-reveal>02 / <span lang="en">Speech</span><span lang="pl">Mowa</span></p>
+      <h2 data-reveal><span lang="en">This unit <em>reports.</em></span><span lang="pl">Ta jednostka <em>melduje.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Full, correct, regulation sentences, like a report or a manual — without noticing when that is funny. Myr calls themselves “this unit” out of trained habit, not identity. Try the terminal.</p>
+      <p class="intro" data-reveal="2" lang="pl">Pełne, poprawne, regulaminowe zdania, jak raport albo instrukcja — bez zauważania, kiedy to śmieszne. Myr mówi o sobie „ta jednostka” z wytrenowanego nawyku, nie z tożsamości. Wypróbuj terminal.</p>
+
+      <div class="speech-grid">
+        <div class="term" data-reveal>
+          <div class="term-bar"><span>MYR-35 // COMMAND LINE</span><span>B1</span></div>
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <form class="term-in" id="termForm" autocomplete="off">
+            <span aria-hidden="true">&gt;</span>
+            <input id="termIn" type="text" spellcheck="false" data-en-label="Command" data-pl-label="Komenda" aria-label="Command">
+          </form>
+          <div class="term-chips">
+            <button type="button" data-cmd="status">status</button>
+            <button type="button" data-cmd="name">name</button>
+            <button type="button" data-cmd="scan">scan</button>
+            <button type="button" data-cmd="claws">claws</button>
+            <button type="button" data-cmd="cook">cook</button>
+            <button type="button" data-cmd="home">home</button>
+            <button type="button" data-cmd="zarin">zarin</button>
+          </div>
+        </div>
+
+        <div class="voice" data-reveal="2">
+          <h3><span lang="en">“This unit” → “I”</span><span lang="pl">„Ta jednostka” → „ja”</span></h3>
+          <ol id="lines"></ol>
+          <label for="trust"><span lang="en">Trust</span><span lang="pl">Zaufanie</span></label>
+          <input type="range" id="trust" min="0" max="5" value="1">
+          <div class="row">
+            <button type="button" class="btn ghost" id="stressBtn" aria-pressed="false"><span lang="en">Under stress</span><span lang="pl">Pod presją</span></button>
+          </div>
+          <p class="mono" style="margin-top:1rem"><span lang="en">“I” slips out when something truly matters and grows more frequent over time — but never completely. Under stress, the protocol returns.</span><span lang="pl">„Ja” wymyka się, gdy coś naprawdę się liczy, i z czasem pojawia się częściej — ale nigdy całkiem. Pod presją protokół wraca.</span></p>
+        </div>
       </div>
-      <div class="card">
-        <p class="kicker">Powściągliwość</p>
-        <p>Na rozkaz łamała wszystko i czyściła wszystko. Wolna łamie dokładnie tyle, ile trzeba — ani jednej grodzi więcej.
-          Jak mrówkojad, który żeruje krótko i zostawia kolonię w całości.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Materiałoznawstwo</p>
-        <p>Jednostka abordażowa wie, gdzie rzeczy pękają. Ta sama wiedza służy dziś zrozumieniu, z czego rzeczy są zrobione i dlaczego trzymają.
-          Z Zarinem: on wie, jak coś działa, Myr wie, z czego to jest i gdzie ustąpi.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Gotowanie i ciepło</p>
-        <p>Gotuje jak inżynier — przewodzenie ciepła, struktura, co temperatura robi z tkanką — i dopiero uczy się, że coś może po prostu smakować.
-          Żebra skraplacza w maszynowni trzymają stałe 50–60 °C: idealne do wolnego gotowania. Szuka ciepła; śpi pod własnym ogonem.</p>
-      </div>
-    </div>
-    <div class="card">
-      <p class="kicker">Mowa</p>
-      <p>Pełne, poprawne, regulaminowe zdania, jak raport albo instrukcja — bez zauważania, kiedy to śmieszne. Mówi o sobie „ta jednostka” z wytrenowanego nawyku, nie z tożsamości.
-        „Ja” wymyka się, gdy coś naprawdę się liczy, i z czasem pojawia się częściej — ale nigdy całkiem; pod stresem protokół wraca.</p>
-      <p class="speech">Pierwsze „ja” — w odpowiedzi Zarinowi: „I am Myr.”</p>
     </div>
   </section>
 
-  <section id="syndrom" aria-labelledby="syndrom-h">
-    <div class="section-head">
-      <p class="kicker">Dwie strony, jedna rana</p>
-      <h2 id="syndrom-h">Syndrom</h2>
-    </div>
-    <div class="card trait shadow">
-      <p>Myr cierpi na <i>nanite jumpy syndrome</i>: wewnętrzne nanity wpadają w pętlę włącz–wyłącz, a ciało szarpie się bez kontroli.
-        U Myr jest to związane z traumą — strona biologiczna niesie pamięć, nanity wzmacniają ją w ruch.</p>
-      <ul class="details">
-        <li><b>To nie spust</b> — gdy jednostka sama wybiera wejście w sytuację abordażową, panuje nad sobą i syndrom milczy.</li>
-        <li><b>Wyzwalacze</b> — nagłe wrzucenie w taką sytuację wbrew woli: zasadzka, gródź przecięta bez ostrzeżenia. Nawet wtedy atak nie musi nastąpić.</li>
-        <li><b>W trakcie ataku</b> — pięści zostają zaciśnięte. Powściągliwość przetrwa nawet syndrom.</li>
-        <li><b>Leczenie</b> — nie da się go wyleczyć, najwyżej ustabilizować. Zarin robi to sondą diagnostyczną i odliczanym rytmem.</li>
-        <li><b>Koszt wolności</b> — jako buntowniczka nie ma dostępu do fabrycznej konserwacji; nanity powoli się degradują.</li>
-      </ul>
+  <!-- ================= ZMYSŁ STRUKTURY ================= -->
+  <section id="sense">
+    <div class="wrap">
+      <p class="kicker" data-reveal>03 / <span lang="en">Structural sense</span><span lang="pl">Zmysł struktury</span></p>
+      <h2 data-reveal><span lang="en">Feels where<br>it <em>gives.</em></span><span lang="pl">Czuje, gdzie<br><em>puści.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Myr's nanites read the inside of a material — structure, stress, fatigue, the place where it will give. It works through touch: hands, claws, tongue. Myr does not reshape or dissolve matter; it's a sense, not a power. Run your cursor — or a finger — over the bulkhead.</p>
+      <p class="intro" data-reveal="2" lang="pl">Nanity Myr czytają wnętrze materiału — strukturę, naprężenia, zmęczenie, miejsce, w którym ustąpi. Działa to przez dotyk: dłonie, pazury, język. Myr nie przekształca ani nie rozpuszcza materii; to zmysł, nie moc. Przesuń kursor — albo palec — po grodzi.</p>
+
+      <div class="scan-wrap" data-reveal="3">
+        <svg class="plate" id="plate" viewBox="0 0 600 260" role="img" aria-label="Bulkhead plate">
+          <defs>
+            <linearGradient id="steelGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5d656e"/><stop offset="1" stop-color="#363b42"/></linearGradient>
+            <radialGradient id="heatGrad"><stop offset="0" stop-color="#ff7a28" stop-opacity=".6"/><stop offset=".6" stop-color="#ff7a28" stop-opacity=".15"/><stop offset="1" stop-color="#ff7a28" stop-opacity="0"/></radialGradient>
+            <radialGradient id="scanGrad"><stop offset="0" stop-color="#fff"/><stop offset=".65" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <mask id="scanMask"><rect width="600" height="260" fill="#000"/><circle id="scanDot" cx="-300" cy="-300" r="80" fill="url(#scanGrad)"/></mask>
+          </defs>
+          <rect class="base" width="600" height="260"/>
+          <path class="seam" d="M200 0 V260 M400 0 V260 M0 130 H600"/>
+          <g id="rivets"></g>
+          <path d="M40 40 L120 40 M480 220 L560 220" stroke="#2a2e33" stroke-width="2"/>
+          <g mask="url(#scanMask)">
+            <circle class="heat" cx="430" cy="96" r="130"/>
+            <circle class="heat" cx="130" cy="190" r="70" opacity=".5"/>
+            <path class="crack" d="M430 96 l-18 -14 l-10 -22 l-16 -6 M430 96 l22 -10 l14 -24 l12 -6 M430 96 l6 24 l-10 20 l4 22 M430 96 l-26 18 l-30 4 l-12 14"/>
+            <path class="crack" d="M118 180 l18 8 l12 -6 l14 10 M150 206 l10 -8" style="opacity:.6"/>
+            <circle class="weak" cx="430" cy="96" r="13"/>
+            <path class="weak" d="M430 74 V86 M430 106 V118 M408 96 H420 M440 96 H452"/>
+          </g>
+        </svg>
+        <div class="scan-bar">
+          <p id="scanText" aria-live="polite"></p>
+          <button type="button" class="btn ghost" id="fullScan" aria-pressed="false"><span lang="en">Full scan</span><span lang="pl">Pełny skan</span></button>
+        </div>
+      </div>
+      <div class="ram" data-reveal>
+        <p lang="en"><b>Restraint.</b> Under orders, Myr broke everything and cleared everything. Free, they break exactly what is needed — not one bulkhead more. Like an anteater that feeds briefly and leaves the colony standing.</p>
+        <p lang="pl"><b>Powściągliwość.</b> Na rozkaz łamała wszystko i czyściła wszystko. Wolna łamie dokładnie tyle, ile trzeba — ani jednej grodzi więcej. Jak mrówkojad, który żeruje krótko i zostawia kolonię w całości.</p>
+      </div>
     </div>
   </section>
 
-  <section id="zarin" aria-labelledby="zarin-h">
-    <div class="section-head">
-      <p class="kicker">Para</p>
-      <h2 id="zarin-h">Myr otwiera, Zarin naprawia</h2>
+  <!-- ================= SYNDROM ================= -->
+  <section id="syndrome">
+    <div class="wrap">
+      <p class="kicker" data-reveal>04 / <span lang="en">The syndrome</span><span lang="pl">Syndrom</span></p>
+      <h2 data-reveal><span lang="en">Two sides,<br><em>one wound.</em></span><span lang="pl">Dwie strony,<br><em>jedna rana.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Nanite jumpy syndrome: internal nanites fall into an on-off loop and the body jolts without control. In Myr's case it's tied to trauma — the biological side carries the memory, the nanites amplify it into movement. Zarin stabilises it with a diagnostic probe and a counted rhythm. Count with him.</p>
+      <p class="intro" data-reveal="2" lang="pl">Nanite jumpy syndrome: wewnętrzne nanity wpadają w pętlę włącz–wyłącz, a ciało szarpie się bez kontroli. U Myr jest to związane z traumą — strona biologiczna niesie pamięć, nanity wzmacniają ją w ruch. Zarin stabilizuje to sondą diagnostyczną i odliczanym rytmem. Odliczaj razem z nim.</p>
+
+      <div class="syn">
+        <div class="monitor" id="monitor" data-reveal>
+          <svg viewBox="0 0 600 150" aria-hidden="true">
+            <path class="grid" d="M0 25 H600 M0 75 H600 M0 125 H600 M100 0 V150 M200 0 V150 M300 0 V150 M400 0 V150 M500 0 V150" stroke-dasharray="3 5"/>
+            <path class="wave" id="wave" d="M0 75 H600"/>
+            <circle class="beat" id="beat" cx="578" cy="20" r="7"/>
+          </svg>
+          <div class="mon-row">
+            <span class="count" id="count" aria-hidden="true">·</span>
+            <button type="button" class="btn" id="countBtn"></button>
+            <span class="mon-status" id="monStatus" aria-live="polite"></span>
+          </div>
+        </div>
+        <dl class="facts" data-reveal="2">
+          <div><dt lang="en">Not a hair-trigger</dt><dt lang="pl">To nie spust</dt><dd lang="en">When Myr chooses to enter a breaching situation, Myr is in control and the syndrome stays quiet.</dd><dd lang="pl">Kiedy Myr sama wybiera wejście w sytuację abordażową, panuje nad sobą i syndrom milczy.</dd></div>
+          <div><dt lang="en">Triggers</dt><dt lang="pl">Wyzwalacze</dt><dd lang="en">Being thrown into it suddenly and against their will — an ambush, a bulkhead cut open without warning. Even then an attack may not happen.</dd><dd lang="pl">Nagłe wrzucenie w taką sytuację wbrew woli — zasadzka, gródź przecięta bez ostrzeżenia. Nawet wtedy atak nie musi nastąpić.</dd></div>
+          <div><dt lang="en">During an attack</dt><dt lang="pl">W trakcie ataku</dt><dd lang="en">The fists stay closed. The restraint survives even the syndrome.</dd><dd lang="pl">Pięści zostają zaciśnięte. Powściągliwość przetrwa nawet syndrom.</dd></div>
+          <div><dt lang="en">Cost of freedom</dt><dt lang="pl">Koszt wolności</dt><dd lang="en">No factory maintenance for a rebel; the nanites slowly degrade. It can't be cured — at best stabilised.</dd><dd lang="pl">Buntowniczka nie ma dostępu do fabrycznej konserwacji; nanity powoli się degradują. Nie da się tego wyleczyć — najwyżej ustabilizować.</dd></div>
+        </dl>
+      </div>
+      <p class="mono" style="margin-top:1.2rem"><span lang="en">The sector's deadly legend is real — and self-selecting: those who come in with cutting torches bring their own triggers.</span><span lang="pl">Śmiertelna legenda sektora jest prawdziwa — i sama dobiera ofiary: kto przychodzi z palnikiem, przynosi własne wyzwalacze.</span></p>
     </div>
-    <article class="card person">
-      <p class="kicker">Partner w pracy · współlokator</p>
-      <h3><a href="zarin.html">Zarin Patchcurio</a></h3>
-      <p class="meta">Avali · mechanik</p>
-      <p>Uciekając przed gangiem, Zarin zamknął się za grodzią — po stronie Myr. Gdy gang przeciął drzwi, syndrom wyrzucił je na zewnątrz;
-        Zarin przeżył, bo był w środku. Ustabilizował atak, zrobił diagnostykę, znalazł fabryczną blokadę, która trzymała pazury Myr wysunięte
-        od zawsze — jednostka nie wiedziała, że mogą się chować — i zapytał, czy może mówić do niej Myr.</p>
-      <p>Dziś mieszkają obok siebie: zimna chłodnia Zarina i ciepła maszynownia Myr, jeden system połączony drzwiami uchylonymi na szerokość dłoni.
-        Na dłuższych trasach Zarin jedzie na plecach Myr — przy tej różnicy wzrostu to po prostu praktyczne.</p>
-    </article>
+  </section>
+
+  <!-- ================= ZARIN ================= -->
+  <section id="zarin">
+    <div class="wrap">
+      <p class="kicker" data-reveal>05 / <span lang="en">Machine room · Cold Store 3</span><span lang="pl">Maszynownia · Chłodnia 3</span></p>
+      <h2 data-reveal><span lang="en">One system,<br><em>one door ajar.</em></span><span lang="pl">Jeden system,<br><em>uchylone drzwi.</em></span></h2>
+
+      <div class="rooms" data-reveal="2">
+        <div class="room cold" id="coldRoom">
+          <h3><span lang="en">Cold Store 3</span><span lang="pl">Chłodnia 3</span></h3>
+          <p class="mono"><span lang="en">Zarin · Avali · needs the cold</span><span lang="pl">Zarin · Avali · potrzebuje zimna</span></p>
+          <p lang="en">Warm ships are a problem for an Avali. Zarin sleeps here.</p>
+          <p lang="pl">Ciepłe statki to problem dla Avali. Zarin śpi tutaj.</p>
+        </div>
+        <div class="door" aria-hidden="true"></div>
+        <div class="room warm" id="warmRoom">
+          <h3><span lang="en">Machine room</span><span lang="pl">Maszynownia</span></h3>
+          <p class="mono"><span lang="en">Myr · condenser fins 50–60 °C</span><span lang="pl">Myr · żebra skraplacza 50–60 °C</span></p>
+          <p lang="en">The anteater side regulates body heat poorly, so Myr seeks warmth — the machine room, the tail as a blanket. The fins are ideal for slow cooking. Myr cooks like an engineer and is only learning that something can simply taste good.</p>
+          <p lang="pl">Mrówkojadzia strona słabo reguluje ciepło ciała, więc Myr szuka ciepła — maszynownia, ogon jako koc. Żebra są idealne do wolnego gotowania. Myr gotuje jak inżynier i dopiero się uczy, że coś może po prostu smakować.</p>
+        </div>
+      </div>
+      <p class="mono" style="text-align:center;margin-top:.8rem"><span lang="en">Joined by a door left open a hand's width</span><span lang="pl">Połączone drzwiami uchylonymi na szerokość dłoni</span></p>
+
+      <div class="pair">
+        <article class="zarin-card" data-reveal>
+          <div class="plate-mini" aria-hidden="true"><span>PATCH</span></div>
+          <div>
+            <p class="mono" style="margin:0;color:#2fd46b"><span lang="en">Partner · Avali mechanic</span><span lang="pl">Partner · mechanik Avali</span></p>
+            <h3><a href="zarin.html">Zarin Patchcurio</a></h3>
+            <p lang="en">Zarin fled a gang into Myr's sector and sealed himself behind a bulkhead — on Myr's side. When the gang cut the door, the syndrome broke it outward; Zarin survived because he was inside. He stabilised the attack, ran diagnostics, found the claw lock — and asked to call them Myr. Myr opens, Zarin repairs. On longer distances Zarin rides on Myr's back.</p>
+            <p lang="pl">Zarin, uciekając przed gangiem, wpadł do sektora Myr i zamknął się za grodzią — po jej stronie. Gdy gang przeciął drzwi, syndrom wyrzucił je na zewnątrz; Zarin przeżył, bo był w środku. Ustabilizował atak, zrobił diagnostykę, znalazł blokadę pazurów — i zapytał, czy może mówić do niej Myr. Myr otwiera, Zarin naprawia. Na dłuższych trasach Zarin jedzie na plecach Myr.</p>
+          </div>
+        </article>
+        <article class="side" data-reveal="2">
+          <h3><span lang="en">Materials science</span><span lang="pl">Materiałoznawstwo</span></h3>
+          <p lang="en">A breaching unit knows where things break. The same knowledge now serves understanding what things are made of and why they hold. Zarin knows how it works; Myr knows what it's made of and where it gives.</p>
+          <p lang="pl">Jednostka abordażowa wie, gdzie rzeczy pękają. Ta sama wiedza służy dziś zrozumieniu, z czego rzeczy są zrobione i dlaczego trzymają. Zarin wie, jak coś działa; Myr wie, z czego to jest i gdzie ustąpi.</p>
+        </article>
+      </div>
+
+      <p class="quote-i" data-reveal><span lang="en">“I am Myr.”</span><span lang="pl">„Ja jestem Myr.”</span><small><span lang="en">The first “I” — answering Zarin</span><span lang="pl">Pierwsze „ja” — w odpowiedzi Zarinowi</span></small></p>
+    </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Protogeny — gatunek Zenith's Outer Reach.</span>
+  <div class="wrap foot">
+    <div>
+      <p lang="en">Everything here is working canon (B1) and may change as the character develops. Protogens are a species by Zenith's Outer Reach; the “halfway” rule is the author's design rule, not an official ZOR percentage. No artwork yet. Drafted story beats: Bulkhead · The Other Side · Diagnostics · The Lock · Straightening · The Name · The Road · Machine Room · Port · Tok.</p>
+      <p lang="pl">Wszystko tutaj to kanon roboczy (B1) i może się zmienić razem z postacią. Protogeny to gatunek Zenith's Outer Reach; zasada „w połowie” to reguła autora, nie oficjalny procent ZOR. Grafiki jeszcze nie ma. Zarysowane sceny: Gródź · Druga strona · Diagnostyka · Blokada · Prostowanie · Imię · Droga · Maszynownia · Port · Tok.</p>
+    </div>
+    <div class="others">
+      <a href="zarin.html">Zarin</a><a href="vince.html">Vince</a><a href="chip.html">Chip</a><a href="ragnar.html">Ragnar</a><a href="toro.html">Toro</a><a href="index.html">The One Above Them</a>
+    </div>
+  </div>
 </footer>
 
+<script src="char.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  const { t } = CHAR;
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Wizjer: siatka LED i wyuczone miny ----------
+  const COLS = 34, ROWS = 12, X0 = 46, Y0 = 34, DX = 7.6, DY = 8.2;
+  const leds = document.getElementById("leds");
+  const ledMap = new Map();
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const d = document.createElementNS(SVGNS, "circle");
+    d.setAttribute("class", "led");
+    d.setAttribute("cx", (X0 + c * DX).toFixed(1));
+    d.setAttribute("cy", (Y0 + r * DY).toFixed(1));
+    d.setAttribute("r", 2.6);
+    leds.append(d);
+    ledMap.set(c + "," + r, d);
+  }
+  const line = (c1, c2, r) => Array.from({ length: c2 - c1 + 1 }, (_, i) => [c1 + i, r]);
+  const FACES = {
+    factory: [...line(6, 12, 5), ...line(20, 26, 5)],
+    calm: [[6, 5], ...line(7, 11, 4), [12, 5], [20, 5], ...line(21, 25, 4), [26, 5], ...line(14, 18, 9), [19, 8]],
+    curious: [...line(8, 10, 2), [7, 3], [11, 3], [7, 4], [11, 4], [7, 5], [11, 5], [7, 6], [11, 6], ...line(8, 10, 7), ...line(21, 25, 5), [26, 4]],
+    sad: [[6, 6], [7, 6], [8, 5], [9, 5], [10, 5], [11, 4], [12, 4], [20, 4], [21, 4], [22, 5], [23, 5], [24, 5], [25, 6], [26, 6], ...line(15, 17, 10)],
+    focused: [...line(8, 11, 5), ...line(21, 24, 5), ...[8, 10, 12, 14, 16, 18, 20, 22, 24, 26].map(c => [c, 10])],
+  };
+  const FACE_NOTE = {
+    factory: { en: "Factory: two flat lines and nothing else — all the breaching series had.", pl: "Fabryczna: dwie płaskie linie i nic więcej — tyle miała seria abordażowa." },
+    calm: { en: "Calm — learned after the rebellion. Small, slightly crooked, earned one at a time.", pl: "Spokój — wyuczony po buncie. Mały, lekko krzywy, wypracowany po jednym." },
+    curious: { en: "Curious — one eye opens wider than the other. Earned, not installed.", pl: "Ciekawość — jedno oko otwiera się szerzej niż drugie. Wypracowana, nie zainstalowana." },
+    sad: { en: "A brief sadness — at going back to who they were, when breaching can't be avoided. No more than that.", pl: "Krótki smutek — na powrót do tego, kim była, kiedy abordażu nie da się uniknąć. Nic więcej." },
+    focused: { en: "Focused — and the command line runs along the visor, readable by others; Myr sees it in their own field of view.", pl: "Skupienie — a wzdłuż wizjera biegnie linia komend, czytelna dla innych; Myr widzi ją we własnym polu widzenia." },
+  };
+  let face = "factory";
+  function renderFace() {
+    const on = new Set(FACES[face].map(([c, r]) => c + "," + r));
+    ledMap.forEach((d, k) => d.classList.toggle("on", on.has(k)));
+    document.getElementById("visorNote").textContent = t(FACE_NOTE[face]);
+  }
+  document.querySelectorAll(".visor-ctl button").forEach(b => b.addEventListener("click", () => {
+    face = b.dataset.face;
+    document.querySelectorAll(".visor-ctl button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderFace();
+  }));
+
+  // ---------- Lista zgodności ZOR ----------
+  const TIER = { req: { en: "Required", pl: "Wymagana" }, com: { en: "Common", pl: "Powszechna" }, unc: { en: "Uncommon", pl: "Nietypowa" }, rare: { en: "Rare", pl: "Rzadka" } };
+  const ZOR = [
+    ["req", { en: "Visor face display", pl: "Wyświetlacz twarzy na wizjerze" }, { en: "Nanite visor, elongated halfway", pl: "Wizjer z nanitów, wydłużony do połowy" }],
+    ["req", { en: "Torso, groin, hip plate, mechanical thighs", pl: "Płyty: tors, krocze, biodra; mechaniczne uda" }, { en: "Yes — thick thighs", pl: "Tak — grube uda" }],
+    ["req", { en: "Five connection ports", pl: "Pięć portów połączeniowych" }, { en: "All five visible", pl: "Wszystkie pięć widoczne" }],
+    ["com", { en: "Visor shape (outside normal allowed)", pl: "Kształt wizjera (poza normą)" }, { en: "Tapering, halfway to a snout", pl: "Zwężający się, w połowie do pyska" }],
+    ["com", { en: "Cheek panel", pl: "Panel policzkowy" }, { en: "Yes", pl: "Tak" }],
+    ["com", { en: "Mammalian traits", pl: "Cechy ssacze" }, { en: "Anteater fur, claws, tail", pl: "Futro, pazury i ogon mrówkojada" }],
+    ["com", { en: "Hands (any shape / type)", pl: "Dłonie (dowolny kształt / typ)" }, { en: "Retractable claws", pl: "Chowane pazury" }],
+    ["com", { en: "Singular tail, any shape", pl: "Pojedynczy ogon, dowolny kształt" }, { en: "Fan tail", pl: "Wachlarzowaty ogon" }],
+    ["unc", { en: "Double set of ears (biological)", pl: "Podwójna para uszu (biologiczna)" }, { en: "Yes", pl: "Tak" }],
+    ["unc", { en: "Complex mouth functionality", pl: "Złożona funkcjonalność ust" }, { en: "Prehensile tongue", pl: "Chwytny język" }],
+    ["unc", { en: "Size — Colossal (200 cm+)", pl: "Rozmiar — kolosalny (200 cm+)" }, { en: "c. 210 cm", pl: "ok. 210 cm" }],
+    ["rare", { en: "Complex nanite functionality", pl: "Złożona funkcjonalność nanitów" }, { en: "Narrow: structural sense only", pl: "Wąsko: tylko zmysł struktury" }],
+  ];
+  function renderZor() {
+    document.getElementById("zorBody").innerHTML = ZOR.map(([tier, trait, myr]) =>
+      `<tr><td>${t(trait)}</td><td><span class="tier ${tier}">${t(TIER[tier])}</span></td><td>${t(myr)}</td></tr>`).join("");
+  }
+
+  // ---------- Terminal ----------
+  const CMDS = {
+    help: { en: ["Available: status, name, scan, claws, cook, home, zarin."], pl: ["Dostępne: status, name, scan, claws, cook, home, zarin."] },
+    status: { en: ["UNIT MYR-35 · BREACH DIVISION · ASSET CLASS IV", "STATUS: deserted. Factory maintenance: unavailable.", "NANITES: slowly degrading. Holding.", "This unit is operational."], pl: ["JEDNOSTKA MYR-35 · BREACH DIVISION · KLASA IV", "STATUS: dezercja. Konserwacja fabryczna: niedostępna.", "NANITY: powoli się degradują. Trzymają.", "Ta jednostka jest sprawna."] },
+    name: { en: ["Designation: MYR-35. Read as a name: Myr.", "Pronunciation: Polish “y”. Not “meer”. Not “mire”.", "The name was requested by Zarin. This unit agreed."], pl: ["Oznaczenie: MYR-35. Czytane jako imię: Myr.", "Wymowa: polskie „y”. Nie „mir”. Nie „majer”.", "O imię poprosił Zarin. Ta jednostka się zgodziła."] },
+    scan: { en: ["This unit has inspected the hatch.", "The lock is intact.", "It does not need to be broken."], pl: ["Ta jednostka sprawdziła właz.", "Zamek jest cały.", "Nie trzeba go łamać."] },
+    claws: { en: ["Claws: retractable. Factory lock: removed (Zarin).", "In service the claws were locked extended. This unit did not know they could retract.", "The closed fists came from that."], pl: ["Pazury: chowane. Blokada fabryczna: usunięta (Zarin).", "W służbie pazury były zablokowane w pozycji wysuniętej. Ta jednostka nie wiedziała, że mogą się chować.", "Stąd zaciśnięte pięści."] },
+    cook: { en: ["Condenser fins: steady 50–60 °C. Optimal for slow cooking.", "Heat transfer, structure, what temperature does to tissue: understood.", "That something can simply taste good: under investigation."], pl: ["Żebra skraplacza: stałe 50–60 °C. Optymalne do wolnego gotowania.", "Przewodzenie ciepła, struktura, wpływ temperatury na tkankę: zrozumiane.", "To, że coś może po prostu smakować: w trakcie badań."] },
+    home: { en: ["Location: station lower levels. Sector reputation: deadly.", "Warm machine room. One door from Cold Store 3.", "Door: open a hand's width. By design."], pl: ["Lokalizacja: dolne poziomy stacji. Reputacja sektora: śmiertelna.", "Ciepła maszynownia. Jedne drzwi od Chłodni 3.", "Drzwi: uchylone na szerokość dłoni. Celowo."] },
+    zarin: { en: ["Zarin Patchcurio. Avali. Mechanic.", "Myr opens. Zarin repairs.", "On longer distances, Zarin rides on this unit's back. The size difference makes it practical."], pl: ["Zarin Patchcurio. Avali. Mechanik.", "Myr otwiera. Zarin naprawia.", "Na dłuższych trasach Zarin jedzie na plecach tej jednostki. Przy tej różnicy wzrostu to praktyczne."] },
+    who: { en: ["I am Myr."], pl: ["Ja jestem Myr."], i: true },
+  };
+  const ALIASES = { "who are you": "who", "who are you?": "who", "kim jesteś": "who", "kim jestes": "who", "kim jesteś?": "who", "?": "help", "pomoc": "help" };
+  const termOut = document.getElementById("termOut");
+  const termIn = document.getElementById("termIn");
+  function print(text, cls) {
+    const p = document.createElement("p");
+    if (cls) p.className = cls;
+    p.textContent = text;
+    termOut.append(p);
+    termOut.scrollTop = termOut.scrollHeight;
+  }
+  function run(raw) {
+    const q = raw.trim().toLowerCase();
+    if (!q) return;
+    print("> " + raw.trim(), "cmd");
+    const key = CMDS[q] ? q : ALIASES[q];
+    if (!key) { print(t({ en: "This unit does not recognise that command. Type “help”.", pl: "Ta jednostka nie rozpoznaje tej komendy. Wpisz „help”." })); return; }
+    const out = CMDS[key][CHAR.lang()];
+    out.forEach(l => print(l, CMDS[key].i ? "i" : ""));
+  }
+  document.getElementById("termForm").addEventListener("submit", e => { e.preventDefault(); run(termIn.value); termIn.value = ""; });
+  document.querySelectorAll(".term-chips button").forEach(b => b.addEventListener("click", () => run(b.dataset.cmd)));
+  let booted = false;
+  function boot() {
+    termOut.textContent = "";
+    print("MYR-35 // " + t({ en: "command line ready. Type “help”.", pl: "linia komend gotowa. Wpisz „help”." }));
+    booted = true;
+  }
+
+  // ---------- „Ta jednostka” → „ja” ----------
+  const LINES = [
+    { unit: { en: "This unit will take the first watch.", pl: "Ta jednostka obejmie pierwszą wartę." }, i: { en: "I'll take the first watch.", pl: "Wezmę pierwszą wartę." } },
+    { unit: { en: "This unit does not require assistance.", pl: "Ta jednostka nie wymaga pomocy." }, i: { en: "I would like help with the lid.", pl: "Chcę pomocy przy pokrywce." } },
+    { unit: { en: "This unit is inspecting the bulkhead.", pl: "Ta jednostka sprawdza gródź." }, i: { en: "I'm checking the bulkhead.", pl: "Sprawdzam gródź." } },
+    { unit: { en: "This unit is sufficiently warm.", pl: "Tej jednostce jest wystarczająco ciepło." }, i: { en: "I'm warm.", pl: "Jest mi ciepło." } },
+    { unit: { en: "This unit is tasting the soup.", pl: "Ta jednostka próbuje zupy." }, i: { en: "I like this soup.", pl: "Smakuje mi ta zupa." } },
+    { unit: { en: "This unit is designated Myr.", pl: "Ta jednostka nosi oznaczenie Myr." }, i: { en: "I am Myr.", pl: "Ja jestem Myr." } },
+  ];
+  // Kolejność, w jakiej „ja” wypiera protokół; zdanie o grodzi zostaje regulaminowe zawsze — nigdy całkiem.
+  const ORDER = [5, 4, 3, 0, 1];
+  const trust = document.getElementById("trust");
+  const stressBtn = document.getElementById("stressBtn");
+  function renderLines() {
+    const stress = stressBtn.getAttribute("aria-pressed") === "true";
+    const n = stress ? 0 : +trust.value;
+    const asI = new Set(ORDER.slice(0, n));
+    document.getElementById("lines").innerHTML = LINES.map((l, i) => `<li class="${asI.has(i) ? "i" : ""}">${t(asI.has(i) ? l.i : l.unit)}</li>`).join("");
+  }
+  trust.addEventListener("input", renderLines);
+  stressBtn.addEventListener("click", () => { stressBtn.setAttribute("aria-pressed", String(stressBtn.getAttribute("aria-pressed") !== "true")); renderLines(); });
+
+  // ---------- Zmysł struktury: skan pod palcem ----------
+  const plate = document.getElementById("plate");
+  const scanDot = document.getElementById("scanDot");
+  const rivets = document.getElementById("rivets");
+  [[14, 14], [586, 14], [14, 246], [586, 246], [200, 14], [400, 14], [200, 246], [400, 246], [14, 130], [586, 130], [200, 130], [400, 130]].forEach(([x, y]) => {
+    const c = document.createElementNS(SVGNS, "circle");
+    c.setAttribute("class", "rivet"); c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 5);
+    rivets.append(c);
+  });
+  let scanState = "idle";
+  function renderScan() {
+    document.getElementById("scanText").textContent =
+      scanState === "found" ? t({ en: "Weak point found. This unit will break exactly here — not one bulkhead more.", pl: "Słaby punkt znaleziony. Ta jednostka złamie dokładnie tutaj — ani jednej grodzi więcej." })
+      : scanState === "reading" ? t({ en: "Reading stress… fatigue… structure…", pl: "Odczyt naprężeń… zmęczenia… struktury…" })
+      : t({ en: "Touch the plate.", pl: "Dotknij płyty." });
+  }
+  plate.addEventListener("pointermove", e => {
+    if (document.getElementById("fullScan").getAttribute("aria-pressed") === "true") return;
+    const pt = new DOMPoint(e.clientX, e.clientY).matrixTransform(plate.getScreenCTM().inverse());
+    scanDot.setAttribute("cx", pt.x.toFixed(1));
+    scanDot.setAttribute("cy", pt.y.toFixed(1));
+    const near = Math.hypot(pt.x - 430, pt.y - 96) < 55;
+    const next = near ? "found" : "reading";
+    if (next !== scanState) { scanState = next; renderScan(); }
+  });
+  plate.addEventListener("pointerleave", () => {
+    if (document.getElementById("fullScan").getAttribute("aria-pressed") === "true") return;
+    scanDot.setAttribute("cx", -300); scanDot.setAttribute("cy", -300);
+  });
+  document.getElementById("fullScan").addEventListener("click", e => {
+    const on = e.currentTarget.getAttribute("aria-pressed") !== "true";
+    e.currentTarget.setAttribute("aria-pressed", String(on));
+    scanDot.setAttribute("r", on ? 700 : 80);
+    scanDot.setAttribute("cx", on ? 300 : -300);
+    scanDot.setAttribute("cy", on ? 130 : -300);
+    scanState = on ? "found" : "idle";
+    renderScan();
+  });
+
+  // ---------- Syndrom: stabilizacja odliczanym rytmem ----------
+  const wave = document.getElementById("wave");
+  const beat = document.getElementById("beat");
+  const monitor = document.getElementById("monitor");
+  const countEl = document.getElementById("count");
+  const countBtn = document.getElementById("countBtn");
+  const PERIOD = 60 / 72;
+  let amp = 1, synState = "start", counted = 0, t0 = performance.now(), lastBeat = -1;
+  const noise = Array.from({ length: 101 }, () => Math.random() - .5);
+  function drawWave(now) {
+    const s = (now - t0) / 1000;
+    let d = "";
+    for (let i = 0; i <= 100; i++) {
+      const x = i * 6;
+      if (!reduced && Math.random() < .25) noise[i] = Math.random() - .5;
+      const spike = amp > .2 && noise[i] > .46 ? (noise[(i + 7) % 101] * 120 * amp) : 0;
+      const y = 75 + Math.sin(x / 38 + s * 4) * 14 * (1 - amp * .3) + noise[i] * 70 * amp + spike;
+      d += (i ? " L" : "M") + x + " " + Math.max(4, Math.min(146, y)).toFixed(1);
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+    wave.setAttribute("d", d);
+    const b = Math.floor(s / PERIOD);
+    if (b !== lastBeat) {
+      lastBeat = b;
+      beat.classList.remove("pulse"); void beat.getBoundingClientRect(); beat.classList.add("pulse");
+    }
+    if (!reduced) requestAnimationFrame(drawWave);
+  }
+  function renderSyn(msg) {
+    countBtn.textContent = synState === "done" ? t({ en: "Again", pl: "Jeszcze raz" }) : t({ en: "Count", pl: "Licz" });
+    const M = {
+      start: { en: "Unstable. Tap “Count” on the orange pulse.", pl: "Niestabilnie. Klikaj „Licz” w rytm pomarańczowego pulsu." },
+      good: { en: "On the beat.", pl: "W rytm." },
+      miss: { en: "Off the beat — the rhythm matters, not speed.", pl: "Poza rytmem — liczy się rytm, nie szybkość." },
+      done: { en: "Stabilised. Not cured — stabilised.", pl: "Ustabilizowano. Nie wyleczono — ustabilizowano." },
+    };
+    document.getElementById("monStatus").textContent = t(M[msg || synState]);
+    monitor.classList.toggle("calm", synState === "done");
+  }
+  countBtn.addEventListener("click", () => {
+    if (synState === "done") {
+      amp = 1; counted = 0; synState = "start"; countEl.textContent = "·";
+      renderSyn(); if (reduced) drawWave(performance.now());
+      return;
+    }
+    const s = (performance.now() - t0) / 1000;
+    const phase = (s % PERIOD) / PERIOD;
+    const off = Math.min(phase, 1 - phase);
+    if (off < .2) {
+      amp = Math.max(.06, amp * .68);
+      counted++;
+      countEl.textContent = (counted - 1) % 4 + 1;
+      synState = amp <= .1 ? "done" : "counting";
+      renderSyn(synState === "done" ? "done" : "good");
+    } else {
+      amp = Math.min(1, amp * 1.12 + .04);
+      renderSyn("miss");
+    }
+    if (reduced) drawWave(performance.now());
+  });
+  requestAnimationFrame(drawWave);
+
+  // ---------- Szron i para w pokojach ----------
+  const cold = document.getElementById("coldRoom"), warm = document.getElementById("warmRoom");
+  for (let i = 0; i < 14; i++) {
+    const f = document.createElement("span");
+    f.className = "flake"; f.textContent = "·";
+    f.style.left = (Math.random() * 95).toFixed(1) + "%";
+    f.style.animationDuration = (6 + Math.random() * 6).toFixed(1) + "s";
+    f.style.animationDelay = (-Math.random() * 10).toFixed(1) + "s";
+    cold.append(f);
+  }
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement("span");
+    s.className = "steam";
+    s.style.left = (10 + Math.random() * 80).toFixed(1) + "%";
+    s.style.animationDelay = (-Math.random() * 3).toFixed(1) + "s";
+    warm.append(s);
+  }
+
+  CHAR.onLang(() => {
+    renderFace(); renderZor(); renderLines(); renderScan(); renderSyn(synState === "counting" ? "good" : null);
+    if (!booted || termOut.childElementCount <= 1) boot();
+  });
+  CHAR.init();
 </script>
 </body>
 </html>
