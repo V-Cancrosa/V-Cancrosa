@@ -1,238 +1,580 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vincent Cancrosa · The One Above Them</title>
-<meta name="description" content="Vincent „Vince” Cancrosa — antropomorficzny wilk grzywiasty i główna fursona The One Above Them.">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
-
-<!-- Podgląd linku (Discord, Telegram, Bluesky…). Podmień domenę i obrazek. -->
+<title>Vincent Cancrosa · Character Reference</title>
+<meta name="description" content="Vincent „Vince” Cancrosa — anthropomorphic maned wolf. Character reference · Cancrosa Files 001.">
+<meta name="theme-color" content="#0f1013">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vincent „Vince” Cancrosa">
-<meta property="og:description" content="Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.">
+<meta property="og:title" content="Vincent „Vince” Cancrosa · Cancrosa Files 001">
+<meta property="og:description" content="Walls have endings. Tunnels have exits. Bridges have a reason.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/vince.html">
-<meta property="og:image" content="https://TWOJA-DOMENA.pl/img/vince.webp">
+<meta property="og:image" content="https://TWOJA-DOMENA.pl/img/vince-thumb.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f1013'/%3E%3Cpath d='M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8' fill='none' stroke='%23e3a43f' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
+<link rel="stylesheet" href="fonts/files.css">
+<link rel="stylesheet" href="files.css">
+<style>
+  :root { --accent: #a5641a; --accent-hi: #e3a43f; --cover-a: #0f1013; --cover-b: #1a1712; --cover-c: #754514; }
 
-<!-- Ikona: motyw „dwóch ścieżek” z bluzy Vince'a -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Cpath d='M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8' fill='none' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
+  /* ---------- Schemat znaczeń ---------- */
+  .marks { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 1.6rem; align-items: center; margin: 1rem 0 1.8rem; }
+  .marks .rows { margin: 0; }
+  .mark-btn { width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--rule); cursor: pointer; padding-inline: .5rem; border-left: 3px solid transparent; transition: background .2s, border-color .2s; }
+  .mark-btn:hover { background: var(--card); }
+  .mark-btn[aria-pressed="true"] { background: var(--card); border-left-color: var(--accent); }
+  .marks-fig { margin: 0; text-align: center; }
+  .marks-fig svg { width: 100%; height: auto; }
+  .marks-fig figcaption { margin-top: .3rem; }
+  .fig { fill: none; stroke: #cfc7b8; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .fig-fill { fill: #f4efe6; stroke: none; }
+  .band { fill: #f1e6d2; }
+  .mk { fill: none; stroke: #17171a; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; transition: opacity .3s, stroke .3s; }
+  .marks-fig[data-active] .mk { opacity: .16; }
+  .marks-fig[data-active="axis"] .m-axis, .marks-fig[data-active="upper"] .m-upper, .marks-fig[data-active="lower"] .m-lower { opacity: 1; stroke: var(--accent); }
+  .mk.draw { stroke-dasharray: 1; animation: draw 1.1s ease-out both; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  .svg-label { font: 400 8px var(--mono); letter-spacing: .16em; fill: #9a958b; text-anchor: middle; }
 
+  /* ---------- Garderoba: zamiana szaf ---------- */
+  .kit { background: #121316; color: #ddd8ce; padding: 1rem; margin: 1.2rem 0 1.4rem; }
+  .kit-items { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; }
+  .kit-item {
+    --note: transparent; position: relative; aspect-ratio: 1; background: #1b1c20; border: 1px solid #2a2b30; border-radius: 4px;
+    display: grid; place-items: center; align-content: center; gap: .4rem; padding: .4rem; transition: box-shadow .4s, border-color .4s;
+    font: 400 .58rem var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #a29d93; text-align: center;
+  }
+  .kit-item svg { width: 1.9rem; height: 1.9rem; }
+  .kit-item.quiet { box-shadow: inset 0 -3px 0 var(--note); }
+  .kit-item.loud { border-color: var(--note); box-shadow: 0 0 0 1px var(--note), 0 0 18px color-mix(in srgb, var(--note) 45%, transparent); }
+  .kit-ctl { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .9rem; }
+  .kit .btn { background: #e3a43f; border-color: #e3a43f; color: #111; }
+  .kit .btn:hover { background: #f1bd63; border-color: #f1bd63; }
+  .kit .btn.ghost { background: transparent; color: #ddd8ce; border-color: #3a3b40; }
+  .kit-note { margin: 0; flex: 1 1 14rem; font: 400 .66rem/1.5 var(--mono); letter-spacing: .08em; color: #a29d93; }
+
+  /* ---------- Pętla o trzeciej w nocy ---------- */
+  .night { margin-top: 1rem; padding: 1rem 1.1rem; border-radius: 4px; background: #121318; color: #d9d4ca; transition: background 1.2s; }
+  .night-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .night-clock { font: 700 1.6rem var(--mono); letter-spacing: .08em; color: #e3a43f; font-variant-numeric: tabular-nums; }
+  .night-line { min-height: 3em; margin: .5rem 0 .8rem !important; font: italic 400 1rem/1.5 var(--serif); }
+  .night .btn { background: transparent; border-color: #4a4b52; color: #d9d4ca; }
+  .night .btn:hover { border-color: #e3a43f; color: #e3a43f; background: transparent; }
+  .night .hint { color: #7d7a74; }
+
+  /* ---------- Dwie ścieżki: mury, tunele, mosty ---------- */
+  .dp { display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: 1.4rem; align-items: center; margin: 0 0 2.4rem; }
+  .dp .pull { margin: 0; }
+  .dp-choice { display: inline; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; color: var(--muted); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; transition: color .25s; }
+  .dp-choice:hover { color: var(--ink); }
+  .dp-choice[aria-pressed="true"] { color: var(--ink); text-decoration-color: var(--accent); }
+  .dp-pl { display: block; margin-top: .4rem; font-size: .85rem; color: var(--muted); font-style: normal; }
+  .dp svg { width: 100%; height: auto; background: #121316; border-radius: 6px; }
+  .dp-lines { transform-box: view-box; transform-origin: 100px 60px; transition: transform .7s cubic-bezier(.6,.1,.2,1); }
+  .dp-lines path { fill: none; stroke: #e3a43f; stroke-width: 3; stroke-linecap: round; }
+  .dp[data-mode="tunnel"] .dp-lines { transform: rotate(90deg); }
+  .dp[data-mode="bridge"] .dp-lines { transform: translateY(-16px) rotate(90deg); }
+  .dp-ends circle { fill: #fff; opacity: 0; transition: opacity .3s; }
+  .dp[data-mode="walls"] .dp-ends circle { opacity: 1; animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+  .dp-ground { opacity: 0; transition: opacity .5s; }
+  .dp[data-mode="bridge"] .dp-ground { opacity: 1; }
+  .dp-ground rect { fill: #2a2b30; }
+  .dp-ground path { fill: none; stroke: #3d6f8f; stroke-width: 2; }
+  .dp-runner { fill: #f3efe7; opacity: 0; }
+  .dp[data-mode="tunnel"] .dp-runner { opacity: 1; --y: 0px; animation: run 2.8s linear infinite; }
+  .dp[data-mode="bridge"] .dp-runner { opacity: 1; --y: -16px; animation: run 3.4s linear infinite; }
+  @keyframes run { from { transform: translate(0, var(--y)); } to { transform: translate(160px, var(--y)); } }
+
+  .motif { width: 1.3rem; height: 1.3rem; vertical-align: -.25rem; margin-right: .35rem; }
+
+  @media (max-width: 640px) {
+    .marks, .dp { grid-template-columns: 1fr; }
+    .marks-fig { max-width: 17rem; margin: 0 auto; }
+    .dp svg { max-width: 16rem; }
+    .kit-items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start" aria-label="Vincent Cancrosa — początek strony">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8" fill="none" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
-      VINCE
-    </a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#vince">Karta</a>
-      <a href="#charakter">Charakter</a>
-      <a href="#bliscy">Bliscy</a>
-      <a href="#galeria">Galeria</a>
-    </nav>
+<header class="bar">
+  <a href="index.html#postacie"><span lang="pl">← Postacie</span><span lang="en">← Characters</span></a>
+  <span class="bar-title">Cancrosa Files · <b>001</b> · Vincent Cancrosa</span>
+  <span class="bar-page"><span id="pageNo">01</span> / 06</span>
+  <div class="bar-tools">
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-print data-pl-label="Drukuj albo zapisz jako PDF" data-en-label="Print or save as PDF" aria-label="Print or save as PDF">PDF</button>
   </div>
 </header>
 
-<main id="main">
+<main class="desk">
 
-  <!-- ===== START ===== -->
-  <section class="hero" id="start">
-    <figure class="portrait has-img" style="margin:0">
-      <a href="img/vince-ref.webp"><img src="img/vince-ref.webp" alt="Ref sheet Vince'a: wilk grzywiasty w okularach, z przodu i z tyłu, z paletą i ubraniami" width="1000" height="636"></a>
-      <figcaption>Ref sheet · art: Ash</figcaption>
+  <!-- ===================== 01 · OKŁADKA ===================== -->
+  <section class="sheet cover" data-page="01" id="cover">
+    <div class="cover-top"><span>Cancrosa Files</span><span>Ref // Maned Wolf · 001</span></div>
+    <p class="cover-kicker"><span lang="en">Character Reference · Visual &amp; Personality</span><span lang="pl">Karta postaci · Wygląd i osobowość</span></p>
+    <h1 class="cover-title">Vincent <em>Cancrosa</em></h1>
+    <p class="cover-sub"><span lang="en">“Vince” · Anthropomorphic Maned Wolf</span><span lang="pl">„Vince” · Antropomorficzny wilk grzywiasty</span></p>
+    <blockquote class="cover-quote">
+      Walls have endings. Tunnels have exits. Bridges have a reason.
+      <small lang="pl">Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.</small>
+    </blockquote>
+    <figure class="cover-art">
+      <button type="button" class="zoom" data-full="img/vince-ref.webp" data-caption="Reference sheet · art by Ash">
+        <img src="img/vince-ref.webp" width="1000" height="636"
+          alt="Vince's reference sheet: maned wolf in glasses, front and back, with palette and clothing"
+          data-en-alt="Vince's reference sheet: maned wolf in glasses, front and back, with palette and clothing"
+          data-pl-alt="Ref sheet Vince'a: wilk grzywiasty w okularach, z przodu i z tyłu, z paletą i ubraniami">
+      </button>
     </figure>
-    <div>
-      <p class="kicker">Cancrosa Files · Ref // Maned Wolf · 001</p>
-      <h1>Vincent<br><span>Cancrosa</span></h1>
-      <p class="aka">„Vince” · antropomorficzny wilk grzywiasty · on/jego</p>
-      <blockquote class="motto">
-        <q>Walls have endings. Tunnels have exits. Bridges have a reason.</q>
-        <small>Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Główna fursona The One Above Them — analityczny, ambitny i bardziej uważny, niż daje po sobie poznać.</p>
-      </div>
-      <a class="btn" href="#vince">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
+    <div class="cover-foot">
+      <span lang="en">For artistic commission use</span><span lang="pl">Do zamówień u artystów</span>
+      <span lang="en">Fully digitigrade world · No human baseline</span><span lang="pl">Świat w pełni digitigradalny · Bez ludzi</span>
     </div>
   </section>
 
-  <!-- ===== KARTA POSTACI ===== -->
-  <section id="vince" aria-labelledby="vince-h">
-    <div class="section-head">
-      <p class="kicker">Część pierwsza</p>
-      <h2 id="vince-h">Karta postaci</h2>
-    </div>
+  <!-- ===================== 02 · WYGLĄD ===================== -->
+  <section class="sheet paper" data-page="02" id="visual">
+    <div class="run"><span>Vincent ‘Vince’ Cancrosa</span><span lang="en">Character Reference</span><span lang="pl">Karta postaci</span></div>
 
     <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Wilk grzywiasty <i>(Chrysocyon brachyurus)</i></dd></div>
-      <div><dt>Wiek</dt><dd>28 lat</dd></div>
-      <div><dt>Wzrost</dt><dd>193 cm <i>(6′4″)</i></dd></div>
-      <div><dt>Budowa</dt><dd>Smukła · digitigradalna</dd></div>
+      <div><dt lang="en">Species</dt><dt lang="pl">Gatunek</dt><dd><i>Chrysocyon brachyurus</i></dd></div>
+      <div><dt lang="en">Height</dt><dt lang="pl">Wzrost</dt><dd>6′4″<small>193 cm</small></dd></div>
+      <div><dt lang="en">Build</dt><dt lang="pl">Budowa</dt><dd lang="en">Lean · digitigrade</dd><dd lang="pl">Smukła · digitigradalna</dd></div>
+      <div><dt lang="en">Age</dt><dt lang="pl">Wiek</dt><dd>28</dd></div>
     </dl>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>Futro — zbudowane na kontraście</h3>
-        <div class="swatches">
-          <div class="swatch"><i style="--c:#c98a3c"></i><b>Miedziane złoto</b><span>barki, boki, uda</span></div>
-          <div class="swatch"><i style="--c:#ece3d3"></i><b>Krem</b><span>pierś, brzuch, podbródek</span></div>
-          <div class="swatch"><i style="--c:#050506"></i><b>Czerń</b><span>dolne części kończyn, linia kręgosłupa</span></div>
-          <div class="swatch"><i style="--c:#e0932b"></i><b>Bursztyn</b><span>oczy</span></div>
+    <p class="part"><span lang="en">Part One</span><span lang="pl">Część pierwsza</span></p>
+    <h2><span lang="en">Visual <em>Reference</em></span><span lang="pl">Opis <em>wyglądu</em></span></h2>
+    <p class="lead" lang="en">A lean, digitigrade, distance-runner frame — narrow waist, lightly defined abdomen, moderately broad shoulders. Every proportion reads as deliberate.</p>
+    <p class="lead" lang="pl">Smukła, digitigradalna sylwetka biegacza długodystansowego — wąska talia, lekko zarysowany brzuch, umiarkowanie szerokie barki. Każda proporcja wygląda na zamierzoną.</p>
+
+    <div class="card">
+      <span class="label"><span lang="en">Silhouette</span><span lang="pl">Sylwetka</span></span>
+      <p lang="en">Elongated and deliberate. Long legs with a clearly defined hock joint. He carries himself upright but not rigidly — the posture suggests control rather than dominance, awareness rather than display.</p>
+      <p lang="pl">Wydłużona i przemyślana. Długie nogi z wyraźnie zaznaczonym stawem skokowym. Trzyma się prosto, ale nie sztywno — postawa sugeruje kontrolę, a nie dominację; uważność, a nie pokaz.</p>
+      <p lang="en">Nothing about the physique is exaggerated; musculature is functional and visible, not decorative.</p>
+      <p lang="pl">Nic w tej budowie nie jest przesadzone; mięśnie są funkcjonalne i widoczne, nie dekoracyjne.</p>
+    </div>
+    <div class="card">
+      <span class="label"><span lang="en">Mane &amp; Tail</span><span lang="pl">Grzywa i ogon</span></span>
+      <p lang="en">Dense ridge of fur along the neck and upper back, wrapping the shoulders like a natural collar — darker strands interwoven with lighter for depth. Composed at rest; under tension it subtly lifts.</p>
+      <p lang="pl">Gęsty grzebień futra wzdłuż karku i górnej części grzbietu, otulający barki jak naturalny kołnierz — ciemniejsze pasma przeplecione z jaśniejszymi dla głębi. W spoczynku ułożona; pod napięciem lekko się unosi.</p>
+      <p lang="en">Tail full and layered — dark at the base, warming to gold through the middle, finishing in a lighter tip.</p>
+      <p lang="pl">Ogon pełny i warstwowy — ciemny u nasady, ocieplający się w złoto pośrodku, zakończony jaśniejszą końcówką.</p>
+    </div>
+
+    <figure class="figure">
+      <button type="button" class="zoom" data-full="img/vince-ref.webp" data-caption="Reference sheet · art by Ash">
+        <img src="img/vince-ref.webp" width="1000" height="636" loading="lazy"
+          alt="Vince's full reference sheet"
+          data-en-alt="Vince's full reference sheet" data-pl-alt="Pełny ref sheet Vince'a">
+      </button>
+      <figcaption><span><span lang="en">Reference sheet · Colour</span><span lang="pl">Ref sheet · kolor</span></span><span><span lang="en">Art by Ash</span><span lang="pl">Art: Ash</span></span></figcaption>
+    </figure>
+
+    <div class="folio"><span>Cancrosa Files</span><span>2</span></div>
+  </section>
+
+  <!-- ===================== 03 · FUTRO I ZNACZENIA ===================== -->
+  <section class="sheet paper" data-page="03" id="coat">
+    <div class="run"><span>Vincent ‘Vince’ Cancrosa</span><span lang="en">Character Reference</span><span lang="pl">Karta postaci</span></div>
+
+    <span class="label"><span lang="en">Coat &amp; Markings</span><span lang="pl">Futro i znaczenia</span></span>
+    <h3><span lang="en">Built on Contrast</span><span lang="pl">Zbudowane na kontraście</span></h3>
+    <p lang="en">The coat is structured around strong, clean contrasts: warm copper-gold over the shoulders, flanks and outer thighs; a bright cream-white band down the centre; dense jet-black on the lower portion of all four limbs, sharply separated from the gold above.</p>
+    <p lang="pl">Futro opiera się na mocnych, czystych kontrastach: ciepłe miedziane złoto na barkach, bokach i zewnętrznej stronie ud; jasny, kremowobiały pas przez środek; gęsta, smolista czerń na dolnych częściach wszystkich czterech kończyn, ostro oddzielona od złota powyżej.</p>
+
+    <div class="marks">
+      <div class="rows" role="group" aria-label="Markings">
+        <button type="button" class="row mark-btn" data-mark="axis" aria-pressed="false">
+          <span><span lang="en">Axis /<br>Spinal</span><span lang="pl">Oś /<br>kręgosłup</span></span>
+          <span><span lang="en">A deep black line from between the ears to the base of the tail — the visual axis for the whole body.</span><span lang="pl">Głęboka czarna linia od miejsca między uszami do nasady ogona — oś wizualna całego ciała.</span></span>
+        </button>
+        <button type="button" class="row mark-btn" data-mark="upper" aria-pressed="false">
+          <span><span lang="en">Upper /<br>Closed</span><span lang="pl">Górne /<br>zamknięte</span></span>
+          <span><span lang="en">Branches from the spine at shoulder level, curves out over the shoulders, arcs forward and down across the upper chest, then reconnects at the sternum — a defined triangular structure on the front of the torso.</span><span lang="pl">Odchodzą od kręgosłupa na wysokości barków, wyginają się przez barki, łukiem schodzą w przód i w dół przez górną część piersi i łączą się z powrotem na mostku — wyraźna trójkątna struktura z przodu tułowia.</span></span>
+        </button>
+        <button type="button" class="row mark-btn" data-mark="lower" aria-pressed="false">
+          <span><span lang="en">Lower /<br>Open</span><span lang="pl">Dolne /<br>otwarte</span></span>
+          <span><span lang="en">Branches just above the tail base, angles out toward the hips, then curves subtly toward the groin. Unlike the upper pair these never connect — each ends independently along the upper inner thigh.</span><span lang="pl">Odchodzą tuż nad nasadą ogona, rozchodzą się ku biodrom, a potem lekko skręcają w stronę pachwin. W odróżnieniu od górnej pary nigdy się nie łączą — każde kończy się osobno, po wewnętrznej stronie uda.</span></span>
+        </button>
+      </div>
+      <figure class="marks-fig">
+        <svg viewBox="0 0 320 300" role="img" aria-labelledby="marksTitle">
+          <title id="marksTitle">Schematic of Vince's markings, back and front</title>
+          <defs>
+            <g id="body">
+              <ellipse class="fig-fill" cx="80" cy="30" rx="15" ry="15"/>
+              <path class="fig-fill" d="M70 56 Q42 58 32 74 Q30 96 38 116 Q34 140 38 150 Q30 170 36 192 L44 262 L116 262 L124 192 Q130 170 122 150 Q126 140 122 116 Q130 96 128 74 Q118 58 90 56 Z"/>
+              <path class="fig" d="M66 24 L62 4 L75 17 M94 24 L98 4 L85 17"/>
+              <ellipse class="fig" cx="80" cy="30" rx="15" ry="15"/>
+              <path class="fig" d="M73 44 L70 56 M87 44 L90 56"/>
+              <path class="fig" d="M70 56 Q42 58 32 74 Q30 96 38 116 Q34 140 38 150 Q30 170 36 192 L44 262"/>
+              <path class="fig" d="M90 56 Q118 58 128 74 Q130 96 122 116 Q126 140 122 150 Q130 170 124 192 L116 262"/>
+              <path class="fig" d="M32 74 L20 150 M128 74 L140 150 M80 206 L80 262"/>
+            </g>
+          </defs>
+
+          <!-- TYŁ -->
+          <path class="fig-fill" d="M76 200 Q56 244 80 288 Q104 244 84 200 Z" style="fill:#efe6d6"/>
+          <use href="#body"/>
+          <!-- PRZÓD: kremowy pas przez środek -->
+          <use href="#body" x="160"/>
+          <rect class="band" x="230" y="58" width="20" height="140" rx="10"/>
+
+          <path class="mk m-axis" pathLength="1" d="M80 14 L80 200"/>
+          <path class="mk m-upper" pathLength="1" d="M80 66 Q62 63 44 74 M80 66 Q98 63 116 74"/>
+          <path class="mk m-upper" pathLength="1" d="M204 74 Q222 98 240 118 Q258 98 276 74"/>
+          <path class="mk m-lower" pathLength="1" d="M80 190 Q66 185 52 196 M80 190 Q94 185 108 196"/>
+          <path class="mk m-lower" pathLength="1" d="M204 190 Q220 206 230 232 M276 190 Q260 206 250 232"/>
+
+          <text class="svg-label" x="80" y="298"><tspan lang="en">BACK</tspan><tspan lang="pl">TYŁ</tspan></text>
+          <text class="svg-label" x="240" y="298"><tspan lang="en">FRONT</tspan><tspan lang="pl">PRZÓD</tspan></text>
+        </svg>
+        <figcaption class="hint"><span lang="en">Schematic · not to scale · tap a row</span><span lang="pl">Schemat · nie w skali · kliknij wiersz</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="card">
+      <span class="label"><span lang="en">Face · Eyes · Glasses</span><span lang="pl">Twarz · oczy · okulary</span></span>
+      <p lang="en">Narrow, proportionate muzzle. Default expression is a faint, asymmetrical half-smile — subtle, never performative. Eyes amber, focused, analytical.</p>
+      <p lang="pl">Wąski, proporcjonalny pysk. Domyślny wyraz to lekki, asymetryczny półuśmiech — subtelny, nigdy na pokaz. Oczy bursztynowe, skupione, analityczne.</p>
+      <p lang="en">Metal-framed glasses in cool steel-graphite: thin but structured, large geometric lenses — rectangular with softly rounded corners and a defined bridge.</p>
+      <p lang="pl">Okulary w metalowych oprawkach w chłodnym, stalowo-grafitowym kolorze: cienkich, ale konstrukcyjnych, z dużymi geometrycznymi szkłami — prostokątnymi, o łagodnie zaokrąglonych rogach i wyraźnym mostku.</p>
+    </div>
+    <div class="card">
+      <span class="label"><span lang="en">Piercings · Hands · Rings</span><span lang="pl">Kolczyki · dłonie · pierścienie</span></span>
+      <p lang="en">Three earrings per ear — thick matte-black hoops (~0.5 cm), mostly a quasi-rhombus, occasionally full circles; a raw, industrial weight. Alongside the hoops sit studs — a gift from Ragnar; form and shape are the artist's call, as long as they stay industrial and minimalist.</p>
+      <p lang="pl">Po trzy kolczyki w każdym uchu — grube, matowoczarne kółka (ok. 0,5 cm), najczęściej w kształcie quasi-rombu, czasem pełne okręgi; surowy, przemysłowy ciężar. Obok kółek siedzą wkrętki — prezent od Ragnara; ich forma należy do artysty, byle pozostały przemysłowe i minimalistyczne.</p>
+      <p lang="en">Long precise fingers tipped with dark claws. Two rings: a matte-gold flat signet, and a dark band with a subtle red core.</p>
+      <p lang="pl">Długie, precyzyjne palce zakończone ciemnymi pazurami. Dwa pierścienie: matowozłoty płaski sygnet i ciemna obrączka z subtelnym czerwonym rdzeniem.</p>
+    </div>
+
+    <div class="palette">
+      <button type="button" class="swatch" data-hex="#C8892B"><i style="--c:#c8892b"></i><b lang="en">Copper-gold</b><b lang="pl">Miedziane złoto</b><span lang="en">Shoulders · flanks · thighs</span><span lang="pl">Barki · boki · uda</span><code>#C8892B</code></button>
+      <button type="button" class="swatch" data-hex="#ECE3CF"><i style="--c:#ece3cf"></i><b lang="en">Cream-white</b><b lang="pl">Kremowa biel</b><span lang="en">Chest · abdomen · chin</span><span lang="pl">Pierś · brzuch · podbródek</span><code>#ECE3CF</code></button>
+      <button type="button" class="swatch" data-hex="#1A1A16"><i style="--c:#1a1a16"></i><b lang="en">Jet-black</b><b lang="pl">Smolista czerń</b><span lang="en">Lower limbs · spinal axis</span><span lang="pl">Dolne kończyny · oś</span><code>#1A1A16</code></button>
+      <button type="button" class="swatch" data-hex="#D99A2B"><i style="--c:#d99a2b"></i><b lang="en">Amber</b><b lang="pl">Bursztyn</b><span lang="en">Eyes · analytical focus</span><span lang="pl">Oczy · analityczne skupienie</span><code>#D99A2B</code></button>
+    </div>
+    <p class="hint no-print" style="margin-top:-.8rem"><span lang="en">Tap a colour to copy its code</span><span lang="pl">Kliknij kolor, żeby skopiować jego kod</span></p>
+
+    <div class="folio"><span>Cancrosa Files</span><span>3</span></div>
+  </section>
+
+  <!-- ===================== 04 · GARDEROBA ===================== -->
+  <section class="sheet paper" data-page="04" id="wardrobe">
+    <div class="run"><span>Vincent ‘Vince’ Cancrosa</span><span lang="en">Character Reference</span><span lang="pl">Karta postaci</span></div>
+
+    <p class="part"><span lang="en">Wardrobe · Techwear</span><span lang="pl">Garderoba · techwear</span></p>
+    <h2><span lang="en">Shadow &amp; <em>Structure</em></span><span lang="pl">Cień i <em>struktura</em></span></h2>
+    <p lang="en">Restrained, industrial, precise. Black first; after black, deep dark tones — graphite, charcoal, murky greys. Everything is built for his digitigrade anatomy from the ground up — engineered around the body, not adapted to it.</p>
+    <p lang="pl">Powściągliwie, przemysłowo, precyzyjnie. Najpierw czerń; po czerni głębokie, ciemne tony — grafit, węgiel, mętne szarości. Wszystko jest budowane od podstaw pod jego digitigradalną anatomię — projektowane wokół ciała, a nie do niego dopasowywane.</p>
+    <p lang="en">Since a one-day wardrobe swap with Ragnar, he now and then borrows a single element from the other side — one note of colour in an otherwise dark outfit, sometimes barely visible, sometimes not.</p>
+    <p lang="pl">Od jednodniowej zamiany szaf z Ragnarem od czasu do czasu pożycza jeden element z drugiej strony — jedną nutę koloru w poza tym ciemnym stroju; czasem ledwo widoczną, czasem nie.</p>
+
+    <div class="kit widget no-print" id="kit">
+      <div class="kit-items">
+        <div class="kit-item" data-item="hoodie">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8" fill="none" stroke="#e3a43f" stroke-width="2" stroke-linecap="round"/></svg>
+          <span lang="en">Hoodie</span><span lang="pl">Bluza</span>
         </div>
-        <p>Głęboka czarna linia biegnie od uszu do nasady ogona — oś całej sylwetki.
-          Grzywa otula barki jak naturalny kołnierz; w spoczynku ułożona, pod napięciem lekko się unosi.
-          Ogon ciemny u nasady, złoty pośrodku, z jasną końcówką.</p>
+        <div class="kit-item" data-item="pants">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12l1 10-3 6 2 8h-4l-2-8-2 8h-4l2-8-3-6z" fill="#0c0c0e" stroke="#4a4b52" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          <span lang="en">Pants</span><span lang="pl">Spodnie</span>
+        </div>
+        <div class="kit-item" data-item="footwear">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 22c0-4 2-8 6-9l5 1 3 5 6 1c2 0 3 1 3 3v2H6z" fill="#0c0c0e" stroke="#4a4b52" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 23h17" stroke="#e3a43f" stroke-width="1"/></svg>
+          <span lang="en">Footwear</span><span lang="pl">Buty</span>
+        </div>
+        <div class="kit-item" data-item="glasses">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="11" width="11" height="9" rx="2.5" fill="none" stroke="#8b8e95" stroke-width="1.6"/><rect x="18" y="11" width="11" height="9" rx="2.5" fill="none" stroke="#8b8e95" stroke-width="1.6"/><path d="M14 14h4" stroke="#8b8e95" stroke-width="1.6"/></svg>
+          <span lang="en">Glasses</span><span lang="pl">Okulary</span>
+        </div>
+        <div class="kit-item" data-item="rings">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="6" fill="none" stroke="#b8945a" stroke-width="2.4"/><circle cx="21" cy="16" r="6" fill="none" stroke="#2a2a2e" stroke-width="2.4"/><circle cx="21" cy="16" r="6" fill="none" stroke="#7a1f1f" stroke-width=".8"/></svg>
+          <span lang="en">Rings</span><span lang="pl">Pierścienie</span>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Szczegóły</h3>
-        <ul class="details">
-          <li><b>Twarz</b> — wąski pysk, domyślnie lekki, asymetryczny półuśmiech. Oczy bursztynowe, skupione, analityczne.</li>
-          <li><b>Okulary</b> — stalowo-grafitowe oprawki, duże geometryczne szkła o zaokrąglonych rogach.</li>
-          <li><b>Kolczyki</b> — po trzy w każdym uchu: grube, matowo czarne kółka, zwykle w kształcie quasi-rombu, a obok nich wkrętki — prezent od Ragnara.</li>
-          <li><b>Pierścienie</b> — matowozłoty sygnet i ciemna obrączka z subtelnym czerwonym rdzeniem.</li>
-          <li><b>Styl</b> — techwear: czerń, struktura, precyzja. Bluza z cienkim złotym motywem dwóch ścieżek,
-            spodnie skrojone pod staw skokowy i buty z otwartym przodem, z których swobodnie wychodzą pazury.
-            Od jednodniowej zamiany szaf z Ragnarem czasem pożycza jeden kolorowy akcent.</li>
-          <li><b>Nazwa</b> — pierwsza łacińska nazwa, jaką dostał, to <i>Vulpes cancrosa</i>. Nazwisko zostało.</li>
-        </ul>
+      <div class="kit-ctl">
+        <button type="button" class="btn" id="swapBtn"><span lang="en">Swap wardrobes</span><span lang="pl">Zamień szafy</span></button>
+        <button type="button" class="btn ghost" id="blackBtn"><span lang="en">Back to black</span><span lang="pl">Z powrotem w czerń</span></button>
+        <p class="kit-note" id="kitNote" aria-live="polite"></p>
       </div>
     </div>
+
+    <div class="card">
+      <span class="label"><span lang="en">Pants · Tailored to the hock</span><span lang="pl">Spodnie · skrojone pod staw skokowy</span></span>
+      <p lang="en">Black, cut to his digitigrade build. The line follows the angle of the hock joint precisely — considered construction throughout.</p>
+      <p lang="pl">Czarne, skrojone pod jego digitigradalną budowę. Linia dokładnie podąża za kątem stawu skokowego — przemyślana konstrukcja w każdym detalu.</p>
+    </div>
+    <div class="card">
+      <span class="label"><svg class="motif" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 4c2 3 2.6 5 2.6 8v8c0 3-.6 5-2.6 8M21 4c-2 3-2.6 5-2.6 8v8c0 3 .6 5 2.6 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span lang="en">Hoodie · Dual Path</span><span lang="pl">Bluza · dwie ścieżki</span></span>
+      <p lang="en">Black, with a thin gold geometric motif on the left chest — two parallel vertical lines that subtly diverge at top and bottom without ever closing. Two walls with space between; a tunnel with exits; a bridge across an obstacle.</p>
+      <p lang="pl">Czarna, z cienkim złotym geometrycznym motywem na lewej piersi — dwie równoległe pionowe linie, które u góry i u dołu subtelnie się rozchodzą, nigdy się nie zamykając. Dwa mury z przestrzenią pomiędzy; tunel z wyjściami; most nad przeszkodą.</p>
+    </div>
+    <div class="card">
+      <span class="label"><span lang="en">Footwear · Open-toe frame</span><span lang="pl">Obuwie · otwarty przód</span></span>
+      <p lang="en">Purpose-built for his anatomy — designed around the foot. A rigid structural frame runs along both sides of the front; the top over the toes is fully open, so the claws extend naturally. A soft flexible rim finishes the opening, with an optional thin rubber guard beneath the claws.</p>
+      <p lang="pl">Zbudowane specjalnie pod jego anatomię — zaprojektowane wokół stopy. Sztywna rama konstrukcyjna biegnie po obu stronach przodu; góra nad palcami jest całkowicie otwarta, więc pazury wysuwają się naturalnie. Otwór wykańcza miękki, elastyczny brzeg, z opcjonalną cienką gumową osłoną pod pazurami.</p>
+      <p lang="en">Semi-arc sole, elevated at the rear, thicker cushion under the forefoot; black matte technical mesh with smooth synthetic panels, no gloss. Higher-set lacing plus a thin strap below the hock, matte graphite hardware, thin gold inserts tracing the construction lines. The exposed claw is a deliberate design decision.</p>
+      <p lang="pl">Podeszwa w kształcie półłuku, podwyższona z tyłu, z grubszą amortyzacją pod przodostopiem; czarna, matowa siatka techniczna z gładkimi syntetycznymi panelami, bez połysku. Wyżej osadzone sznurowanie i cienki pasek poniżej stawu skokowego, matowe grafitowe okucia, cienkie złote wstawki wzdłuż linii konstrukcyjnych. Odsłonięty pazur to świadoma decyzja projektowa.</p>
+    </div>
+
+    <div class="folio"><span>Cancrosa Files</span><span>4</span></div>
   </section>
 
-  <!-- ===== CHARAKTER ===== -->
-  <section id="charakter" aria-labelledby="charakter-h">
-    <div class="section-head">
-      <p class="kicker">Część druga · jak się porusza</p>
-      <h2 id="charakter-h">Charakter</h2>
+  <!-- ===================== 05 · CHARAKTER ===================== -->
+  <section class="sheet paper" data-page="05" id="profile">
+    <div class="run"><span>Vincent ‘Vince’ Cancrosa</span><span lang="en">Character Reference</span><span lang="pl">Karta postaci</span></div>
+
+    <p class="part"><span lang="en">Part Two · Character Profile</span><span lang="pl">Część druga · profil postaci</span></p>
+    <h2><span lang="en">How He <em>Moves</em></span><span lang="pl">Jak się <em>porusza</em></span></h2>
+    <p class="lead" lang="en">A person in motion — moving toward something deliberately, with full awareness of the distance still ahead. He is not defined by where he is, but by how he moves.</p>
+    <p class="lead" lang="pl">Ktoś w ruchu — zmierza ku czemuś świadomie, w pełni zdając sobie sprawę z drogi, która jeszcze przed nim. Nie definiuje go to, gdzie jest, tylko to, jak się porusza.</p>
+
+    <div class="card">
+      <span class="label"><span lang="en">Ambition</span><span lang="pl">Ambicja</span></span>
+      <p lang="en">Not performed. He wants growth — material, intellectual, social — and doesn't apologise for the desire. He holds an image of a more capable self as a reference point, not a fantasy.</p>
+      <p lang="pl">Nie na pokaz. Chce rozwoju — materialnego, intelektualnego, społecznego — i nie przeprasza za to pragnienie. Obraz bardziej zdolnego siebie jest dla niego punktem odniesienia, nie fantazją.</p>
+      <p lang="en">Realistic about timelines; he doesn't trust shortcuts. Progress is layered — each step creates the surface for the next.</p>
+      <p lang="pl">Realistycznie ocenia terminy; nie ufa skrótom. Postęp ma warstwy — każdy krok tworzy powierzchnię pod następny.</p>
     </div>
-    <p class="intro">Ktoś w ruchu — zmierza świadomie w konkretną stronę i dokładnie wie, ile drogi jeszcze przed nim.
-      Nie definiuje go to, gdzie jest, tylko to, jak idzie.</p>
-    <div class="grid-2">
-      <div class="card trait">
-        <p class="kicker">01 · Ambicja</p>
-        <h3>Nie na pokaz</h3>
-        <p>Chce rozwoju — materialnego, intelektualnego, społecznego — i nie przeprasza za to.
-          Lepsza wersja samego siebie to dla niego punkt odniesienia, nie fantazja. Nie ufa skrótom:
-          każdy krok tworzy grunt pod następny.</p>
-      </div>
-      <div class="card trait">
-        <p class="kicker">02 · Filozofia</p>
-        <h3>Przeszkody, nie problemy</h3>
-        <p>Większość tego, co inni nazywają problemami, to dla niego przeszkody — konstrukcje z krawędziami,
-          sytuacje z wyjściami. Wierzy w spojrzenie z zewnątrz, choć poprosić wprost o pomoc wciąż jest mu naprawdę trudno.</p>
-      </div>
-      <div class="card trait">
-        <p class="kicker">03 · Myślenie</p>
-        <h3>Najpierw kształt problemu</h3>
-        <p>Domyślnie analityczny: najpierw rozumie, potem reaguje. Rzadko działa pod wpływem impulsu i nie wpada w katastrofizowanie.</p>
-      </div>
-      <div class="card trait shadow">
-        <p class="kicker">04 · Cień</p>
-        <h3>Pętla o trzeciej w nocy</h3>
-        <p>Analiza potrafi zamienić się w pętlę — powrót do danych, kolejne przeformułowanie, szukanie lepszej drogi,
-          choć ta była jasna dwadzieścia minut temu. To jedyna pętla, której nie umie przegadać od środka.</p>
+    <div class="card">
+      <span class="label"><span lang="en">How he thinks</span><span lang="pl">Jak myśli</span></span>
+      <p lang="en">Default mode is analytical: understand the shape of the problem before reacting. He rarely acts on impulse and doesn't catastrophize.</p>
+      <p lang="pl">Tryb domyślny to analiza: najpierw zrozumieć kształt problemu, potem reagować. Rzadko działa pod wpływem impulsu i nie katastrofizuje.</p>
+      <p lang="en">The shadow: analysis becomes a loop — returning to the data, reframing, hunting a more optimal path when the path was clear twenty minutes ago. A darker version runs at three in the morning, taking the good things apart until something true at dinner looks like a trap by the time the ceiling goes grey. The one loop he can't out-argue from inside.</p>
+      <p lang="pl">Cień: analiza zamienia się w pętlę — powrót do danych, przeformułowywanie, polowanie na bardziej optymalną drogę, choć droga była jasna dwadzieścia minut temu. Ciemniejsza wersja rusza o trzeciej w nocy i rozbiera dobre rzeczy na części, aż zanim sufit zszarzeje, to, co przy kolacji było prawdą, wygląda jak pułapka. Jedyna pętla, której nie umie przegadać od środka.</p>
+
+      <div class="night widget no-print" id="night">
+        <div class="night-head">
+          <span class="night-clock" id="nightClock">03:00</span>
+          <span class="hint"><span lang="en">The 3 a.m. loop</span><span lang="pl">Pętla o trzeciej w nocy</span></span>
+        </div>
+        <p class="night-line" id="nightLine" aria-live="polite"></p>
+        <button type="button" class="btn" id="nightBtn"></button>
       </div>
     </div>
     <div class="card">
-      <p class="kicker">05 · Wśród innych</p>
-      <p>Szeroka sieć znajomych — uważny, umie odczytać salę i się do niej dostroić. Prawdziwą bliskość daje jednak
-        bardzo nielicznym. Trzyma te drzwi wąskie z troski i właśnie dlatego bywa brany za chłodnego.
-        Łatwo go z początku nie docenić; trudno potem zlekceważyć.</p>
-    </div>
-  </section>
-
-  <!-- ===== BLISCY ===== -->
-  <section id="bliscy" aria-labelledby="bliscy-h">
-    <div class="section-head">
-      <p class="kicker">Część trzecia · nieliczni, których wpuszcza</p>
-      <h2 id="bliscy-h">Bliscy</h2>
-    </div>
-    <div class="grid-3">
-      <article class="card person">
-        <p class="kicker">Partner</p>
-        <h3><a href="ragnar.html">Ragnar Elias Hale</a></h3>
-        <p class="meta">bulterier · 28 lat · bokser, który został DJ-em</p>
-        <p>Poznali się dzięki pracy Vince'a jako kierowcy: Ragnar — klient, który nie jeździ w milczeniu,
-          Vince — ten, który naprawdę słuchał. Wszędzie indziej Vince zarządza i prowadzi; przy Ragnarze to jedyne miejsce,
-          gdzie odkłada kontrolę. Jeśli Vince jest głową, Ragnar jest sercem.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Podopieczny · „Big Bro”</p>
-        <h3><a href="chip.html">Chip <small>„Chipper”</small></a></h3>
-        <p class="meta">ciasteczkowy kobold · 18 lat · dzwoneczek na obroży</p>
-        <p>Vince został jego opiekunem prawnym wszystkim, tylko nie przypadkiem — po miesiącach obserwacji
-          i cierpliwie wypełnionej luce w procedurach. Nie gra ciepła; po prostu jest, konsekwentnie i praktycznie.
-          Chip mówi na niego „Big Bro” i nie chce słyszeć słowa o ojcach.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Pod opieką domu</p>
-        <h3><a href="toro.html">Toro Hashimoto</a></h3>
-        <p class="meta">futrzasty smok · 19 lat</p>
-        <p>Vince tropił znikanie Chipa jak detektyw — i trafił do latarni pod mostem. Złość rozsypała się,
-          gdy tylko poznał prawdę. Prysznic, śniadanie, przeprosiny i otwarte drzwi; potem dodatkowe kursy taksówką,
-          żeby Toro mógł mieć własny, legalny dom.</p>
-      </article>
+      <span class="label"><span lang="en">Philosophy</span><span lang="pl">Filozofia</span></span>
+      <p lang="en">Most things people call problems are, to him, obstacles — structures with edges, situations with exits. A true problem has resisted every angle; even then the next step is expanding the perspective, not resignation.</p>
+      <p lang="pl">Większość tego, co inni nazywają problemami, to dla niego przeszkody — konstrukcje z krawędziami, sytuacje z wyjściami. Prawdziwy problem to taki, który oparł się każdemu podejściu; nawet wtedy następnym krokiem jest poszerzenie perspektywy, a nie rezygnacja.</p>
+      <p lang="en">He believes in outside perspective, yet asking for help directly — without framing it as information-gathering — stays genuinely hard.</p>
+      <p lang="pl">Wierzy w spojrzenie z zewnątrz, a jednak poprosić o pomoc wprost — bez ubierania tego w zbieranie informacji — wciąż jest mu naprawdę trudno.</p>
     </div>
     <div class="card">
-      <p class="kicker">Świat</p>
-      <p>Vince żyje w świecie w pełni digitigradalnym — same antropomorficzne gatunki, bez ludzi.
-        Jego ubrania i buty są projektowane pod tę anatomię od podstaw, a nie do niej dopasowywane.</p>
+      <span class="label"><span lang="en">Social presence</span><span lang="pl">Wśród innych</span></span>
+      <p lang="en">A wide network — attentive, able to read a room and calibrate. But real closeness he extends to very few. He keeps that door narrow out of care, and is routinely mistaken for cold because of it.</p>
+      <p lang="pl">Szeroka sieć kontaktów — uważny, potrafi odczytać salę i się do niej dostroić. Ale prawdziwą bliskość daje bardzo nielicznym. Trzyma te drzwi wąskie z troski i właśnie przez to regularnie bierze się go za chłodnego.</p>
+      <p lang="en">Easy to underestimate at first, difficult to dismiss afterward.</p>
+      <p lang="pl">Łatwo go z początku nie docenić; trudno potem zlekceważyć.</p>
     </div>
+
+    <div class="folio"><span>Cancrosa Files</span><span>5</span></div>
   </section>
 
+  <!-- ===================== 06 · RELACJE ===================== -->
+  <section class="sheet paper" data-page="06" id="relationships">
+    <div class="run"><span>Vincent ‘Vince’ Cancrosa</span><span lang="en">Character Reference</span><span lang="pl">Karta postaci</span></div>
 
-  <!-- ===== GALERIA ===== -->
-  <section id="galeria" aria-labelledby="galeria-h">
-    <div class="section-head">
-      <p class="kicker">Zamówione u artystów</p>
-      <h2 id="galeria-h">Galeria</h2>
+    <div class="dp" id="dualPath" data-mode="walls">
+      <blockquote class="pull">
+        <button type="button" class="dp-choice" data-mode="walls" aria-pressed="true">Walls have endings.</button>
+        <button type="button" class="dp-choice" data-mode="tunnel" aria-pressed="false">Tunnels have exits.</button>
+        <button type="button" class="dp-choice" data-mode="bridge" aria-pressed="false">Bridges have a reason.</button>
+        <span class="dp-pl" lang="pl">Mury mają koniec. Tunele mają wyjścia. Mosty mają powód.</span>
+      </blockquote>
+      <svg viewBox="0 0 200 120" role="img" aria-labelledby="dpTitle">
+        <title id="dpTitle">The Dual Path motif read as walls, a tunnel or a bridge</title>
+        <g class="dp-ground">
+          <rect x="0" y="62" width="56" height="58"/>
+          <rect x="144" y="62" width="56" height="58"/>
+          <path d="M58 98 q10 -6 20 0 t20 0 t20 0 t20 0 t4 0"/>
+          <path d="M58 108 q10 -6 20 0 t20 0 t20 0 t20 0 t4 0" style="opacity:.5"/>
+        </g>
+        <g class="dp-lines">
+          <path d="M84 18 C89 26 91 32 91 40 V80 C91 88 89 94 84 102"/>
+          <path d="M116 18 C111 26 109 32 109 40 V80 C109 88 111 94 116 102"/>
+        </g>
+        <g class="dp-ends">
+          <circle cx="84" cy="18" r="3"/><circle cx="84" cy="102" r="3"/>
+          <circle cx="116" cy="18" r="3"/><circle cx="116" cy="102" r="3"/>
+        </g>
+        <circle class="dp-runner" cx="20" cy="60" r="4"/>
+      </svg>
     </div>
-    <!-- Każdy obrazek: plik do img/, w podpisie autor i link do niego. -->
-    <div class="gallery">
-      <figure>
-        <div class="frame"><a href="img/vince-ref.webp"><img src="img/vince-thumb.webp" alt="Ref sheet Vince'a autorstwa Ash" loading="lazy"></a></div>
-        <figcaption>Ref sheet · art: Ash <!-- ✎ dodaj link do Ash --></figcaption>
-      </figure>
-      <figure>
-        <div class="frame"><!-- <img src="img/art-1.webp" alt="Opis obrazka" loading="lazy"> -->ART #1</div>
-        <figcaption>art: <a href="#">@artysta</a></figcaption>
-      </figure>
-      <figure>
-        <div class="frame"><!-- <img src="img/art-2.webp" alt="Opis obrazka" loading="lazy"> -->ART #2</div>
-        <figcaption>art: <a href="#">@artysta</a></figcaption>
-      </figure>
+
+    <p class="part"><span lang="en">Part Three · Key Relationships</span><span lang="pl">Część trzecia · kluczowe relacje</span></p>
+    <h2 style="margin-bottom:1.6rem"><span lang="en">The Few He <em>Lets In</em></span><span lang="pl">Nieliczni, których <em>wpuszcza</em></span></h2>
+
+    <article class="person">
+      <span class="label"><span lang="en">Boyfriend</span><span lang="pl">Chłopak</span></span>
+      <h3><a href="ragnar.html">Ragnar Elias Hale</a></h3>
+      <p class="meta"><span lang="en">Bull terrier · 28 · Met through Vince's taxi work</span><span lang="pl">Bulterier · 28 · Poznali się przez taksówkę Vince'a</span></p>
+      <p lang="en">What began as occasional rides became a recurring presence and, eventually, a private number passed for trust rather than convenience. The dynamic is clearly defined: Ragnar leads, Vince yields. Everywhere else Vince manages, controls, directs; this is the one place he sets that down.</p>
+      <p lang="pl">To, co zaczęło się od okazjonalnych kursów, stało się stałą obecnością, a w końcu prywatnym numerem — danym z zaufania, nie dla wygody. Dynamika jest jasno określona: Ragnar prowadzi, Vince ustępuje. Wszędzie indziej Vince zarządza, kontroluje, kieruje; to jedyne miejsce, gdzie to odkłada.</p>
+      <p lang="en">The number stopped being a convenience the night it rang at three in the morning. Ragnar called from a parked car in the club district — not for a ride, for a witness — and talked for forty minutes about how close he'd come to reaching for something in a back room. Vince listened, and at the end said one sentence about where a brake is kept. He is far more at ease being the person someone reaches for than the one who reaches; that it was his silence, his single line that held, is something he still hasn't finished turning over.</p>
+      <p lang="pl">Numer przestał być wygodą tej nocy, gdy zadzwonił o trzeciej nad ranem. Ragnar dzwonił z zaparkowanego samochodu w dzielnicy klubów — nie po kurs, tylko po świadka — i przez czterdzieści minut opowiadał, jak blisko był sięgnięcia po coś na zapleczu. Vince słuchał, a na koniec powiedział jedno zdanie o tym, gdzie trzyma się hamulec. O wiele lepiej czuje się jako ten, po którego ktoś sięga, niż jako ten, który sięga; to, że wytrzymało właśnie jego milczenie i jedno zdanie, wciąż jeszcze w sobie obraca.</p>
+    </article>
+
+    <article class="person">
+      <span class="label"><span lang="en">Ward · Younger-brother figure</span><span lang="pl">Podopieczny · jak młodszy brat</span></span>
+      <h3><a href="chip.html">Chip / Chipper</a></h3>
+      <p class="meta"><span lang="en">Kobold · 18 (16 at guardianship) · Bell collar, silenced hand-to-chest</span><span lang="pl">Kobold · 18 (16 przy opiece) · Dzwonek na obroży, wyciszany dłonią</span></p>
+      <p lang="en">Vince was 26 when he became Chip's legal guardian — through anything but accident: months of observation, documented presence, a procedural gap he quietly positioned himself to fill, and a two-stage process run with the lawyer Marcus Calloway. A fine was levied for the lateness of his intervention; he paid it without comment.</p>
+      <p lang="pl">Vince miał 26 lat, gdy został opiekunem prawnym Chipa — wszystkim, tylko nie przypadkiem: miesiące obserwacji, udokumentowana obecność, luka w procedurach, w której po cichu się ustawił, i dwuetapowy proces poprowadzony z prawnikiem Marcusem Callowayem. Za spóźnioną interwencję dostał grzywnę; zapłacił ją bez słowa.</p>
+      <p lang="en">Guardian on paper, older brother in practice — Chip calls him “Big Bro” and flatly refuses any fatherly framing, a tension neither of them ever names. An older brother who didn't grow up in the same house but clearly should have. Vince doesn't perform warmth — he shows up, consistently and practically. Chip is still learning that the presence is structural, not conditional.</p>
+      <p lang="pl">Opiekun na papierze, starszy brat w praktyce — Chip mówi na niego „Big Bro” i stanowczo odrzuca każde ojcowskie ujęcie; to napięcie, którego żaden z nich nigdy nie nazywa. Starszy brat, który nie dorastał w tym samym domu, choć najwyraźniej powinien. Vince nie odgrywa ciepła — po prostu jest, konsekwentnie i praktycznie. Chip wciąż uczy się, że ta obecność jest stała, a nie warunkowa.</p>
+      <p lang="en">Chip knows about Ragnar — and was more entertained than scandalised. What Vince knows in return is thinner: that his ward took Ragnar aside one evening and came back having decided something. He was vetted, without the details, and the kid keeps a quiet watch over him he never requested and can't call off.</p>
+      <p lang="pl">Chip wie o Ragnarze — i bardziej go to bawi, niż gorszy. Vince wie w zamian mniej: że jego podopieczny pewnego wieczoru wziął Ragnara na bok i wrócił z jakąś decyzją. Ragnar przeszedł weryfikację, bez szczegółów, a dzieciak trzyma nad Vince'em cichą wartę, o którą ten nigdy nie prosił i której nie umie odwołać.</p>
+    </article>
+
+    <article class="person">
+      <span class="label"><span lang="en">Chip's close friend · Taken in</span><span lang="pl">Bliski przyjaciel Chipa · przygarnięty</span></span>
+      <h3><a href="toro.html">Toro Hashimoto</a></h3>
+      <p class="meta"><span lang="en">Furred dragon · 19 · Bridge control room, Ironmill Wharf</span><span lang="pl">Futrzasty smok · 19 · Sterownia mostu, Ironmill Wharf</span></p>
+      <p lang="en">Toro entered Vince's life as a mystery he could solve: Chip kept disappearing, and Vince tracked the pattern like a case. The answer was a hidden room inside a bridge pillar and two of them dusted with doughnut sugar. The anger lasted exactly as long as it took to understand. Then a shower, breakfast, an apology from Vince — and a door held open: “there's a home here; there'll be room for your aphorisms.”</p>
+      <p lang="pl">Toro wszedł w życie Vince'a jako zagadka do rozwiązania: Chip ciągle znikał, a Vince śledził ten wzór jak sprawę. Odpowiedzią okazał się ukryty pokój w filarze mostu i dwójka obsypana cukrem pudrem z pączków. Złość trwała dokładnie tyle, ile zajęło zrozumienie. Potem prysznic, śniadanie, przeprosiny od Vince'a — i przytrzymane drzwi: „tu jest dom; znajdzie się miejsce na twoje aforyzmy”.</p>
+      <p lang="en">He took extra taxi shifts to help Toro buy things of his own, and had Calloway make the control room a legal address. Adoption was never on the table; Vince's offer of a place under his roof still is.</p>
+      <p lang="pl">Brał dodatkowe zmiany w taksówce, żeby Toro mógł kupić coś własnego, i poprosił Callowaya, by sterownia stała się legalnym adresem. Adopcja nigdy nie wchodziła w grę; propozycja miejsca pod dachem Vince'a wciąż jest aktualna.</p>
+    </article>
+
+    <div class="card">
+      <span class="label"><span lang="en">Canon &amp; World</span><span lang="pl">Kanon i świat</span></span>
+      <p lang="en">Vince exists in a fully digitigrade world — anthropomorphic species throughout, no human baseline. His footwear and tailoring are engineered for that anatomy, not adapted to it.</p>
+      <p lang="pl">Vince żyje w świecie w pełni digitigradalnym — wszędzie antropomorficzne gatunki, bez ludzi jako punktu odniesienia. Jego obuwie i krój ubrań są projektowane pod tę anatomię, a nie do niej dopasowywane.</p>
+      <p lang="en">This reference is partially provisional. Final design details will be confirmed once the commissioned reference sheet is completed.</p>
+      <p lang="pl">Ta referencja jest częściowo tymczasowa. Ostateczne szczegóły projektu zostaną potwierdzone po ukończeniu zamówionego ref sheetu.</p>
     </div>
+
+    <div class="folio"><span>Cancrosa Files</span><span>6</span></div>
   </section>
-
-
 </main>
 
-<footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Ilustracje należą do ich autorów.</span>
-</footer>
-
+<script src="files.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const { t } = FILES;
 
-  // Podświetla w menu sekcję, która jest właśnie na ekranie.
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  // ---------- Schemat znaczeń: kliknięty wiersz rysuje się na sylwetce ----------
+  const marksFig = document.querySelector(".marks-fig");
+  const markBtns = document.querySelectorAll(".mark-btn");
+  markBtns.forEach(btn => btn.addEventListener("click", () => {
+    const mark = btn.dataset.mark;
+    const off = marksFig.dataset.active === mark;
+    markBtns.forEach(b => b.setAttribute("aria-pressed", String(!off && b === btn)));
+    if (off) {
+      delete marksFig.dataset.active;
+      return;
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+    marksFig.dataset.active = mark;
+    marksFig.querySelectorAll(".m-" + mark).forEach(p => {
+      p.classList.remove("draw");
+      void p.getBoundingClientRect();
+      p.classList.add("draw");
+    });
+  }));
+
+  // ---------- Zamiana szaf: jedna nuta koloru Ragnara ----------
+  const NOTES = [
+    { hex: "#ff2e88", en: "magenta", pl: "magentowy" },
+    { hex: "#26c6e0", en: "cyan", pl: "cyjanowy" },
+    { hex: "#9cc93a", en: "lime", pl: "limonkowy" },
+    { hex: "#9b5cff", en: "purple", pl: "fioletowy" },
+  ];
+  const ITEMS = {
+    hoodie: { en: "hoodie", pl: "na bluzie" },
+    pants: { en: "pants", pl: "na spodniach" },
+    footwear: { en: "footwear", pl: "na butach" },
+    glasses: { en: "glasses", pl: "na okularach" },
+    rings: { en: "rings", pl: "na pierścieniach" },
+  };
+  const kitItems = [...document.querySelectorAll(".kit-item")];
+  const kitNote = document.getElementById("kitNote");
+  let swap = null;
+
+  function renderKit() {
+    kitItems.forEach(el => {
+      el.classList.remove("quiet", "loud");
+      el.style.removeProperty("--note");
+    });
+    if (!swap) {
+      kitNote.textContent = t({ pl: "Dziś: sama czerń i grafit.", en: "Today: black and graphite, nothing else." });
+      return;
+    }
+    const el = kitItems.find(k => k.dataset.item === swap.item);
+    el.style.setProperty("--note", swap.note.hex);
+    el.classList.add(swap.loud ? "loud" : "quiet");
+    const item = ITEMS[swap.item];
+    kitNote.textContent = t({
+      pl: `Dziś: ${swap.note.pl} akcent ${item.pl} — ${swap.loud ? "trudno go przeoczyć" : "ledwo widoczny"}.`,
+      en: `Today: a ${swap.note.en} note on the ${item.en} — ${swap.loud ? "hard to miss" : "barely visible"}.`,
+    });
+  }
+  document.getElementById("swapBtn").addEventListener("click", () => {
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    let next;
+    do {
+      next = { item: pick(Object.keys(ITEMS)), note: pick(NOTES), loud: Math.random() < .5 };
+    } while (swap && next.item === swap.item && next.note === swap.note);
+    swap = next;
+    renderKit();
+  });
+  document.getElementById("blackBtn").addEventListener("click", () => { swap = null; renderKit(); });
+
+  // ---------- Pętla o trzeciej w nocy ----------
+  const LOOP = [
+    { pl: "Przy kolacji wszystko było w porządku.", en: "Everything was fine at dinner." },
+    { pl: "Czy na pewno? Wróć do danych.", en: "Was it, though? Go back to the data." },
+    { pl: "Przeformułuj. Może jest bardziej optymalna droga.", en: "Reframe it. There might be a more optimal path." },
+    { pl: "Rozbierz to na części. Kawałek po kawałku.", en: "Take it apart. Piece by piece." },
+    { pl: "To, co przy kolacji było prawdą, teraz wygląda jak pułapka.", en: "Something true at dinner looks like a trap now." },
+    { pl: "Sufit szarzeje. Droga była jasna dwadzieścia minut temu.", en: "The ceiling goes grey. The path was clear twenty minutes ago." },
+  ];
+  const STEP_MIN = [0, 27, 61, 94, 128, 166];
+  const night = document.getElementById("night");
+  const nightClock = document.getElementById("nightClock");
+  const nightLine = document.getElementById("nightLine");
+  const nightBtn = document.getElementById("nightBtn");
+  let step = 0;
+
+  function renderNight() {
+    const mins = 180 + STEP_MIN[step];
+    nightClock.textContent = String(Math.floor(mins / 60)).padStart(2, "0") + ":" + String(mins % 60).padStart(2, "0");
+    nightLine.textContent = t(LOOP[step]);
+    // Od granatowej nocy do szarego świtu
+    const k = step / (LOOP.length - 1);
+    const mix = (a, b) => Math.round(a + (b - a) * k);
+    night.style.background = `rgb(${mix(18, 92)}, ${mix(19, 91)}, ${mix(24, 88)})`;
+    const last = step === LOOP.length - 1;
+    nightBtn.textContent = last ? t({ pl: "Zapal światło", en: "Turn the light on" }) : t({ pl: "Przeanalizuj jeszcze raz", en: "Run it again" });
+  }
+  nightBtn.addEventListener("click", () => {
+    step = step === LOOP.length - 1 ? 0 : step + 1;
+    renderNight();
+  });
+
+  // ---------- Dwie ścieżki: mury, tunel, most ----------
+  const dp = document.getElementById("dualPath");
+  dp.querySelectorAll(".dp-choice").forEach(btn => btn.addEventListener("click", () => {
+    dp.dataset.mode = btn.dataset.mode;
+    dp.querySelectorAll(".dp-choice").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+  }));
+
+  FILES.onLang(() => { renderKit(); renderNight(); });
+  FILES.init();
 </script>
 </body>
 </html>

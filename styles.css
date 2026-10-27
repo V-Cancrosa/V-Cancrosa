@@ -32,7 +32,7 @@ body {
 a { color: var(--gold-b); text-underline-offset: 3px; text-decoration-color: var(--line); }
 a:hover { color: var(--cream); text-decoration-color: var(--gold); }
 a:focus-visible { outline: 2px solid var(--gold-b); outline-offset: 3px; border-radius: 2px; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3 { font-family: var(--disp); color: var(--cream); margin: 0; line-height: 1.1; }
 p { margin: 0 0 1rem; }
 p:last-child { margin-bottom: 0; }
