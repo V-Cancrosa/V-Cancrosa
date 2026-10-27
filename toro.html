@@ -1,223 +1,620 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toro Hashimoto · The One Above Them</title>
-<meta name="description" content="Toro Hashimoto — antropomorficzny futrzasty smok. Rodzina chciała tygrysa. On jest latarnią.">
+<title>Toro Hashimoto</title>
+<meta name="description" content="Toro Hashimoto — anthropomorphic furred dragon. The family wanted a tiger. He is a lantern.">
+<meta name="theme-color" content="#0d1220">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Toro Hashimoto">
-<meta property="og:description" content="Rodzina chciała tygrysa. On jest latarnią.">
+<meta property="og:description" content="The family wanted a tiger. He is a lantern.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/toro.html">
 <meta property="og:image" content="https://TWOJA-DOMENA.pl/img/toro-thumb.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1220'/%3E%3Cpath d='M6 11 Q16 4 26 11 L24 13 Q16 8 8 13Z' fill='%23a29c92'/%3E%3Crect x='10' y='13' width='12' height='9' fill='%23a29c92'/%3E%3Crect x='13' y='15' width='6' height='5' fill='%23ffc864'/%3E%3Crect x='14' y='22' width='4' height='5' fill='%23a29c92'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Akcent Toro: ciepłe światło latarni */
-  :root { --gold: #f2c230; --gold-b: #f7d76a; --line: rgba(242,194,48,.26); --line-s: rgba(110,184,72,.12); }
-  .kanji { font-size: 2.4rem; color: var(--cream); line-height: 1; margin-bottom: .4rem; font-family: serif; }
-</style>
+<link rel="stylesheet" href="char.css">
+<link rel="stylesheet" href="toro.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start">TORO</a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#imie">Imię</a>
-      <a href="#karta">Karta</a>
-      <a href="#charakter">Charakter</a>
-      <a href="#dom">Dom</a>
-      <a href="#bliscy">Bliscy</a>
-    </nav>
+<header class="nav">
+  <a class="logo" href="#top">
+    <svg viewBox="0 0 24 30" aria-hidden="true"><path d="M2 9 Q12 1 22 9 L20 11 Q12 5 4 11Z" fill="#a29c92"/><rect x="6" y="11" width="12" height="9" fill="#a29c92"/><rect x="9" y="13" width="6" height="5" fill="#ffc864"/><rect x="10" y="20" width="4" height="7" fill="#a29c92"/></svg>
+    Toro
+  </a>
+  <nav aria-label="Sections">
+    <a href="#name"><span lang="en">The name</span><span lang="pl">Imię</span></a>
+    <a href="#notes"><span lang="en">Field notes</span><span lang="pl">Wygląd</span></a>
+    <a href="#home"><span lang="en">Home</span><span lang="pl">Dom</span></a>
+    <a href="#carry"><span lang="en">How he carries it</span><span lang="pl">Charakter</span></a>
+    <a href="#people"><span lang="en">People</span><span lang="pl">Ludzie</span></a>
+  </nav>
+  <div class="tools">
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
+  <a class="back" href="index.html#postacie">← <span lang="en">All characters</span><span lang="pl">Postacie</span></a>
 </header>
 
 <main id="main">
-  <section class="hero" id="start">
-    <figure class="portrait has-img" style="margin:0">
-      <a href="img/toro-ref.webp"><img src="img/toro-ref.webp" alt="Ref sheet Toro: zielony futrzasty smok z czerwoną czupryną, żółtymi kolcami i małymi czerwonymi skrzydłami" width="1000" height="1000"></a>
-      <figcaption>Ref sheet · art: Ritsu (@ritsu_fur1)</figcaption>
-    </figure>
-    <div>
-      <p class="kicker">Cancrosa Files · Ref // Furred Dragon · 004</p>
-      <h1>Toro<br><span>Hashimoto</span></h1>
-      <p class="aka">„Toro” · antropomorficzny futrzasty smok · on/jego</p>
-      <blockquote class="motto">
-        <q>The family wanted a tiger. He is a lantern.</q>
-        <small>Rodzina chciała tygrysa. On jest latarnią.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Miał wszystko, stracił wszystko i z niczego zbudował sobie ciepłe życie — przez cały czas niezmiennie pogodny.</p>
-      </div>
-      <a class="btn" href="#karta">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
-    </div>
-  </section>
 
-  <section id="imie" aria-labelledby="imie-h">
-    <div class="section-head">
-      <p class="kicker">Imię · 橋本 Hashimoto</p>
-      <h2 id="imie-h">Chcieli tygrysa, znaleźli latarnię</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kanji" lang="ja">虎</p>
-        <p class="kicker">Tora — tygrys</p>
-        <p>Drapieżny i nigdy nienasycony. Tora jest o jedną długą samogłoskę od tōrō — i to tygrysa usłyszała w imieniu jego rodzina:
-          coś, co poluje na kolejny wynik i traktuje „wystarczy” jak porażkę.</p>
-      </div>
-      <div class="card">
-        <p class="kanji" lang="ja">灯籠</p>
-        <p class="kicker">Tōrō — kamienna latarnia</p>
-        <p>Spokój, światło, tradycja. Na nic nie poluje i niczego więcej nie potrzebuje — po prostu stoi i świeci, wystarczająca taka, jaka jest.
-          Dla niego to jedyne prawdziwe życie; tygrys, mimo całego głodu, tylko istnieje.</p>
-      </div>
-    </div>
-    <div class="card">
-      <p>Hashimoto znaczy „u stóp mostu” — i to dwie prawdy naraz. Rodzina zachowuje się jak przyczółek mostu: sztywna, nośna,
-        trzymająca pozory. A on mieszka dziś w filarze prawdziwego mostu. Wyrzucony z jednego zimnego przyczółka,
-        odbudował się w drugim i wypełnił go ciepłym światłem. Imię, które go wygnało, jest imieniem, które odkupił.</p>
-    </div>
-  </section>
+  <!-- ================= NOC POD MOSTEM ================= -->
+  <section class="hero" id="top">
+    <svg class="scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#080c17"/><stop offset="1" stop-color="#141c30"/></linearGradient>
+        <pattern id="pillarBricks" width="34" height="16" patternUnits="userSpaceOnUse"><rect width="34" height="16" fill="#1d1513"/><path d="M0 .5 H34 M0 8.5 H34 M17 0 V8 M0 8 V16 M34 8 V16" stroke="#120c0b" stroke-width="1.4"/></pattern>
+      </defs>
+      <rect width="1440" height="900" fill="url(#sky)"/>
+      <g id="stars"></g>
+      <path d="M-20 340 Q480 560 980 340" fill="none" stroke="#0b0f1a" stroke-width="22"/>
+      <rect x="-20" y="292" width="1480" height="48" fill="#0b0f1a"/>
+      <path d="M-20 292 L1460 292" stroke="#161c2b" stroke-width="3"/>
+      <g stroke="#0b0f1a" stroke-width="5">
+        <path d="M40 292 V250 M120 292 V250 M200 292 V250 M280 292 V250 M360 292 V250 M440 292 V250 M520 292 V250 M600 292 V250 M680 292 V250 M760 292 V250 M840 292 V250 M920 292 V250 M1000 292 V250 M1080 292 V250 M1160 292 V250 M1240 292 V250 M1320 292 V250 M1400 292 V250"/>
+        <path d="M0 250 H1440"/>
+      </g>
+      <rect x="980" y="340" width="180" height="440" fill="url(#pillarBricks)"/>
+      <rect x="1044" y="470" width="52" height="62" class="window"/>
+      <path d="M1057 470 V532 M1070 470 V532 M1083 470 V532" stroke="#0b0f1a" stroke-width="4"/>
+      <path id="wire" d="M0 352 Q245 392 490 352 T980 352 T1440 352" fill="none" stroke="#232838" stroke-width="2"/>
+      <g id="heroBulbs"></g>
+      <rect x="0" y="776" width="1440" height="124" fill="#0a1120"/>
+      <g class="water">
+        <path class="water-line" d="M60 800 h90 M260 815 h140 M520 806 h80 M700 830 h120 M940 812 h70 M1210 824 h110 M120 850 h60 M420 860 h110 M820 868 h90 M1100 858 h140"/>
+      </g>
+      <ellipse class="reflection" cx="1070" cy="826" rx="46" ry="6"/>
+      <ellipse class="reflection" cx="1070" cy="846" rx="26" ry="4"/>
+    </svg>
+    <div class="kanji-bg" lang="ja" aria-hidden="true">灯籠</div>
 
-  <section id="karta" aria-labelledby="karta-h">
-    <div class="section-head">
-      <p class="kicker">Część pierwsza</p>
-      <h2 id="karta-h">Karta postaci</h2>
-    </div>
-    <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Futrzasty smok</dd></div>
-      <div><dt>Wiek</dt><dd>19 lat <i>(rok starszy od Chipa)</i></dd></div>
-      <div><dt>Budowa</dt><dd>Digitigradalna</dd></div>
-      <div><dt>Dłonie</dt><dd>Kciuk + dwa palce</dd></div>
-    </dl>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Zieleń ogrzana czerwienią i złotem</h3>
-        <div class="swatches">
-          <div class="swatch"><i style="--c:#5fae3e"></i><b>Liściasta zieleń</b><span>futro, ogon</span></div>
-          <div class="swatch"><i style="--c:#c83a2a"></i><b>Ceglasta czerwień</b><span>kończyny, skrzydła, czupryna</span></div>
-          <div class="swatch"><i style="--c:#f2c230"></i><b>Słoneczna żółć</b><span>kolce, plamki, pasemko</span></div>
-          <div class="swatch"><i style="--c:#3ba7e8"></i><b>Błękit nieba</b><span>oczy</span></div>
+    <div class="wrap">
+      <div>
+        <p class="kicker">Cancrosa Files — 004 <b>· <span lang="en">furred dragon</span><span lang="pl">futrzasty smok</span></b></p>
+        <h1>Toro<small>Hashimoto <span lang="ja">橋本</span></small></h1>
+        <p class="sub"><span lang="en">Furred dragon · he/him · 19</span><span lang="pl">Futrzasty smok · on/jego · 19</span></p>
+        <p class="motto">The family wanted a tiger. He is a lantern.<small lang="pl">Rodzina chciała tygrysa. On jest latarnią.</small></p>
+        <p lang="en">Someone who had everything, lost all of it, and built a warm life back from nothing — staying unshakeably cheerful the whole way through.</p>
+        <p lang="pl">Ktoś, kto miał wszystko, stracił to i z niczego zbudował sobie ciepłe życie — przez cały czas niezmiennie pogodny.</p>
+        <div class="actions">
+          <button type="button" class="btn" id="lightBtn" aria-pressed="false"></button>
+          <a class="btn ghost" href="#home"><span lang="en">Visit his home</span><span lang="pl">Odwiedź jego dom</span></a>
         </div>
-        <p>Smok w futrze zamiast łusek: ciepły i przystępny, smocze cechy wyglądają przyjaźnie, nigdy groźnie.
-          Duże, ruchliwe, kremowożółte uszy obracają się razem z jego nastrojem.</p>
       </div>
-      <div class="card">
-        <h3>Szczegóły</h3>
-        <ul class="details">
-          <li><b>Głowa</b> — potargana czerwona czupryna z jednym żółtym pasemkiem, jasnoniebieskie oczy, piegi na pyszczku i opaska na szyi.</li>
-          <li><b>Kolce</b> — rząd miękkich, żółtych grzebieni od głowy po kark. To nie rogi — w jednej scenie Chip po ciemku bierze je za rogi; to jego błąd.</li>
-          <li><b>Skrzydła</b> — małe, czerwone, w żółte plamki. Ozdobne — o wiele za małe, żeby go unieść.</li>
-          <li><b>Ogon</b> — długi mniej więcej jak on sam, zakończony puszystą kitą, która żyje własnym życiem.</li>
-          <li><b>Dłonie</b> — kciuk i dwa palce w każdej pozie. To cecha, nie stylizacja.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="charakter" aria-labelledby="charakter-h">
-    <div class="section-head">
-      <p class="kicker">Część druga</p>
-      <h2 id="charakter-h">Jak to wszystko niesie</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kicker">Panta rei</p>
-        <p>Niezmiennie pogodny, cokolwiek się dzieje. Wszystko płynie; co ma być, to będzie; psy szczekają, karawana jedzie dalej.
-          Idzie przez życie, niczego nie ściskając. Wplata cytaty z filozofów w zwykłe rozmowy — pozostałość po drogiej edukacji,
-          noszona lekko, raczej żeby rozbroić chwilę niż zaimponować.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Szkoła ulicy</p>
-        <p>Budzi się wcześnie („trudno spać, kiedy nie wiesz, czy noc zostanie ciepła”), sprząta po sobie w cudzym miejscu,
-          a gorący prysznic, kanapa czy śniadanie to dla niego prawdziwy luksus. Je wszystko. Zaradny jak Chip — i nigdy nie zszedł na złą drogę.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Wydziedziczenie</p>
-        <p>Pochodzi z zamożnej rodziny, która postawiła na niego wszystko: książki, łacina, filozofia, „jak pięknie mówić”.
-          Potem odcięła go całkowicie — z powodu temperamentu. Oni żądali tylko najwyższych wyników; on był zadowolony z każdego,
-          bo z każdego coś wynosił. Potem dwa, trzy lata na ulicy.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Żyć, a nie istnieć</p>
-        <p>Drogę narzuconą przez rodzinę widzi jako zwykłe istnienie — sztywne, wiecznie głodne kolejnego wyniku.
-          Wybrał życie: latarnię, która naprawdę świeci. Woli żyć naprawdę pod mostem, niż istnieć w rodzinnej wieży.</p>
-      </div>
-    </div>
-    <blockquote class="motto" style="margin-top:1.5rem">
-      <q>I had a beautiful house a few years ago, and all its wisdom with it — but what good is it once the house grows colder than a hole under a bridge?</q>
-      <small>Kilka lat temu miałem piękny dom, a w nim całą jego mądrość — ale na co ona, skoro dom zrobił się zimniejszy niż dziura pod mostem?</small>
-    </blockquote>
-  </section>
-
-  <section id="dom" aria-labelledby="dom-h">
-    <div class="section-head">
-      <p class="kicker">Ironmill Wharf, nr 1</p>
-      <h2 id="dom-h">Światło zbudowane ze złomu</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kicker">Sterownia</p>
-        <p>Dawna sterownia mostu zwodzonego, w filarze: cegła, żeliwne belki i martwa maszyneria — pulpit z dźwigniami, koło zamachowe,
-          zębatki — wszystko nietknięte, bo dba o mienie, które nie jest jego. Wysokie okno z kratą wychodzi na wodę.
-          Wchodzi się przez ukryte drzwi na kod.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Urządzone z ulicy, zrobione legalnie</p>
-        <p>Fotel pod narzutą, lampa z frędzlami, lampki na belce, dwa nachodzące na siebie dywany, półki ze skrzynek.
-          Vince (dodatkowe kursy) i Ragnar (przyjacielskie długi) złożyli się, żeby mógł kupić coś własnego,
-          a prawnik Calloway zrobił ze sterowni legalny adres. Toro jest dziś jej prawowitym właścicielem.</p>
+      <div class="stage">
+        <img class="toro" src="img/toro-cut.webp" width="621" height="787" alt="Toro" data-en-alt="Toro: green furred dragon with red tousled hair, yellow spikes, small red wings and a long tail" data-pl-alt="Toro: zielony futrzasty smok z czerwoną czupryną, żółtymi kolcami, małymi czerwonymi skrzydłami i długim ogonem">
+        <button type="button" class="lantern-btn" id="lantern" data-en-label="Light the lantern" data-pl-label="Zapal latarnię" aria-label="Light the lantern">
+          <svg viewBox="0 0 120 210" aria-hidden="true">
+            <defs><radialGradient id="halo"><stop offset="0" stop-color="#ffc864" stop-opacity=".55"/><stop offset="1" stop-color="#ffc864" stop-opacity="0"/></radialGradient></defs>
+            <circle class="halo" cx="60" cy="88" r="95"/>
+            <path class="stone" d="M60 4 Q67 13 60 22 Q53 13 60 4Z"/>
+            <path class="stone" d="M10 46 Q60 14 110 46 L100 54 Q60 34 20 54 Z"/>
+            <rect class="stone-d" x="26" y="52" width="68" height="8"/>
+            <rect class="stone" x="34" y="60" width="52" height="52"/>
+            <rect class="window" x="46" y="70" width="28" height="32"/>
+            <ellipse class="flame" cx="60" cy="92" rx="5" ry="9"/>
+            <rect class="stone-d" x="28" y="112" width="64" height="10"/>
+            <rect class="stone" x="48" y="122" width="24" height="60"/>
+            <path class="stone-d" d="M30 182 H90 L98 198 H22 Z"/>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <section id="bliscy" aria-labelledby="bliscy-h">
-    <div class="section-head">
-      <p class="kicker">Część trzecia</p>
-      <h2 id="bliscy-h">Ludzie wokół niego</h2>
+  <!-- ================= IMIĘ ================= -->
+  <section id="name">
+    <div class="wrap">
+      <p class="kicker" data-reveal>01 <b>· <span lang="en">The name</span><span lang="pl">Imię</span> · <span lang="ja">橋本</span></b></p>
+      <h2 data-reveal><span lang="en">A tiger wanted,<br><em>a lantern found.</em></span><span lang="pl">Chcieli tygrysa,<br><em>znaleźli latarnię.</em></span></h2>
+      <div class="name-grid">
+        <div class="name-card" id="nameCard" data-mode="toro" data-reveal="2">
+          <span class="glyph" id="glyph" lang="ja">灯籠</span>
+          <span class="romaji" id="romaji">T Ō R Ō</span>
+        </div>
+        <div class="name-text" data-reveal="3">
+          <div class="switch" role="group" aria-label="Tora / Tōrō">
+            <button type="button" data-name="tora" aria-pressed="false">Tora · 虎</button>
+            <button type="button" data-name="toro" aria-pressed="true">Tōrō · 灯籠</button>
+          </div>
+          <div data-for="tora" hidden>
+            <h3><span lang="en">The tiger</span><span lang="pl">Tygrys</span></h3>
+            <p class="gloss"><span lang="en">虎 · tora — tiger</span><span lang="pl">虎 · tora — tygrys</span></p>
+            <p lang="en">Predatory and never sated. Tora sits one long vowel away from tōrō — and the tiger is what his family heard in the name and demanded he become: something that hunts the next result and treats “enough” as failure.</p>
+            <p lang="pl">Drapieżny i nigdy nienasycony. Tora jest o jedną długą samogłoskę od tōrō — i to tygrysa usłyszała w tym imieniu rodzina, i tego od niego żądała: czegoś, co poluje na kolejny wynik i traktuje „wystarczy” jak porażkę.</p>
+          </div>
+          <div data-for="toro">
+            <h3><span lang="en">The lantern</span><span lang="pl">Latarnia</span></h3>
+            <p class="gloss"><span lang="en">灯籠 · tōrō — stone lantern</span><span lang="pl">灯籠 · tōrō — kamienna latarnia</span></p>
+            <p lang="en">Calm, light, tradition. It hunts nothing and needs nothing more; it simply stands and shines, enough as it is. To him this is the only real living — the tiger, for all its hunger, is merely existing.</p>
+            <p lang="pl">Spokój, światło, tradycja. Na nic nie poluje i niczego więcej nie potrzebuje; po prostu stoi i świeci, wystarczająca taka, jaka jest. Dla niego to jedyne prawdziwe życie — tygrys, mimo całego głodu, tylko istnieje.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bridge-cards">
+        <article class="bcard cold" data-reveal>
+          <span class="k" lang="ja">橋</span>
+          <h3><span lang="en">His family</span><span lang="pl">Jego rodzina</span></h3>
+          <p lang="en">Hashimoto means “the foot of the bridge”. His family behaves like a bridge footing: rigid, load-bearing, keeping up appearances. They bet everything on him — then cut him off completely, over temperament.</p>
+          <p lang="pl">Hashimoto znaczy „u stóp mostu”. Jego rodzina zachowuje się jak przyczółek mostu: sztywna, nośna, trzymająca pozory. Postawiła na niego wszystko — a potem odcięła go całkowicie, z powodu temperamentu.</p>
+        </article>
+        <article class="bcard warm" data-reveal="2">
+          <span class="k" lang="ja">本</span>
+          <h3><span lang="en">His home</span><span lang="pl">Jego dom</span></h3>
+          <p lang="en">He now lives inside the support of an actual bridge. Cast out of one cold footing, he rebuilt inside another and filled it with warm light.</p>
+          <p lang="pl">Dziś mieszka w filarze prawdziwego mostu. Wyrzucony z jednego zimnego przyczółka, odbudował się w drugim i wypełnił go ciepłym światłem.</p>
+        </article>
+      </div>
+      <p class="redeemed" data-reveal><span lang="en">The name that exiled him is the name he redeemed.</span><span lang="pl">Imię, które go wygnało, jest imieniem, które odkupił.</span></p>
     </div>
-    <div class="grid-2">
-      <article class="card person">
-        <p class="kicker">Bliski przyjaciel</p>
-        <h3><a href="chip.html">Chip</a></h3>
-        <p class="meta">kobold · podopieczny Vince'a · rok młodszy</p>
-        <p>Ich rytm jest celowo własny — łagodny, ciekawy siebie nawzajem, niespieszny. Powracający moment:
-          Toro sięga ogonem i puszystą kitą zamyka Chipowi pyszczek. Przyjaciele Chipa — Otto, Reem, Sorrel i Odon — wszyscy już go znają.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Znaleźli go · przyjęli go</p>
-        <h3><a href="vince.html">Vince</a> &amp; <a href="ragnar.html">Ragnar</a></h3>
-        <p class="meta">wilk grzywiasty i bulterier</p>
-        <p>Poznali Toro na końcu małej zagadki: Vince tropił znikanie Chipa, Ragnar wyważył drzwi pewien, że to melina —
-          i znaleźli dwójkę obsypaną cukrem pudrem z pączków. Prysznic, śniadanie, przeprosiny od Vince'a i otwarte drzwi:
-          „tu jest dom; znajdzie się miejsce na twoje aforyzmy”.</p>
-      </article>
+  </section>
+
+  <!-- ================= NOTATKI Z RYSUNKU ================= -->
+  <section id="notes">
+    <div class="wrap">
+      <p class="kicker" data-reveal>02 <b>· <span lang="en">Field notes</span><span lang="pl">Notatki z rysunku</span></b></p>
+      <h2 data-reveal><span lang="en">Green, warmed by<br><em>red and gold.</em></span><span lang="pl">Zieleń ogrzana<br><em>czerwienią i złotem.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">A furred dragon — a reptilian frame carried under a soft coat, on a digitigrade stance. Warm and approachable: the draconic features read as friendly, never threatening.</p>
+      <p class="intro" data-reveal="2" lang="pl">Futrzasty smok — gadzia rama pod miękkim futrem, na digitigradalnej postawie. Ciepły i przystępny: smocze cechy wyglądają przyjaźnie, nigdy groźnie.</p>
+
+      <div class="notes">
+        <div class="paper" data-reveal>
+          <div class="shot" id="shot">
+            <img src="img/toro-ref.webp" width="1000" height="1000" alt="Toro's reference sheet" data-en-alt="Toro's reference sheet: front view and back view with wings, spikes and tail" data-pl-alt="Ref sheet Toro: widok z przodu i z tyłu, ze skrzydłami, kolcami i ogonem" loading="lazy">
+          </div>
+        </div>
+        <aside class="note-panel" aria-live="polite">
+          <h3 id="noteTitle"></h3>
+          <p id="noteText"></p>
+          <p class="small" style="margin-top:1rem"><span lang="en">Reference sheet · art by Ritsu (@ritsu_fur1)</span><span lang="pl">Ref sheet · art: Ritsu (@ritsu_fur1)</span></p>
+        </aside>
+      </div>
+
+      <div class="lanterns" data-reveal>
+        <button type="button" class="plantern" data-hex="#5AA63F" style="--c:#5aa63f"><i></i><b lang="en">Leaf green</b><b lang="pl">Zieleń liścia</b><span lang="en">body · base coat</span><span lang="pl">ciało · futro</span></button>
+        <button type="button" class="plantern" data-hex="#CF4A30" style="--c:#cf4a30"><i></i><b lang="en">Brick red</b><b lang="pl">Ceglana czerwień</b><span lang="en">limbs · wings · hair</span><span lang="pl">kończyny · skrzydła · włosy</span></button>
+        <button type="button" class="plantern" data-hex="#E6B23A" style="--c:#e6b23a"><i></i><b lang="en">Sun yellow</b><b lang="pl">Słoneczna żółć</b><span lang="en">spikes · spots</span><span lang="pl">kolce · plamki</span></button>
+        <button type="button" class="plantern" data-hex="#F0E2B8" style="--c:#f0e2b8"><i></i><b lang="en">Cream-yellow</b><b lang="pl">Kremowa żółć</b><span lang="en">ears · belly</span><span lang="pl">uszy · brzuch</span></button>
+        <button type="button" class="plantern" data-hex="#2F7FD6" style="--c:#2f7fd6"><i></i><b lang="en">Sky blue</b><b lang="pl">Błękit nieba</b><span lang="en">eyes</span><span lang="pl">oczy</span></button>
+      </div>
+      <p class="small" style="text-align:center;margin-top:.8rem"><span lang="en">Tap a lantern to copy its colour</span><span lang="pl">Kliknij lampion, żeby skopiować kolor</span></p>
+    </div>
+  </section>
+
+  <!-- ================= STEROWNIA ================= -->
+  <section id="home">
+    <div class="wrap">
+      <p class="kicker" data-reveal>03 <b>· Ironmill Wharf, No. 1</b></p>
+      <h2 data-reveal><span lang="en">Light built<br><em>from scrap.</em></span><span lang="pl">Światło zbudowane<br><em>ze złomu.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">The old control room of a drawbridge, set inside the bridge's support column: brick, cast-iron beams and the dead machinery of the bridge, all kept intact — because he looks after property that isn't his. A home made out of nothing by someone who had no home.</p>
+      <p class="intro" data-reveal="2" lang="pl">Dawna sterownia mostu zwodzonego, w filarze: cegła, żeliwne belki i martwa maszyneria mostu, wszystko nietknięte — bo dba o mienie, które nie jest jego. Dom zrobiony z niczego przez kogoś, kto nie miał domu.</p>
+
+      <div class="room-wrap" data-reveal="3">
+        <svg class="room" id="room" viewBox="0 0 800 460" role="group" aria-label="The control room">
+          <defs>
+            <pattern id="bricks" width="40" height="20" patternUnits="userSpaceOnUse"><rect width="40" height="20" fill="#4a241a"/><path d="M0 .5 H40 M0 10.5 H40 M20 0 V10 M.5 10 V20" stroke="#2a140e" stroke-width="1.5"/></pattern>
+            <pattern id="throw" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="14" height="14" fill="#b0402c"/><rect width="5" height="14" fill="#e6b23a"/></pattern>
+            <linearGradient id="nightwater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2b4a"/><stop offset="1" stop-color="#0b1324"/></linearGradient>
+            <radialGradient id="cone" cx="50%" cy="0%" r="100%"><stop offset="0" stop-color="#ffc864" stop-opacity=".6"/><stop offset="1" stop-color="#ffc864" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="800" height="460" fill="url(#bricks)"/>
+          <rect y="392" width="800" height="68" fill="#2e2017"/>
+          <path d="M0 410 H800 M0 432 H800 M120 392 V410 M300 410 V432 M520 392 V410 M680 410 V432 M220 432 V460 M600 432 V460" stroke="#22170f" stroke-width="2"/>
+          <rect y="26" width="800" height="26" fill="#26292f"/>
+          <g fill="#3d4149"><circle cx="20" cy="39" r="2.5"/><circle cx="100" cy="39" r="2.5"/><circle cx="180" cy="39" r="2.5"/><circle cx="260" cy="39" r="2.5"/><circle cx="340" cy="39" r="2.5"/><circle cx="420" cy="39" r="2.5"/><circle cx="500" cy="39" r="2.5"/><circle cx="580" cy="39" r="2.5"/><circle cx="660" cy="39" r="2.5"/><circle cx="740" cy="39" r="2.5"/></g>
+
+          <!-- dywany -->
+          <g class="obj" data-obj="rugs" tabindex="0" role="button">
+            <ellipse cx="560" cy="432" rx="150" ry="20" fill="#8a3b2a"/>
+            <ellipse cx="560" cy="432" rx="128" ry="14" fill="none" stroke="#e6b23a" stroke-width="2" stroke-dasharray="8 6"/>
+            <ellipse cx="670" cy="442" rx="105" ry="14" fill="#2f5a7a" opacity=".92"/>
+            <rect class="hl" x="404" y="406" width="372" height="54" rx="10"/>
+          </g>
+
+          <!-- lampki -->
+          <g class="obj" data-obj="lights" tabindex="0" role="button" id="lightsObj">
+            <path id="roomWire" d="M10 58 Q120 86 230 58 Q340 86 450 58 Q560 86 670 58 Q735 76 790 60" fill="none" stroke="#151515" stroke-width="1.6"/>
+            <g id="roomBulbs"></g>
+            <rect class="hl" x="4" y="50" width="792" height="40" rx="8"/>
+          </g>
+
+          <!-- koło zamachowe i zębatki -->
+          <g class="obj" data-obj="flywheel" tabindex="0" role="button">
+            <g class="spin">
+              <circle cx="120" cy="150" r="56" fill="none" stroke="#2a2d33" stroke-width="10"/>
+              <path d="M120 94 V206 M64 150 H176 M80 110 L160 190 M160 110 L80 190" stroke="#2a2d33" stroke-width="6"/>
+              <circle cx="120" cy="150" r="11" fill="#3a3e45"/>
+            </g>
+            <circle class="spin rev" cx="204" cy="110" r="22" fill="#2f3238" stroke="#3d4149" stroke-width="9" stroke-dasharray="6 5"/>
+            <circle class="spin" cx="214" cy="166" r="15" fill="#2f3238" stroke="#3d4149" stroke-width="8" stroke-dasharray="5 4"/>
+            <rect class="hl" x="56" y="80" width="190" height="136" rx="10"/>
+          </g>
+
+          <!-- pulpit z dźwigniami -->
+          <g class="obj" data-obj="levers" tabindex="0" role="button">
+            <rect x="30" y="262" width="200" height="104" fill="#2f3238" stroke="#1b1d21" stroke-width="3"/>
+            <rect x="30" y="250" width="200" height="16" fill="#3a3e45" stroke="#1b1d21" stroke-width="3"/>
+            <rect x="40" y="366" width="12" height="26" fill="#1b1d21"/><rect x="208" y="366" width="12" height="26" fill="#1b1d21"/>
+            <g class="lever"><path d="M64 250 V208" stroke="#1b1d21" stroke-width="5"/><circle cx="64" cy="206" r="7" fill="#b0402c"/></g>
+            <g class="lever"><path d="M104 250 V208" stroke="#1b1d21" stroke-width="5"/><circle cx="104" cy="206" r="7" fill="#b0402c"/></g>
+            <g class="lever"><path d="M144 250 V208" stroke="#1b1d21" stroke-width="5"/><circle cx="144" cy="206" r="7" fill="#e6b23a"/></g>
+            <g class="lever"><path d="M184 250 V208" stroke="#1b1d21" stroke-width="5"/><circle cx="184" cy="206" r="7" fill="#b0402c"/></g>
+            <circle cx="70" cy="300" r="10" fill="#1b1d21" stroke="#555a62" stroke-width="2"/><circle cx="110" cy="300" r="10" fill="#1b1d21" stroke="#555a62" stroke-width="2"/>
+            <rect x="140" y="288" width="70" height="26" fill="#1b1d21" stroke="#555a62" stroke-width="2"/>
+            <rect class="hl" x="22" y="194" width="216" height="204" rx="10"/>
+          </g>
+
+          <!-- drzwi na kod -->
+          <g class="obj" data-obj="door" tabindex="0" role="button">
+            <rect x="250" y="170" width="66" height="222" fill="none" stroke="#2a140e" stroke-width="3"/>
+            <rect x="300" y="268" width="10" height="16" fill="#26292f" stroke="#555a62" stroke-width="1.2"/>
+            <circle cx="305" cy="273" r="1.4" fill="#5aa63f"/>
+            <rect class="hl" x="244" y="164" width="78" height="234" rx="8"/>
+          </g>
+
+          <!-- okno -->
+          <g class="obj" data-obj="window" tabindex="0" role="button">
+            <rect x="334" y="86" width="148" height="104" fill="url(#nightwater)" stroke="#1c1e22" stroke-width="6"/>
+            <circle cx="454" cy="108" r="9" fill="#e9e2c6"/>
+            <path class="shimmer" d="M346 162 h30 M394 172 h40 M350 182 h24 M420 154 h36"/>
+            <path d="M364 86 V190 M394 86 V190 M424 86 V190 M454 86 V190" stroke="#1c1e22" stroke-width="5"/>
+            <rect class="hl" x="326" y="78" width="164" height="120" rx="8"/>
+          </g>
+
+          <!-- kaloryfer -->
+          <g class="obj" data-obj="radiator" tabindex="0" role="button">
+            <path class="steam" d="M372 312 q-6 -10 0 -20 q6 -10 0 -20 M404 312 q-6 -10 0 -20 q6 -10 0 -20 M436 312 q-6 -10 0 -20 q6 -10 0 -20"/>
+            <rect x="344" y="318" width="120" height="56" rx="4" fill="#5a5e66"/>
+            <path d="M358 322 V370 M374 322 V370 M390 322 V370 M406 322 V370 M422 322 V370 M438 322 V370 M454 322 V370" stroke="#43474e" stroke-width="5"/>
+            <rect x="348" y="374" width="8" height="18" fill="#43474e"/><rect x="452" y="374" width="8" height="18" fill="#43474e"/>
+            <rect class="hl" x="336" y="264" width="136" height="132" rx="8"/>
+          </g>
+
+          <!-- fotel -->
+          <g class="obj" data-obj="armchair" tabindex="0" role="button">
+            <rect x="470" y="268" width="120" height="72" rx="18" fill="#6a3a2a"/>
+            <rect x="460" y="320" width="140" height="52" rx="12" fill="#7a4430"/>
+            <rect x="452" y="302" width="22" height="70" rx="9" fill="#6a3a2a"/><rect x="586" y="302" width="22" height="70" rx="9" fill="#6a3a2a"/>
+            <path d="M494 270 L584 272 L596 344 L516 366 Z" fill="url(#throw)" opacity=".95"/>
+            <rect x="468" y="372" width="8" height="20" fill="#3a2116"/><rect x="584" y="372" width="8" height="20" fill="#3a2116"/>
+            <rect class="hl" x="444" y="260" width="172" height="136" rx="10"/>
+          </g>
+
+          <!-- lampa z frędzlami -->
+          <g class="obj" data-obj="lamp" tabindex="0" role="button" id="lampObj">
+            <path class="cone" d="M645 236 L586 392 H706 Z"/>
+            <path d="M645 236 V390" stroke="#1d1d1f" stroke-width="4"/>
+            <ellipse cx="645" cy="391" rx="18" ry="4" fill="#1d1d1f"/>
+            <path class="shade" d="M622 200 H668 L680 236 H610 Z" stroke="#3a2416" stroke-width="2"/>
+            <path d="M614 238 v8 M624 238 v10 M634 238 v8 M644 238 v10 M654 238 v8 M664 238 v10 M674 238 v8" stroke="#e6b23a" stroke-width="2"/>
+            <rect class="hl" x="602" y="192" width="86" height="204" rx="8"/>
+          </g>
+
+          <!-- skrzynki z książkami -->
+          <g class="obj" data-obj="crates" tabindex="0" role="button">
+            <rect x="694" y="330" width="96" height="62" fill="#9a6b3e" stroke="#5e3f22" stroke-width="3"/>
+            <rect x="704" y="268" width="80" height="62" fill="#a77744" stroke="#5e3f22" stroke-width="3"/>
+            <rect x="712" y="214" width="64" height="54" fill="#9a6b3e" stroke="#5e3f22" stroke-width="3"/>
+            <g><rect x="704" y="344" width="10" height="44" fill="#2f5a7a"/><rect x="716" y="350" width="8" height="38" fill="#cf4a30"/><rect x="726" y="346" width="12" height="42" fill="#5aa63f"/><rect x="740" y="352" width="9" height="36" fill="#e6b23a"/><rect x="752" y="344" width="11" height="44" fill="#6a3a2a"/></g>
+            <g><rect x="714" y="282" width="9" height="44" fill="#cf4a30"/><rect x="725" y="288" width="12" height="38" fill="#efe4cf"/><rect x="739" y="284" width="8" height="42" fill="#2f5a7a"/><path d="M752 326 L770 296 L776 299 L758 326 Z" fill="#5aa63f"/></g>
+            <g><rect x="722" y="226" width="10" height="38" fill="#e6b23a"/><rect x="734" y="232" width="12" height="32" fill="#6a3a2a"/><rect x="748" y="228" width="9" height="36" fill="#cf4a30"/></g>
+            <rect class="hl" x="686" y="206" width="112" height="190" rx="8"/>
+          </g>
+
+          <!-- materac -->
+          <g class="obj" data-obj="mattress" tabindex="0" role="button">
+            <rect x="244" y="398" width="176" height="28" rx="6" fill="#d9cbb0"/>
+            <rect x="250" y="390" width="44" height="16" rx="7" fill="#efe4cf"/>
+            <path d="M300 398 H420 V426 H290 Z" fill="#5aa63f"/>
+            <path d="M310 406 H410 M310 416 H410" stroke="#4a8a33" stroke-width="2"/>
+            <rect class="hl" x="236" y="382" width="192" height="52" rx="8"/>
+          </g>
+        </svg>
+        <div class="room-caption" aria-live="polite"><b id="objName"></b><p id="objText"></p></div>
+      </div>
+
+      <div class="deed" id="deed" data-reveal>
+        <div>
+          <h3>Ironmill Wharf, No. 1 — <span lang="en">owner: Toro Hashimoto</span><span lang="pl">właściciel: Toro Hashimoto</span></h3>
+          <p lang="en">Vince took extra taxi shifts, Ragnar called in friendly debts, and the lawyer Calloway made the control room a legal address — on the strength of long residence and his care for the machinery.</p>
+          <p lang="pl">Vince brał dodatkowe kursy, Ragnar ściągnął przyjacielskie długi, a prawnik Calloway zrobił ze sterowni legalny adres — na podstawie długiego zamieszkania i troski o maszynerię.</p>
+        </div>
+        <button type="button" class="btn" id="stampBtn"><span lang="en">Stamp it</span><span lang="pl">Przybij pieczątkę</span></button>
+        <span class="stamp" aria-hidden="true"><span lang="en">Legal address</span><span lang="pl">Adres legalny</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHARAKTER ================= -->
+  <section id="carry">
+    <div class="wrap">
+      <p class="kicker" data-reveal>04 <b>· <span lang="en">How he carries it</span><span lang="pl">Jak to wszystko niesie</span></b></p>
+      <h2 data-reveal><span lang="en">Everything <em>flows.</em></span><span lang="pl">Wszystko <em>płynie.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Unfailingly bright, whatever is happening. Panta rei — what is meant to be, will be; the dogs bark and the caravan moves on. He sprinkles philosophers' lines into ordinary conversation — a habit left over from an expensive education, worn lightly, usually to defuse a moment rather than to impress.</p>
+      <p class="intro" data-reveal="2" lang="pl">Niezmiennie pogodny, cokolwiek się dzieje. Panta rei — co ma być, to będzie; psy szczekają, karawana jedzie dalej. Wplata cytaty z filozofów w zwykłe rozmowy — nawyk po drogiej edukacji, noszony lekko, zwykle po to, żeby rozbroić chwilę, a nie zaimponować.</p>
+
+      <div class="aphorism" data-reveal="3">
+        <blockquote id="aph" aria-live="polite"></blockquote>
+        <cite id="aphBy"></cite>
+        <button type="button" class="btn" id="aphBtn"><span lang="en">Another one</span><span lang="pl">Jeszcze jeden</span></button>
+        <span class="small" style="margin-left:.8rem"><span lang="en">“there'll be room for your aphorisms”</span><span lang="pl">„znajdzie się miejsce na twoje aforyzmy”</span></span>
+      </div>
+
+      <div class="habits">
+        <div class="habit" data-reveal>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 28 H34" stroke="#ffc864" stroke-width="2.4" stroke-linecap="round"/><path d="M11 28 A9 9 0 0 1 29 28" fill="#ffc864"/><path d="M20 8 V13 M8 15 L11 18 M32 15 L29 18" stroke="#ffc864" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <p lang="en">Wakes early — “it's hard to sleep when you're not sure the night will stay warm.”</p>
+          <p lang="pl">Budzi się wcześnie — „trudno spać, kiedy nie wiesz, czy noc zostanie ciepła”.</p>
+        </div>
+        <div class="habit" data-reveal="2">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M26 4 L18 24" stroke="#c99a5a" stroke-width="3" stroke-linecap="round"/><path d="M12 22 L24 26 L20 36 L6 32 Z" fill="#e6b23a"/><path d="M10 31 L12 34 M14 32 L15 35 M18 33 L18 36" stroke="#8a6a2a" stroke-width="1.6"/></svg>
+          <p lang="en">Tidies up after himself in someone else's space.</p>
+          <p lang="pl">Sprząta po sobie w cudzym miejscu.</p>
+        </div>
+        <div class="habit" data-reveal="3">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 6 H22 Q28 6 28 12" fill="none" stroke="#a9b3c4" stroke-width="2.6" stroke-linecap="round"/><path d="M22 12 H34 L32 16 H24 Z" fill="#a9b3c4"/><path d="M25 20 V24 M29 20 V25 M33 20 V24 M27 28 V31 M31 28 V32" stroke="#6fb2ff" stroke-width="2" stroke-linecap="round"/></svg>
+          <p lang="en">A hot shower, a couch, breakfast — genuine luxuries.</p>
+          <p lang="pl">Gorący prysznic, kanapa, śniadanie — prawdziwy luksus.</p>
+        </div>
+        <div class="habit" data-reveal="4">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 20 H35 Q34 34 20 34 Q6 34 5 20 Z" fill="#cf4a30"/><path d="M14 8 q-3 4 0 8 M20 6 q-3 5 0 10 M26 8 q-3 4 0 8" fill="none" stroke="#ebe4d6" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg>
+          <p lang="en">Eats anything — “the upside of a life where you ate whatever turned up.”</p>
+          <p lang="pl">Je wszystko — „plus życia, w którym jadłeś, co się trafiło”.</p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="box" data-reveal>
+          <h3><span lang="en">Disinherited</span><span lang="pl">Wydziedziczony</span></h3>
+          <p lang="en">A wealthy family, high up, who bet everything on him: books, Latin, philosophy, “how to speak beautifully”. They demanded only the highest results; he was content with any result, because he always took something from it. To a family that measures worth by what you hold up, a son who only wants to shine is an embarrassment. Two to three years on the street followed. There were thefts — mostly food and drink. He never went bad.</p>
+          <p lang="pl">Zamożna rodzina, wysoko, która postawiła na niego wszystko: książki, łacina, filozofia, „jak pięknie mówić”. Żądali tylko najwyższych wyników; on był zadowolony z każdego, bo z każdego coś wynosił. Dla rodziny, która mierzy wartość tym, co trzymasz w górze, syn, który chce tylko świecić, jest wstydem. Potem dwa, trzy lata na ulicy. Zdarzały się kradzieże — głównie jedzenie i picie. Nigdy nie zszedł na złą drogę.</p>
+        </div>
+        <div class="box" data-reveal="2">
+          <h3><span lang="en">Living, not existing</span><span lang="pl">Żyć, a nie istnieć</span></h3>
+          <p lang="en">He sees the path his family forced on him as mere existence — rigid, forever hungry for the next result, with the life drained out of it. He chose to actually live instead: the lantern that truly shines. He would rather live for real under a bridge than exist in the family's tower.</p>
+          <p lang="pl">Drogę narzuconą przez rodzinę widzi jako zwykłe istnienie — sztywne, wiecznie głodne kolejnego wyniku, z wyssanym życiem. Wybrał prawdziwe życie: latarnię, która naprawdę świeci. Woli żyć naprawdę pod mostem, niż istnieć w rodzinnej wieży.</p>
+        </div>
+      </div>
+
+      <blockquote class="house" data-reveal>I had a beautiful house a few years ago, and all its wisdom with it — but what good is it once the house grows colder than a hole under a bridge?
+        <small lang="pl">Kilka lat temu miałem piękny dom, a w nim całą jego mądrość — ale na co ona, skoro dom zrobił się zimniejszy niż dziura pod mostem?</small></blockquote>
+    </div>
+  </section>
+
+  <!-- ================= LUDZIE ================= -->
+  <section id="people">
+    <div class="wrap">
+      <p class="kicker" data-reveal>05 <b>· <span lang="en">The people around him</span><span lang="pl">Ludzie wokół niego</span></b></p>
+      <h2 data-reveal><span lang="en">A door <em>held open.</em></span><span lang="pl">Przytrzymane <em>drzwi.</em></span></h2>
+      <div class="people">
+        <article class="person" style="--c:#4f8ae8" data-reveal>
+          <div class="faces"><img src="img/chip-thumb.webp" alt="" loading="lazy"></div>
+          <span class="role"><span lang="en">Close friend · a year younger</span><span lang="pl">Bliski przyjaciel · rok młodszy</span></span>
+          <h3><a href="chip.html">Chip / Chipper</a></h3>
+          <p lang="en">Their register is deliberately its own thing — gentle, curious about each other, unhurried. Chip's friends — Otto the bear, Reem the gazelle, Sorrel the fox and Odon the moose — have all met him. Recurring small moment: Toro reaching over to gag Chip's muzzle with his tail tuft.</p>
+          <p lang="pl">Ich rytm jest celowo własny — łagodny, ciekawy siebie nawzajem, niespieszny. Przyjaciele Chipa — niedźwiedź Otto, gazela Reem, lisica Sorrel i łoś Odon — wszyscy już go poznali. Powracający moment: Toro sięga ogonem i puszystą kitą zamyka Chipowi pyszczek.</p>
+        </article>
+        <article class="person" style="--c:#ff2e88" data-reveal="2">
+          <div class="faces"><img src="img/vince-thumb.webp" alt="" loading="lazy" style="border-color:#e3a43f"><img src="img/ragnar-thumb.webp" alt="" loading="lazy"></div>
+          <span class="role"><span lang="en">Found him · took him in</span><span lang="pl">Znaleźli go · przygarnęli</span></span>
+          <h3><a href="vince.html">Vince</a> &amp; <a href="ragnar.html">Ragnar</a></h3>
+          <p lang="en">They met Toro at the end of a small mystery: Vince tracked Chip's disappearances like a detective; Ragnar, sure it was a drug den, broke down the door — and found the two of them dusted with doughnut sugar. A shower, breakfast, an apology from Vince, and a door held open: “there's a home here; there'll be room for your aphorisms.”</p>
+          <p lang="pl">Poznali Toro na końcu małej zagadki: Vince śledził znikanie Chipa jak detektyw; Ragnar, pewien, że to melina, wyważył drzwi — i znaleźli dwójkę obsypaną cukrem pudrem z pączków. Prysznic, śniadanie, przeprosiny od Vince'a i przytrzymane drzwi: „tu jest dom; znajdzie się miejsce na twoje aforyzmy”.</p>
+        </article>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Ilustracje należą do ich autorów.</span>
+  <div class="wrap foot">
+    <div>
+      <p lang="en">Fully digitigrade world — anthropomorphic species throughout, no human baseline. Appearance is locked from the owned reference sheet; character and backstory are established canon. Reference sheet art by Ritsu (@ritsu_fur1).</p>
+      <p lang="pl">Świat w pełni digitigradalny — wszędzie antropomorficzne gatunki, bez ludzi. Wygląd jest ustalony na podstawie posiadanego ref sheetu; charakter i historia to kanon. Ref sheet: Ritsu (@ritsu_fur1).</p>
+    </div>
+    <div class="others">
+      <a href="vince.html">Vince</a><a href="chip.html">Chip</a><a href="ragnar.html">Ragnar</a><a href="myr.html">Myr</a><a href="zarin.html">Zarin</a><a href="index.html">The One Above Them</a>
+    </div>
+  </div>
 </footer>
 
+<script src="char.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  const { t } = CHAR;
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  // ---------- Gwiazdy i lampki pod mostem ----------
+  const stars = document.getElementById("stars");
+  for (let i = 0; i < 70; i++) {
+    const c = document.createElementNS(SVGNS, "circle");
+    c.setAttribute("class", "star");
+    c.setAttribute("cx", rand(0, 1440).toFixed(0));
+    c.setAttribute("cy", rand(0, 240).toFixed(0));
+    c.setAttribute("r", rand(.6, 1.8).toFixed(1));
+    c.style.animationDelay = rand(-3, 0).toFixed(2) + "s";
+    stars.append(c);
+  }
+  function stringBulbs(pathId, groupId, gap, cls, r) {
+    const path = document.getElementById(pathId);
+    const g = document.getElementById(groupId);
+    const len = path.getTotalLength();
+    for (let d = gap / 2; d < len; d += gap) {
+      const p = path.getPointAtLength(d);
+      const c = document.createElementNS(SVGNS, "circle");
+      c.setAttribute("class", cls);
+      c.setAttribute("cx", p.x.toFixed(1));
+      c.setAttribute("cy", (p.y + r + 1).toFixed(1));
+      c.setAttribute("r", r);
+      c.style.animationDelay = rand(-2, 0).toFixed(2) + "s";
+      g.append(c);
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+  }
+  stringBulbs("wire", "heroBulbs", 48, "bulb", 4);
+  stringBulbs("roomWire", "roomBulbs", 28, "room-bulb", 3.2);
+
+  // ---------- Latarnia: zapala całą stronę ----------
+  const root = document.documentElement;
+  const lightBtn = document.getElementById("lightBtn");
+  const lantern = document.getElementById("lantern");
+  function renderLight() {
+    const lit = root.classList.contains("lit");
+    lightBtn.textContent = lit ? t({ en: "Let it rest", pl: "Zgaś latarnię" }) : t({ en: "Light the lantern", pl: "Zapal latarnię" });
+    lightBtn.setAttribute("aria-pressed", String(lit));
+    lantern.setAttribute("aria-pressed", String(lit));
+  }
+  function toggleLight() {
+    root.classList.toggle("lit");
+    renderLight();
+  }
+  lightBtn.addEventListener("click", toggleLight);
+  lantern.addEventListener("click", toggleLight);
+
+  // ---------- Tora / tōrō ----------
+  const nameCard = document.getElementById("nameCard");
+  const glyph = document.getElementById("glyph");
+  const romaji = document.getElementById("romaji");
+  document.querySelectorAll(".switch button").forEach(b => b.addEventListener("click", () => {
+    const mode = b.dataset.name;
+    nameCard.dataset.mode = mode;
+    glyph.textContent = mode === "tora" ? "虎" : "灯籠";
+    romaji.textContent = mode === "tora" ? "T O R A" : "T Ō R Ō";
+    document.querySelectorAll(".switch button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    document.querySelectorAll("[data-for]").forEach(d => d.hidden = d.dataset.for !== mode);
+  }));
+
+  // ---------- Notatki z rysunku ----------
+  const NOTES = [
+    { x: 73.5, y: 15, en: ["Spikes, not horns", "Soft-looking keratin crests down the head and nape. Chip once mistook them for horns in the dark — that's on Chip."], pl: ["Kolce, nie rogi", "Miękkie z wyglądu grzebienie z keratyny na głowie i karku. Chip wziął je kiedyś po ciemku za rogi — to błąd Chipa."] },
+    { x: 92, y: 21, en: ["Ears", "Large, cream-yellow and mobile — they turn with his mood."], pl: ["Uszy", "Duże, kremowożółte i ruchliwe — obracają się razem z nastrojem."] },
+    { x: 22.5, y: 23, en: ["Headfur", "Red and tousled, with a single yellow strand running through it."], pl: ["Czupryna", "Czerwona i potargana, z jednym żółtym pasemkiem."] },
+    { x: 76.5, y: 27.5, en: ["Eyes and freckles", "Bright blue eyes, an open, easily cheerful face — and freckles with no magic behind them, unlike Chip's."], pl: ["Oczy i piegi", "Jasnoniebieskie oczy, otwarta, łatwo rozpogadzająca się twarz — i piegi bez żadnej magii, inaczej niż u Chipa."] },
+    { x: 90, y: 53, en: ["Wings", "Small, red, flecked with yellow spots — decorative, far too small to lift him."], pl: ["Skrzydła", "Małe, czerwone, w żółte plamki — ozdobne, o wiele za małe, żeby go unieść."] },
+    { x: 36, y: 65, en: ["Hands", "A thumb plus two fingers, in every pose. A defining trait, not a stylisation."], pl: ["Dłonie", "Kciuk i dwa palce, w każdej pozie. To cecha, nie stylizacja."] },
+    { x: 8, y: 85, en: ["Tail tuft", "A tail about his own height, ending in a bushy tuft with a life of its own — it can flick up to gag a muzzle mid-sentence."], pl: ["Kita ogona", "Ogon długi mniej więcej jak on sam, zakończony puszystą kitą, która żyje własnym życiem — potrafi wyskoczyć i zamknąć komuś pyszczek w pół zdania."] },
+    { x: 69, y: 54, en: ["Pink crossed circles", "A sheet convention — “the body continues here, hidden”. Never holes or openings."], pl: ["Różowe przekreślone kółka", "Konwencja arkusza — „ciało ciągnie się tu dalej, ukryte”. Nigdy dziury ani otwory."] },
+  ];
+  const shot = document.getElementById("shot");
+  let note = null;
+  const dots = NOTES.map((n, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "lamp-dot";
+    b.style.left = n.x + "%";
+    b.style.top = n.y + "%";
+    b.style.animationDelay = (i * -.3) + "s";
+    b.addEventListener("click", () => { note = i; renderNote(); });
+    shot.append(b);
+    return b;
+  });
+  function renderNote() {
+    dots.forEach((b, i) => {
+      b.setAttribute("aria-pressed", String(note === i));
+      b.setAttribute("aria-label", NOTES[i][CHAR.lang()][0]);
+    });
+    const [title, text] = note === null
+      ? [t({ en: "Field notes", pl: "Notatki" }), t({ en: "Tap a light on the sheet.", pl: "Kliknij światełko na rysunku." })]
+      : NOTES[note][CHAR.lang()];
+    document.getElementById("noteTitle").textContent = title;
+    document.getElementById("noteText").textContent = text;
+  }
+
+  document.querySelectorAll(".plantern").forEach(b => b.addEventListener("click", async () => {
+    const ok = await CHAR.copy(b.dataset.hex);
+    CHAR.toast(ok ? t({ en: "Copied " + b.dataset.hex, pl: "Skopiowano " + b.dataset.hex }) : b.dataset.hex);
+  }));
+
+  // ---------- Sterownia ----------
+  const OBJ = {
+    levers: { en: ["Lever desk", "The bridge's dead machinery, kept intact — he looks after property that isn't his."], pl: ["Pulpit z dźwigniami", "Martwa maszyneria mostu, nietknięta — dba o mienie, które nie jest jego."] },
+    flywheel: { en: ["Flywheel & gears", "The drawbridge's old gearing, left exactly where it was. It hasn't lifted the bridge in years."], pl: ["Koło zamachowe i zębatki", "Stara przekładnia mostu zwodzonego, zostawiona dokładnie tam, gdzie była. Od lat nie podniosła mostu."] },
+    window: { en: ["Barred window", "High up, facing the water."], pl: ["Okno z kratą", "Wysoko, z widokiem na wodę."] },
+    radiator: { en: ["Radiator", "It barely breathes. He's grateful anyway."], pl: ["Kaloryfer", "Ledwo oddycha. Toro i tak jest wdzięczny."] },
+    armchair: { en: ["Armchair", "Throw-covered, found on the street, assembled with real care until the place is warm rather than bleak."], pl: ["Fotel", "Pod narzutą, znaleziony na ulicy, urządzony z prawdziwą troską, aż miejsce stało się ciepłe, a nie ponure."] },
+    lamp: { en: ["Tasselled lamp", "Click it to switch it on — or off."], pl: ["Lampa z frędzlami", "Kliknij, żeby ją zapalić — albo zgasić."] },
+    lights: { en: ["Fairy lights", "Strung along the cast-iron beam."], pl: ["Lampki", "Rozwieszone wzdłuż żeliwnej belki."] },
+    crates: { en: ["Crate shelving", "Books, Latin, philosophy — what's left of an expensive education, worn lightly."], pl: ["Półki ze skrzynek", "Książki, łacina, filozofia — to, co zostało z drogiej edukacji, noszone lekko."] },
+    mattress: { en: ["Mattress", "For now. The plan: split the main room into a sitting room and a bedroom, add a kitchen and a bathroom — so he can have Chip over."], pl: ["Materac", "Na razie. Plan: podzielić główny pokój na salon i sypialnię, dodać kuchnię i łazienkę — żeby mógł zaprosić Chipa."] },
+    rugs: { en: ["Two rugs", "Overlapping, mismatched, warm."], pl: ["Dwa dywany", "Nachodzące na siebie, niedobrane, ciepłe."] },
+    door: { en: ["Coded door", "The way in: a hidden door in the bridge support. No, you don't get the code."], pl: ["Drzwi na kod", "Wejście: ukryte drzwi w filarze mostu. Nie, kodu nie dostaniesz."] },
+  };
+  const room = document.getElementById("room");
+  const objs = room.querySelectorAll(".obj");
+  let current = null;
+  function renderObj() {
+    objs.forEach(o => o.setAttribute("aria-label", OBJ[o.dataset.obj][CHAR.lang()][0]));
+    const [name, text] = current ? OBJ[current][CHAR.lang()] : [t({ en: "Ironmill Wharf, No. 1", pl: "Ironmill Wharf, nr 1" }), t({ en: "Tap anything in the room.", pl: "Kliknij cokolwiek w pokoju." })];
+    document.getElementById("objName").textContent = name;
+    document.getElementById("objText").textContent = text;
+  }
+  function activate(o) {
+    const key = o.dataset.obj;
+    current = key;
+    if (key === "flywheel") { o.classList.remove("spun"); void o.getBoundingClientRect(); o.classList.add("spun"); }
+    if (key === "levers" || key === "radiator") {
+      if (key === "radiator") { o.classList.remove("on"); void o.getBoundingClientRect(); o.classList.add("on"); }
+      else o.classList.toggle("on");
+    }
+    if (key === "lamp") room.classList.toggle("lamp-on");
+    if (key === "lights") room.classList.toggle("room-lights");
+    renderObj();
+  }
+  objs.forEach(o => {
+    o.addEventListener("click", () => activate(o));
+    o.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(o); } });
+  });
+  room.classList.add("room-lights");
+
+  document.getElementById("stampBtn").addEventListener("click", () => {
+    const deed = document.getElementById("deed");
+    deed.classList.remove("stamped");
+    void deed.offsetWidth;
+    deed.classList.add("stamped");
+  });
+
+  // ---------- Aforyzmy ----------
+  const APH = [
+    { en: ["Panta rhei — everything flows.", "Heraclitus"], pl: ["Panta rhei — wszystko płynie.", "Heraklit"] },
+    { en: ["No one steps into the same river twice.", "Heraclitus"], pl: ["Nie wchodzi się dwa razy do tej samej rzeki.", "Heraklit"] },
+    { en: ["Very little is needed to make a happy life.", "Marcus Aurelius"], pl: ["Do szczęśliwego życia potrzeba bardzo niewiele.", "Marek Aureliusz"] },
+    { en: ["It is not the one who has too little who is poor, but the one who craves more.", "Seneca"], pl: ["Ubogi nie jest ten, kto ma mało, lecz ten, kto pragnie więcej.", "Seneka"] },
+    { en: ["Wealth consists not in having great possessions, but in having few wants.", "Epictetus"], pl: ["Bogactwo nie polega na posiadaniu wielu rzeczy, lecz na tym, by mało potrzebować.", "Epiktet"] },
+    { en: ["Whoever knows that enough is enough will always have enough.", "Laozi"], pl: ["Kto wie, że dość znaczy dość, zawsze będzie miał dość.", "Laozi"] },
+    { en: ["Stand a little out of my sun.", "Diogenes, to Alexander"], pl: ["Odsuń się trochę, zasłaniasz mi słońce.", "Diogenes do Aleksandra"] },
+    { en: ["The dogs bark; the caravan moves on.", "proverb"], pl: ["Psy szczekają, karawana jedzie dalej.", "przysłowie"] },
+    { en: ["Dum spiro, spero — while I breathe, I hope.", "Latin motto"], pl: ["Dum spiro, spero — póki oddycham, mam nadzieję.", "łacińska sentencja"] },
+  ];
+  let aph = 0;
+  const aphEl = document.getElementById("aph");
+  function renderAph() {
+    const [q, by] = APH[aph][CHAR.lang()];
+    aphEl.textContent = "“" + q + "”";
+    document.getElementById("aphBy").textContent = "— " + by;
+  }
+  document.getElementById("aphBtn").addEventListener("click", () => {
+    let next;
+    do { next = Math.floor(Math.random() * APH.length); } while (next === aph);
+    aph = next;
+    aphEl.style.opacity = 0;
+    setTimeout(() => { renderAph(); aphEl.style.opacity = 1; }, 250);
+  });
+
+  CHAR.onLang(() => { renderLight(); renderNote(); renderObj(); renderAph(); });
+  CHAR.init();
 </script>
 </body>
 </html>
