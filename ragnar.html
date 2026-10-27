@@ -1,182 +1,595 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ragnar Elias Hale · The One Above Them</title>
-<meta name="description" content="Ragnar Elias Hale — antropomorficzny bulterier, bokser, który został DJ-em. Partner Vince'a.">
+<title>Ragnar Elias Hale</title>
+<meta name="description" content="Ragnar Elias Hale — anthropomorphic bull terrier, boxer-turned-DJ. The room tells you what it needs.">
+<meta name="theme-color" content="#0c0614">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ragnar Elias Hale">
-<meta property="og:description" content="Sala mówi ci, czego potrzebuje.">
+<meta property="og:description" content="The room tells you what it needs. If you're not listening, you're playing at people instead of for them.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/ragnar.html">
 <meta property="og:image" content="https://TWOJA-DOMENA.pl/img/ragnar-thumb.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c0614'/%3E%3Cg fill='%23ff2e88'%3E%3Crect x='6' y='14' width='3' height='12' rx='1'/%3E%3Crect x='11' y='8' width='3' height='18' rx='1'/%3E%3Crect x='16' y='11' width='3' height='15' rx='1'/%3E%3Crect x='21' y='5' width='3' height='21' rx='1'/%3E%3C/g%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Akcent Ragnara: klubowa magenta */
-  :root { --gold: #e0469c; --gold-b: #f27ebd; --line: rgba(224,70,156,.28); --line-s: rgba(224,70,156,.11); }
-</style>
+<link rel="stylesheet" href="char.css">
+<link rel="stylesheet" href="ragnar.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start">RAGNAR</a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#karta">Karta</a>
-      <a href="#charakter">Charakter</a>
-      <a href="#bliscy">Bliscy</a>
-    </nav>
+<header class="nav">
+  <a class="logo" href="#top"><i aria-hidden="true"></i>Ragnar</a>
+  <nav aria-label="Sections">
+    <a href="#room"><span lang="en">The room</span><span lang="pl">Sala</span></a>
+    <a href="#look"><span lang="en">Look</span><span lang="pl">Wygląd</span></a>
+    <a href="#colour"><span lang="en">Colour</span><span lang="pl">Kolor</span></a>
+    <a href="#outward"><span lang="en">Heart</span><span lang="pl">Serce</span></a>
+    <a href="#contrast"><span lang="en">Shadow &amp; light</span><span lang="pl">Cień i światło</span></a>
+    <a href="#people"><span lang="en">People</span><span lang="pl">Ludzie</span></a>
+  </nav>
+  <div class="tools">
+    <button type="button" id="soundBtn" aria-pressed="true" data-en-label="Sound" data-pl-label="Dźwięk" aria-label="Sound">♪</button>
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
+  <a class="back" href="index.html#postacie">← <span lang="en">All characters</span><span lang="pl">Postacie</span></a>
 </header>
 
 <main id="main">
-  <section class="hero" id="start">
-    <figure class="portrait has-img" style="margin:0">
-      <a href="img/ragnar-ref.webp"><img src="img/ragnar-ref.webp" alt="Ragnar: bulterier z czarną łatą wokół lewego oka, w kolorowej kurtce i limonkowych spodniach" width="744" height="1100"></a>
-      <figcaption>Ref · <span class="todo">autor</span></figcaption>
-    </figure>
-    <div>
-      <p class="kicker">Cancrosa Files · Ref // Bull Terrier · 003</p>
-      <h1>Ragnar<br><span>Elias Hale</span></h1>
-      <p class="aka">antropomorficzny bulterier · bokser, który został DJ-em · on/jego</p>
-      <blockquote class="motto">
-        <q>The room tells you what it needs. If you're not listening, you're playing at people instead of for them.</q>
-        <small>Sala mówi ci, czego potrzebuje. Jeśli nie słuchasz, grasz przed ludźmi, a nie dla nich.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Żyje na zewnątrz — emocje nie przechodzą u niego przez filtry. Jeśli Vince jest głową, Ragnar jest sercem.</p>
-      </div>
-      <a class="btn" href="#karta">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
-    </div>
-  </section>
 
-  <section id="karta" aria-labelledby="karta-h">
-    <div class="section-head">
-      <p class="kicker">Część pierwsza · ugruntowany i nieporuszony</p>
-      <h2 id="karta-h">Karta postaci</h2>
-    </div>
-    <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Bulterier</dd></div>
-      <div><dt>Wiek</dt><dd>28 lat <i>(luty)</i></dd></div>
-      <div><dt>Wzrost</dt><dd>196–198 cm <i>(6′5″–6′6″)</i></dd></div>
-      <div><dt>Budowa</dt><dd>Masywna · digitigradalna</dd></div>
-    </dl>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Kolor ponad monochromię</h3>
-        <div class="swatches">
-          <div class="swatch"><i style="--c:#e0469c"></i><b>Magenta</b><span>sygnał</span></div>
-          <div class="swatch"><i style="--c:#2ec4e6"></i><b>Cyjan</b><span>chłodny pop</span></div>
-          <div class="swatch"><i style="--c:#a6d930"></i><b>Limonka</b><span>energia</span></div>
-          <div class="swatch"><i style="--c:#7b3fd1"></i><b>Fiolet</b><span>nocne życie</span></div>
+  <!-- ================= PLAKAT ================= -->
+  <section class="hero" id="top">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="eq" id="eq" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <p class="presents"><span lang="en">Cancrosa Files — 003 presents</span><span lang="pl">Cancrosa Files — 003 przedstawia</span></p>
+        <h1><span class="a">Ragnar</span><span class="b">Elias Hale</span></h1>
+        <div class="lineup"><span><span lang="en">Boxer-turned-DJ</span><span lang="pl">Bokser, który został DJ-em</span></span><span><span lang="en">No genre</span><span lang="pl">Bez gatunku</span></span><span><span lang="en">Reads the room</span><span lang="pl">Czyta salę</span></span></div>
+        <p class="mono" style="margin-bottom:1.4rem"><span lang="en">Bull terrier · he/him · 28</span><span lang="pl">Bulterier · on/jego · 28</span></p>
+        <blockquote class="quote">The room tells you what it needs. If you're not listening, you're playing at people instead of for them.
+          <small lang="pl">Sala mówi ci, czego potrzebuje. Jeśli nie słuchasz, grasz przed ludźmi, a nie dla nich.</small></blockquote>
+        <div class="actions">
+          <a class="btn" href="#room"><span lang="en">Read the room</span><span lang="pl">Wyczuj salę</span></a>
+          <a class="btn ghost" href="#people"><span lang="en">His people</span><span lang="pl">Jego ludzie</span></a>
         </div>
-        <p>Białe futro z jednym znakiem: czarną łatą wokół lewego oka, o organicznych, lekko nierównych brzegach.
-          Ciemne oko w łacie i jasne na bieli — ta sama mina, inaczej oprawiona. Prostota to cała idea.
-          Styl: kolorowy, odważny streetwear z klubowym, DJ-skim zacięciem — bezpośrednie przeciwieństwo czarnego minimalizmu Vince'a.</p>
       </div>
-      <div class="card">
-        <h3>Szczegóły</h3>
-        <ul class="details">
-          <li><b>Sylwetka</b> — szerokie barki, gruby kark, głęboka klatka. Nieco wyższy od Vince'a, ale różnicę robi masa, nie wzrost.</li>
-          <li><b>Obecność</b> — postawa otwarta, nie obronna. Nie zmniejsza się, żeby się zmieścić; meble pracują przy nim na granicy wytrzymałości.</li>
-          <li><b>Głowa</b> — charakterystyczny jajowaty profil bulteriera, szeroki uśmiech na całego, małe ciemne oczy, bardzo wyraziste.</li>
-          <li><b>Uszy i ogon</b> — mówią za niego: ogon kreśli krótkie łuki z radości i zamiera w pełnym skupieniu, niezależnie od tego, co Ragnar chce pokazać.</li>
-          <li><b>Dłonie</b> — duże, bokserskie, a jednak zdolne do precyzyjnego, uważnego dotyku. Krótkie tępe paznokcie, bez pazurów.</li>
-          <li><b>Zamiana szaf</b> — od jednodniowej wymiany z Vince'em czasem pożycza jedną ciemną, cichszą rzecz.</li>
-        </ul>
+      <figure class="headliner">
+        <button type="button" class="zoom" data-full="img/ragnar-ref.webp" data-caption="Ragnar Elias Hale" style="background:none;border:0;padding:0;cursor:zoom-in">
+          <img src="img/ragnar-cut.webp" width="412" height="1015" alt="Ragnar" data-en-alt="Ragnar: bull terrier with a black patch around his left eye, in a colourful jacket, lime cargo pants and bright sneakers" data-pl-alt="Ragnar: bulterier z czarną łatą wokół lewego oka, w kolorowej kurtce, limonkowych bojówkach i jaskrawych sneakersach">
+        </button>
+        <figcaption><span lang="en">Ref · artist credit pending</span><span lang="pl">Ref · autor do uzupełnienia</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= SALA ================= -->
+  <section id="room">
+    <div class="wrap">
+      <p class="kicker" data-reveal>01 <b>/ <span lang="en">The room</span><span lang="pl">Sala</span></b></p>
+      <h2 data-reveal><span lang="en">Play <em>for</em> them.</span><span lang="pl">Graj <em>dla</em> nich.</span></h2>
+      <p class="intro" data-reveal="2" lang="en">Behind the decks he found his element: energy, expression, reading a crowd and shaping a room's emotional temperature in real time. He doesn't lock into one genre — he reads and responds. Your turn.</p>
+      <p class="intro" data-reveal="2" lang="pl">Za deckami znalazł swój żywioł: energię, ekspresję, czytanie tłumu i kształtowanie emocjonalnej temperatury sali na żywo. Nie zamyka się w jednym gatunku — czyta i odpowiada. Twoja kolej.</p>
+
+      <div class="deck" data-reveal="3">
+        <div class="deck-top">
+          <p class="room-says" aria-live="polite"><b><span lang="en">The room says</span><span lang="pl">Sala mówi</span></b><span id="need"></span></p>
+          <div class="deck-ctl">
+            <button type="button" class="btn ghost" id="beatBtn" aria-pressed="false"><span lang="en">Start the beat</span><span lang="pl">Włącz bit</span></button>
+          </div>
+        </div>
+        <div class="deck-grid">
+          <div class="floor" id="floor"><p class="verdict" id="verdict" aria-live="polite"></p></div>
+          <div class="pads-wrap">
+            <div class="pads" role="group" aria-label="Pads">
+              <button type="button" class="pad" data-mood="warm" style="--c:#26c6e0" aria-pressed="false"><b lang="en">Warm-up</b><b lang="pl">Rozgrzewka</b><span>100 BPM</span></button>
+              <button type="button" class="pad" data-mood="peak" style="--c:#ff2e88" aria-pressed="false"><b lang="en">Peak</b><b lang="pl">Szczyt</b><span>128 BPM</span></button>
+              <button type="button" class="pad" data-mood="cool" style="--c:#9b5cff" aria-pressed="false"><b lang="en">Cool-down</b><b lang="pl">Wyciszenie</b><span>88 BPM</span></button>
+              <button type="button" class="pad" data-mood="left" style="--c:#b4e03c" aria-pressed="false"><b lang="en">Left turn</b><b lang="pl">Skręt w bok</b><span>112 BPM</span></button>
+            </div>
+            <div>
+              <p class="mono" style="margin-bottom:.4rem"><span lang="en">Room energy</span><span lang="pl">Energia sali</span></p>
+              <div class="meter" id="meter"><i></i></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="charakter" aria-labelledby="charakter-h">
-    <div class="section-head">
-      <p class="kicker">Część druga</p>
-      <h2 id="charakter-h">Żyje na zewnątrz</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kicker">Boks</p>
-        <p>Trenował od dziecka — ojciec go pchał, a budowa była. Był dobry i lubił to, ale wizerunek boksera — stoicka twardość,
-          powstrzymana agresja — nigdy do niego nie pasował. Ojciec to w końcu zobaczył i przyjął, że jego ekstrawagancki syn ma
-          inny rodzaj siły. Wciąż siłę.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">DJ</p>
-        <p>Za deckami znalazł swój żywioł: energię, ekspresję, czytanie tłumu i kształtowanie emocjonalnej temperatury sali na żywo.
-          Nie zamyka się w jednym gatunku — czyta i odpowiada.</p>
-      </div>
-    </div>
-    <div class="card trait shadow">
-      <p class="kicker">Cień · 2:14</p>
-      <p>Ta sama otwartość nie ma w nim hamulca. Nocne życie karmiło wszystko, co łaknęło intensywności, i pewnej nocy był bardzo blisko,
-        by pójść za daleko. Nie zatrzymała go dramatyczna interwencja, tylko wspomnienie kogoś, kto się nie spieszył.
-        Zadzwonił na prywatny numer Vince'a — nie po kurs, tylko po kogoś, kto wysłucha. Bycie wysłuchanym wystarczyło.
-        Jego największy lęk: że nie zostanie mu nic do czucia.</p>
-    </div>
-  </section>
+  <!-- ================= WYGLĄD ================= -->
+  <section id="look">
+    <div class="wrap">
+      <p class="kicker" data-reveal>02 <b>/ <span lang="en">Grounded &amp; immovable</span><span lang="pl">Stabilny i nieporuszony</span></b></p>
+      <h2 data-reveal><span lang="en">Big frame.<br><em>Open stance.</em></span><span lang="pl">Duża rama.<br><em>Otwarta postawa.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Slightly taller than Vince — but the difference is mass, not height. He doesn't compress himself to fit smaller spaces; furniture operates at its structural limits in his presence. The size reads as steadiness, not threat.</p>
+      <p class="intro" data-reveal="2" lang="pl">Trochę wyższy od Vince'a — ale różnicę robi masa, nie wzrost. Nie zmniejsza się, żeby zmieścić się w mniejszych przestrzeniach; meble pracują przy nim na granicy wytrzymałości. Ten rozmiar czyta się jako spokój, nie zagrożenie.</p>
 
-  <section id="bliscy" aria-labelledby="bliscy-h">
-    <div class="section-head">
-      <p class="kicker">Część trzecia · nie klatka, tylko grawitacja</p>
-      <h2 id="bliscy-h">Bliscy</h2>
-    </div>
-    <div class="grid-3">
-      <article class="card person">
-        <p class="kicker">Partner</p>
-        <h3><a href="vince.html">Vince</a></h3>
-        <p class="meta">ten, który naprawdę słuchał</p>
-        <p>Dynamika odwraca oczekiwania: Ragnar prowadzi, Vince podąża. To nie władza, tylko zaufanie — Vince, który wszędzie indziej
-          kontroluje wszystko, tu ją oddaje; Ragnar, któremu brakuje hamulca, znajduje przeciwwagę. W domu zajmuje kuchnię,
-          bo Vince'owi nie można powierzyć jego własnej lodówki.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Sojusznik</p>
-        <h3><a href="chip.html">Chip</a></h3>
-        <p class="meta">wspólny cel: Vince</p>
-        <p>W dziesięć minut działali jak zespół — nad stanem lodówki zawiązali sojusz, na który Vince nie wyraził zgody i którego nie
-          umie rozwiązać. Trzy zasady Chipa Ragnar przyjął nie ze strachu, tylko z rozpoznania: chronią tę samą osobę.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Bliski przyjaciel Chipa</p>
-        <h3><a href="toro.html">Toro</a></h3>
-        <p class="meta">dzieciak, którego prawie aresztował</p>
-        <p>Pewien, że za kodowanymi drzwiami w filarze mostu jest melina, wszedł przez nie barkiem. Za nimi: Chip, zielony smok
-          i mnóstwo cukru pudru z pączków. Śmiał się pierwszy. Gdy trzeba było dać Toro prawdziwy dom, ściągnął każdy przyjacielski dług.</p>
-      </article>
-    </div>
-    <div class="card">
-      <p class="kicker">Cień i światło</p>
-      <dl class="stats" style="margin:0;grid-template-columns:repeat(3,minmax(0,1fr))">
-        <div><dt>Vince</dt><dd>Analizuje · cierpliwość · strategia</dd></div>
-        <div><dt>Ragnar</dt><dd>Czuje · obecność · serce</dd></div>
-        <div><dt>Razem</dt><dd>Kompletni tak, jak żaden osobno</dd></div>
+      <dl class="stats" data-reveal="3">
+        <div><dt lang="en">Height</dt><dt lang="pl">Wzrost</dt><dd>196–198 cm<small>6′5″–6′6″</small></dd></div>
+        <div><dt lang="en">Age</dt><dt lang="pl">Wiek</dt><dd>28<small lang="en">born in February</small><small lang="pl">urodzony w lutym</small></dd></div>
+        <div><dt lang="en">Build</dt><dt lang="pl">Budowa</dt><dd lang="en">Broad<small>digitigrade</small></dd><dd lang="pl">Masywna<small>digitigradalna</small></dd></div>
+        <div><dt lang="en">Markings</dt><dt lang="pl">Znaczenia</dt><dd lang="en">Just one<small>black patch, left eye</small></dd><dd lang="pl">Tylko jedno<small>czarna łata wokół lewego oka</small></dd></div>
       </dl>
+
+      <div class="look">
+        <div>
+          <div class="panel" data-reveal>
+            <h3><span lang="en">A fighter's frame</span><span lang="pl">Rama boksera</span></h3>
+            <p lang="en">Dense, functional muscle across the shoulders, arms and core — a fighter's, not a bodybuilder's. Thick, powerful legs built for stability rather than speed. Large, broad-palmed hands that look like they know what they're for — yet capable of precise, deliberate touch. Very short blunt nails, no claws.</p>
+            <p lang="pl">Gęste, funkcjonalne mięśnie barków, ramion i tułowia — boksera, nie kulturysty. Grube, mocne nogi zbudowane do stabilności, nie szybkości. Duże dłonie o szerokich wnętrzach, które wyglądają, jakby wiedziały, do czego służą — a jednak zdolne do precyzyjnego, uważnego dotyku. Bardzo krótkie, tępe paznokcie, bez pazurów.</p>
+          </div>
+          <div class="panel" data-reveal="2">
+            <h3><span lang="en">One accent on a white field</span><span lang="pl">Jeden akcent na białym polu</span></h3>
+            <p lang="en">A solid black patch fully encloses the left eye, with organic, slightly irregular edges. The dark eye in the patch and the bright eye against white: the same expression, differently framed. It sits opposite Vince's right-side Dual Path symbol.</p>
+            <p lang="pl">Jednolita czarna łata całkowicie otacza lewe oko, o organicznych, lekko nierównych brzegach. Ciemne oko w łacie i jasne na bieli: ta sama mina, inaczej oprawiona. Wypada naprzeciw symbolu Dual Path po prawej stronie Vince'a.</p>
+          </div>
+        </div>
+
+        <div class="narrator mood-relaxed" id="narrator" data-reveal="2">
+          <p class="kicker" style="margin-bottom:.4rem"><span lang="en">An honest narrator</span><span lang="pl">Szczery narrator</span></p>
+          <svg class="head" viewBox="0 0 200 200" role="img" aria-label="Ragnar's head and ears">
+            <g class="headgroup">
+              <g class="ear l"><path d="M70 74 L80 20 Q85 13 91 21 L100 70 Z" fill="#f7f2ec" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/><path d="M77 66 L83 31 L93 66 Z" fill="#f2b8c0"/></g>
+              <g class="ear r"><path d="M100 70 L109 21 Q115 13 120 20 L130 74 Z" fill="#f7f2ec" stroke="#2a1f33" stroke-width="3" stroke-linejoin="round"/><path d="M107 66 L117 31 L123 66 Z" fill="#f2b8c0"/></g>
+              <path d="M100 48 C140 48 152 86 146 118 C140 150 124 176 100 178 C76 176 60 150 54 118 C48 86 60 48 100 48 Z" fill="#f7f2ec" stroke="#2a1f33" stroke-width="3"/>
+              <path d="M107 90 C121 78 141 86 141 103 C141 120 125 127 112 121 C103 117 99 101 107 90 Z" fill="#17121c"/>
+              <path d="M76 104 L91 99 L86 109 Z" fill="#17121c"/>
+              <path d="M110 104 L125 99 L120 109 Z" fill="#3b2a22"/><circle cx="117" cy="103" r="1.6" fill="#fff"/>
+              <ellipse cx="100" cy="158" rx="12" ry="8" fill="#17121c"/>
+              <path class="mouth" d="M90 170 Q100 174 110 170" fill="none" stroke="#2a1f33" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="smile" d="M82 166 Q100 186 118 166" fill="#c2405e" stroke="#2a1f33" stroke-width="2.4" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <span class="tail-wrap"><span class="mono" aria-hidden="true"><span lang="en">tail →</span><span lang="pl">ogon →</span></span><svg class="tail" viewBox="0 0 100 80" aria-hidden="true"><g class="tailg"><path d="M8 62 Q36 62 56 44 Q66 34 74 22 Q71 40 61 52 Q42 72 10 72 Z" fill="#f7f2ec" stroke="#2a1f33" stroke-width="2.6" stroke-linejoin="round"/></g></svg></span>
+          <div class="moods" role="group" aria-label="Mood">
+            <button type="button" data-mood="relaxed" aria-pressed="true"><span lang="en">Relaxed</span><span lang="pl">Luz</span></button>
+            <button type="button" data-mood="alert" aria-pressed="false"><span lang="en">Alert</span><span lang="pl">Czujny</span></button>
+            <button type="button" data-mood="attentive" aria-pressed="false"><span lang="en">Attentive</span><span lang="pl">Skupiony</span></button>
+            <button type="button" data-mood="pleased" aria-pressed="false"><span lang="en">Pleased</span><span lang="pl">Zadowolony</span></button>
+          </div>
+          <p class="mood-text" id="moodText" aria-live="polite"></p>
+          <p class="mono" style="margin-top:.8rem"><span lang="en">The tail works independently of his intentions</span><span lang="pl">Ogon działa niezależnie od jego intencji</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KOLOR ================= -->
+  <section id="colour">
+    <div class="wrap">
+      <p class="kicker" data-reveal>03 <b>/ <span lang="en">Colour over monochrome</span><span lang="pl">Kolor ponad monochromię</span></b></p>
+      <h2 data-reveal><span lang="en">Loud on <em>purpose.</em></span><span lang="pl">Głośno <em>celowo.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Colourful, expressive, unapologetically bold — the direct visual opposite of Vince's black, industrial minimalism. Vibrant streetwear with club-culture energy: layered, textured, eye-catching. He's in ongoing negotiation with clothing, and the clothing frequently loses.</p>
+      <p class="intro" data-reveal="2" lang="pl">Kolorowo, ekspresyjnie, bez przepraszania — wizualne przeciwieństwo czarnego, przemysłowego minimalizmu Vince'a. Żywy streetwear z klubową energią: warstwy, faktury, przyciąganie wzroku. Prowadzi z ubraniami nieustanne negocjacje, które ubrania często przegrywają.</p>
+
+      <div class="tubes" data-reveal="3">
+        <button type="button" class="tube" data-hex="#FF2E88" style="--c:#ff2e88"><i></i><b>Magenta</b><span lang="en">signal</span><span lang="pl">sygnał</span></button>
+        <button type="button" class="tube" data-hex="#26C6E0" style="--c:#26c6e0"><i></i><b lang="en">Cyan</b><b lang="pl">Cyjan</b><span lang="en">cool pop</span><span lang="pl">chłodny pop</span></button>
+        <button type="button" class="tube" data-hex="#9CC93A" style="--c:#9cc93a"><i></i><b lang="en">Lime</b><b lang="pl">Limonka</b><span lang="en">energy</span><span lang="pl">energia</span></button>
+        <button type="button" class="tube" data-hex="#9B5CFF" style="--c:#9b5cff"><i></i><b lang="en">Purple</b><b lang="pl">Fiolet</b><span lang="en">nightlife</span><span lang="pl">nocne życie</span></button>
+        <button type="button" class="tube" data-hex="#EFE3C9" style="--c:#efe3c9"><i></i><b lang="en">Warm cream</b><b lang="pl">Ciepły krem</b><span lang="en">the coat</span><span lang="pl">futro</span></button>
+      </div>
+      <p class="mono"><span lang="en">Tap a colour to copy it</span><span lang="pl">Kliknij kolor, żeby go skopiować</span></p>
+
+      <div class="fit" id="fit" data-reveal>
+        <div class="piece" data-piece="jacket" style="--c1:#7b3fd1;--c2:#2f7fd6"><b lang="en">Jacket</b><b lang="pl">Kurtka</b></div>
+        <div class="piece" data-piece="tee" style="--c1:#26c6e0;--c2:#ff2e88"><b lang="en">Tee</b><b lang="pl">Koszulka</b></div>
+        <div class="piece" data-piece="cargos" style="--c1:#b4e03c;--c2:#6f8f1e"><b lang="en">Cargos</b><b lang="pl">Bojówki</b></div>
+        <div class="piece" data-piece="sneakers" style="--c1:#ff2e88;--c2:#f2c230"><b lang="en">Sneakers</b><b lang="pl">Sneakersy</b></div>
+        <div class="piece" data-piece="chain" style="--c1:#8b8e95;--c2:#d7dbe2"><b lang="en">Chain</b><b lang="pl">Łańcuch</b></div>
+      </div>
+      <div class="borrow-bar">
+        <button type="button" class="btn" id="borrowBtn"><span lang="en">Borrow from Vince</span><span lang="pl">Pożycz od Vince'a</span></button>
+        <button type="button" class="btn ghost" id="loudBtn"><span lang="en">Back to loud</span><span lang="pl">Z powrotem głośno</span></button>
+        <p id="borrowNote" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERCE ================= -->
+  <section id="outward">
+    <div class="wrap">
+      <p class="kicker" data-reveal>04 <b>/ <span lang="en">He lives outward</span><span lang="pl">Żyje na zewnątrz</span></b></p>
+      <h2 data-reveal><span lang="en">If Vince is the brain,<br><em>Ragnar is the heart.</em></span><span lang="pl">Jeśli Vince jest głową,<br><em>Ragnar jest sercem.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">His emotions don't pass through filters before they reach the surface — they arrive fully formed, in his voice, gestures, face and movement. Someone whose interior life is simply too large to stay interior.</p>
+      <p class="intro" data-reveal="2" lang="pl">Jego emocje nie przechodzą przez filtry, zanim wyjdą na powierzchnię — docierają w pełni ukształtowane: w głosie, gestach, twarzy i ruchu. Ktoś, czyje życie wewnętrzne jest po prostu za duże, żeby zostać w środku.</p>
+
+      <div class="two">
+        <article class="big-card box" data-reveal>
+          <span class="num" aria-hidden="true">01</span>
+          <h3><span lang="en">Boxing</span><span lang="pl">Boks</span></h3>
+          <p lang="en">Trained from a young age — his father pushed him toward it, and the build was there. He was good and liked it, but the boxer's image — stoic toughness, contained aggression — never fit. His father saw it, and accepted that his flamboyant son carried a different kind of strength. Still strength.</p>
+          <p lang="pl">Trenował od dziecka — ojciec go pchał, a budowa była. Był dobry i lubił to, ale wizerunek boksera — stoicka twardość, powstrzymana agresja — nigdy do niego nie pasował. Ojciec to zobaczył i przyjął, że jego ekstrawagancki syn ma inny rodzaj siły. Wciąż siłę.</p>
+        </article>
+        <article class="big-card dj" data-reveal="2">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>DJ</h3>
+          <p lang="en">Behind the decks he found his element: energy, expression, reading a crowd, shaping a room in real time. No single genre — he reads and responds.</p>
+          <p lang="pl">Za deckami znalazł swój żywioł: energię, ekspresję, czytanie tłumu, kształtowanie sali na żywo. Żadnego jednego gatunku — czyta i odpowiada.</p>
+        </article>
+      </div>
+
+      <div class="call">
+        <div class="phone" id="phone" data-reveal>
+          <div class="clock">2:14</div>
+          <div class="date"><span lang="en">club district · parked</span><span lang="pl">dzielnica klubów · zaparkowany</span></div>
+          <img src="img/vince-thumb.webp" alt="">
+          <div class="who">Vince</div>
+          <div class="state" id="callState"></div>
+          <div class="timer" id="callTimer"></div>
+          <button type="button" class="callbtn" id="callBtn" aria-label="Call">✆</button>
+        </div>
+        <div>
+          <p class="kicker"><span lang="en">The shadow · 2:14 AM</span><span lang="pl">Cień · 2:14</span></p>
+          <div class="transcript" id="transcript">
+            <p class="show" lang="en">The same openness that makes him magnetic provides no internal brake. The nightlife fed every part of him that craved intensity — and one night he came very close to reaching for something in a back room.</p>
+            <p class="show" lang="pl">Ta sama otwartość, która przyciąga do niego ludzi, nie ma w sobie hamulca. Nocne życie karmiło wszystko, co łaknęło intensywności — i pewnej nocy był bardzo blisko, by sięgnąć po coś na zapleczu.</p>
+            <p data-step="1"><span lang="en">What pulled him back wasn't a dramatic intervention. It was the memory of one person who wasn't rushing.</span><span lang="pl">Nie zatrzymała go dramatyczna interwencja. Zatrzymało go wspomnienie jednej osoby, która się nie spieszyła.</span></p>
+            <p data-step="2"><span lang="en">He called Vince's private number — not for a ride, for a confessor — and told everything from a parked car.</span><span lang="pl">Zadzwonił na prywatny numer Vince'a — nie po kurs, tylko po kogoś, kto wysłucha — i z zaparkowanego samochodu opowiedział wszystko.</span></p>
+            <p class="big" data-step="3"><span lang="en">Being heard was enough to stop the fall.</span><span lang="pl">Bycie wysłuchanym wystarczyło, żeby przestać spadać.</span></p>
+            <p class="fear" data-step="4"><span lang="en">Core fear: having nothing left to feel.</span><span lang="pl">Największy lęk: że nie zostanie mu nic do czucia.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CIEŃ I ŚWIATŁO ================= -->
+  <section id="contrast">
+    <div class="wrap">
+      <p class="kicker" data-reveal>05 <b>/ <span lang="en">Shadow &amp; light</span><span lang="pl">Cień i światło</span></b></p>
+      <h2 data-reveal><span lang="en">Complete <em>together.</em></span><span lang="pl">Razem <em>kompletni.</em></span></h2>
+
+      <div class="contrast" id="contrastBox" data-reveal="2">
+        <div class="contrast-head"><span></span><h3 class="v">Vince</h3><h3 class="rg">Ragnar</h3></div>
+        <div class="crow"><span lang="en">PROC</span><span lang="pl">UMYSŁ</span><span class="v"><span lang="en">Analysis — processes where Ragnar feels</span><span lang="pl">Analiza — przetwarza tam, gdzie Ragnar czuje</span></span><span class="rg"><span lang="en">Emotion — feels where Vince processes</span><span lang="pl">Emocje — czuje tam, gdzie Vince przetwarza</span></span></div>
+        <div class="crow"><span lang="en">EXPR</span><span lang="pl">EKSPR.</span><span class="v"><span lang="en">Controlled revelation</span><span lang="pl">Kontrolowane odsłanianie</span></span><span class="rg"><span lang="en">Unfiltered overflow</span><span lang="pl">Niefiltrowany nadmiar</span></span></div>
+        <div class="crow"><span lang="en">LOOK</span><span lang="pl">WYGLĄD</span><span class="v"><span lang="en">Black · gold · architectural</span><span lang="pl">Czerń · złoto · architektura</span></span><span class="rg"><span lang="en">Colourful · bold · expressive</span><span lang="pl">Kolor · odwaga · ekspresja</span></span></div>
+        <div class="crow"><span lang="en">BUILD</span><span lang="pl">BUDOWA</span><span class="v"><span lang="en">Lean · angular</span><span lang="pl">Smukły · kanciasty</span></span><span class="rg"><span lang="en">Broad · solid</span><span lang="pl">Masywny · solidny</span></span></div>
+        <div class="crow"><span lang="en">FORCE</span><span lang="pl">SIŁA</span><span class="v"><span lang="en">Patience · strategy</span><span lang="pl">Cierpliwość · strategia</span></span><span class="rg"><span lang="en">Presence · heart</span><span lang="pl">Obecność · serce</span></span></div>
+        <div class="crow"><span lang="en">FEAR</span><span lang="pl">LĘK</span><span class="v"><span lang="en">Losing control</span><span lang="pl">Utrata kontroli</span></span><span class="rg"><span lang="en">Having nothing left to feel</span><span lang="pl">Że nie zostanie nic do czucia</span></span></div>
+        <div class="slider">
+          <label for="mix" class="mono"><span lang="en">Slide between them</span><span lang="pl">Przesuń między nimi</span></label>
+          <input type="range" id="mix" min="0" max="100" value="50">
+          <div class="ends"><span lang="en">Shadow</span><span lang="pl">Cień</span><span lang="en">Light</span><span lang="pl">Światło</span></div>
+          <p class="together show" id="together"><span lang="en">Together, they are complete in a way neither is alone.</span><span lang="pl">Razem są kompletni tak, jak żaden z nich osobno.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LUDZIE ================= -->
+  <section id="people">
+    <div class="wrap">
+      <p class="kicker" data-reveal>06 <b>/ <span lang="en">Not a cage — a gravity</span><span lang="pl">Nie klatka, tylko grawitacja</span></b></p>
+      <h2 data-reveal><span lang="en">His <em>people.</em></span><span lang="pl">Jego <em>ludzie.</em></span></h2>
+      <div class="people">
+        <article class="person" style="--c:#e3a43f" data-reveal>
+          <img src="img/vince-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Partner</span><span lang="pl">Partner</span></span>
+          <h3><a href="vince.html">Vince</a></h3>
+          <div class="meta"><span lang="en">the one who actually listened</span><span lang="pl">ten, który naprawdę słuchał</span></div>
+          <p lang="en">Ragnar was the client who doesn't ride in silence; Vince, the one who listened in the way that registers. The dynamic flips expectations: Ragnar leads, Vince follows — not power, trust. Vince sets control down here; Ragnar, who lacks his own brake, finds a counterweight. At home he owns the kitchen — Vince can't be trusted with his own fridge.</p>
+          <p lang="pl">Ragnar był klientem, który nie jeździ w milczeniu; Vince — tym, który słuchał tak, że to zostaje. Dynamika odwraca oczekiwania: Ragnar prowadzi, Vince podąża — nie władza, tylko zaufanie. Vince tu odkłada kontrolę; Ragnar, któremu brakuje hamulca, znajduje przeciwwagę. W domu rządzi kuchnią — Vince'owi nie można powierzyć jego własnej lodówki.</p>
+        </article>
+        <article class="person" style="--c:#4f8ae8" data-reveal="2">
+          <img src="img/chip-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Ally</span><span lang="pl">Sojusznik</span></span>
+          <h3><a href="chip.html">Chip</a></h3>
+          <div class="meta"><span lang="en">a shared target: Vince</span><span lang="pl">wspólny cel: Vince</span></div>
+          <p lang="en">Within ten minutes they were operating as a unit, bonding over the state of the fridge — an alliance Vince did not consent to and cannot dismantle. Chip's three rules — the heart, the head, the body — Ragnar accepted not out of fear but recognition: they're protecting the same person.</p>
+          <p lang="pl">Po dziesięciu minutach działali jak zespół, zjednoczeni stanem lodówki — sojusz, na który Vince się nie zgodził i którego nie umie rozwiązać. Trzy zasady Chipa — serce, głowa, ciało — Ragnar przyjął nie ze strachu, tylko z rozpoznania: chronią tę samą osobę.</p>
+        </article>
+        <article class="person" style="--c:#b4e03c" data-reveal="3">
+          <img src="img/toro-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Chip's close friend</span><span lang="pl">Bliski przyjaciel Chipa</span></span>
+          <h3><a href="toro.html">Toro</a></h3>
+          <div class="meta"><span lang="en">the kid he nearly arrested</span><span lang="pl">dzieciak, którego prawie aresztował</span></div>
+          <p lang="en">Vince's investigation led to a coded door in a bridge pillar. Ragnar was sure it was a drug den and went through shoulder-first. Behind it: Chip, a green dragon and a great deal of doughnut sugar. He was the first to laugh — and when Toro needed a real home, he called in every friendly debt he had.</p>
+          <p lang="pl">Śledztwo Vince'a doprowadziło do kodowanych drzwi w filarze mostu. Ragnar był pewien, że to melina, i wszedł przez nie barkiem. Za nimi: Chip, zielony smok i mnóstwo cukru pudru z pączków. Śmiał się pierwszy — a kiedy Toro potrzebował prawdziwego domu, ściągnął każdy przyjacielski dług.</p>
+        </article>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Ilustracje należą do ich autorów.</span>
+  <div class="wrap foot">
+    <div>
+      <p lang="en">Canonical version of Ragnar. Fully digitigrade world — anthropomorphic species throughout, no human baseline. Clothing, accessories and palette remain open for refinement with the commissioned artist. Reference art: artist credit pending.</p>
+      <p lang="pl">Kanoniczna wersja Ragnara. Świat w pełni digitigradalny — wszędzie antropomorficzne gatunki, bez ludzi. Ubrania, dodatki i paleta mogą jeszcze dojrzeć razem z artystą. Ref: autor do uzupełnienia.</p>
+    </div>
+    <div class="others">
+      <a href="vince.html">Vince</a><a href="chip.html">Chip</a><a href="toro.html">Toro</a><a href="myr.html">Myr</a><a href="zarin.html">Zarin</a><a href="index.html">The One Above Them</a>
+    </div>
+  </div>
 </footer>
 
+<script src="char.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  const { t } = CHAR;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  // ---------- Equalizer na plakacie ----------
+  const eq = document.getElementById("eq");
+  for (let i = 0; i < 48; i++) {
+    const bar = document.createElement("i");
+    bar.style.setProperty("--h", (25 + Math.random() * 75).toFixed(0) + "%");
+    bar.style.setProperty("--d", (.35 + Math.random() * .6).toFixed(2) + "s");
+    eq.append(bar);
+  }
+
+  // ---------- Dźwięk: bit z syntezatora ----------
+  const soundBtn = document.getElementById("soundBtn");
+  let soundOn = store.get("sound") !== "off";
+  soundBtn.setAttribute("aria-pressed", String(soundOn));
+  soundBtn.addEventListener("click", () => {
+    soundOn = !soundOn;
+    soundBtn.setAttribute("aria-pressed", String(soundOn));
+    store.set("sound", soundOn ? "on" : "off");
+    if (!soundOn) stopBeat();
+  });
+
+  let audio, beatTimer = null, nextTime = 0, step16 = 0, noiseBuf;
+  const BPM = { warm: 100, peak: 128, cool: 88, left: 112 };
+  let mood = null;
+  function kick(time) {
+    const o = audio.createOscillator(), g = audio.createGain();
+    o.frequency.setValueAtTime(150, time);
+    o.frequency.exponentialRampToValueAtTime(42, time + .12);
+    g.gain.setValueAtTime(.9, time);
+    g.gain.exponentialRampToValueAtTime(.001, time + .3);
+    o.connect(g).connect(audio.destination);
+    o.start(time); o.stop(time + .32);
+  }
+  function hat(time, open) {
+    const s = audio.createBufferSource(), f = audio.createBiquadFilter(), g = audio.createGain();
+    s.buffer = noiseBuf; f.type = "highpass"; f.frequency.value = 7000;
+    g.gain.setValueAtTime(.18, time);
+    g.gain.exponentialRampToValueAtTime(.001, time + (open ? .18 : .05));
+    s.connect(f).connect(g).connect(audio.destination);
+    s.start(time); s.stop(time + .2);
+  }
+  function bass(time, freq) {
+    const o = audio.createOscillator(), g = audio.createGain(), f = audio.createBiquadFilter();
+    o.type = "sawtooth"; o.frequency.value = freq; f.type = "lowpass"; f.frequency.value = 420;
+    g.gain.setValueAtTime(.0001, time);
+    g.gain.exponentialRampToValueAtTime(.16, time + .01);
+    g.gain.exponentialRampToValueAtTime(.001, time + .22);
+    o.connect(f).connect(g).connect(audio.destination);
+    o.start(time); o.stop(time + .25);
+  }
+  // Każdy nastrój ma własny wzór 16 kroków: k = stopa, h = hi-hat, o = otwarty hat, b = bas
+  const PATTERNS = {
+    warm: "k.h.b.h.k.h.b.h.",
+    peak: "kbhbkbhokbhbkbho",
+    cool: "k...h...b...h...",
+    left: "k.bhk..hb.k.h.bo",
+  };
+  const BASS = { warm: 55, peak: 49, cool: 41, left: 62 };
+  function schedule() {
+    const spb = 60 / BPM[mood || "warm"] / 4;
+    while (nextTime < audio.currentTime + .12) {
+      const ch = PATTERNS[mood || "warm"][step16 % 16];
+      if (ch === "k") kick(nextTime);
+      if (ch === "h") hat(nextTime, false);
+      if (ch === "o") hat(nextTime, true);
+      if (ch === "b") bass(nextTime, BASS[mood || "warm"]);
+      if (step16 % 4 === 0 && ch !== "k" && mood === "peak") kick(nextTime);
+      nextTime += spb;
+      step16++;
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+  }
+  const beatBtn = document.getElementById("beatBtn");
+  function startBeat() {
+    if (!soundOn) { CHAR.toast(t({ en: "Sound is off — turn it on with ♪ up top.", pl: "Dźwięk jest wyłączony — włącz go ♪ na górze." })); return; }
+    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+    if (!noiseBuf) {
+      noiseBuf = audio.createBuffer(1, audio.sampleRate * .2, audio.sampleRate);
+      const d = noiseBuf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    }
+    audio.resume();
+    nextTime = audio.currentTime + .05; step16 = 0;
+    beatTimer = setInterval(schedule, 25);
+    beatBtn.setAttribute("aria-pressed", "true");
+    renderBeatBtn();
+  }
+  function stopBeat() {
+    clearInterval(beatTimer); beatTimer = null;
+    beatBtn.setAttribute("aria-pressed", "false");
+    renderBeatBtn();
+  }
+  function renderBeatBtn() {
+    beatBtn.innerHTML = beatTimer
+      ? `<span>${t({ en: "Stop the beat", pl: "Zatrzymaj bit" })}</span>`
+      : `<span>${t({ en: "Start the beat", pl: "Włącz bit" })}</span>`;
+  }
+  beatBtn.addEventListener("click", () => beatTimer ? stopBeat() : startBeat());
+
+  // ---------- Wyczuj salę ----------
+  const NEEDS = {
+    warm: [{ en: "Still arriving. Coats on. Give them a reason to stay.", pl: "Dopiero się schodzą. Kurtki jeszcze na sobie. Daj im powód, żeby zostali." }, { en: "Half the room is still at the bar.", pl: "Połowa sali wciąż stoi przy barze." }],
+    peak: [{ en: "They're ready to lose it.", pl: "Są gotowi odlecieć." }, { en: "Hands up before the drop even lands.", pl: "Ręce w górze, zanim jeszcze wejdzie drop." }],
+    cool: [{ en: "It's late. They need to land softly.", pl: "Jest późno. Trzeba ich miękko sprowadzić na ziemię." }, { en: "Feet hurt, hearts full. Bring them down gently.", pl: "Bolą nogi, serca pełne. Sprowadź ich łagodnie." }],
+    left: [{ en: "Bored of safe. Surprise them.", pl: "Znudzeni bezpieczną grą. Zaskocz ich." }, { en: "They've heard this one. Take a left turn.", pl: "To już słyszeli. Skręć w bok." }],
+  };
+  const MOOD_COLOR = { warm: "#26c6e0", peak: "#ff2e88", cool: "#9b5cff", left: "#b4e03c" };
+  const floor = document.getElementById("floor");
+  const meter = document.getElementById("meter");
+  const verdictEl = document.getElementById("verdict");
+  const pads = document.querySelectorAll(".pad");
+  let need = "warm", needPhrase = NEEDS.warm[0], energy = 35, verdict = null, newNeedTimer;
+  const dancers = [];
+  for (let i = 0; i < 44; i++) {
+    const d = document.createElement("span");
+    d.className = "dancer";
+    d.style.left = (4 + Math.random() * 90).toFixed(1) + "%";
+    d.style.top = (14 + Math.random() * 70).toFixed(1) + "%";
+    d.style.setProperty("--delay", (-Math.random()).toFixed(2) + "s");
+    floor.append(d);
+    dancers.push(d);
+  }
+  function newNeed() {
+    const keys = Object.keys(NEEDS).filter(k => k !== need);
+    need = pick(keys);
+    needPhrase = pick(NEEDS[need]);
+    verdict = null;
+    renderRoom();
+  }
+  function renderRoom() {
+    document.getElementById("need").textContent = t(needPhrase);
+    meter.style.setProperty("--e", energy);
+    const lit = Math.round(8 + energy * .36);
+    const color = mood ? MOOD_COLOR[mood] : "#6c5d84";
+    floor.style.setProperty("--mood", color);
+    floor.style.setProperty("--beat", mood ? (60 / BPM[mood]).toFixed(3) + "s" : "1.4s");
+    floor.style.setProperty("--amp", mood === "peak" ? "14px" : mood === "cool" ? "3px" : "7px");
+    dancers.forEach((d, i) => d.classList.toggle("on", i < lit));
+    verdictEl.className = "verdict" + (verdict === "at" ? " at" : "");
+    verdictEl.textContent = verdict === "for" ? t({ en: "Playing for them.", pl: "Grasz dla nich." })
+      : verdict === "at" ? t({ en: "Playing at them. Listen.", pl: "Grasz przed nimi. Słuchaj." })
+      : t({ en: "Pick a pad.", pl: "Wybierz pad." });
+  }
+  pads.forEach(p => p.addEventListener("click", () => {
+    mood = p.dataset.mood;
+    pads.forEach(x => x.setAttribute("aria-pressed", String(x === p)));
+    clearTimeout(newNeedTimer);
+    if (mood === need) {
+      verdict = "for";
+      energy = Math.min(100, energy + 22);
+      newNeedTimer = setTimeout(newNeed, 3200);
+    } else {
+      verdict = "at";
+      energy = Math.max(5, energy - 14);
+    }
+    renderRoom();
+  }));
+
+  // ---------- Uszy i ogon ----------
+  const MOODS = {
+    relaxed: { en: "Relaxed: ears angled outward, the tail swaying slow.", pl: "Luz: uszy rozchylone na boki, ogon kołysze się powoli." },
+    alert: { en: "Alert: ears straight up. A single slow tail shift when something lands.", pl: "Czujny: uszy prosto w górę. Jedno powolne przesunięcie ogona, kiedy coś do niego dotrze." },
+    attentive: { en: "Attentive: ears upright and still. The tail goes completely still — full attention.", pl: "Skupiony: uszy w górze i nieruchome. Ogon zamiera zupełnie — pełna uwaga." },
+    pleased: { en: "Pleased: ears tilt outward, he leans in, and the tail goes in quick short arcs.", pl: "Zadowolony: uszy przechylają się na boki, pochyla się do przodu, a ogon chodzi krótkimi, szybkimi łukami." },
+  };
+  const narrator = document.getElementById("narrator");
+  let earMood = "relaxed";
+  function renderMood() {
+    narrator.classList.remove("mood-relaxed", "mood-alert", "mood-attentive", "mood-pleased");
+    narrator.classList.add("mood-" + earMood);
+    document.getElementById("moodText").textContent = t(MOODS[earMood]);
+  }
+  document.querySelectorAll(".moods button").forEach(b => b.addEventListener("click", () => {
+    earMood = b.dataset.mood;
+    document.querySelectorAll(".moods button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderMood();
+  }));
+
+  // ---------- Paleta ----------
+  document.querySelectorAll(".tube").forEach(b => b.addEventListener("click", async () => {
+    const ok = await CHAR.copy(b.dataset.hex);
+    CHAR.toast(ok ? t({ en: "Copied " + b.dataset.hex, pl: "Skopiowano " + b.dataset.hex }) : b.dataset.hex);
+  }));
+
+  // ---------- Pożycz od Vince'a ----------
+  const PIECES = { jacket: { en: "the jacket", pl: "kurtka" }, tee: { en: "the tee", pl: "koszulka" }, cargos: { en: "the cargos", pl: "bojówki" }, sneakers: { en: "the sneakers", pl: "sneakersy" }, chain: { en: "the chain", pl: "łańcuch" } };
+  const pieces = [...document.querySelectorAll(".piece")];
+  const borrowNote = document.getElementById("borrowNote");
+  let borrowed = null;
+  function renderBorrow() {
+    pieces.forEach(p => p.classList.remove("borrowed", "subtle"));
+    if (!borrowed) {
+      borrowNote.textContent = t({ en: "Since a one-day wardrobe swap with Vince: one darker, quieter piece — sometimes.", pl: "Od jednodniowej zamiany szaf z Vince'em: jedna ciemniejsza, cichsza rzecz — czasem." });
+      return;
+    }
+    const el = pieces.find(p => p.dataset.piece === borrowed.piece);
+    el.classList.add(borrowed.loud ? "borrowed" : "subtle");
+    const it = PIECES[borrowed.piece];
+    borrowNote.textContent = t({
+      en: `Tonight ${it.en} goes black — ${borrowed.loud ? "you'll notice" : "you'd have to look twice"}.`,
+      pl: `Dziś wieczorem na czarno: ${it.pl} — ${borrowed.loud ? "widać od razu" : "trzeba się przyjrzeć"}.`,
+    });
+  }
+  document.getElementById("borrowBtn").addEventListener("click", () => {
+    let next;
+    do { next = { piece: pick(Object.keys(PIECES)), loud: Math.random() < .5 }; } while (borrowed && next.piece === borrowed.piece);
+    borrowed = next;
+    renderBorrow();
+  });
+  document.getElementById("loudBtn").addEventListener("click", () => { borrowed = null; renderBorrow(); });
+
+  // ---------- Telefon o 2:14 ----------
+  const phone = document.getElementById("phone");
+  const callBtn = document.getElementById("callBtn");
+  const callState = document.getElementById("callState");
+  const callTimer = document.getElementById("callTimer");
+  const steps = [...document.querySelectorAll("#transcript [data-step]")];
+  let call = "idle", callTimers = [];
+  function renderCall() {
+    callState.textContent = call === "idle" ? t({ en: "private number", pl: "numer prywatny" })
+      : call === "ringing" ? t({ en: "calling…", pl: "dzwonię…" })
+      : call === "live" ? t({ en: "connected", pl: "połączono" })
+      : t({ en: "call ended", pl: "koniec rozmowy" });
+    callBtn.setAttribute("aria-label", call === "live" || call === "ringing" ? t({ en: "End call", pl: "Rozłącz" }) : t({ en: "Call", pl: "Zadzwoń" }));
+  }
+  function resetCall() {
+    callTimers.forEach(clearTimeout); callTimers = [];
+    phone.classList.remove("ringing", "live");
+    callTimer.textContent = "";
+    steps.forEach(s => s.classList.remove("show"));
+  }
+  callBtn.addEventListener("click", () => {
+    if (call === "ringing" || call === "live") { resetCall(); call = "idle"; renderCall(); return; }
+    resetCall();
+    call = "ringing"; phone.classList.add("ringing"); renderCall();
+    callTimers.push(setTimeout(() => {
+      call = "live"; phone.classList.remove("ringing"); phone.classList.add("live"); renderCall();
+      const start = performance.now(), total = 7000, target = 40 * 60 + 12;
+      const tick = () => {
+        const k = Math.min(1, (performance.now() - start) / total);
+        const s = Math.round(target * k);
+        callTimer.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+        if (call === "live" && k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      steps.forEach((s, i) => callTimers.push(setTimeout(() => s.classList.add("show"), 600 + i * 1700)));
+      callTimers.push(setTimeout(() => { call = "ended"; phone.classList.remove("live"); renderCall(); }, total + 300));
+    }, 1600));
+  });
+
+  // ---------- Cień i światło ----------
+  const contrastBox = document.getElementById("contrastBox");
+  const mix = document.getElementById("mix");
+  const together = document.getElementById("together");
+  function renderMix() {
+    const m = mix.value / 100;
+    contrastBox.style.setProperty("--mix", m);
+    together.classList.toggle("show", m > .32 && m < .68);
+  }
+  mix.addEventListener("input", renderMix);
+  renderMix();
+
+  CHAR.onLang(() => { renderRoom(); renderMood(); renderBorrow(); renderCall(); renderBeatBtn(); });
+  CHAR.init();
 </script>
 </body>
 </html>
