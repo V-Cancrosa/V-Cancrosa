@@ -1,6 +1,7 @@
-// Wspólne zachowania kart postaci: język PL/EN, podgląd obrazków, kopiowanie kolorów, numer strony, druk.
+// Wspólne zachowania stron postaci: język PL/EN, komunikaty, podgląd obrazków,
+// pojawianie się sekcji przy przewijaniu i podświetlanie bieżącej sekcji w menu.
 
-const FILES = (() => {
+const CHAR = (() => {
   const root = document.documentElement;
   const listeners = [];
 
@@ -11,7 +12,7 @@ const FILES = (() => {
     root.lang = l;
     try { localStorage.setItem("lang", l); } catch (e) {}
     document.querySelectorAll("[data-set-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.setLang === l)));
-    // Atrybuty, których nie da się ukryć przez CSS (alt, aria-label, title)
+    // Atrybuty, których nie da się przełączyć samym CSS
     document.querySelectorAll("[data-pl-alt]").forEach(el => el.alt = el.dataset[l + "Alt"]);
     document.querySelectorAll("[data-pl-label]").forEach(el => el.setAttribute("aria-label", el.dataset[l + "Label"]));
     listeners.forEach(fn => fn(l));
@@ -45,6 +46,8 @@ const FILES = (() => {
   }
 
   function initLightbox() {
+    const triggers = document.querySelectorAll(".zoom");
+    if (!triggers.length) return;
     const dlg = document.createElement("dialog");
     dlg.className = "lightbox";
     dlg.innerHTML = '<button type="button" aria-label="Zamknij / Close">✕</button><img alt=""><p></p>';
@@ -53,40 +56,52 @@ const FILES = (() => {
     const cap = dlg.querySelector("p");
     dlg.querySelector("button").addEventListener("click", () => dlg.close());
     dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-    document.querySelectorAll(".zoom").forEach(btn => btn.addEventListener("click", () => {
-      const inner = btn.querySelector("img");
+    triggers.forEach(btn => btn.addEventListener("click", () => {
       img.src = btn.dataset.full;
-      img.alt = inner ? inner.alt : "";
+      img.alt = btn.dataset.caption || "";
       cap.textContent = btn.dataset.caption || "";
       dlg.showModal();
     }));
   }
 
-  function initSwatches() {
-    document.querySelectorAll(".swatch[data-hex]").forEach(sw => sw.addEventListener("click", async () => {
-      const ok = await copy(sw.dataset.hex);
-      toast(ok ? t({ pl: "Skopiowano " + sw.dataset.hex, en: "Copied " + sw.dataset.hex }) : sw.dataset.hex);
-    }));
+  function initReveal() {
+    const items = document.querySelectorAll("[data-reveal]");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(el => el.classList.add("in"));
+      return;
+    }
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        obs.unobserve(e.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    items.forEach(el => obs.observe(el));
   }
 
-  function initPageCounter() {
-    const out = document.getElementById("pageNo");
-    const sheets = document.querySelectorAll(".sheet[data-page]");
-    if (!out || !sheets.length) return;
+  function initNav() {
+    const links = [...document.querySelectorAll("nav a[href^='#']")];
+    if (!links.length) return;
     const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) out.textContent = e.target.dataset.page; });
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(a => a.toggleAttribute("aria-current", a.hash === "#" + e.target.id));
+      });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    sheets.forEach(s => obs.observe(s));
+    links.forEach(a => {
+      const sec = document.querySelector(a.hash);
+      if (sec) obs.observe(sec);
+    });
   }
 
   function init() {
     document.querySelectorAll("[data-set-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.setLang)));
-    document.querySelectorAll("[data-print]").forEach(b => b.addEventListener("click", () => window.print()));
     initLightbox();
-    initSwatches();
-    initPageCounter();
+    initReveal();
+    initNav();
     setLang(lang());
   }
 
-  return { init, t, toast, lang, onLang: fn => listeners.push(fn) };
+  return { init, t, toast, copy, lang, onLang: fn => listeners.push(fn) };
 })();
