@@ -95,6 +95,8 @@ p:last-child { margin-bottom: 0; }
 .polaroid::before { top: -.8rem; left: -1.4rem; transform: rotate(-34deg); }
 .polaroid::after { bottom: -.4rem; right: -1.6rem; transform: rotate(-28deg); }
 .polaroid .shot { position: relative; }
+.polaroid .ref-zoom { position: absolute; top: -.8rem; right: -.6rem; z-index: 2; width: 2.6rem; height: 2.6rem; border-radius: 50%; display: grid; place-items: center; cursor: zoom-in; font: 800 1.15rem/1 var(--round); color: #fff; background: var(--cobalt); border: 2.5px solid var(--choc); box-shadow: 2px 2px 0 var(--choc); }
+.polaroid .ref-zoom:hover { transform: translateY(-1px); }
 .polaroid figcaption { position: absolute; left: 0; right: 0; bottom: .6rem; text-align: center; font: 600 1.5rem var(--hand); color: var(--choc); }
 .spot {
   position: absolute; width: 1.6rem; height: 1.6rem; margin: -.8rem 0 0 -.8rem; border-radius: 50%; cursor: pointer; padding: 0;

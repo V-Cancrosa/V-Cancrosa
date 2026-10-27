@@ -1,39 +1,53 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The One Above Them</title>
-<meta name="description" content="The One Above Them — postacie, fursony i projekty: Vince, Chip, Ragnar, Toro i ci, którzy dopiero nadchodzą.">
+<meta name="description" content="The One Above Them — characters, fursonas and projects: Vince, Chip, Ragnar, Toro and the ones still on their way.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b0c0e">
 
 <!-- Podgląd linku (Discord, Telegram, Bluesky…). Podmień domenę i obrazek. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="The One Above Them">
-<meta property="og:description" content="Postacie, fursony i projekty.">
+<meta property="og:description" content="Characters, fursonas and projects.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/">
 <meta property="og:image" content="https://TWOJA-DOMENA.pl/img/og.webp">
 
 <!-- Ikona: jeden punkt ponad trzema -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki (wspólny z podstronami postaci).
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="#start" aria-label="The One Above Them — początek strony">
+    <a class="brand" href="#start" aria-label="The One Above Them — top of the page" data-en-label="The One Above Them — top of the page" data-pl-label="The One Above Them — początek strony">
       <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3" fill="#ece3d3"/><path d="M8 19v8M16 17v10M24 19v8" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
       THE ONE ABOVE THEM
     </a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="#postacie">Postacie</a>
-      <a href="#projekty">Projekty</a>
-      <a href="#kontakt">Kontakt</a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
+      <a href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
+      <a href="#kontakt"><span lang="en">Contact</span><span lang="pl">Kontakt</span></a>
     </nav>
+    <div class="tools">
+      <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 </header>
 
@@ -42,122 +56,142 @@
   <!-- ===== START ===== -->
   <section id="start" style="padding-top:5.5rem;max-width:46rem">
     <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3" fill="#ece3d3"/><path d="M8 19v8M16 17v10M24 19v8" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
-    <p class="kicker">Postacie · historie · projekty</p>
+    <p class="kicker"><span lang="en">Characters · stories · projects</span><span lang="pl">Postacie · historie · projekty</span></p>
     <h1 style="font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em">The One<br><span style="color:var(--gold)">Above Them</span></h1>
     <div class="lead" style="margin-top:1.5rem">
-      <p>Tworzę postacie, piszę ich historie i składam dla nich świat. Ta strona jest moja —
+      <p lang="en">I create characters, write their stories and build a world for them. This site is mine —
+        and they live on it: my fursonas and the ones still on their way.</p>
+      <p lang="pl">Tworzę postacie, piszę ich historie i składam dla nich świat. Ta strona jest moja —
         a mieszkają na niej one: moje fursony i ci, którzy dopiero nadchodzą.</p>
-      <p>Obok nich są projekty, które robię niezależnie od nich — muzyka i gry fabularne.</p>
+      <p lang="en">Beside them are projects I make independently of them — music and tabletop RPGs.</p>
+      <p lang="pl">Obok nich są projekty, które robię niezależnie od nich — muzyka i gry fabularne.</p>
     </div>
-    <a class="btn" href="#postacie">Postacie</a>
-    <a class="btn ghost" href="#projekty">Projekty</a>
+    <a class="btn" href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
+    <a class="btn ghost" href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
   </section>
 
   <!-- ===== POSTACIE ===== -->
   <section id="postacie" aria-labelledby="postacie-h">
     <div class="section-head">
-      <p class="kicker">Fursony</p>
-      <h2 id="postacie-h">Postacie</h2>
+      <p class="kicker"><span lang="en">Fursonas</span><span lang="pl">Fursony</span></p>
+      <h2 id="postacie-h"><span lang="en">Characters</span><span lang="pl">Postacie</span></h2>
     </div>
-    <div class="world-head"><h3>Cancrosa Files</h3><span>miasto · świat w pełni digitigradalny, bez ludzi</span></div>
+    <div class="world-head"><h3>Cancrosa Files</h3><span lang="en">the city · a fully digitigrade world, no humans</span><span lang="pl">miasto · świat w pełni digitigradalny, bez ludzi</span></div>
     <div class="chars">
       <a class="char" href="vince.html">
-        <div class="thumb"><img src="img/vince-thumb.webp" alt="Vince — wilk grzywiasty w okularach" loading="lazy"></div>
+        <div class="thumb"><img src="img/vince-thumb.webp" alt="Vince — a maned wolf in glasses" data-en-alt="Vince — a maned wolf in glasses" data-pl-alt="Vince — wilk grzywiasty w okularach" loading="lazy"></div>
         <div class="body">
-          <span class="badge main">Główna fursona</span>
+          <span class="badge main"><span lang="en">Main fursona</span><span lang="pl">Główna fursona</span></span>
           <h3>Vincent „Vince” Cancrosa</h3>
-          <span class="meta">wilk grzywiasty · 28 lat</span>
-          <p class="facts-mini">Analityczny, ambitny, trzyma drzwi wąskie z troski. Mury mają koniec, tunele mają wyjścia, mosty mają powód.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">maned wolf · 28</span><span lang="pl">wilk grzywiasty · 28 lat</span></span>
+          <p class="facts-mini" lang="en">Analytical, ambitious, keeps the door narrow out of care. Walls have an end, tunnels have exits, bridges have a reason.</p>
+          <p class="facts-mini" lang="pl">Analityczny, ambitny, trzyma drzwi wąskie z troski. Mury mają koniec, tunele mają wyjścia, mosty mają powód.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
       <a class="char" href="chip.html">
-        <div class="thumb light"><img src="img/chip-thumb.webp" alt="Chip — kobold w niebieskiej bluzie w ciasteczka" loading="lazy"></div>
+        <div class="thumb light"><img src="img/chip-thumb.webp" alt="Chip — a kobold in a blue cookie hoodie" data-en-alt="Chip — a kobold in a blue cookie hoodie" data-pl-alt="Chip — kobold w niebieskiej bluzie w ciasteczka" loading="lazy"></div>
         <div class="body">
           <span class="badge">002</span>
           <h3>Chipper „Chip” Cancrosa</h3>
-          <span class="meta">ciasteczkowy kobold · 18 lat</span>
-          <p class="facts-mini">Podopieczny Vince'a. Kwaśna mina, pęknięty dzwonek i więcej ciepła, niż pokaże.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">cookie kobold · 18</span><span lang="pl">ciasteczkowy kobold · 18 lat</span></span>
+          <p class="facts-mini" lang="en">Vince's ward. A sour face, a cracked bell and more warmth than he'll ever show.</p>
+          <p class="facts-mini" lang="pl">Podopieczny Vince'a. Kwaśna mina, pęknięty dzwonek i więcej ciepła, niż pokaże.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
       <a class="char" href="ragnar.html">
-        <div class="thumb"><img src="img/ragnar-thumb.webp" alt="Ragnar — bulterier w kolorowej kurtce" loading="lazy"></div>
+        <div class="thumb"><img src="img/ragnar-thumb.webp" alt="Ragnar — a bull terrier in a colourful jacket" data-en-alt="Ragnar — a bull terrier in a colourful jacket" data-pl-alt="Ragnar — bulterier w kolorowej kurtce" loading="lazy"></div>
         <div class="body">
           <span class="badge">003</span>
           <h3>Ragnar Elias Hale</h3>
-          <span class="meta">bulterier · 28 lat · DJ</span>
-          <p class="facts-mini">Partner Vince'a. Bokser, który został DJ-em; jeśli Vince jest głową, Ragnar jest sercem.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">bull terrier · 28 · DJ</span><span lang="pl">bulterier · 28 lat · DJ</span></span>
+          <p class="facts-mini" lang="en">Vince's partner. A boxer who became a DJ; if Vince is the head, Ragnar is the heart.</p>
+          <p class="facts-mini" lang="pl">Partner Vince'a. Bokser, który został DJ-em; jeśli Vince jest głową, Ragnar jest sercem.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
       <a class="char" href="toro.html">
-        <div class="thumb light"><img src="img/toro-thumb.webp" alt="Toro — zielony futrzasty smok" loading="lazy"></div>
+        <div class="thumb light"><img src="img/toro-thumb.webp" alt="Toro — a green furred dragon" data-en-alt="Toro — a green furred dragon" data-pl-alt="Toro — zielony futrzasty smok" loading="lazy"></div>
         <div class="body">
           <span class="badge">004</span>
           <h3>Toro Hashimoto</h3>
-          <span class="meta">futrzasty smok · 19 lat</span>
-          <p class="facts-mini">Rodzina chciała tygrysa. On jest latarnią — i mieszka w filarze mostu.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">furred dragon · 19</span><span lang="pl">futrzasty smok · 19 lat</span></span>
+          <p class="facts-mini" lang="en">The family wanted a tiger. He is a lantern — and he lives inside a bridge pillar.</p>
+          <p class="facts-mini" lang="pl">Rodzina chciała tygrysa. On jest latarnią — i mieszka w filarze mostu.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
     </div>
 
-    <div class="world-head"><h3>Cancrosa Verse · głęboki kosmos</h3><span>kanon roboczy · może się zmienić</span></div>
+    <div class="world-head"><h3>Cancrosa Verse · <span lang="en">deep space</span><span lang="pl">głęboki kosmos</span></h3><span lang="en">working canon · may change</span><span lang="pl">kanon roboczy · może się zmienić</span></div>
     <div class="chars">
       <a class="char" href="myr.html">
         <div class="thumb" style="background:linear-gradient(160deg,#4a4d50,#1d1f21);color:#e9e2cf;font-size:1.4rem">MYR-35</div>
         <div class="body">
-          <span class="badge dim">Kanon roboczy</span>
+          <span class="badge dim"><span lang="en">Working canon</span><span lang="pl">Kanon roboczy</span></span>
           <h3>Myr</h3>
-          <span class="meta">Protogen · they/them (po polsku: „jednostka”) · ok. 210 cm</span>
-          <p class="facts-mini">Była jednostka abordażowa, z DNA mrówkojada. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">Protogen · they/them · c. 210 cm</span><span lang="pl">Protogen · they/them (po polsku: „jednostka”) · ok. 210 cm</span></span>
+          <p class="facts-mini" lang="en">Former breaching unit with anteater DNA. Deserted. Breaks only as a last resort — and only what is needed.</p>
+          <p class="facts-mini" lang="pl">Była jednostka abordażowa, z DNA mrówkojada. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
       <a class="char" href="zarin.html">
         <div class="thumb" style="background:linear-gradient(170deg,#7d8186,#474b50);color:#e6e1d3;font-size:1.4rem;letter-spacing:.22em">PATCH</div>
         <div class="body">
-          <span class="badge dim">Kanon roboczy</span>
+          <span class="badge dim"><span lang="en">Working canon</span><span lang="pl">Kanon roboczy</span></span>
           <h3>Zarin Patchcurio</h3>
-          <span class="meta">Avali · on/jego · mechanik</span>
-          <p class="facts-mini">Rozkłada na części to, co inni wyrzucają, żeby sprawdzić, czy jeszcze działa. Nosi płytę z kadłuba statku Patch.</p>
-          <span class="more">Karta postaci →</span>
+          <span class="meta"><span lang="en">Avali · he/him · mechanic</span><span lang="pl">Avali · on/jego · mechanik</span></span>
+          <p class="facts-mini" lang="en">Takes apart what others throw away, to see whether it still runs. Wears a hull plate from the ship Patch.</p>
+          <p class="facts-mini" lang="pl">Rozkłada na części to, co inni wyrzucają, żeby sprawdzić, czy jeszcze działa. Nosi płytę z kadłuba statku Patch.</p>
+          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
         </div>
       </a>
     </div>
-    <p class="note">Avali — gatunek stworzony przez RyuujinZERO. Protogeny — gatunek Zenith's Outer Reach.</p>
+    <p class="note" lang="en">Avali — a species created by RyuujinZERO. Protogens — a species by Zenith's Outer Reach.</p>
+    <p class="note" lang="pl">Avali — gatunek stworzony przez RyuujinZERO. Protogeny — gatunek Zenith's Outer Reach.</p>
   </section>
 
   <!-- ===== PROJEKTY ===== -->
   <section id="projekty" aria-labelledby="projekty-h">
     <div class="section-head">
-      <p class="kicker">Osobno od postaci</p>
-      <h2 id="projekty-h">Projekty</h2>
+      <p class="kicker"><span lang="en">Separate from the characters</span><span lang="pl">Osobno od postaci</span></p>
+      <h2 id="projekty-h"><span lang="en">Projects</span><span lang="pl">Projekty</span></h2>
     </div>
 
     <div class="card">
-      <p class="kicker">Muzyka</p>
-      <h3>Trzy kategorie, które nie są sztywne</h3>
-      <p style="max-width:48rem">Muzyka ma już swój kształt. Utwór może żyć w więcej niż jednej kategorii — czasem musi.</p>
+      <p class="kicker"><span lang="en">Music</span><span lang="pl">Muzyka</span></p>
+      <h3><span lang="en">Three categories that aren't rigid</span><span lang="pl">Trzy kategorie, które nie są sztywne</span></h3>
+      <p style="max-width:48rem" lang="en">The music already has its shape. A track can live in more than one category — sometimes it has to.</p>
+      <p style="max-width:48rem" lang="pl">Muzyka ma już swój kształt. Utwór może żyć w więcej niż jednej kategorii — czasem musi.</p>
       <div class="grid-3" style="margin-top:1.25rem">
         <div class="cat">
-          <h3>Ranger <small>SYGNAŁ</small></h3>
-          <p>Podróż. Lekka, żeby cię niosła, ale zbudowana do ruchu. Nie liczy się cel — liczy się to,
+          <h3>Ranger <small lang="en">SIGNAL</small><small lang="pl">SYGNAŁ</small></h3>
+          <p lang="en">A journey. Light enough to carry you, but built for motion. The destination doesn't matter — what matters is that
+            somewhere between the first and the last bar it takes you along.</p>
+          <p lang="pl">Podróż. Lekka, żeby cię niosła, ale zbudowana do ruchu. Nie liczy się cel — liczy się to,
             że gdzieś między pierwszym a ostatnim taktem zabiera cię ze sobą.</p>
         </div>
         <div class="cat">
-          <h3>Manifesto <small>DOWÓD</small></h3>
-          <p>Filozofia z kanapy. Rozmowa, w której nikt się nie spieszy. Bez dobrych odpowiedzi —
+          <h3>Manifesto <small lang="en">PROOF</small><small lang="pl">DOWÓD</small></h3>
+          <p lang="en">Couch philosophy. A conversation where nobody's in a hurry. No right answers —
+            something lands on the table, and the question is: what do you make of it?</p>
+          <p lang="pl">Filozofia z kanapy. Rozmowa, w której nikt się nie spieszy. Bez dobrych odpowiedzi —
             coś ląduje na stole, a pytanie brzmi: co ty o tym myślisz?</p>
         </div>
         <div class="cat">
-          <h3>Blueprint <small>MECHANIZM</small></h3>
-          <p>Zabawa formą. Nie tylko jak muzyka brzmi, ale jak przychodzi: struktura, kontekst, kształt całości —
+          <h3>Blueprint <small lang="en">MECHANISM</small><small lang="pl">MECHANIZM</small></h3>
+          <p lang="en">Playing with form. Not just how the music sounds but how it arrives: structure, context, the shape of the whole —
+            the layer most people skip. Here it is the point.</p>
+          <p lang="pl">Zabawa formą. Nie tylko jak muzyka brzmi, ale jak przychodzi: struktura, kontekst, kształt całości —
             warstwa, którą większość pomija. Tutaj to ona jest sednem.</p>
         </div>
       </div>
-      <p class="note">Muzyka powstaje z pomocą AI — i mówię o tym otwarcie. Oprawa wizualna jest zamawiana u artystów,
+      <p class="note" lang="en">The music is made with the help of AI — and I say so openly. The visuals are commissioned from artists,
+        not generated, and every artist knows up front that their work will stand next to something made with AI.
+        Their informed decision isn't a courtesy; it's a priority.</p>
+      <p class="note" lang="pl">Muzyka powstaje z pomocą AI — i mówię o tym otwarcie. Oprawa wizualna jest zamawiana u artystów,
         nie generowana, a każdy artysta wie z góry, że jego praca stanie obok czegoś stworzonego z AI.
         Jego świadoma decyzja to nie uprzejmość, tylko priorytet.</p>
     </div>
@@ -166,14 +200,18 @@
       <article class="card">
         <p class="kicker">TTRPG</p>
         <h3>Fallout: Equestria — Foundry VTT</h3>
-        <p>Prowadzę sesje i piszę do nich narzędzia. Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L.,
+        <p lang="en">I run sessions and write tools for them. A fan-made system for Foundry VTT: a character sheet with S.P.E.C.I.A.L.,
+          SATS, a catalogue of over a thousand items, a combat tracker and a casino with blackjack and Texas Hold'em.</p>
+        <p lang="pl">Prowadzę sesje i piszę do nich narzędzia. Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L.,
           SATS, katalog ponad tysiąca przedmiotów, tracker walki i kasyno z blackjackiem i Texas Hold'em.</p>
         <a class="btn ghost" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
       </article>
       <article class="card" style="border-style:dashed">
-        <p class="kicker" style="color:var(--muted)">Kiedyś</p>
+        <p class="kicker" style="color:var(--muted)"><span lang="en">Someday</span><span lang="pl">Kiedyś</span></p>
         <h3>YouTube · Twitch · Kick</h3>
-        <p>Gameplay, krótkie rozmowy, długie rozmowy, muzyka — wszystko, co znajdzie drogę.
+        <p lang="en">Gameplay, short talks, long talks, music — whatever finds its way.
+          This is a plan for the future; links will appear here once the channels go live.</p>
+        <p lang="pl">Gameplay, krótkie rozmowy, długie rozmowy, muzyka — wszystko, co znajdzie drogę.
           To plan na przyszłość; linki pojawią się tutaj, gdy kanały ruszą.</p>
       </article>
     </div>
@@ -182,8 +220,8 @@
   <!-- ===== KONTAKT ===== -->
   <section id="kontakt" aria-labelledby="kontakt-h">
     <div class="section-head">
-      <p class="kicker">Drzwi są otwarte</p>
-      <h2 id="kontakt-h">Kontakt</h2>
+      <p class="kicker"><span lang="en">The door is open</span><span lang="pl">Drzwi są otwarte</span></p>
+      <h2 id="kontakt-h"><span lang="en">Contact</span><span lang="pl">Kontakt</span></h2>
     </div>
     <!-- Podmień href i nazwy; zbędne pozycje usuń. -->
     <ul class="links">
@@ -198,21 +236,13 @@
 
 <footer>
   <span>© <span id="year">2026</span> The One Above Them</span>
-  <span>Ilustracje należą do ich autorów.</span>
+  <span lang="en">Illustrations belong to their artists.</span><span lang="pl">Ilustracje należą do ich autorów.</span>
 </footer>
 
+<script src="char.js"></script>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Podświetla w menu sekcję, która jest właśnie na ekranie.
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
-    }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+  CHAR.init();
 </script>
 </body>
 </html>

@@ -37,6 +37,7 @@ h1, h2, h3 { font-family: var(--disp); color: var(--cream); margin: 0; line-heig
 p { margin: 0 0 1rem; }
 p:last-child { margin-bottom: 0; }
 
+[data-lang="pl"] body [lang="en"], [data-lang="en"] body [lang="pl"] { display: none !important; }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--gold); color: var(--jet); padding: .4rem .8rem; }
 
@@ -58,11 +59,15 @@ header.top {
 .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--cream); font: 800 1rem var(--disp); letter-spacing: .14em; }
 .brand svg { width: 1.4rem; height: 1.4rem; }
 nav.tabs { display: flex; gap: .2rem; flex-wrap: wrap; margin-left: auto; }
+.tools { display: flex; gap: .25rem; }
+.tools button { background: none; border: 1px solid var(--line); border-radius: 3px; padding: .2rem .5rem; cursor: pointer; font: 700 .68rem var(--mono); letter-spacing: .1em; color: var(--muted); }
+.tools button:hover { color: var(--cream); border-color: var(--gold); }
+.tools button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--jet); }
 nav.tabs a {
   font: 700 .72rem var(--mono); letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
   color: var(--muted); padding: .4rem .65rem; border-radius: 3px;
 }
-nav.tabs a:hover, nav.tabs a[aria-current="true"] { color: var(--gold-b); background: var(--line-s); }
+nav.tabs a:hover, nav.tabs a[aria-current] { color: var(--gold-b); background: var(--line-s); }
 
 main { max-width: 68rem; margin: 0 auto; padding: 0 1rem 5rem; }
 section { padding-top: 5rem; }
@@ -162,7 +167,8 @@ footer { max-width: 68rem; margin: 0 auto; padding: 2rem 1rem 3rem; border-top: 
   .hero .portrait { max-width: 22rem; }
 }
 @media (max-width: 560px) {
-  nav.tabs { margin-left: 0; width: 100%; }
+  nav.tabs { margin-left: 0; width: 100%; order: 1; }
+  .tools { margin-left: auto; }
   nav.tabs a { padding: .35rem .45rem; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
