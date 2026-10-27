@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zarin Patchcurio · The One Above Them</title>
+<meta name="description" content="Zarin Patchcurio — Avali, mechanik. Rozkłada na części to, co inni wyrzucają, żeby sprawdzić, czy jeszcze działa.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0c0e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zarin Patchcurio">
+<meta property="og:description" content="Avali bierze imię od swojego stada. Zarin dostał swoje u stóp rampy, od załogi, która nie była jego gatunku.">
+<meta property="og:url" content="https://TWOJA-DOMENA.pl/zarin.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Akcent Zarina: opalizująca zieleń przechodząca w turkus */
+  :root { --gold: #2fd46b; --gold-b: #6fe8c9; --line: rgba(47,212,107,.26); --line-s: rgba(31,199,181,.10); }
+  .hull-plate { background: linear-gradient(170deg, #7d8186, #5d6166 55%, #474b50); }
+  .hull-plate::before { content: ""; position: absolute; left: 0; right: 0; top: 22%; height: 13%; background: #5e7a5a; opacity: .85; }
+  .hull-plate .patch { position: relative; font: 700 clamp(2.6rem, 8vw, 4.4rem) var(--mono); letter-spacing: .22em; color: #e6e1d3; margin-top: 4%; padding-left: .22em; }
+  .hull-plate .curio {
+    position: relative; display: block; font: 400 clamp(1.6rem, 4.5vw, 2.4rem) "Comic Sans MS", "Segoe Print", cursive;
+    color: #17191b; transform: rotate(-4deg); margin-top: .2rem; text-shadow: 0 0 1px rgba(0,0,0,.6);
+  }
+  .hull-plate .grime { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(0,0,0,.25), transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(255,255,255,.08), transparent 40%); }
+  .story p { max-width: 46rem; }
+  .story p + p { margin-top: 1rem; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#start">ZARIN</a>
+    <nav class="tabs" aria-label="Sekcje strony">
+      <a href="index.html#postacie">← Postacie</a>
+      <a href="#karta">Karta</a>
+      <a href="#historia">Historia</a>
+      <a href="#myr">Myr</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="start">
+    <figure class="plate hull-plate" style="margin:0" aria-label="Płyta z kadłuba statku Patch: szary metal, wyblakły zielony pas, szablonowy napis PATCH i wydrapane ręcznie słowo curio">
+      <span class="grime"></span>
+      <div><span class="patch">PATCH</span><span class="curio">curio</span></div>
+      <span class="bolt"></span><span class="bolt"></span><span class="bolt"></span><span class="bolt"></span>
+      <figcaption class="credit" style="background:rgba(11,12,14,.75)">Płyta z kadłuba statku Patch · art: wkrótce</figcaption>
+    </figure>
+    <div>
+      <p class="kicker">Cancrosa Verse · Avali · Character Reference</p>
+      <h1>Zarin<br><span>Patchcurio</span></h1>
+      <p class="aka">Avali · on/jego · mechanik</p>
+      <blockquote class="motto">
+        <q>He never sold any of it. He only wanted to know whether it would still run.</q>
+        <small>Nigdy niczego z tego nie sprzedał. Chciał tylko wiedzieć, czy to jeszcze działa.</small>
+      </blockquote>
+      <div class="lead">
+        <p>Przyjazny, ciekawski, odrobinę psotny. Najlepiej widać go przy majsterkowaniu, w pół rozmowy albo gdy rozkłada coś na części, żeby zobaczyć, jak działa.</p>
+      </div>
+      <a class="btn" href="#karta">Karta postaci</a>
+      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
+    </div>
+  </section>
+
+  <section id="karta" aria-labelledby="karta-h">
+    <div class="section-head">
+      <p class="kicker">Część pierwsza</p>
+      <h2 id="karta-h">Karta postaci</h2>
+    </div>
+    <dl class="stats">
+      <div><dt>Gatunek</dt><dd>Avali</dd></div>
+      <div><dt>Płeć</dt><dd>Samiec</dd></div>
+      <div><dt>Wzrost</dt><dd>1–1,2 m <i>(standard Avali)</i></dd></div>
+      <div><dt>Budowa</dt><dd>Zwarta · bardzo puszysta</dd></div>
+    </dl>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Grafit z zielonym błyskiem</h3>
+        <div class="swatches">
+          <div class="swatch"><i style="--c:#2e3236"></i><b>Grafit</b><span>pióra</span></div>
+          <div class="swatch"><i style="--c:#2fd46b"></i><b>Zieleń</b><span>opalizujące pasy</span></div>
+          <div class="swatch"><i style="--c:#1fc7b5"></i><b>Turkus</b><span>tam, gdzie zieleń się mieni</span></div>
+          <div class="swatch"><i style="--c:#cfe8f2"></i><b>Lodowy błękit</b><span>oczy</span></div>
+        </div>
+        <p>Zieleń pojawia się tylko w trzech miejscach: pas przez każde górne ucho, brzegi lotek na przedramionach i jeden–dwa pasy przy końcu ogona.
+          Cała reszta to grafit, z jaśniejszym odcieniem na gardle i brzuchu. Bladofioletowa krew barwi pyszczek, język, opuszki i podeszwy.</p>
+      </div>
+      <div class="card">
+        <h3>Sprzęt</h3>
+        <ul class="details">
+          <li><b>Uprząż chłodząca</b> — płaski pakiet na plecach z żeberkami radiatora i małym wentylatorem. Wyraźnie przerabiana, z niepasującymi częściami przykręconymi na boki.</li>
+          <li><b>Płyta z kadłuba</b> — szary, wytarty metal z wyblakłym przemysłowym zielonym pasem. PATCH w złamanobiałym szablonie, jak na kadłubie statku,
+            a pod spodem „curio” — wydrapane ręcznie nierównymi małymi literami i poprawione ciemnym markerem, żeby się nie starło.</li>
+          <li><b>Gogle robocze</b> — ciemnoszare, zsunięte na czoło między uszy.</li>
+          <li><b>Avali w skrócie</b> — mały, raptorowaty, w gęstych izolujących piórach; cztery pierzaste uszy, lotki na przedramionach, trzy palce, ogon długi na pół ciała.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" aria-labelledby="historia-h">
+    <div class="section-head">
+      <p class="kicker">Część druga · Kerra-4</p>
+      <h2 id="historia-h">Historia</h2>
+    </div>
+    <div class="card story">
+      <p>Na Kerra-4 śnieg leciał bokiem z grani i osiadał szarą skorupą na dachach hangarów. Zarin mieszkał w przybudówce za złomowiskiem,
+        w jedynej szopie, której nikt nie chciał, bo izolacja dawno siadła. Całe dnie rozbierał to, co inni wyrzucili: regulatory ciśnienia,
+        martwe drony zwiadowcze, raz cały moduł nawigacyjny, który budził się trzy tygodnie.</p>
+      <p>Frachtowiec wylądował we wtorek, kaszląc. Drugiego wieczoru Zarin siedział na zaspie za złomowiskiem i liczył przerwy między kaszlnięciami pompy chłodzącej.
+        Czterdzieści sekund. Trzydzieści dziewięć. Trzydzieści osiem. Na kadłubie, w łuszczącej się farbie: PATCH. Czwartego wieczoru wszedł przez niezamknięty właz serwisowy.
+        Chciał tylko popatrzeć. Silniki zapaliły się o świcie.</p>
+      <p>Znalazł chłód za ładownią, gdzie przewody chłodziwa ciekły od lat, wcisnął się w niego i zaczął naprawiać. Maro, który nią latał, w kilka dni zorientował się,
+        że za rurami mieszka coś małego i pierzastego. Bett latała już kiedyś z Avali i od pierwszej nocy wiedziała, kim jest. Kapitan Oskar dowiedział się ostatni —
+        a wtedy statek chodził lepiej niż od dekady, więc nic nie powiedział.</p>
+      <p>Ciepłe statki to problem dla Avali. Uprząż chłodząca kosztowała więcej, niż Patch miał — dopóki Oskar nie policzył, ile zaoszczędzili na paliwie, odkąd Zarin
+        przebudował wymiennik ciepła. Wyszło mniej więcej tyle.</p>
+      <p>Pożegnali się w jakimś doku po drodze. Bett dała mu suszone mięso i puszkę brzoskwiń. Maro — swój ulubiony klucz nasadowy, udając, że ma drugi taki sam.
+        Oskar wręczył mu płytę z kadłuba, wymienioną przy remoncie, przyciętą w kwadrat i nawierconą tak, by pasowała do uprzęży, bo Maro zmierzył ją, gdy Zarin spał.
+        Pod szablonowym napisem ktoś wydrapał: curio.</p>
+      <p><b style="color:var(--cream)">Avali biorą imiona od swoich stad. Zarin dostał swoje u stóp rampy, od załogi, która nie była jego gatunku, w dniu, w którym odlatywali.</b></p>
+      <p>W dolnych poziomach stacji szybko się nauczył, że nikt tam na nikogo nie uważa — i że jest jeden sektor, do którego się nie wchodzi, jeśli chce się z niego wyjść.</p>
+    </div>
+  </section>
+
+  <section id="myr" aria-labelledby="myr-h">
+    <div class="section-head">
+      <p class="kicker">Część trzecia</p>
+      <h2 id="myr-h">Za grodzią</h2>
+    </div>
+    <div class="grid-2">
+      <article class="card person">
+        <p class="kicker">Partner w pracy · sąsiad zza drzwi</p>
+        <h3><a href="myr.html">Myr-35</a></h3>
+        <p class="meta">Protogen · ok. 210 cm</p>
+        <p>Gang zagonił go do tamtego sektora. Zamknął się za pierwszą grodzią i dopiero wtedy zrozumiał, że nie jest sam: legenda okazała się prawdziwa.
+          Gdy ktoś przeciął gródź, jednostka przeszła przez gang tak, jak ją zbudowano. Potem poprosiła o diagnostykę. Zarin podłączył sondę,
+          przedstawił się porządnie i zapytał, czy może mówić do niej Myr. Odpowiedź brzmiała jednym słowem: „I.”</p>
+        <p>Dziś zarabiają razem — Myr robi to, co wymaga siły, Zarin naprawia to, co zostaje. Zarin śpi w Chłodni 3, Myr w ciepłej maszynowni obok.
+          Na dłuższych spacerach jedzie na plecach Myr.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">Gość</p>
+        <h3>Wśród innych Avali</h3>
+        <p>Gdy trafia na inne Avali — jak wtedy, gdy w porcie zacumował statek stada — mówi bardzo dużo, pomaga przy wszystkim i nadrabia lata rozmów naraz.
+          Nigdy nie nauczył się prywatnych sygnałów, które dzieli stado, więc zostaje gościem. Gdy ich statek odlatuje, wraca do Chłodni 3.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
+  <span>Avali — gatunek stworzony przez RyuujinZERO.</span>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const links = [...document.querySelectorAll("nav.tabs a")];
+  const observer = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+    }
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
