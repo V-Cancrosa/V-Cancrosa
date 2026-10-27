@@ -1,187 +1,623 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chipper Cancrosa · The One Above Them</title>
-<meta name="description" content="Chipper „Chip” Cancrosa — futrzasty ciasteczkowy kobold, podopieczny Vince'a.">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
+<title>Chip · Chipper Cancrosa</title>
+<meta name="description" content="Chipper „Chip” Cancrosa — furred cookie kobold. Silence is a choice — and so is letting it ring.">
+<meta name="theme-color" content="#f4e2c3">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Chipper „Chip” Cancrosa">
-<meta property="og:description" content="Cisza to wybór — i to, żeby pozwolić dzwonkowi zadzwonić, też.">
+<meta property="og:title" content="Chip · Chipper Cancrosa">
+<meta property="og:description" content="Silence is a choice — and so is letting it ring.">
 <meta property="og:url" content="https://TWOJA-DOMENA.pl/chip.html">
 <meta property="og:image" content="https://TWOJA-DOMENA.pl/img/chip-thumb.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='8' r='3' fill='%23ece3d3'/%3E%3Cpath d='M8 19v8M16 17v10M24 19v8' stroke='%23c98a3c' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='12' fill='%23cda36a' stroke='%234a2a17' stroke-width='2'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%234a2a17'/%3E%3Ccircle cx='20' cy='15' r='1.6' fill='%234a2a17'/%3E%3Ccircle cx='15' cy='21' r='2.2' fill='%234a2a17'/%3E%3C/svg%3E">
+<script>
+  // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki.
+  (function () {
+    var l;
+    try { l = localStorage.getItem("lang"); } catch (e) {}
+    if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
+    document.documentElement.dataset.lang = l;
+    document.documentElement.lang = l;
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Akcent Chipa: kobaltowa bluza w ciasteczka */
-  :root { --gold: #4f8ae8; --gold-b: #86b2f5; --line: rgba(79,138,232,.28); --line-s: rgba(79,138,232,.11); }
-</style>
+<link rel="stylesheet" href="char.css">
+<link rel="stylesheet" href="chip.css">
 </head>
 <body>
-<a class="skip" href="#main">Przejdź do treści</a>
+<a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start">CHIP</a>
-    <nav class="tabs" aria-label="Sekcje strony">
-      <a href="index.html#postacie">← Postacie</a>
-      <a href="#karta">Karta</a>
-      <a href="#charakter">Charakter</a>
-      <a href="#bliscy">Bliscy</a>
-    </nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cookie" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="13" fill="#cda36a" stroke="#4a2a17" stroke-width="2"/>
+      <circle cx="11" cy="12" r="2.2" fill="#4a2a17"/><circle cx="20" cy="11" r="1.7" fill="#4a2a17"/>
+      <circle cx="15" cy="20" r="2.4" fill="#4a2a17"/><circle cx="22" cy="19" r="1.5" fill="#4a2a17"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <a class="logo" href="#top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 9 Q16 14 29 9" fill="none" stroke="#4a2a17" stroke-width="3"/><circle cx="16" cy="19" r="8.5" fill="#c9ccd3" stroke="#4a2a17" stroke-width="2"/><path d="M11 23 H21" stroke="#4a2a17" stroke-width="2.2" stroke-linecap="round"/><path d="M21 14 L19 17 L21 19" fill="none" stroke="#4a2a17" stroke-width="1.2"/></svg>
+    Chip
+  </a>
+  <nav aria-label="Sections">
+    <a href="#bell"><span lang="en">Bell</span><span lang="pl">Dzwonek</span></a>
+    <a href="#coat"><span lang="en">Coat</span><span lang="pl">Futro</span></a>
+    <a href="#story"><span lang="en">Story</span><span lang="pl">Historia</span></a>
+    <a href="#under"><span lang="en">Underneath</span><span lang="pl">Pod spodem</span></a>
+    <a href="#people"><span lang="en">People</span><span lang="pl">Ludzie</span></a>
+  </nav>
+  <div class="tools">
+    <button type="button" class="jar" id="jar" aria-live="polite" data-en-label="Cookies left" data-pl-label="Zostało ciasteczek" aria-label="Cookies left"><svg aria-hidden="true"><use href="#cookie"/></svg><span id="jarN">12</span></button>
+    <button type="button" id="soundBtn" aria-pressed="true" data-en-label="Sound" data-pl-label="Dźwięk" aria-label="Sound">♪</button>
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
+  <a class="back" href="index.html#postacie">← <span lang="en">All characters</span><span lang="pl">Postacie</span></a>
 </header>
 
 <main id="main">
-  <section class="hero" id="start">
-    <figure class="portrait has-img" style="margin:0">
-      <a href="img/chip-ref.webp"><img src="img/chip-ref.webp" alt="Ref sheet Chipa: mały kobold w niebieskiej bluzie w ciasteczka, z dzwonkiem na obroży" width="1000" height="961"></a>
-      <figcaption>Ref sheet · <span class="todo">autor</span></figcaption>
-    </figure>
-    <div>
-      <p class="kicker">Cancrosa Files · Ref // Cookie Kobold · 002</p>
-      <h1>Chipper<br><span>Cancrosa</span></h1>
-      <p class="aka">„Chip” · futrzasty ciasteczkowy kobold · on/jego</p>
-      <blockquote class="motto">
-        <q>Silence is a choice — and so is letting it ring.</q>
-        <small>Cisza to wybór — i to, żeby pozwolić mu zadzwonić, też.</small>
-      </blockquote>
-      <div class="lead">
-        <p>Czujny, nieufny i cieplejszy, niż wygląda. Podopieczny Vince'a — na papierze opiekun prawny, w praktyce „Big Bro”.</p>
-      </div>
-      <a class="btn" href="#karta">Karta postaci</a>
-      <a class="btn ghost" href="index.html#postacie">Pozostałe postacie</a>
-    </div>
-  </section>
 
-  <section id="karta" aria-labelledby="karta-h">
-    <div class="section-head">
-      <p class="kicker">Część pierwsza</p>
-      <h2 id="karta-h">Karta postaci</h2>
-    </div>
-    <dl class="stats">
-      <div><dt>Gatunek</dt><dd>Kobold <i>(futrzasty)</i></dd></div>
-      <div><dt>Wiek</dt><dd>18 lat <i>(16 przy opiece)</i></dd></div>
-      <div><dt>Budowa</dt><dd>Mały · digitigradalny</dd></div>
-      <div><dt>Znak</dt><dd>Pęknięty dzwonek</dd></div>
-    </dl>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Futro — upieczone</h3>
-        <div class="swatches">
-          <div class="swatch"><i style="--c:#d9b07a"></i><b>Ciasto</b><span>futro, jaśniejszy brzuch</span></div>
-          <div class="swatch"><i style="--c:#6b3f22"></i><b>Czekolada</b><span>wypukłe kropki</span></div>
-          <div class="swatch"><i style="--c:#2f6fd6"></i><b>Kobalt</b><span>bluza w ciasteczka</span></div>
-          <div class="swatch"><i style="--c:#3fa2ff"></i><b>Błękit</b><span>oczy, czujne</span></div>
+  <!-- ================= START ================= -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Cancrosa Files — 002</p>
+        <p class="hand"><span lang="en">hi. what.</span><span lang="pl">no co.</span></p>
+        <h1>Chip</h1>
+        <p class="sub"><span lang="en">Chipper Cancrosa · furred cookie kobold · he/him · 18</span><span lang="pl">Chipper Cancrosa · futrzasty ciasteczkowy kobold · on/jego · 18</span></p>
+        <p class="intro" lang="en">Small, wiry, fast when he wants to be. Leads with skepticism, takes warmth with suspicion, gives little away — and keeps coming back to the things he'd never admit he likes.</p>
+        <p class="intro" lang="pl">Mały, żylasty, szybki, kiedy chce. Zaczyna od sceptycyzmu, ciepło przyjmuje z podejrzliwością, niewiele zdradza — i wciąż wraca do rzeczy, do których nigdy by się nie przyznał.</p>
+        <p class="motto"><span lang="en">Silence is a choice — and so is letting it ring.</span><span lang="pl">Cisza to wybór — i pozwolić mu zadzwonić też.</span></p>
+        <div class="hero-actions">
+          <a class="btn" href="#bell"><span lang="en">Ring the bell</span><span lang="pl">Zadzwoń dzwonkiem</span></a>
+          <a class="btn ghost" href="#people"><span lang="en">His people</span><span lang="pl">Jego ludzie</span></a>
         </div>
-        <p>Ciepłe, jasnobrązowe futro jak surowe ciasto, z ciemniejszymi „skarpetkami” poniżej stawów —
-          ciepły odpowiednik czarnych łap Vince'a. Najważniejszy znak: lekko wypukłe kropki jak kawałki czekolady
-          na rękach, nogach, ogonie, tułowiu i pyszczku — ale nie na dłoniach, stopach ani uszach.</p>
       </div>
-      <div class="card">
-        <h3>Szczegóły</h3>
-        <ul class="details">
-          <li><b>Sylwetka</b> — drobny, żylasty kobold z wczesnego D&amp;D, ale z futrem zamiast łusek. Zbudowany do szybkości i zwinności.</li>
-          <li><b>Twarz</b> — żywe niebieskie oczy, lekko zmrużone, kąciki ust w dół: słynna kwaśna mina, noszona tak długo, że pasuje.</li>
-          <li><b>Rogi</b> — para żłobionych, kremowych rogów zaczesanych do tyłu i potargana kremowo-blond grzywka.</li>
-          <li><b>Dzwonek</b> — duży, stary dzwonek na szerokiej obroży, z pęknięciem z boku. Odruch: dłoń na piersi, żeby go wyciszyć.
-            Gdy pozwala mu zadzwonić, to celowo — znak obecności i zaufania.</li>
-          <li><b>Bluza</b> — luźna, niebieska, w rysunkowe ciasteczka; dostał ją miesiąc po tym, jak Vince został jego opiekunem.
-            Na osiemnastkę druga: „Warning. I will steal your cookies.”</li>
-        </ul>
+      <figure class="polaroid">
+        <div class="shot" id="shot">
+          <img src="img/chip-polaroid.webp" width="585" height="865" alt="Chip's reference" data-en-alt="Chip: small furred kobold with striped horns, a blue hoodie with cookies and a bell on his collar" data-pl-alt="Chip: mały futrzasty kobold z prążkowanymi rogami, w niebieskiej bluzie w ciasteczka, z dzwonkiem na obroży">
+        </div>
+        <figcaption><span lang="en">002. the face is a default setting.</span><span lang="pl">002. ta mina to ustawienie domyślne.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= DZWONEK ================= -->
+  <section class="bell-sec" id="bell">
+    <div class="wrap">
+      <div>
+        <p class="kicker" data-reveal>01 · <span lang="en">The bell</span><span lang="pl">Dzwonek</span></p>
+        <h2 data-reveal><span lang="en">Silence is<br><em>a choice.</em></span><span lang="pl">Cisza to<br><em>wybór.</em></span></h2>
+        <p class="intro" data-reveal="2" lang="en">A wide collar and a large, visibly old bell with a hairline crack. He spent years learning to silence it — a hand against the chest, pressing it flat. When he lets it ring, it's on purpose: presence, closeness, trust given quietly.</p>
+        <p class="intro" data-reveal="2" lang="pl">Szeroka obroża i duży, widocznie stary dzwonek z włoskowatym pęknięciem. Latami uczył się go wyciszać — dłoń na piersi, przyciśnięta płasko. Kiedy pozwala mu zadzwonić, robi to celowo: to obecność, bliskość, cicho okazane zaufanie.</p>
+      </div>
+      <div class="bell-stage" id="bellStage">
+        <button type="button" class="bell-btn" id="bellBtn" data-en-label="Ring the bell (hold to press it flat)" data-pl-label="Zadzwoń dzwonkiem (przytrzymaj, żeby przycisnąć)" aria-label="Ring the bell">
+          <svg viewBox="0 0 200 250" aria-hidden="true">
+            <defs>
+              <radialGradient id="metal" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#f4f5f8"/><stop offset=".45" stop-color="#b4b9c2"/><stop offset="1" stop-color="#5d636c"/></radialGradient>
+            </defs>
+            <path d="M-10 36 Q100 72 210 36 L210 64 Q100 100 -10 64 Z" fill="#2b1a10" stroke="#4a2a17" stroke-width="2"/>
+            <path d="M-10 44 Q100 80 210 44 M-10 56 Q100 92 210 56" fill="none" stroke="#5a3a24" stroke-width="1.4" stroke-dasharray="5 5"/>
+            <g class="waves"><path d="M30 100 Q16 128 30 156"/><path d="M14 90 Q-4 128 14 166"/><path d="M170 100 Q184 128 170 156"/><path d="M186 90 Q204 128 186 166"/></g>
+            <g class="bell-swing">
+              <path d="M90 76 Q100 58 110 76" fill="none" stroke="#7b818b" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="100" cy="128" r="52" fill="url(#metal)" stroke="#2f3238" stroke-width="3"/>
+              <path d="M50 120 Q100 134 150 120" fill="none" stroke="#3f444c" stroke-width="2.4"/>
+              <path d="M78 156 H122" stroke="#24272c" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="76" cy="156" r="5" fill="#24272c"/><circle cx="124" cy="156" r="5" fill="#24272c"/>
+              <path d="M139 92 L132 101 L140 108 L131 118 L137 126" fill="none" stroke="#24272c" stroke-width="1.8" stroke-linejoin="round"/>
+              <ellipse cx="80" cy="102" rx="13" ry="7" fill="#fff" opacity=".65" transform="rotate(-30 80 102)"/>
+            </g>
+            <g class="paw">
+              <path d="M44 252 C36 196 58 150 100 146 C142 150 164 196 156 252 Z" fill="#cda36a" stroke="#4a2a17" stroke-width="3"/>
+              <circle cx="70" cy="150" r="14" fill="#cda36a" stroke="#4a2a17" stroke-width="3"/>
+              <circle cx="100" cy="140" r="15" fill="#cda36a" stroke="#4a2a17" stroke-width="3"/>
+              <circle cx="130" cy="150" r="14" fill="#cda36a" stroke="#4a2a17" stroke-width="3"/>
+              <path d="M66 138 l2 -9 l5 8 M97 126 l3 -10 l4 10 M127 138 l4 -8 l3 9" fill="#3b2416" stroke="#3b2416" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M84 200 Q100 210 116 200" fill="none" stroke="#a37c4c" stroke-width="2"/>
+            </g>
+          </svg>
+        </button>
+        <p class="bell-status" id="bellStatus" aria-live="polite"></p>
+        <div class="bell-row">
+          <button type="button" class="btn ghost" id="flatBtn" aria-pressed="false"><span lang="en">Press it flat</span><span lang="pl">Przyciśnij dłonią</span></button>
+          <span class="hint"><span lang="en">tap to ring · hold to silence</span><span lang="pl">kliknij — dzwoni · przytrzymaj — cisza</span></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="charakter" aria-labelledby="charakter-h">
-    <div class="section-head">
-      <p class="kicker">Część druga</p>
-      <h2 id="charakter-h">Czujny i cieplejszy, niż wygląda</h2>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="kicker">Na wierzchu</p>
-        <p>Domyślnie ostrożny i lekko zaczepny. Zaczyna od sceptycyzmu, ciepło przyjmuje z podejrzliwością i niewiele zdradza.
-          Kwaśna mina to nawyk — wyrzeźbiony latami, w których otwartość kosztowała więcej, niż dawała.</p>
+  <!-- ================= FUTRO ================= -->
+  <section id="coat">
+    <div class="wrap coat">
+      <div>
+        <p class="kicker" data-reveal>02 · <span lang="en">Coat</span><span lang="pl">Futro</span></p>
+        <h2 data-reveal><span lang="en">Baked <em>in.</em></span><span lang="pl"><em>Upieczony.</em></span></h2>
+        <p class="intro" data-reveal="2" lang="en">Warm tan like pale cookie dough, a lighter cream on the chest and inner limbs, darker brown “socks” below the joints. The fur is short and soft — and dotted with raised chocolate-chip spots you can actually feel.</p>
+        <p class="intro" data-reveal="2" lang="pl">Ciepły beż jak jasne ciasto na ciasteczka, jaśniejszy krem na piersi i wewnętrznej stronie kończyn, ciemniejsze brązowe „skarpetki” poniżej stawów. Futro krótkie i miękkie — i usiane wypukłymi kropkami jak kawałki czekolady, które naprawdę da się wyczuć.</p>
+        <div class="cookies" data-reveal="3">
+          <button type="button" class="cookie" data-hex="#CDA36A"><i style="--c:#cda36a"></i><b lang="en">Cookie dough</b><b lang="pl">Ciasto</b><span>#CDA36A</span></button>
+          <button type="button" class="cookie" data-hex="#6F4A2A"><i style="--c:#6f4a2a"></i><b lang="en">Chocolate chip</b><b lang="pl">Czekolada</b><span>#6F4A2A</span></button>
+          <button type="button" class="cookie" data-hex="#2F6BD8"><i style="--c:#2f6bd8"></i><b lang="en">Cobalt</b><b lang="pl">Kobalt</b><span>#2F6BD8</span></button>
+          <button type="button" class="cookie" data-hex="#2F7FD6"><i style="--c:#2f7fd6"></i><b lang="en">Vivid blue</b><b lang="pl">Błękit</b><span>#2F7FD6</span></button>
+        </div>
+        <p class="mini"><span lang="en">Tap a cookie to copy its colour.</span><span lang="pl">Kliknij ciasteczko, żeby skopiować kolor.</span></p>
       </div>
-      <div class="card">
-        <p class="kicker">Pod spodem</p>
-        <p>Uparta inteligencja i spostrzegawczość większa, niż pokazuje. Zauważa, pamięta, rozgryzie twoje odruchy, zanim ty rozgryziesz jego.
-          Nie pyta wprost, nie dziękuje słowami, gdy może czynem, i nie przyzna, że coś lubi — po prostu do tego wraca.</p>
+      <div>
+        <div class="card" data-reveal="2">
+          <h3><span lang="en">Where the chips go</span><span lang="pl">Gdzie są kropki</span></h3>
+          <ul class="stickers">
+            <li class="yes" style="--r:-3deg"><span lang="en">arms</span><span lang="pl">ręce</span></li>
+            <li class="yes" style="--r:2deg"><span lang="en">legs</span><span lang="pl">nogi</span></li>
+            <li class="yes" style="--r:-1deg"><span lang="en">tail</span><span lang="pl">ogon</span></li>
+            <li class="yes" style="--r:3deg"><span lang="en">torso</span><span lang="pl">tułów</span></li>
+            <li class="yes" style="--r:-2deg"><span lang="en">face</span><span lang="pl">pyszczek</span></li>
+            <li class="no" style="--r:2deg"><span lang="en">hands</span><span lang="pl">dłonie</span></li>
+            <li class="no" style="--r:-3deg"><span lang="en">feet</span><span lang="pl">stopy</span></li>
+            <li class="no" style="--r:1deg"><span lang="en">ears</span><span lang="pl">uszy</span></li>
+          </ul>
+          <p class="hand"><span lang="en">not on hands, feet or ears — keeps a sense of normal.</span><span lang="pl">nie na dłoniach, stopach ani uszach — zostaje trochę normalności.</span></p>
+        </div>
+        <div class="card" data-reveal="3">
+          <h3><span lang="en">Where they came from</span><span lang="pl">Skąd się wzięły</span></h3>
+          <p lang="en">A cracked enchanted bell, leaking magic slowly from about age seven — first faint, then undeniable. A stranger's gentle deterrent became part of him. Now it's an enchantment he chooses to keep.</p>
+          <p lang="pl">Pęknięty zaczarowany dzwonek, który od mniej więcej siódmego roku życia powoli przeciekał magią — najpierw ledwo, potem nie do zaprzeczenia. Łagodny straszak obcej osoby stał się częścią niego. Dziś to zaklęcie, które sam postanawia zachować.</p>
+        </div>
       </div>
-      <div class="card trait shadow">
-        <p class="kicker">Rysa</p>
-        <p>Głęboko zakorzeniona trudność w uwierzeniu, że dobre rzeczy przetrwają. Nie dramatyczny cynizm — cichsza, praktyczna wersja:
-          czeka na haczyk. Mylił się co do haczyka częściej, niż się spodziewał.</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Skąd te kropki</p>
-        <p>Jako dziecko z sierocińca podkradał ciasteczka życzliwej starszej pani. Jej zaczarowany dzwonek miał go łagodnie odstraszać,
-          a stał się ich cichą grą. Gdy dzwonek pękł, magia zaczęła powoli wyciekać — od siódmego roku życia pojawiały się kropki.
-          Zostawiła mu znaki, dzwonek i pamięć o kimś, kto chciał dla niego wyłącznie dobrze.</p>
-      </div>
-    </div>
-    <div class="card">
-      <p class="kicker">Zwrot</p>
-      <p>W wieku 15 lat uciekł i przez rok żył poza systemem, wśród koboldów, które bardziej wykorzystywały, niż wspierały.
-        W wieku 16 lat wszedł na salę sądową, spodziewając się kolejnej wersji tej samej historii — a wyszedł z czymś,
-        czego nie było na jego mapie możliwych zakończeń.</p>
     </div>
   </section>
 
-  <section id="bliscy" aria-labelledby="bliscy-h">
-    <div class="section-head">
-      <p class="kicker">Część trzecia</p>
-      <h2 id="bliscy-h">Ci, których trzyma</h2>
+  <!-- ================= HISTORIA ================= -->
+  <section id="story">
+    <div class="wrap">
+      <p class="kicker" data-reveal>03 · <span lang="en">Story</span><span lang="pl">Historia</span></p>
+      <h2 data-reveal><span lang="en">Not on <em>his map.</em></span><span lang="pl">Spoza <em>jego mapy.</em></span></h2>
+
+      <div class="notebook" data-reveal="2">
+        <div class="entry"><span class="age">~7</span>
+          <p lang="en">Cookies from a kind old lady — stolen, repeatedly. Her enchanted bell collar was meant as a gentle deterrent. It turned into a quiet, wordless game between them. Then the bell cracked.</p>
+          <p lang="pl">Ciasteczka od życzliwej starszej pani — kradzione, wielokrotnie. Jej zaczarowana obroża z dzwonkiem miała go łagodnie odstraszać. Zamiast tego stała się ich cichą, bezsłowną grą. Potem dzwonek pękł.</p>
+        </div>
+        <div class="entry"><span class="age">…</span>
+          <p lang="en">She tried to reverse the markings and died before she could — leaving him the spots, the bell, and the memory of someone who meant him nothing but well.</p>
+          <p lang="pl">Próbowała cofnąć znaki i zmarła, zanim zdążyła — zostawiając mu kropki, dzwonek i pamięć o kimś, kto chciał dla niego wyłącznie dobrze.</p>
+        </div>
+        <div class="entry"><span class="age">15</span>
+          <p lang="en">He ran. About a year outside the system, with a group of kobolds who exploited more than they supported.</p>
+          <p lang="pl">Uciekł. Około roku poza systemem, z grupą koboldów, które bardziej wykorzystywały, niż wspierały.</p>
+        </div>
+        <div class="entry"><span class="age">16</span>
+          <p lang="en">A courtroom. He walked in expecting another version of the same story — and walked out with something that wasn't on his map at all: Vince.</p>
+          <p lang="pl">Sala sądowa. Wszedł, spodziewając się kolejnej wersji tej samej historii — a wyszedł z czymś, czego w ogóle nie było na jego mapie: z Vince'em.</p>
+        </div>
+        <div class="entry"><span class="age">16</span>
+          <p lang="en">A month later: the blue cookie hoodie. Worn often enough that it's how people picture him.</p>
+          <p lang="pl">Miesiąc później: niebieska bluza w ciasteczka. Noszona tak często, że tak się go wyobraża.</p>
+        </div>
+        <div class="entry"><span class="age">18</span>
+          <p lang="en">Birthday hoodie: “Warning. I will steal your cookies.” Worn with the same low-key ritual precision he applies to everything.</p>
+          <p lang="pl">Bluza na osiemnastkę: „Warning. I will steal your cookies.” Noszona z tą samą cichą, rytualną precyzją, z jaką robi wszystko.</p>
+        </div>
+      </div>
+
+      <div class="hoodies">
+        <figure class="hoodie" data-reveal>
+          <svg viewBox="0 0 200 190" aria-hidden="true">
+            <path d="M60 46 Q100 26 140 46 L162 66 L180 138 L157 145 L148 98 L148 182 L52 182 L52 98 L43 145 L20 138 L38 66 Z" fill="#2f6bd8" stroke="#4a2a17" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M74 48 Q100 12 126 48" fill="#2a5fc2" stroke="#4a2a17" stroke-width="3"/>
+            <path d="M92 52 V84 M108 52 V84" stroke="#e9eefc" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M70 136 H130 L124 160 H76 Z" fill="none" stroke="#1f4fae" stroke-width="2.4" stroke-linejoin="round"/>
+            <g fill="#cda36a" stroke="#4a2a17" stroke-width="1.6">
+              <circle cx="72" cy="80" r="11"/><circle cx="128" cy="100" r="12"/><circle cx="88" cy="118" r="9"/><circle cx="30" cy="120" r="8"/><circle cx="166" cy="112" r="8"/><circle cx="118" cy="166" r="8"/>
+            </g>
+            <g fill="#4a2a17"><circle cx="69" cy="77" r="2"/><circle cx="75" cy="84" r="2.2"/><circle cx="125" cy="96" r="2"/><circle cx="131" cy="104" r="2.4"/><circle cx="86" cy="116" r="1.8"/><circle cx="30" cy="121" r="1.8"/><circle cx="166" cy="110" r="1.8"/><circle cx="118" cy="167" r="1.8"/></g>
+          </svg>
+          <figcaption><span lang="en">the blue one. constantly.</span><span lang="pl">ta niebieska. ciągle.</span></figcaption>
+        </figure>
+        <figure class="hoodie" data-reveal="2">
+          <svg viewBox="0 0 200 190" aria-hidden="true">
+            <path d="M60 46 Q100 26 140 46 L162 66 L180 138 L157 145 L148 98 L148 182 L52 182 L52 98 L43 145 L20 138 L38 66 Z" fill="#cfc9bf" stroke="#4a2a17" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M74 48 Q100 12 126 48" fill="#c2bbb0" stroke="#4a2a17" stroke-width="3"/>
+            <g font-family="Baloo 2, sans-serif" font-weight="800" text-anchor="middle" fill="#4a2a17">
+              <text x="100" y="92" font-size="13">WARNING.</text>
+              <text x="100" y="110" font-size="11">I WILL STEAL</text>
+              <text x="100" y="126" font-size="11">YOUR COOKIES.</text>
+            </g>
+          </svg>
+          <figcaption><span lang="en">the birthday one. a warning, technically.</span><span lang="pl">ta urodzinowa. technicznie: ostrzeżenie.</span></figcaption>
+        </figure>
+      </div>
+      <p class="hand" style="text-align:center;margin-top:1.2rem"><span lang="en">he doesn't dress to be seen.</span><span lang="pl">nie ubiera się, żeby go zauważano.</span></p>
     </div>
-    <div class="grid-3">
-      <article class="card person">
-        <p class="kicker">Opiekun · „Big Bro”</p>
-        <h3><a href="vince.html">Vince</a></h3>
-        <p class="meta">wilk grzywiasty · 28 lat</p>
-        <p>Na początku Chip czekał na mechanizm — koszt ukryty w pomocy. Vince był cierpliwy, ale nie bierny: przygotowywał warunki,
-          a wnioski zostawiał Chipowi. Przy nim Chip czasem zapomina przytrzymać dzwonek.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Partner Vince'a</p>
-        <h3><a href="ragnar.html">Ragnar</a></h3>
-        <p class="meta">bulterier · 28 lat</p>
-        <p>Oceniony, zatwierdzony, wcielony do tych, których Chip chroni. Dostał od niego trzy zasady — serce, głowa, ciało —
-          wypowiedziane jak groźba, bo to gramatyka, której Chip ufa.</p>
-      </article>
-      <article class="card person">
-        <p class="kicker">Bliski przyjaciel</p>
-        <h3><a href="toro.html">Toro</a></h3>
-        <p class="meta">futrzasty smok · rok starszy</p>
-        <p>Chip znalazł go pod mostem i trzymał dla siebie tak długo, jak się dało. Ich rytm jest łagodny i niespieszny.
-          Powracający moment: puszysta końcówka ogona Toro, która zamyka Chipowi pyszczek w pół zdania.</p>
-      </article>
+  </section>
+
+  <!-- ================= POD SPODEM ================= -->
+  <section id="under">
+    <div class="wrap">
+      <p class="kicker" data-reveal>04 · <span lang="en">Underneath</span><span lang="pl">Pod spodem</span></p>
+      <h2 data-reveal><span lang="en">Warmer than <em>he looks.</em></span><span lang="pl">Cieplejszy, <em>niż wygląda.</em></span></h2>
+
+      <div class="under">
+        <div data-reveal="2">
+        <div class="flip" id="flip" data-flipped="false">
+          <div class="flip-inner">
+            <div class="face face-front">
+              <h3><span lang="en">What you get</span><span lang="pl">Co widać</span></h3>
+              <ul lang="en"><li>Guarded, slightly combative</li><li>Leads with skepticism</li><li>Takes warmth with suspicion</li><li>Gives little away</li></ul>
+              <ul lang="pl"><li>Ostrożny, lekko zaczepny</li><li>Zaczyna od sceptycyzmu</li><li>Ciepło przyjmuje z podejrzliwością</li><li>Niewiele zdradza</li></ul>
+              <span class="hand"><span lang="en">tap the card to flip ↻</span><span lang="pl">kliknij kartę, żeby ją odwrócić ↻</span></span>
+            </div>
+            <div class="face face-back">
+              <h3><span lang="en">What's there</span><span lang="pl">Co jest pod spodem</span></h3>
+              <ul lang="en"><li>A stubborn intelligence</li><li>Notices and remembers everything</li><li>Figures out your tells before you figure out his</li><li>Says thank you in actions, not words</li><li>Never admits he likes something — just keeps coming back to it</li></ul>
+              <ul lang="pl"><li>Uparta inteligencja</li><li>Zauważa i pamięta wszystko</li><li>Rozgryzie twoje odruchy, zanim ty rozgryziesz jego</li><li>Dziękuje czynami, nie słowami</li><li>Nie przyzna, że coś lubi — po prostu do tego wraca</li></ul>
+              <span class="hand"><span lang="en">don't tell him you saw this.</span><span lang="pl">nie mów mu, że to widziałeś.</span></span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn ghost" id="flipBtn" aria-pressed="false" style="margin-top:1.4rem"><span lang="en">Flip it ↻</span><span lang="pl">Odwróć ↻</span></button>
+        </div>
+
+        <div class="card" data-reveal="3">
+          <h3><span lang="en">The catch</span><span lang="pl">Haczyk</span></h3>
+          <p style="margin-top:.8rem" lang="en">An ingrained difficulty trusting that good things will last. Not dramatic cynicism — a quieter, practical version. He waits for the catch.</p>
+          <p style="margin-top:.8rem" lang="pl">Głęboko zakorzeniona trudność w uwierzeniu, że dobre rzeczy przetrwają. Nie dramatyczny cynizm — cichsza, praktyczna wersja. Czeka na haczyk.</p>
+          <p class="catch-line" id="catchLine" aria-live="polite"></p>
+          <button type="button" class="btn" id="catchBtn"><span lang="en">Look for the catch</span><span lang="pl">Szukaj haczyka</span></button>
+          <p class="mini" style="margin-top:1.2rem"><span lang="en">Times he was wrong about the catch:</span><span lang="pl">Ile razy mylił się co do haczyka:</span></p>
+          <div class="catch-count" id="catchCount">23</div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <p class="kicker">Ekipa</p>
-      <p>Otto (niedźwiedź), Reem (gazela), Sorrel (lisica) i Odon (łoś) — jego własny krąg, poza domem. Wszyscy znają już Toro.</p>
+  </section>
+
+  <!-- ================= LUDZIE ================= -->
+  <section id="people">
+    <div class="wrap">
+      <p class="kicker" data-reveal>05 · <span lang="en">People</span><span lang="pl">Ludzie</span></p>
+      <h2 data-reveal><span lang="en">The people <em>he keeps.</em></span><span lang="pl">Ci, których <em>trzyma.</em></span></h2>
+
+      <div class="people">
+        <article class="person" style="--c:#c8892b" data-reveal>
+          <img src="img/vince-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Guardian · “Big Bro”</span><span lang="pl">Opiekun · „Big Bro”</span></span>
+          <h3><a href="vince.html">Vince</a></h3>
+          <p lang="en">It didn't begin with warmth — Chip spent the early months waiting for the mechanism, the cost hidden inside the help. Vince prepared conditions instead of pushing outcomes. What Chip arrived at, he'd never say out loud: this person is his.</p>
+          <p lang="pl">Nie zaczęło się od ciepła — Chip przez pierwsze miesiące czekał na mechanizm, na koszt ukryty w pomocy. Vince przygotowywał warunki zamiast popychać wyniki. Do czego Chip doszedł, nigdy nie powie na głos: ta osoba jest jego.</p>
+          <p class="hand"><span lang="en">“Big Bro.” not a word about fathers. around him, he sometimes forgets to hold the bell still.</span><span lang="pl">„Big Bro”. ani słowa o ojcach. przy nim czasem zapomina przytrzymać dzwonek.</span></p>
+        </article>
+
+        <article class="person" style="--c:#ff2e88" data-reveal="2">
+          <img src="img/ragnar-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Vince's partner · assessed, cleared</span><span lang="pl">Partner Vince'a · sprawdzony</span></span>
+          <h3><a href="ragnar.html">Ragnar</a></h3>
+          <p lang="en">One question only: is this one stable, and is he safe for Vince. Then, pulled aside, in a low, flat voice — three rules:</p>
+          <p lang="pl">Tylko jedno pytanie: czy ten jest stabilny i czy jest bezpieczny dla Vince'a. Potem, na stronie, niskim, płaskim głosem — trzy zasady:</p>
+          <div class="rules">
+            <button type="button" class="rule" aria-expanded="false"><b><span lang="en">Rule one · the heart</span><span lang="pl">Zasada pierwsza · serce</span></b><span class="txt"><span lang="en">Don't play with it.</span><span lang="pl">Nie baw się nim.</span></span></button>
+            <button type="button" class="rule" aria-expanded="false"><b><span lang="en">Rule two · the head</span><span lang="pl">Zasada druga · głowa</span></b><span class="txt"><span lang="en">Don't feed the three-in-the-morning spiral.</span><span lang="pl">Nie podsycaj spirali o trzeciej w nocy.</span></span></button>
+            <button type="button" class="rule" aria-expanded="false"><b><span lang="en">Rule three · the body</span><span lang="pl">Zasada trzecia · ciało</span></b><span class="txt"><span lang="en">You're bigger. You're stronger. Don't trade on it.</span><span lang="pl">Jesteś większy. Jesteś silniejszy. Nie wykorzystuj tego.</span></span></button>
+          </div>
+          <p lang="en">The clearest thing he's ever said about loving Vince — delivered as a threat, because that's the grammar he trusts.</p>
+          <p lang="pl">Najjaśniejsza rzecz, jaką kiedykolwiek powiedział o tym, że kocha Vince'a — podana jak groźba, bo to gramatyka, której ufa.</p>
+        </article>
+
+        <article class="person" style="--c:#5fae3e" data-reveal="3">
+          <img src="img/toro-thumb.webp" alt="" loading="lazy">
+          <span class="role"><span lang="en">Close friend · a year older</span><span lang="pl">Bliski przyjaciel · rok starszy</span></span>
+          <h3><a href="toro.html">Toro</a></h3>
+          <p lang="en">Chip found him under a bridge and kept him to himself for as long as he could. Gentle, unhurried, still getting to know each other.</p>
+          <p lang="pl">Chip znalazł go pod mostem i trzymał dla siebie tak długo, jak się dało. Łagodnie, niespiesznie, wciąż się poznają.</p>
+          <p class="gag" id="gag">
+            <span lang="en">And Toro's tail tuft has a habit of flicking up to gag Chip's muzzle mid-sen<span class="rest">tence. rude.</span></span><span lang="pl">A puszysta kita Toro ma zwyczaj wyskakiwać i zamykać Chipowi pyszczek w pół zda<span class="rest">nia. niegrzecznie.</span></span>
+            <svg class="tuft" viewBox="0 0 120 60" aria-hidden="true"><path d="M4 44 Q30 40 52 30 Q70 10 96 8 Q118 10 116 26 Q114 42 92 48 Q70 56 40 52 Q20 50 4 44 Z" fill="#5fae3e" stroke="#2f5a1e" stroke-width="2.4"/><path d="M60 28 Q80 20 100 22 M58 38 Q82 34 104 36" fill="none" stroke="#2f5a1e" stroke-width="1.6"/><circle cx="84" cy="20" r="3" fill="#f2c230"/><circle cx="96" cy="34" r="2.4" fill="#f2c230"/></svg>
+          </p>
+          <button type="button" class="btn ghost" id="gagBtn" style="margin-top:.8rem"><span lang="en">Let him finish</span><span lang="pl">Daj mu skończyć</span></button>
+        </article>
+      </div>
+
+      <div class="crew" data-reveal>
+        <span class="hand"><span lang="en">the crew →</span><span lang="pl">ekipa →</span></span>
+        <span class="badge" style="--r:-6deg">Otto<small lang="en">bear</small><small lang="pl">niedźwiedź</small></span>
+        <span class="badge" style="--r:4deg">Reem<small lang="en">gazelle</small><small lang="pl">gazela</small></span>
+        <span class="badge" style="--r:-3deg">Sorrel<small lang="en">fox</small><small lang="pl">lisica</small></span>
+        <span class="badge" style="--r:7deg">Odon<small lang="en">moose</small><small lang="pl">łoś</small></span>
+        <span class="hand"><span lang="en">his own circle. they've all met Toro.</span><span lang="pl">jego własny krąg. wszyscy znają już Toro.</span></span>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them · <a href="index.html">strona główna</a></span>
-  <span>Ilustracje należą do ich autorów.</span>
+  <div class="wrap foot">
+    <div>
+      <p lang="en">Canon: the chocolate-chip markings come from a cracked enchanted bell — that passive origin is his core. Fully digitigrade world, no human baseline. Reference sheet art: artist credit pending.</p>
+      <p lang="pl">Kanon: czekoladowe kropki pochodzą z pękniętego zaczarowanego dzwonka — to bierne pochodzenie jest jego rdzeniem. Świat w pełni digitigradalny, bez ludzi. Ref sheet: autor do uzupełnienia.</p>
+    </div>
+    <div class="others">
+      <a href="vince.html">Vince</a><a href="ragnar.html">Ragnar</a><a href="toro.html">Toro</a><a href="myr.html">Myr</a><a href="zarin.html">Zarin</a><a href="index.html">The One Above Them</a>
+    </div>
+  </div>
 </footer>
 
+<aside class="cookie-banner" id="banner" aria-labelledby="bannerTitle">
+  <h3 id="bannerTitle"><svg width="26" height="26" aria-hidden="true"><use href="#cookie"/></svg><span lang="en">This site uses cookies.</span><span lang="pl">Ta strona używa ciasteczek.</span></h3>
+  <p><span lang="en">Chip will steal them. That's the whole policy.</span><span lang="pl">Chip je ukradnie. To cała polityka prywatności.</span></p>
+  <div class="row">
+    <button type="button" class="btn" data-accept><span lang="en">Accept</span><span lang="pl">Akceptuj</span></button>
+    <button type="button" class="btn ghost" data-accept><span lang="en">Accept anyway</span><span lang="pl">Akceptuj i tak</span></button>
+  </div>
+</aside>
+
+<script src="char.js"></script>
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const links = [...document.querySelectorAll("nav.tabs a")];
-  const observer = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      links.forEach(a => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
+  const { t } = CHAR;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+
+  // ---------- Dźwięk ----------
+  const soundBtn = document.getElementById("soundBtn");
+  let soundOn = store.get("sound") !== "off";
+  soundBtn.setAttribute("aria-pressed", String(soundOn));
+  soundBtn.addEventListener("click", () => {
+    soundOn = !soundOn;
+    soundBtn.setAttribute("aria-pressed", String(soundOn));
+    store.set("sound", soundOn ? "on" : "off");
+  });
+
+  let audio;
+  // Pęknięty dzwonek: kilka niesfazowanych tonów, jeden lekko rozstrojony (dudnienie pęknięcia) i krótki szum grzechotki.
+  function bellSound(muffled) {
+    if (!soundOn) return;
+    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+    const now = audio.currentTime;
+    const out = audio.createGain();
+    out.gain.value = muffled ? .12 : .22;
+    out.connect(audio.destination);
+    const f = 1480;
+    const partials = [[1, .5, 1.5], [1.017, .32, 1.2], [2.32, .22, .8], [4.25, .1, .45], [6.63, .05, .25]];
+    partials.forEach(([ratio, gain, decay]) => {
+      const o = audio.createOscillator();
+      const g = audio.createGain();
+      o.frequency.value = f * ratio * (muffled ? .5 : 1);
+      g.gain.setValueAtTime(0, now);
+      g.gain.linearRampToValueAtTime(gain, now + .004);
+      g.gain.exponentialRampToValueAtTime(.0001, now + (muffled ? .06 : decay));
+      o.connect(g).connect(out);
+      o.start(now);
+      o.stop(now + decay + .05);
+    });
+    const len = Math.floor(audio.sampleRate * .06);
+    const buf = audio.createBuffer(1, len, audio.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+    const noise = audio.createBufferSource();
+    const bp = audio.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = muffled ? 900 : 3200;
+    noise.buffer = buf;
+    noise.connect(bp).connect(out);
+    noise.start(now);
+  }
+
+  // ---------- Dzwonek: klik dzwoni, przytrzymanie wycisza ----------
+  const bellBtn = document.getElementById("bellBtn");
+  const bellStage = document.getElementById("bellStage");
+  const bellStatus = document.getElementById("bellStatus");
+  const flatBtn = document.getElementById("flatBtn");
+  const RINGS = [
+    { en: "*ding* — cracked, a little flat.", pl: "*dzyń* — pęknięty, lekko fałszuje." },
+    { en: "He'd usually stop that.", pl: "Zwykle by to przerwał." },
+    { en: "…he didn't stop that.", pl: "…nie przerwał." },
+    { en: "That one was on purpose.", pl: "Ten był celowo." },
+  ];
+  let rings = 0, state = "idle", holdTimer = null, held = false;
+
+  function renderBell() {
+    if (state === "flat") bellStatus.textContent = t({ en: "Pressed flat. Nothing to hear.", pl: "Przyciśnięty. Nic nie słychać." });
+    else if (state === "muffled") bellStatus.textContent = "*tk*";
+    else if (rings === 0) bellStatus.textContent = t({ en: "Quiet. For now.", pl: "Cicho. Na razie." });
+    else bellStatus.textContent = t(RINGS[Math.min(rings, RINGS.length) - 1]);
+  }
+  function restart(cls) {
+    bellBtn.classList.remove("ring", "muffle");
+    void bellBtn.getBoundingClientRect();
+    bellBtn.classList.add(cls);
+  }
+  function ring() {
+    if (bellStage.classList.contains("flat")) {
+      state = "muffled";
+      restart("muffle");
+      bellSound(true);
+    } else {
+      state = "idle";
+      rings++;
+      restart("ring");
+      bellSound(false);
     }
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main section[id]").forEach(s => observer.observe(s));
+    renderBell();
+  }
+  bellBtn.addEventListener("pointerdown", e => {
+    if (e.button !== 0) return;
+    held = false;
+    holdTimer = setTimeout(() => {
+      held = true;
+      bellBtn.classList.add("held");
+      state = "flat";
+      renderBell();
+    }, 260);
+  });
+  function release(fire) {
+    clearTimeout(holdTimer);
+    if (held) {
+      bellBtn.classList.remove("held");
+      held = false;
+      state = "idle";
+      bellStatus.textContent = "…";
+    } else if (fire) {
+      ring();
+    }
+  }
+  bellBtn.addEventListener("pointerup", () => release(true));
+  bellBtn.addEventListener("pointerleave", () => release(false));
+  bellBtn.addEventListener("pointercancel", () => release(false));
+  bellBtn.addEventListener("contextmenu", e => e.preventDefault());
+  // Klawiatura: Enter i spacja dają click z detail === 0
+  bellBtn.addEventListener("click", e => { if (e.detail === 0) ring(); });
+  flatBtn.addEventListener("click", () => {
+    const on = !bellStage.classList.contains("flat");
+    bellStage.classList.toggle("flat", on);
+    flatBtn.setAttribute("aria-pressed", String(on));
+    state = on ? "flat" : "idle";
+    renderBell();
+  });
+
+  // ---------- Polaroid z notatkami ----------
+  const SPOTS = [
+    { x: 76.6, y: 31.8, en: "the bell. old, hairline crack. usually held flat.", pl: "dzwonek. stary, z pęknięciem. zwykle przyciśnięty dłonią." },
+    { x: 59.8, y: 8.2, en: "ridged, striped, cream. not nubs. not a spiral.", pl: "żłobione, w paski, kremowe. nie guziczki. nie spirala." },
+    { x: 75.2, y: 21, en: "narrowed eyes, mouth pulled down. worn long enough that it fits.", pl: "zmrużone oczy, kąciki w dół. noszona tak długo, że pasuje." },
+    { x: 68.4, y: 45.1, en: "the cookie hoodie. basically part of him now.", pl: "bluza w ciasteczka. właściwie już część niego." },
+    { x: 22.2, y: 60.1, en: "raised chips — you can feel them.", pl: "wypukłe kropki — da się je wyczuć." },
+    { x: 80.3, y: 80.9, en: "darker “socks” — a warm echo of Vince's black legs.", pl: "ciemniejsze „skarpetki” — ciepłe echo czarnych łap Vince'a." },
+  ];
+  const shot = document.getElementById("shot");
+  const note = document.createElement("div");
+  note.className = "note";
+  note.setAttribute("role", "status");
+  shot.append(note);
+  let open = null;
+  const spotBtns = SPOTS.map((s, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "spot";
+    b.style.left = s.x + "%";
+    b.style.top = s.y + "%";
+    b.setAttribute("aria-expanded", "false");
+    b.addEventListener("click", e => { e.stopPropagation(); open = open === i ? null : i; renderNote(); });
+    shot.append(b);
+    return b;
+  });
+  function renderNote() {
+    spotBtns.forEach((b, i) => {
+      b.setAttribute("aria-expanded", String(open === i));
+      b.setAttribute("aria-label", t(SPOTS[i]));
+    });
+    if (open === null) { note.classList.remove("show"); return; }
+    const s = SPOTS[open];
+    note.textContent = t(s);
+    note.style.top = (s.y + 4) + "%";
+    note.style.left = s.x < 55 ? Math.max(2, s.x - 8) + "%" : "auto";
+    note.style.right = s.x < 55 ? "auto" : Math.max(2, 100 - s.x - 8) + "%";
+    note.classList.add("show");
+  }
+  document.addEventListener("click", () => { if (open !== null) { open = null; renderNote(); } });
+
+  // ---------- Paleta ----------
+  document.querySelectorAll(".cookie").forEach(b => b.addEventListener("click", async () => {
+    const ok = await CHAR.copy(b.dataset.hex);
+    CHAR.toast(ok ? t({ en: "copied " + b.dataset.hex + ". you're welcome.", pl: "skopiowane " + b.dataset.hex + ". nie ma za co." }) : b.dataset.hex);
+  }));
+
+  // ---------- Odwracana karta ----------
+  const flip = document.getElementById("flip");
+  const flipBtn = document.getElementById("flipBtn");
+  function toggleFlip() {
+    const on = flip.dataset.flipped !== "true";
+    flip.dataset.flipped = String(on);
+    flipBtn.setAttribute("aria-pressed", String(on));
+  }
+  flip.addEventListener("click", toggleFlip);
+  flipBtn.addEventListener("click", toggleFlip);
+
+  // ---------- Haczyk ----------
+  const CATCH = [
+    { en: "Checking the fine print…", pl: "Czytam drobny druk…" },
+    { en: "Checking under the table…", pl: "Sprawdzam pod stołem…" },
+    { en: "Waiting for the other shoe to drop…", pl: "Czekam, aż spadnie drugi but…" },
+    { en: "Asking what it costs…", pl: "Pytam, ile to kosztuje…" },
+    { en: "No catch. Again.", pl: "Brak haczyka. Znowu." },
+  ];
+  let catchStep = -1, wrong = 23;
+  const catchLine = document.getElementById("catchLine");
+  function renderCatch() {
+    catchLine.textContent = catchStep < 0 ? t({ en: "There's always a catch. Probably.", pl: "Zawsze jest jakiś haczyk. Chyba." }) : t(CATCH[catchStep]);
+    document.getElementById("catchCount").textContent = wrong;
+  }
+  document.getElementById("catchBtn").addEventListener("click", () => {
+    catchStep = (catchStep + 1) % CATCH.length;
+    if (catchStep === CATCH.length - 1) wrong++;
+    renderCatch();
+  });
+
+  // ---------- Trzy zasady i kita Toro ----------
+  document.querySelectorAll(".rule").forEach(r => r.addEventListener("click", () => r.setAttribute("aria-expanded", String(r.getAttribute("aria-expanded") !== "true"))));
+  const gag = document.getElementById("gag");
+  document.getElementById("gagBtn").addEventListener("click", () => gag.classList.toggle("free"));
+
+  // ---------- Baner „cookies” i słoik, z którego Chip podkrada ----------
+  const banner = document.getElementById("banner");
+  const jar = document.getElementById("jar");
+  const jarN = document.getElementById("jarN");
+  const STEALS = [
+    { en: "−1. didn't see anything.", pl: "−1. nic nie widziałem." },
+    { en: "−1. prove it.", pl: "−1. udowodnij." },
+    { en: "−1. it was like that when I got here.", pl: "−1. już tak było, jak przyszedłem." },
+    { en: "−1. you weren't using it.", pl: "−1. i tak go nie jadłeś." },
+    { en: "−1. finders keepers.", pl: "−1. kto znalazł, ten ma." },
+    { en: "−1. …", pl: "−1. …" },
+  ];
+  let cookies = 12, stolen = 0;
+  function showJar() {
+    jar.classList.add("on");
+    jarN.textContent = cookies;
+  }
+  function steal() {
+    if (!jar.classList.contains("on") || cookies === 0) return;
+    cookies--;
+    jarN.textContent = cookies;
+    jar.classList.remove("snatch");
+    void jar.offsetWidth;
+    jar.classList.add("snatch");
+    CHAR.toast(cookies === 0 ? t({ en: "jar's empty. he'll deny everything.", pl: "słoik pusty. wszystkiemu zaprzeczy." }) : t(STEALS[stolen++ % STEALS.length]));
+  }
+  document.querySelectorAll("[data-accept]").forEach(b => b.addEventListener("click", () => {
+    banner.classList.remove("show");
+    store.set("chip-cookies", "accepted");
+    showJar();
+    CHAR.toast(t({ en: "12 cookies. for now.", pl: "12 ciasteczek. na razie." }));
+  }));
+  jar.addEventListener("click", () => {
+    if (cookies === 0) {
+      cookies = 12;
+      jarN.textContent = cookies;
+      CHAR.toast(t({ en: "fine. twelve more. (he's watching.)", pl: "no dobra. dwanaście nowych. (on patrzy.)" }));
+    } else {
+      CHAR.toast(t({ en: "he's counting too.", pl: "on też liczy." }));
+    }
+  });
+  if (store.get("chip-cookies") === "accepted") showJar();
+  else setTimeout(() => banner.classList.add("show"), 1400);
+
+  // Każda sekcja to jedna okazja do kradzieży — liczy się dopiero po zaakceptowaniu banera.
+  const stealObs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting || !jar.classList.contains("on")) return;
+    stealObs.unobserve(e.target);
+    steal();
+  }), { threshold: .35 });
+  ["bell", "coat", "story", "under", "people"].forEach(id => stealObs.observe(document.getElementById(id)));
+
+  CHAR.onLang(() => { renderBell(); renderNote(); renderCatch(); });
+  CHAR.init();
 </script>
 </body>
 </html>

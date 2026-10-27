@@ -1,0 +1,43 @@
+/* Wspólna podstawa stron postaci. Wygląd każdej postaci jest w jej własnym pliku CSS;
+   tutaj tylko mechanika: język, pomijanie nawigacji, pojawianie się sekcji, podgląd obrazka, komunikat. */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { margin: 0; overflow-x: clip; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+button { font: inherit; color: inherit; }
+
+/* Język: widać tylko wybraną wersję */
+[data-lang="pl"] body [lang="en"], [data-lang="en"] body [lang="pl"] { display: none !important; }
+
+.skip { position: absolute; left: -999px; z-index: 100; }
+.skip:focus { left: 1rem; top: 1rem; padding: .4rem .8rem; background: var(--skip-bg, #000); color: var(--skip-fg, #fff); }
+
+/* Pojawianie się przy przewijaniu */
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+[data-reveal].in { opacity: 1; transform: none; }
+[data-reveal="2"] { transition-delay: .12s; }
+[data-reveal="3"] { transition-delay: .24s; }
+[data-reveal="4"] { transition-delay: .36s; }
+
+/* Podgląd obrazka */
+dialog.lightbox { padding: 0; border: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+dialog.lightbox::backdrop { background: var(--lightbox-bg, rgba(5, 5, 6, .92)); }
+dialog.lightbox img { max-width: 96vw; max-height: 88vh; object-fit: contain; }
+dialog.lightbox p { margin: .6rem 0 0; text-align: center; font: 400 .7rem/1.5 ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: #bdb8ae; }
+dialog.lightbox button { position: fixed; top: 1rem; right: 1rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(0,0,0,.6); color: #fff; cursor: pointer; }
+
+/* Komunikat */
+.toast {
+  position: fixed; left: 50%; bottom: 1.5rem; z-index: 60; transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  background: var(--toast-bg, #111214); color: var(--toast-fg, #f3efe7); border: 1px solid var(--toast-border, currentColor);
+  border-radius: var(--toast-radius, 2px); padding: .55rem 1rem; font: var(--toast-font, 400 .72rem/1.4 ui-monospace, monospace); letter-spacing: .06em;
+  transition: opacity .2s, transform .2s; max-width: calc(100vw - 2rem);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
