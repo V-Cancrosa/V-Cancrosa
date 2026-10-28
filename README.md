@@ -2,10 +2,11 @@
 
 Strona z postaciami (fursonami) i projektami. Statyczna, bez zależności z zewnątrz, hostowana na GitHub Pages.
 
-- `index.html` + `styles.css` — strona główna: postacie, projekty (muzyka, TTRPG, przyszłe streamy), kontakt
+- `index.html` + `styles.css` — strona główna: niebo z konstelacją postaci, ekran wyboru postaci (przebiera się
+  w styl każdej z nich), projekty (radio z muzyką, terminal TTRPG, telewizor przyszłych kanałów) i kontakt z kodem QR do Telegrama
 - `vince.html`, `chip.html`, `ragnar.html`, `toro.html` — strony postaci z Cancrosa Files
 - `myr.html`, `zarin.html` — strony postaci z Cancrosa Verse (głęboki kosmos, kanon roboczy)
-- `<postać>.css` — każda postać ma własny styl (np. `toro.css`); wspólna mechanika jest w `char.css`
+- `<postać>.css` — każda postać ma własny styl (np. `toro.css`); wspólna mechanika (też dla strony głównej) jest w `char.css`
 - `char.js` — wspólny skrypt: przełącznik PL/EN (zapamiętywany, wspólny ze stroną główną), komunikaty,
   podgląd obrazków, pojawianie się sekcji przy przewijaniu, podświetlanie menu
 - `img/` — portrety i arty (zawsze z podpisem autora)

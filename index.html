@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The One Above Them</title>
-<meta name="description" content="The One Above Them — characters, fursonas and projects: Vince, Chip, Ragnar, Toro and the ones still on their way.">
+<meta name="description" content="The One Above Them — characters, fursonas and projects: Vince, Chip, Ragnar, Toro, Myr and Zarin.">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0c0e">
+<meta name="theme-color" content="#07080b">
 
 <!-- Podgląd linku (Discord, Telegram, Bluesky…). Podmień domenę i obrazek. -->
 <meta property="og:type" content="website">
@@ -20,229 +20,744 @@
 <script>
   // Język przed pierwszym malowaniem: zapamiętany wybór albo język przeglądarki (wspólny z podstronami postaci).
   (function () {
-    var l;
+    var l, root = document.documentElement;
     try { l = localStorage.getItem("lang"); } catch (e) {}
     if (l !== "pl" && l !== "en") l = /^pl\b/i.test(navigator.language || "") ? "pl" : "en";
-    document.documentElement.dataset.lang = l;
-    document.documentElement.lang = l;
+    root.dataset.lang = l;
+    root.lang = l;
+    root.classList.add("js");
   })();
 </script>
 <link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="char.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pl">Przejdź do treści</span></a>
 
-<header class="top">
-  <div class="top-inner">
-    <a class="brand" href="#start" aria-label="The One Above Them — top of the page" data-en-label="The One Above Them — top of the page" data-pl-label="The One Above Them — początek strony">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3" fill="#ece3d3"/><path d="M8 19v8M16 17v10M24 19v8" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
-      THE ONE ABOVE THEM
-    </a>
-    <nav class="tabs" aria-label="Sections">
-      <a href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
-      <a href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
-      <a href="#kontakt"><span lang="en">Contact</span><span lang="pl">Kontakt</span></a>
-    </nav>
-    <div class="tools">
-      <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
+<header class="nav">
+  <a class="brand" href="#top" aria-label="The One Above Them — top of the page" data-en-label="The One Above Them — top of the page" data-pl-label="The One Above Them — początek strony">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3" fill="#ece3d3"/><path d="M8 19v8M16 17v10M24 19v8" stroke-width="2.2" stroke-linecap="round"/></svg>
+    THE ONE ABOVE THEM
+  </a>
+  <nav aria-label="Sections">
+    <a href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
+    <a href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
+    <a href="#kontakt"><span lang="en">Contact</span><span lang="pl">Kontakt</span></a>
+  </nav>
+  <div class="tools">
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ===== START ===== -->
-  <section id="start" style="padding-top:5.5rem;max-width:46rem">
-    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3" fill="#ece3d3"/><path d="M8 19v8M16 17v10M24 19v8" stroke="#c98a3c" stroke-width="2.2" stroke-linecap="round"/></svg>
-    <p class="kicker"><span lang="en">Characters · stories · projects</span><span lang="pl">Postacie · historie · projekty</span></p>
-    <h1 style="font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em">The One<br><span style="color:var(--gold)">Above Them</span></h1>
-    <div class="lead" style="margin-top:1.5rem">
-      <p lang="en">I create characters, write their stories and build a world for them. This site is mine —
-        and they live on it: my fursonas and the ones still on their way.</p>
-      <p lang="pl">Tworzę postacie, piszę ich historie i składam dla nich świat. Ta strona jest moja —
-        a mieszkają na niej one: moje fursony i ci, którzy dopiero nadchodzą.</p>
-      <p lang="en">Beside them are projects I make independently of them — music and tabletop RPGs.</p>
-      <p lang="pl">Obok nich są projekty, które robię niezależnie od nich — muzyka i gry fabularne.</p>
+  <!-- ================= NIEBO: JEDEN PONAD NIMI ================= -->
+  <section class="sky" id="top">
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <div class="wrap sky-grid">
+      <div class="sky-text">
+        <p class="kicker"><span lang="en">Characters · stories · projects</span><span lang="pl">Postacie · historie · projekty</span></p>
+        <h1>The One <span>Above Them</span></h1>
+        <div class="lead">
+          <p lang="en">I create characters, write their stories and build a world for them. This site is mine — and they live on it: my fursonas and the ones still on their way.</p>
+          <p lang="pl">Tworzę postacie, piszę ich historie i składam dla nich świat. Ta strona jest moja — a mieszkają na niej one: moje fursony i ci, którzy dopiero nadchodzą.</p>
+          <p lang="en">Beside them are projects I make independently of them — music and tabletop RPGs.</p>
+          <p lang="pl">Obok nich są projekty, które robię niezależnie od nich — muzyka i gry fabularne.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#postacie"><span lang="en">Choose a character</span><span lang="pl">Wybierz postać</span></a>
+          <a class="btn ghost" href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
+        </div>
+        <p class="mono hint"><span lang="en">Every star is someone. Point at one.</span><span lang="pl">Każda gwiazda to ktoś. Wskaż którąś.</span></p>
+      </div>
+
+      <svg class="constellation" id="constellation" viewBox="0 0 640 560" role="group" aria-label="Constellation of characters" data-en-label="Constellation of characters" data-pl-label="Konstelacja postaci">
+        <defs>
+          <radialGradient id="oneGlow"><stop offset="0" stop-color="#fff3d6" stop-opacity=".95"/><stop offset=".22" stop-color="#e6ac60" stop-opacity=".35"/><stop offset="1" stop-color="#e6ac60" stop-opacity="0"/></radialGradient>
+          <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6ac60" stop-opacity=".32"/><stop offset="1" stop-color="#e6ac60" stop-opacity="0"/></linearGradient>
+        </defs>
+        <!-- Jeden ponad nimi: punkt i trzy smugi światła jak w znaku strony -->
+        <g aria-hidden="true">
+          <rect x="295" y="90" width="2" height="420" fill="url(#beam)"/>
+          <rect x="319" y="80" width="2" height="440" fill="url(#beam)"/>
+          <rect x="343" y="90" width="2" height="420" fill="url(#beam)"/>
+          <circle class="one-halo" cx="320" cy="50" r="74" fill="url(#oneGlow)"/>
+          <circle cx="320" cy="50" r="6.5" fill="#fff8ea"/>
+          <text class="group-tag" x="58" y="132">CANCROSA VERSE</text>
+          <text class="group-tag" x="300" y="528">CANCROSA FILES</text>
+        </g>
+        <g aria-hidden="true">
+          <line class="bond" data-a="myr" data-b="zarin" x1="128" y1="178" x2="196" y2="226"/>
+          <line class="bond" data-a="vince" data-b="ragnar" x1="348" y1="340" x2="468" y2="300"/>
+          <line class="bond" data-a="vince" data-b="chip" x1="348" y1="340" x2="284" y2="430"/>
+          <line class="bond" data-a="vince" data-b="toro" x1="348" y1="340" x2="424" y2="456"/>
+          <line class="bond" data-a="chip" data-b="toro" x1="284" y1="430" x2="424" y2="456"/>
+        </g>
+        <a class="star" href="#postacie" data-char="myr" style="--c:#d9823f;--d:-1.2s" transform="translate(128 178)"><circle class="hit" r="30"/><circle class="halo" r="18"/><circle class="ring" r="11"/><circle class="core" r="4.5"/><text x="16" y="5">Myr<tspan class="sp" x="16" dy="19"></tspan></text></a>
+        <a class="star" href="#postacie" data-char="zarin" style="--c:#2fd46b;--d:-2.6s" transform="translate(196 226)"><circle class="hit" r="30"/><circle class="halo" r="18"/><circle class="ring" r="11"/><circle class="core" r="4.5"/><text x="16" y="5">Zarin<tspan class="sp" x="16" dy="19"></tspan></text></a>
+        <a class="star" href="#postacie" data-char="vince" style="--c:#e3a43f;--d:0s" transform="translate(348 340)"><circle class="hit" r="30"/><circle class="halo" r="24"/><circle class="ring" r="14"/><circle class="core" r="6.5"/><text x="20" y="5">Vince<tspan class="sp" x="20" dy="19"></tspan></text></a>
+        <a class="star" href="#postacie" data-char="ragnar" style="--c:#ff2e88;--d:-.7s" transform="translate(468 300)"><circle class="hit" r="30"/><circle class="halo" r="18"/><circle class="ring" r="11"/><circle class="core" r="4.5"/><text x="16" y="5">Ragnar<tspan class="sp" x="16" dy="19"></tspan></text></a>
+        <a class="star" href="#postacie" data-char="chip" style="--c:#4f8ae8;--d:-1.9s" transform="translate(284 430)"><circle class="hit" r="30"/><circle class="halo" r="18"/><circle class="ring" r="11"/><circle class="core" r="4.5"/><text x="-16" y="5" text-anchor="end">Chip<tspan class="sp" x="-16" dy="19"></tspan></text></a>
+        <a class="star" href="#postacie" data-char="toro" style="--c:#f2c230;--d:-3.1s" transform="translate(424 456)"><circle class="hit" r="30"/><circle class="halo" r="18"/><circle class="ring" r="11"/><circle class="core" r="4.5"/><text x="16" y="5">Toro<tspan class="sp" x="16" dy="19"></tspan></text></a>
+      </svg>
     </div>
-    <a class="btn" href="#postacie"><span lang="en">Characters</span><span lang="pl">Postacie</span></a>
-    <a class="btn ghost" href="#projekty"><span lang="en">Projects</span><span lang="pl">Projekty</span></a>
+    <svg class="city" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g fill="#0e121b"><rect x="-20" y="98" width="120" height="102"/><rect x="101" y="121" width="93" height="79"/><rect x="188" y="45" width="57" height="155"/><rect x="248" y="57" width="85" height="143"/><rect x="334" y="94" width="62" height="106"/><rect x="364" y="64" width="2" height="30"/><rect x="386" y="48" width="62" height="152"/><rect x="449" y="97" width="53" height="103"/><rect x="492" y="110" width="52" height="90"/><rect x="535" y="97" width="70" height="103"/><rect x="569" y="81" width="2" height="30"/><rect x="602" y="130" width="96" height="70"/><rect x="697" y="54" width="59" height="146"/><rect x="754" y="36" width="106" height="164"/><rect x="856" y="136" width="99" height="64"/><rect x="954" y="76" width="108" height="124"/><rect x="1052" y="55" width="64" height="145"/><rect x="1113" y="131" width="62" height="69"/><rect x="1178" y="84" width="75" height="116"/><rect x="1243" y="66" width="83" height="134"/><rect x="1319" y="138" width="72" height="62"/><rect x="1382" y="126" width="62" height="74"/><rect x="1436" y="124" width="53" height="76"/></g>
+      <g fill="#06070a"><rect x="-20" y="96" width="79" height="104"/><rect x="18" y="68" width="2" height="30"/><rect x="61" y="97" width="51" height="103"/><rect x="117" y="85" width="77" height="115"/><rect x="154" y="60" width="2" height="30"/><rect x="201" y="134" width="76" height="66"/><rect x="284" y="111" width="73" height="89"/><rect x="359" y="112" width="48" height="88"/><rect x="411" y="174" width="49" height="26"/><rect x="470" y="123" width="71" height="77"/><rect x="543" y="111" width="81" height="89"/><rect x="631" y="110" width="99" height="90"/><rect x="736" y="115" width="92" height="85"/><rect x="835" y="149" width="44" height="51"/><rect x="856" y="132" width="2" height="30"/><rect x="887" y="110" width="40" height="90"/><rect x="935" y="131" width="71" height="69"/><rect x="1014" y="132" width="71" height="68"/><rect x="1048" y="116" width="2" height="30"/><rect x="1094" y="102" width="62" height="98"/><rect x="1164" y="96" width="51" height="104"/><rect x="1224" y="105" width="90" height="95"/><rect x="1268" y="86" width="2" height="30"/><rect x="1316" y="156" width="56" height="44"/><rect x="1380" y="102" width="98" height="98"/></g>
+      <g><rect class="win" x="35" y="151" width="5" height="7" style="opacity:0.55"/><rect class="win" x="47" y="121" width="5" height="7" style="opacity:0.55"/><rect class="win" x="47" y="136" width="5" height="7" style="opacity:0.7"/><rect class="win" x="68" y="167" width="5" height="7" style="opacity:0.9"/><rect class="win" x="68" y="182" width="5" height="7" style="opacity:0.9"/><rect class="win" x="80" y="137" width="5" height="7" style="opacity:0.4"/><rect class="win" x="80" y="152" width="5" height="7" style="opacity:0.4"/><rect class="win" x="80" y="167" width="5" height="7" style="opacity:0.4"/><rect class="win" x="92" y="152" width="5" height="7" style="opacity:0.7"/><rect class="win" x="92" y="167" width="5" height="7" style="opacity:0.9"/><rect class="win" x="124" y="155" width="5" height="7" style="opacity:0.55"/><rect class="win" x="124" y="170" width="5" height="7" style="opacity:0.4"/><rect class="win" x="124" y="185" width="5" height="7" style="opacity:0.55"/><rect class="win" x="136" y="125" width="5" height="7" style="opacity:0.9"/><rect class="win" x="148" y="140" width="5" height="7" style="opacity:0.4"/><rect class="win" x="160" y="125" width="5" height="7" style="opacity:0.9"/><rect class="win" x="160" y="140" width="5" height="7" style="opacity:0.55"/><rect class="win" x="172" y="95" width="5" height="7" style="opacity:0.55"/><rect class="win" x="172" y="185" width="5" height="7" style="opacity:0.9"/><rect class="win" x="184" y="125" width="5" height="7" style="opacity:0.4"/><rect class="win" x="184" y="155" width="5" height="7" style="opacity:0.7"/><rect class="win" x="208" y="174" width="5" height="7" style="opacity:0.7"/><rect class="win" x="220" y="144" width="5" height="7" style="opacity:0.7"/><rect class="win" x="232" y="174" width="5" height="7" style="opacity:0.7"/><rect class="win" x="232" y="189" width="5" height="7" style="opacity:0.25"/><rect class="win" x="244" y="144" width="5" height="7" style="opacity:0.55"/><rect class="win" x="244" y="174" width="5" height="7" style="opacity:0.4"/><rect class="win" x="244" y="189" width="5" height="7" style="opacity:0.55"/><rect class="win" x="291" y="151" width="5" height="7" style="opacity:0.7"/><rect class="win" x="303" y="151" width="5" height="7" style="opacity:0.55"/><rect class="win" x="303" y="166" width="5" height="7" style="opacity:0.7"/><rect class="win" x="315" y="121" width="5" height="7" style="opacity:0.4"/><rect class="win" x="315" y="151" width="5" height="7" style="opacity:0.55"/><rect class="win" x="315" y="166" width="5" height="7" style="opacity:0.4"/><rect class="win" x="315" y="181" width="5" height="7" style="opacity:0.7"/><rect class="win" x="327" y="136" width="5" height="7" style="opacity:0.4"/><rect class="win" x="327" y="166" width="5" height="7" style="opacity:0.7"/><rect class="win" x="339" y="151" width="5" height="7" style="opacity:0.7"/><rect class="win" x="339" y="166" width="5" height="7" style="opacity:0.55"/><rect class="win" x="378" y="122" width="5" height="7" style="opacity:0.4"/><rect class="win" x="378" y="182" width="5" height="7" style="opacity:0.4"/><rect class="win" x="390" y="122" width="5" height="7" style="opacity:0.4"/><rect class="win" x="418" y="184" width="5" height="7" style="opacity:0.25"/><rect class="win" x="477" y="148" width="5" height="7" style="opacity:0.25"/><rect class="win" x="501" y="133" width="5" height="7" style="opacity:0.9"/><rect class="win" x="525" y="148" width="5" height="7" style="opacity:0.9"/><rect class="win" x="562" y="136" width="5" height="7" style="opacity:0.55"/><rect class="win" x="562" y="166" width="5" height="7" style="opacity:0.4"/><rect class="win" x="574" y="151" width="5" height="7" style="opacity:0.9"/><rect class="win" x="586" y="166" width="5" height="7" style="opacity:0.25"/><rect class="win" x="598" y="151" width="5" height="7" style="opacity:0.4"/><rect class="win" x="598" y="181" width="5" height="7" style="opacity:0.9"/><rect class="win" x="610" y="151" width="5" height="7" style="opacity:0.9"/><rect class="win" x="650" y="120" width="5" height="7" style="opacity:0.7"/><rect class="win" x="662" y="150" width="5" height="7" style="opacity:0.25"/><rect class="win" x="674" y="150" width="5" height="7" style="opacity:0.55"/><rect class="win" x="686" y="150" width="5" height="7" style="opacity:0.4"/><rect class="win" x="686" y="165" width="5" height="7" style="opacity:0.25"/><rect class="win" x="698" y="165" width="5" height="7" style="opacity:0.7"/><rect class="win" x="710" y="135" width="5" height="7" style="opacity:0.7"/><rect class="win" x="710" y="165" width="5" height="7" style="opacity:0.25"/><rect class="win" x="710" y="180" width="5" height="7" style="opacity:0.25"/><rect class="win" x="743" y="125" width="5" height="7" style="opacity:0.55"/><rect class="win" x="743" y="140" width="5" height="7" style="opacity:0.55"/><rect class="win" x="755" y="140" width="5" height="7" style="opacity:0.9"/><rect class="win" x="755" y="155" width="5" height="7" style="opacity:0.9"/><rect class="win" x="755" y="185" width="5" height="7" style="opacity:0.55"/><rect class="win" x="767" y="125" width="5" height="7" style="opacity:0.7"/><rect class="win" x="767" y="170" width="5" height="7" style="opacity:0.7"/><rect class="win" x="779" y="125" width="5" height="7" style="opacity:0.55"/><rect class="win" x="803" y="140" width="5" height="7" style="opacity:0.7"/><rect class="win" x="815" y="170" width="5" height="7" style="opacity:0.7"/><rect class="win" x="842" y="189" width="5" height="7" style="opacity:0.9"/><rect class="win" x="866" y="189" width="5" height="7" style="opacity:0.7"/><rect class="win" x="894" y="165" width="5" height="7" style="opacity:0.4"/><rect class="win" x="906" y="135" width="5" height="7" style="opacity:0.9"/><rect class="win" x="942" y="141" width="5" height="7" style="opacity:0.25"/><rect class="win" x="942" y="156" width="5" height="7" style="opacity:0.4"/><rect class="win" x="954" y="186" width="5" height="7" style="opacity:0.55"/><rect class="win" x="966" y="141" width="5" height="7" style="opacity:0.55"/><rect class="win" x="966" y="171" width="5" height="7" style="opacity:0.55"/><rect class="win" x="990" y="186" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1021" y="157" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1021" y="187" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1057" y="142" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1069" y="142" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1069" y="172" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1101" y="157" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1101" y="172" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1113" y="157" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1125" y="172" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1125" y="187" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1171" y="136" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1171" y="151" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1171" y="166" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1183" y="106" width="5" height="7" style="opacity:0.9"/><rect class="win" x="1255" y="115" width="5" height="7" style="opacity:0.9"/><rect class="win" x="1255" y="175" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1267" y="130" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1267" y="145" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1267" y="190" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1279" y="145" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1279" y="160" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1291" y="130" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1303" y="130" width="5" height="7" style="opacity:0.4"/><rect class="win" x="1303" y="160" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1323" y="181" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1335" y="166" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1335" y="181" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1387" y="112" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1387" y="127" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1387" y="142" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1387" y="157" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1387" y="172" width="5" height="7" style="opacity:0.55"/><rect class="win" x="1411" y="127" width="5" height="7" style="opacity:0.9"/><rect class="win" x="1411" y="157" width="5" height="7" style="opacity:0.7"/><rect class="win" x="1411" y="172" width="5" height="7" style="opacity:0.9"/><rect class="win" x="1423" y="112" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1435" y="112" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1447" y="157" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1459" y="112" width="5" height="7" style="opacity:0.25"/><rect class="win" x="1459" y="172" width="5" height="7" style="opacity:0.4"/></g>
+    </svg>
   </section>
 
-  <!-- ===== POSTACIE ===== -->
-  <section id="postacie" aria-labelledby="postacie-h">
-    <div class="section-head">
-      <p class="kicker"><span lang="en">Fursonas</span><span lang="pl">Fursony</span></p>
-      <h2 id="postacie-h"><span lang="en">Characters</span><span lang="pl">Postacie</span></h2>
-    </div>
-    <div class="world-head"><h3>Cancrosa Files</h3><span lang="en">the city · a fully digitigrade world, no humans</span><span lang="pl">miasto · świat w pełni digitigradalny, bez ludzi</span></div>
-    <div class="chars">
-      <a class="char" href="vince.html">
-        <div class="thumb"><img src="img/vince-thumb.webp" alt="Vince — a maned wolf in glasses" data-en-alt="Vince — a maned wolf in glasses" data-pl-alt="Vince — wilk grzywiasty w okularach" loading="lazy"></div>
-        <div class="body">
-          <span class="badge main"><span lang="en">Main fursona</span><span lang="pl">Główna fursona</span></span>
-          <h3>Vincent „Vince” Cancrosa</h3>
-          <span class="meta"><span lang="en">maned wolf · 28</span><span lang="pl">wilk grzywiasty · 28 lat</span></span>
-          <p class="facts-mini" lang="en">Analytical, ambitious, keeps the door narrow out of care. Walls have an end, tunnels have exits, bridges have a reason.</p>
-          <p class="facts-mini" lang="pl">Analityczny, ambitny, trzyma drzwi wąskie z troski. Mury mają koniec, tunele mają wyjścia, mosty mają powód.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
-        </div>
-      </a>
-      <a class="char" href="chip.html">
-        <div class="thumb light"><img src="img/chip-thumb.webp" alt="Chip — a kobold in a blue cookie hoodie" data-en-alt="Chip — a kobold in a blue cookie hoodie" data-pl-alt="Chip — kobold w niebieskiej bluzie w ciasteczka" loading="lazy"></div>
-        <div class="body">
-          <span class="badge">002</span>
-          <h3>Chipper „Chip” Cancrosa</h3>
-          <span class="meta"><span lang="en">cookie kobold · 18</span><span lang="pl">ciasteczkowy kobold · 18 lat</span></span>
-          <p class="facts-mini" lang="en">Vince's ward. A sour face, a cracked bell and more warmth than he'll ever show.</p>
-          <p class="facts-mini" lang="pl">Podopieczny Vince'a. Kwaśna mina, pęknięty dzwonek i więcej ciepła, niż pokaże.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
-        </div>
-      </a>
-      <a class="char" href="ragnar.html">
-        <div class="thumb"><img src="img/ragnar-thumb.webp" alt="Ragnar — a bull terrier in a colourful jacket" data-en-alt="Ragnar — a bull terrier in a colourful jacket" data-pl-alt="Ragnar — bulterier w kolorowej kurtce" loading="lazy"></div>
-        <div class="body">
-          <span class="badge">003</span>
-          <h3>Ragnar Elias Hale</h3>
-          <span class="meta"><span lang="en">bull terrier · 28 · DJ</span><span lang="pl">bulterier · 28 lat · DJ</span></span>
-          <p class="facts-mini" lang="en">Vince's partner. A boxer who became a DJ; if Vince is the head, Ragnar is the heart.</p>
-          <p class="facts-mini" lang="pl">Partner Vince'a. Bokser, który został DJ-em; jeśli Vince jest głową, Ragnar jest sercem.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
-        </div>
-      </a>
-      <a class="char" href="toro.html">
-        <div class="thumb light"><img src="img/toro-thumb.webp" alt="Toro — a green furred dragon" data-en-alt="Toro — a green furred dragon" data-pl-alt="Toro — zielony futrzasty smok" loading="lazy"></div>
-        <div class="body">
-          <span class="badge">004</span>
-          <h3>Toro Hashimoto</h3>
-          <span class="meta"><span lang="en">furred dragon · 19</span><span lang="pl">futrzasty smok · 19 lat</span></span>
-          <p class="facts-mini" lang="en">The family wanted a tiger. He is a lantern — and he lives inside a bridge pillar.</p>
-          <p class="facts-mini" lang="pl">Rodzina chciała tygrysa. On jest latarnią — i mieszka w filarze mostu.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
-        </div>
-      </a>
-    </div>
+  <!-- ================= WYBÓR POSTACI ================= -->
+  <section class="roster" id="postacie" data-theme="vince" aria-labelledby="postacie-h">
+    <div class="roster-bg" aria-hidden="true"><i data-t="vince"></i><i data-t="chip"></i><i data-t="ragnar"></i><i data-t="toro"></i><i data-t="myr"></i><i data-t="zarin"></i></div>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker"><span lang="en">Fursonas · choose your character</span><span lang="pl">Fursony · wybierz postać</span></p>
+        <h2 id="postacie-h"><span lang="en">Characters</span><span lang="pl">Postacie</span></h2>
+        <p class="mono roster-hint" id="rosterHint"></p>
+      </div>
 
-    <div class="world-head"><h3>Cancrosa Verse · <span lang="en">deep space</span><span lang="pl">głęboki kosmos</span></h3><span lang="en">working canon · may change</span><span lang="pl">kanon roboczy · może się zmienić</span></div>
-    <div class="chars">
-      <a class="char" href="myr.html">
-        <div class="thumb" style="background:linear-gradient(160deg,#4a4d50,#1d1f21);color:#e9e2cf;font-size:1.4rem">MYR-35</div>
-        <div class="body">
-          <span class="badge dim"><span lang="en">Working canon</span><span lang="pl">Kanon roboczy</span></span>
-          <h3>Myr</h3>
-          <span class="meta"><span lang="en">Protogen · they/them · c. 210 cm</span><span lang="pl">Protogen · they/them (po polsku: „jednostka”) · ok. 210 cm</span></span>
-          <p class="facts-mini" lang="en">Former breaching unit with anteater DNA. Deserted. Breaks only as a last resort — and only what is needed.</p>
-          <p class="facts-mini" lang="pl">Była jednostka abordażowa, z DNA mrówkojada. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
+      <div class="picks">
+        <div class="pick-group">
+          <p class="group-label"><b>Cancrosa Files</b> · <span lang="en">the city · a fully digitigrade world, no humans</span><span lang="pl">miasto · świat w pełni digitigradalny, bez ludzi</span></p>
+          <div class="pick-row">
+            <a class="pick" href="vince.html" data-char="vince" style="--a:#e3a43f"><span class="pick-img"><img src="img/vince-thumb.webp" alt="" width="400" height="300"></span><b>Vince</b><span class="num">001 · <span lang="en">main</span><span lang="pl">główna</span></span></a>
+            <a class="pick" href="chip.html" data-char="chip" style="--a:#2f6bd8"><span class="pick-img"><img src="img/chip-thumb.webp" alt="" width="400" height="300"></span><b>Chip</b><span class="num">002</span></a>
+            <a class="pick" href="ragnar.html" data-char="ragnar" style="--a:#ff2e88"><span class="pick-img"><img src="img/ragnar-thumb.webp" alt="" width="400" height="300"></span><b>Ragnar</b><span class="num">003</span></a>
+            <a class="pick" href="toro.html" data-char="toro" style="--a:#e6b23a"><span class="pick-img"><img src="img/toro-thumb.webp" alt="" width="400" height="300"></span><b>Toro</b><span class="num">004</span></a>
+          </div>
         </div>
-      </a>
-      <a class="char" href="zarin.html">
-        <div class="thumb" style="background:linear-gradient(170deg,#7d8186,#474b50);color:#e6e1d3;font-size:1.4rem;letter-spacing:.22em">PATCH</div>
-        <div class="body">
-          <span class="badge dim"><span lang="en">Working canon</span><span lang="pl">Kanon roboczy</span></span>
-          <h3>Zarin Patchcurio</h3>
-          <span class="meta"><span lang="en">Avali · he/him · mechanic</span><span lang="pl">Avali · on/jego · mechanik</span></span>
-          <p class="facts-mini" lang="en">Takes apart what others throw away, to see whether it still runs. Wears a hull plate from the ship Patch.</p>
-          <p class="facts-mini" lang="pl">Rozkłada na części to, co inni wyrzucają, żeby sprawdzić, czy jeszcze działa. Nosi płytę z kadłuba statku Patch.</p>
-          <span class="more"><span lang="en">Character page →</span><span lang="pl">Strona postaci →</span></span>
-        </div>
-      </a>
-    </div>
-    <p class="note" lang="en">Avali — a species created by RyuujinZERO. Protogens — a species by Zenith's Outer Reach.</p>
-    <p class="note" lang="pl">Avali — gatunek stworzony przez RyuujinZERO. Protogeny — gatunek Zenith's Outer Reach.</p>
-  </section>
-
-  <!-- ===== PROJEKTY ===== -->
-  <section id="projekty" aria-labelledby="projekty-h">
-    <div class="section-head">
-      <p class="kicker"><span lang="en">Separate from the characters</span><span lang="pl">Osobno od postaci</span></p>
-      <h2 id="projekty-h"><span lang="en">Projects</span><span lang="pl">Projekty</span></h2>
-    </div>
-
-    <div class="card">
-      <p class="kicker"><span lang="en">Music</span><span lang="pl">Muzyka</span></p>
-      <h3><span lang="en">Three categories that aren't rigid</span><span lang="pl">Trzy kategorie, które nie są sztywne</span></h3>
-      <p style="max-width:48rem" lang="en">The music already has its shape. A track can live in more than one category — sometimes it has to.</p>
-      <p style="max-width:48rem" lang="pl">Muzyka ma już swój kształt. Utwór może żyć w więcej niż jednej kategorii — czasem musi.</p>
-      <div class="grid-3" style="margin-top:1.25rem">
-        <div class="cat">
-          <h3>Ranger <small lang="en">SIGNAL</small><small lang="pl">SYGNAŁ</small></h3>
-          <p lang="en">A journey. Light enough to carry you, but built for motion. The destination doesn't matter — what matters is that
-            somewhere between the first and the last bar it takes you along.</p>
-          <p lang="pl">Podróż. Lekka, żeby cię niosła, ale zbudowana do ruchu. Nie liczy się cel — liczy się to,
-            że gdzieś między pierwszym a ostatnim taktem zabiera cię ze sobą.</p>
-        </div>
-        <div class="cat">
-          <h3>Manifesto <small lang="en">PROOF</small><small lang="pl">DOWÓD</small></h3>
-          <p lang="en">Couch philosophy. A conversation where nobody's in a hurry. No right answers —
-            something lands on the table, and the question is: what do you make of it?</p>
-          <p lang="pl">Filozofia z kanapy. Rozmowa, w której nikt się nie spieszy. Bez dobrych odpowiedzi —
-            coś ląduje na stole, a pytanie brzmi: co ty o tym myślisz?</p>
-        </div>
-        <div class="cat">
-          <h3>Blueprint <small lang="en">MECHANISM</small><small lang="pl">MECHANIZM</small></h3>
-          <p lang="en">Playing with form. Not just how the music sounds but how it arrives: structure, context, the shape of the whole —
-            the layer most people skip. Here it is the point.</p>
-          <p lang="pl">Zabawa formą. Nie tylko jak muzyka brzmi, ale jak przychodzi: struktura, kontekst, kształt całości —
-            warstwa, którą większość pomija. Tutaj to ona jest sednem.</p>
+        <div class="pick-group verse">
+          <p class="group-label"><b>Cancrosa Verse</b> · <span lang="en">deep space · working canon</span><span lang="pl">głęboki kosmos · kanon roboczy</span></p>
+          <div class="pick-row">
+            <a class="pick" href="myr.html" data-char="myr" style="--a:#d9823f"><span class="pick-img emblem myr"><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M8 18 Q8 6 22 6 H78 Q92 6 92 18 L88 44 Q86 54 74 54 H26 Q14 54 12 44Z" fill="#0b0b0c" stroke="#ede6d6" stroke-width="1.5"/><rect x="26" y="20" width="14" height="10" rx="4" fill="#ede6d6"/><rect x="60" y="20" width="14" height="10" rx="4" fill="#ede6d6"/><path d="M44 42 H56" stroke="#ede6d6" stroke-width="2.5" stroke-linecap="round"/></svg></span><b>Myr</b><span class="num">MYR-35</span></a>
+            <a class="pick" href="zarin.html" data-char="zarin" style="--a:#2fd46b"><span class="pick-img emblem zarin"><svg viewBox="0 0 100 100" aria-hidden="true"><rect y="24" width="100" height="15" fill="#5e7a5a"/><text x="51" y="64" text-anchor="middle" font-family="Saira Stencil One, Impact, sans-serif" font-size="18" letter-spacing="2" fill="#e6e1d3">PATCH</text><text x="50" y="84" text-anchor="middle" font-family="Caveat, cursive" font-size="16" fill="#07080a" transform="rotate(-5 50 80)">curio</text><g fill="#101214"><circle cx="9" cy="9" r="3"/><circle cx="91" cy="9" r="3"/><circle cx="9" cy="91" r="3"/><circle cx="91" cy="91" r="3"/></g></svg></span><b>Zarin</b><span class="num">PATCH</span></a>
+          </div>
         </div>
       </div>
-      <p class="note" lang="en">The music is made with the help of AI — and I say so openly. The visuals are commissioned from artists,
-        not generated, and every artist knows up front that their work will stand next to something made with AI.
-        Their informed decision isn't a courtesy; it's a priority.</p>
-      <p class="note" lang="pl">Muzyka powstaje z pomocą AI — i mówię o tym otwarcie. Oprawa wizualna jest zamawiana u artystów,
-        nie generowana, a każdy artysta wie z góry, że jego praca stanie obok czegoś stworzonego z AI.
-        Jego świadoma decyzja to nie uprzejmość, tylko priorytet.</p>
-    </div>
 
-    <div class="grid-2" style="margin-top:1.25rem">
-      <article class="card">
-        <p class="kicker">TTRPG</p>
-        <h3>Fallout: Equestria — Foundry VTT</h3>
-        <p lang="en">I run sessions and write tools for them. A fan-made system for Foundry VTT: a character sheet with S.P.E.C.I.A.L.,
-          SATS, a catalogue of over a thousand items, a combat tracker and a casino with blackjack and Texas Hold'em.</p>
-        <p lang="pl">Prowadzę sesje i piszę do nich narzędzia. Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L.,
-          SATS, katalog ponad tysiąca przedmiotów, tracker walki i kasyno z blackjackiem i Texas Hold'em.</p>
-        <a class="btn ghost" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
-      </article>
-      <article class="card" style="border-style:dashed">
-        <p class="kicker" style="color:var(--muted)"><span lang="en">Someday</span><span lang="pl">Kiedyś</span></p>
-        <h3>YouTube · Twitch · Kick</h3>
-        <p lang="en">Gameplay, short talks, long talks, music — whatever finds its way.
-          This is a plan for the future; links will appear here once the channels go live.</p>
-        <p lang="pl">Gameplay, krótkie rozmowy, długie rozmowy, muzyka — wszystko, co znajdzie drogę.
-          To plan na przyszłość; linki pojawią się tutaj, gdy kanały ruszą.</p>
-      </article>
+      <div class="stage" id="stage" aria-live="polite">
+        <div class="stage-text">
+          <p class="s-kicker" id="sKicker"></p>
+          <h3 class="s-name" id="sName"></h3>
+          <p class="s-meta" id="sMeta"></p>
+          <p class="s-tag" id="sTag"></p>
+          <a class="s-go" id="sGo" href="vince.html"></a>
+        </div>
+        <div class="stage-art" aria-hidden="true">
+          <!-- Vince: Dual Path -->
+          <div class="art" data-art="vince">
+            <svg viewBox="0 0 400 300">
+              <path d="M20 150 H380" stroke="rgba(227,164,63,.25)" stroke-dasharray="2 6"/>
+              <path d="M60 136 V164 M340 136 V164 M200 50 V250" stroke="rgba(227,164,63,.25)"/>
+              <path class="draw" pathLength="1" d="M60 150 C120 150 140 70 200 70 S280 150 340 150" fill="none" stroke="#e3a43f" stroke-width="3"/>
+              <path class="draw d2" pathLength="1" d="M60 150 C120 150 140 230 200 230 S280 150 340 150" fill="none" stroke="#ece3d3" stroke-width="3"/>
+              <circle cx="60" cy="150" r="6" fill="#e3a43f"/><circle cx="340" cy="150" r="6" fill="#ece3d3"/>
+              <text class="art-lab" x="200" y="34" text-anchor="middle">DUAL PATH</text>
+              <text class="art-lab" lang="en" x="60" y="284">WALLS</text><text class="art-lab" lang="en" x="200" y="284" text-anchor="middle">TUNNELS</text><text class="art-lab" lang="en" x="340" y="284" text-anchor="end">BRIDGES</text>
+              <text class="art-lab" lang="pl" x="60" y="284">MURY</text><text class="art-lab" lang="pl" x="200" y="284" text-anchor="middle">TUNELE</text><text class="art-lab" lang="pl" x="340" y="284" text-anchor="end">MOSTY</text>
+            </svg>
+          </div>
+          <!-- Chip: pęknięty dzwonek -->
+          <div class="art" data-art="chip">
+            <svg viewBox="0 0 400 300">
+              <g fill="#6f4a2a"><circle cx="62" cy="228" r="8"/><circle cx="92" cy="252" r="5"/><circle cx="330" cy="62" r="7"/><circle cx="352" cy="96" r="4"/><circle cx="48" cy="96" r="5"/></g>
+              <path d="M54 66 Q200 132 346 66" fill="none" stroke="#4a2a17" stroke-width="28" stroke-linecap="round"/>
+              <path d="M54 66 Q200 132 346 66" fill="none" stroke="#2f6bd8" stroke-width="21" stroke-linecap="round"/>
+              <g class="bell">
+                <circle cx="200" cy="100" r="9" fill="none" stroke="#4a2a17" stroke-width="4"/>
+                <path d="M200 108 C160 108 150 150 148 190 L140 214 H260 L252 190 C250 150 240 108 200 108Z" fill="#e8b84a" stroke="#4a2a17" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M168 138 C166 158 164 174 163 190" stroke="#fff3c4" stroke-width="5" stroke-linecap="round" fill="none" opacity=".7"/>
+                <path d="M150 198 H250" stroke="#c9922f" stroke-width="5"/>
+                <path d="M214 132 l-9 18 l7 12 l-8 18" fill="none" stroke="#4a2a17" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="200" cy="226" r="11" fill="#4a2a17"/>
+              </g>
+              <g class="ding" stroke="#4a2a17" stroke-width="3" fill="none" stroke-linecap="round"><path d="M112 150 q-14 22 0 44"/><path d="M94 140 q-22 32 0 64"/><path d="M288 150 q14 22 0 44"/><path d="M306 140 q22 32 0 64"/></g>
+              <text x="300" y="262" font-family="Caveat, cursive" font-size="34" fill="#4a2a17" transform="rotate(-8 300 262)">ding.</text>
+            </svg>
+          </div>
+          <!-- Ragnar: korektor -->
+          <div class="art" data-art="ragnar">
+            <svg viewBox="0 0 400 300">
+              <text x="200" y="58" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="40" fill="#efe3c9" letter-spacing="2">128 BPM</text>
+              <g id="eqBars"></g>
+              <path d="M30 232 H370" stroke="#26c6e0" stroke-width="2" opacity=".6"/>
+              <g id="eqMirror" opacity=".14" transform="translate(0 464) scale(1 -1)"></g>
+            </svg>
+          </div>
+          <!-- Toro: kamienna latarnia -->
+          <div class="art" data-art="toro">
+            <svg viewBox="0 0 400 300">
+              <defs><radialGradient id="lglow"><stop offset="0" stop-color="#ffd77a" stop-opacity=".75"/><stop offset=".45" stop-color="#e6b23a" stop-opacity=".2"/><stop offset="1" stop-color="#e6b23a" stop-opacity="0"/></radialGradient></defs>
+              <circle class="flame" cx="200" cy="124" r="110" fill="url(#lglow)"/>
+              <circle cx="200" cy="22" r="7" fill="#8f8a7c"/><path d="M193 28 H207 L211 40 H189Z" fill="#8f8a7c"/>
+              <path d="M112 80 Q200 30 288 80 L270 88 H130Z" fill="#9b968a"/>
+              <rect x="150" y="88" width="100" height="76" fill="#7d786d"/>
+              <rect class="flame" x="168" y="100" width="64" height="52" rx="3" fill="#ffd77a"/>
+              <path d="M200 100 V152" stroke="#7d786d" stroke-width="5"/>
+              <rect x="134" y="164" width="132" height="14" fill="#8f8a7c"/>
+              <rect x="182" y="178" width="36" height="72" fill="#7d786d"/>
+              <path d="M146 250 H254 L266 272 H134Z" fill="#8f8a7c"/>
+              <g fill="#ffe08a"><circle class="fly" cx="96" cy="180" r="2.5" style="--t:5.5s;--x:18px;--y:-26px"/><circle class="fly" cx="312" cy="150" r="2" style="--t:6.5s;--d:-2s;--x:-16px;--y:-30px"/><circle class="fly" cx="292" cy="236" r="2.5" style="--t:4.8s;--d:-1s;--x:12px;--y:-20px"/><circle class="fly" cx="118" cy="96" r="2" style="--t:7s;--d:-3.5s;--x:-10px;--y:-24px"/></g>
+            </svg>
+          </div>
+          <!-- Myr: wizjer z diodami -->
+          <div class="art" data-art="myr">
+            <svg viewBox="0 0 400 300">
+              <path d="M56 104 Q56 74 96 72 H304 Q344 74 344 104 L332 192 Q328 218 300 218 H100 Q72 218 68 192Z" fill="#0b0b0c" stroke="#ede6d6" stroke-width="2"/>
+              <g id="ledGrid"></g>
+              <path d="M56 104 H30 M344 104 H370" stroke="#d9823f" stroke-width="6"/>
+              <text x="200" y="262" text-anchor="middle" font-family="Saira Stencil One, Impact, sans-serif" font-size="28" letter-spacing="7" fill="#d9823f">MYR-35</text>
+            </svg>
+          </div>
+          <!-- Zarin: płyta z kadłuba, wentylator i śnieg -->
+          <div class="art" data-art="zarin">
+            <svg viewBox="0 0 400 300">
+              <defs><linearGradient id="hullG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8d9196"/><stop offset=".5" stop-color="#6f7378"/><stop offset="1" stop-color="#565a5f"/></linearGradient></defs>
+              <rect x="56" y="70" width="160" height="160" rx="5" fill="url(#hullG)"/>
+              <rect x="56" y="108" width="160" height="24" fill="#5e7a5a"/>
+              <text x="138" y="178" text-anchor="middle" font-family="Saira Stencil One, Impact, sans-serif" font-size="32" letter-spacing="5" fill="#e6e1d3">PATCH</text>
+              <text x="136" y="212" text-anchor="middle" font-family="Caveat, cursive" font-size="28" fill="#07080a" transform="rotate(-5 136 206)">curio</text>
+              <g fill="#101214"><circle cx="68" cy="82" r="5"/><circle cx="204" cy="82" r="5"/><circle cx="68" cy="218" r="5"/><circle cx="204" cy="218" r="5"/></g>
+              <circle cx="300" cy="150" r="52" fill="#14171b" stroke="#7d8186" stroke-width="4"/>
+              <g class="fan" fill="#8d9196"><path d="M300 150 C292 126 300 110 314 108 C316 126 310 140 300 150Z"/><path d="M300 150 C324 142 340 150 342 164 C324 166 310 160 300 150Z"/><path d="M300 150 C308 174 300 190 286 192 C284 174 290 160 300 150Z"/><path d="M300 150 C276 158 260 150 258 136 C276 134 290 140 300 150Z"/><circle cx="300" cy="150" r="7" fill="#5a6068"/></g>
+              <g id="flakes" fill="#e8f0f3"></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <p class="species-note"><span lang="en">Avali — a species created by RyuujinZERO. Protogens — a species by Zenith's Outer Reach. Illustrations belong to their artists.</span><span lang="pl">Avali — gatunek stworzony przez RyuujinZERO. Protogeny — gatunek Zenith's Outer Reach. Ilustracje należą do ich autorów.</span></p>
     </div>
   </section>
 
-  <!-- ===== KONTAKT ===== -->
-  <section id="kontakt" aria-labelledby="kontakt-h">
-    <div class="section-head">
-      <p class="kicker"><span lang="en">The door is open</span><span lang="pl">Drzwi są otwarte</span></p>
-      <h2 id="kontakt-h"><span lang="en">Contact</span><span lang="pl">Kontakt</span></h2>
+  <!-- ================= PROJEKTY ================= -->
+  <section class="sec projects" id="projekty" aria-labelledby="projekty-h">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker"><span lang="en">Separate from the characters</span><span lang="pl">Osobno od postaci</span></p>
+        <h2 id="projekty-h"><span lang="en">Projects</span><span lang="pl">Projekty</span></h2>
+      </div>
+
+      <article class="radio" data-reveal>
+        <div>
+          <p class="kicker"><span lang="en">Music</span><span lang="pl">Muzyka</span></p>
+          <h3><span lang="en">Three categories that aren't rigid</span><span lang="pl">Trzy kategorie, które nie są sztywne</span></h3>
+          <p lang="en">The music already has its shape. A track can live in more than one category — sometimes it has to. Tune in.</p>
+          <p lang="pl">Muzyka ma już swój kształt. Utwór może żyć w więcej niż jednej kategorii — czasem musi. Nastaw radio.</p>
+          <div class="presets" role="group" aria-label="Stations">
+            <button type="button" data-at="16">Ranger</button>
+            <button type="button" data-at="50">Manifesto</button>
+            <button type="button" data-at="84">Blueprint</button>
+          </div>
+          <p class="note" lang="en">The music is made with the help of AI — and I say so openly. The visuals are commissioned from artists, not generated, and every artist knows up front that their work will stand next to something made with AI. Their informed decision isn't a courtesy; it's a priority.</p>
+          <p class="note" lang="pl">Muzyka powstaje z pomocą AI — i mówię o tym otwarcie. Oprawa wizualna jest zamawiana u artystów, nie generowana, a każdy artysta wie z góry, że jego praca stanie obok czegoś stworzonego z AI. Jego świadoma decyzja to nie uprzejmość, tylko priorytet.</p>
+        </div>
+        <div class="tuner">
+          <div class="screen"><canvas id="viz" aria-hidden="true"></canvas><span class="freq" id="freq">FM 90.8</span></div>
+          <div class="readout" aria-live="polite"><b id="stName">Ranger</b><small id="stTag"></small><p id="stDesc"></p></div>
+          <div class="dial">
+            <div class="scale" aria-hidden="true"></div>
+            <span class="lab" style="left:18.7%">Ranger</span><span class="lab" style="left:50%">Manifesto</span><span class="lab" style="left:81.3%">Blueprint</span>
+            <span class="needle" id="needle" aria-hidden="true"></span>
+            <input type="range" id="tune" min="0" max="100" step="1" value="16" aria-label="Tuning dial" data-en-label="Tuning dial" data-pl-label="Pokrętło strojenia">
+          </div>
+        </div>
+      </article>
+
+      <div class="proj-grid">
+        <article class="proj term" data-reveal>
+          <p class="kicker">TTRPG</p>
+          <h3>Fallout: Equestria — Foundry VTT</h3>
+          <p lang="en">I run sessions and write tools for them. A fan-made system for Foundry VTT: a character sheet with S.P.E.C.I.A.L., SATS, a catalogue of over a thousand items, a combat tracker and a casino with blackjack and Texas Hold'em.</p>
+          <p lang="pl">Prowadzę sesje i piszę do nich narzędzia. Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L., SATS, katalog ponad tysiąca przedmiotów, tracker walki i kasyno z blackjackiem i Texas Hold'em.</p>
+          <div class="crt" aria-hidden="true"><pre id="crt"></pre></div>
+          <a class="btn" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
+        </article>
+        <article class="proj tv" id="tv" data-reveal="2">
+          <button type="button" class="tv-screen" id="tvScreen" data-en-label="Switch channel" data-pl-label="Przełącz kanał" aria-label="Switch channel">
+            <canvas id="static" width="96" height="72"></canvas><span class="bars"></span><span class="sig" id="tvSig">NO SIGNAL</span>
+          </button>
+          <p class="kicker"><span lang="en">Someday</span><span lang="pl">Kiedyś</span></p>
+          <h3>YouTube · Twitch · Kick</h3>
+          <p lang="en">Gameplay, short talks, long talks, music — whatever finds its way. This is a plan for the future; links will appear here once the channels go live.</p>
+          <p lang="pl">Gameplay, krótkie rozmowy, długie rozmowy, muzyka — wszystko, co znajdzie drogę. To plan na przyszłość; linki pojawią się tutaj, gdy kanały ruszą.</p>
+        </article>
+      </div>
     </div>
-    <!-- Discord: dopisać tutaj, jeśli zapadnie decyzja. -->
-    <ul class="links">
-      <li><a href="https://t.me/vincent_vince_cancrosa" rel="me"><span>Telegram</span><span>@vincent_vince_cancrosa</span></a></li>
-      <li><a href="https://bsky.app/profile/vcancrosa.bsky.social" rel="me"><span>Bluesky</span><span>@vcancrosa.bsky.social</span></a></li>
-      <li><a href="https://www.instagram.com/vincent_cancrosa/" rel="me"><span>Instagram</span><span>@vincent_cancrosa</span></a></li>
-      <li><a href="https://x.com/Vulpine_Regnum" rel="me"><span>X</span><span>@Vulpine_Regnum</span></a></li>
-      <li><a href="https://www.reddit.com/user/Kilokero1/" rel="me"><span>Reddit</span><span>u/Kilokero1</span></a></li>
-      <li><a href="https://github.com/V-Cancrosa" rel="me"><span>GitHub</span><span>V-Cancrosa</span></a></li>
-    </ul>
+  </section>
+
+  <!-- ================= KONTAKT ================= -->
+  <section class="sec contact" id="kontakt" aria-labelledby="kontakt-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker"><span lang="en">The door is open</span><span lang="pl">Drzwi są otwarte</span></p>
+        <h2 id="kontakt-h"><span lang="en">Contact</span><span lang="pl">Kontakt</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="doorway" aria-hidden="true"><div class="frame"><div class="door"><i></i></div></div><div class="spill"></div></div>
+        <!-- Discord: dopisać tutaj, jeśli zapadnie decyzja. -->
+        <ul class="links">
+          <li><a href="https://t.me/vincent_vince_cancrosa" rel="me"><span>Telegram</span><span>@vincent_vince_cancrosa</span></a></li>
+          <li><a href="https://bsky.app/profile/vcancrosa.bsky.social" rel="me"><span>Bluesky</span><span>@vcancrosa.bsky.social</span></a></li>
+          <li><a href="https://www.instagram.com/vincent_cancrosa/" rel="me"><span>Instagram</span><span>@vincent_cancrosa</span></a></li>
+          <li><a href="https://x.com/Vulpine_Regnum" rel="me"><span>X</span><span>@Vulpine_Regnum</span></a></li>
+          <li><a href="https://www.reddit.com/user/Kilokero1/" rel="me"><span>Reddit</span><span>u/Kilokero1</span></a></li>
+          <li><a href="https://github.com/V-Cancrosa" rel="me"><span>GitHub</span><span>V-Cancrosa</span></a></li>
+        </ul>
+        <figure class="qr">
+          <svg viewBox="-3 -3 35 35" role="img" aria-label="QR: t.me/vincent_vince_cancrosa" shape-rendering="crispEdges"><path d="M0 0h7v1h-7zM9 0h1v1h-1zM11 0h2v1h-2zM14 0h1v1h-1zM17 0h3v1h-3zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM16 1h2v1h-2zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h2v1h-2zM12 2h1v1h-1zM14 2h2v1h-2zM17 2h1v1h-1zM19 2h2v1h-2zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h2v1h-2zM13 3h1v1h-1zM18 3h3v1h-3zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h4v1h-4zM17 4h2v1h-2zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM15 5h5v1h-5zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM9 7h3v1h-3zM13 7h1v1h-1zM15 7h3v1h-3zM19 7h2v1h-2zM0 8h1v1h-1zM3 8h1v1h-1zM5 8h2v1h-2zM8 8h4v1h-4zM14 8h1v1h-1zM16 8h1v1h-1zM19 8h3v1h-3zM23 8h1v1h-1zM0 9h5v1h-5zM7 9h3v1h-3zM12 9h2v1h-2zM16 9h2v1h-2zM19 9h5v1h-5zM25 9h1v1h-1zM28 9h1v1h-1zM1 10h1v1h-1zM5 10h2v1h-2zM10 10h1v1h-1zM13 10h2v1h-2zM16 10h12v1h-12zM0 11h2v1h-2zM3 11h1v1h-1zM7 11h3v1h-3zM11 11h3v1h-3zM18 11h2v1h-2zM22 11h2v1h-2zM26 11h2v1h-2zM0 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM14 12h1v1h-1zM17 12h1v1h-1zM21 12h2v1h-2zM25 12h1v1h-1zM27 12h2v1h-2zM1 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM12 13h3v1h-3zM17 13h1v1h-1zM19 13h2v1h-2zM0 14h1v1h-1zM3 14h1v1h-1zM6 14h1v1h-1zM9 14h2v1h-2zM12 14h3v1h-3zM17 14h1v1h-1zM21 14h2v1h-2zM24 14h5v1h-5zM3 15h2v1h-2zM8 15h1v1h-1zM16 15h3v1h-3zM20 15h3v1h-3zM24 15h2v1h-2zM27 15h1v1h-1zM0 16h2v1h-2zM3 16h2v1h-2zM6 16h1v1h-1zM13 16h1v1h-1zM15 16h1v1h-1zM20 16h2v1h-2zM27 16h1v1h-1zM2 17h2v1h-2zM5 17h1v1h-1zM7 17h1v1h-1zM10 17h2v1h-2zM13 17h2v1h-2zM16 17h3v1h-3zM21 17h3v1h-3zM25 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM5 18h2v1h-2zM8 18h3v1h-3zM14 18h1v1h-1zM16 18h2v1h-2zM27 18h2v1h-2zM4 19h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM14 19h1v1h-1zM16 19h3v1h-3zM20 19h1v1h-1zM22 19h1v1h-1zM24 19h1v1h-1zM27 19h2v1h-2zM0 20h1v1h-1zM2 20h1v1h-1zM5 20h2v1h-2zM11 20h1v1h-1zM20 20h5v1h-5zM26 20h1v1h-1zM8 21h1v1h-1zM10 21h3v1h-3zM14 21h1v1h-1zM16 21h2v1h-2zM19 21h2v1h-2zM24 21h1v1h-1zM26 21h3v1h-3zM0 22h7v1h-7zM9 22h1v1h-1zM16 22h3v1h-3zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM27 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM18 23h1v1h-1zM20 23h1v1h-1zM24 23h3v1h-3zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM9 24h1v1h-1zM11 24h1v1h-1zM16 24h2v1h-2zM20 24h5v1h-5zM28 24h1v1h-1zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM8 25h4v1h-4zM17 25h1v1h-1zM19 25h2v1h-2zM22 25h6v1h-6zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM11 26h2v1h-2zM14 26h1v1h-1zM16 26h3v1h-3zM23 26h4v1h-4zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM12 27h2v1h-2zM16 27h5v1h-5zM22 27h2v1h-2zM27 27h1v1h-1zM0 28h7v1h-7zM8 28h5v1h-5zM14 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM22 28h3v1h-3zM27 28h1v1h-1z" fill="#0b0c10"/></svg>
+          <figcaption><span lang="en">Telegram — scan with your phone</span><span lang="pl">Telegram — zeskanuj telefonem</span></figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> The One Above Them</span>
-  <span lang="en">Illustrations belong to their artists.</span><span lang="pl">Ilustracje należą do ich autorów.</span>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> The One Above Them</span>
+    <span lang="en">Illustrations belong to their artists.</span><span lang="pl">Ilustracje należą do ich autorów.</span>
+  </div>
 </footer>
+
+<div class="wipe" id="wipe" aria-hidden="true"><span id="wipeName"></span></div>
 
 <script src="char.js"></script>
 <script>
+  const t = CHAR.t;
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Uruchamia animację tylko wtedy, gdy element jest na ekranie.
+  function whileVisible(el, start, stop) {
+    new IntersectionObserver(([e]) => e.isIntersecting ? start() : stop()).observe(el);
+  }
+
+  // ---------- Postacie ----------
+  const CHARS = {
+    vince: { href: "vince.html", color: "#e3a43f", on: "#120d05", font: '"Archivo Wide", "Archivo", sans-serif', name: "Vince", small: "Vincent Cancrosa",
+      kicker: { en: "Cancrosa Files — 001 · main fursona", pl: "Cancrosa Files — 001 · główna fursona" },
+      species: { en: "maned wolf", pl: "wilk grzywiasty" },
+      meta: { en: "Maned wolf · he/him · 28", pl: "Wilk grzywiasty · on/jego · 28" },
+      tag: { en: "Walls have endings. Tunnels have exits. Bridges have a reason.", pl: "Mury mają koniec. Tunele mają wyjścia. Mosty mają powód." } },
+    chip: { href: "chip.html", color: "#2f6bd8", on: "#fff", font: '"Baloo 2", "Nunito", sans-serif', name: "Chip", small: "Chipper Cancrosa",
+      kicker: { en: "Cancrosa Files — 002", pl: "Cancrosa Files — 002" },
+      species: { en: "cookie kobold", pl: "ciasteczkowy kobold" },
+      meta: { en: "Furred cookie kobold · he/him · 18", pl: "Futrzasty ciasteczkowy kobold · on/jego · 18" },
+      tag: { en: "Silence is a choice — and so is letting it ring.", pl: "Cisza to wybór — i pozwolić mu zadzwonić też." } },
+    ragnar: { href: "ragnar.html", color: "#ff2e88", on: "#fff", font: '"Anton", Impact, sans-serif', name: "Ragnar", small: "Elias Hale",
+      kicker: { en: "Cancrosa Files — 003 presents", pl: "Cancrosa Files — 003 przedstawia" },
+      species: { en: "bull terrier · DJ", pl: "bulterier · DJ" },
+      meta: { en: "Bull terrier · he/him · 28 · boxer-turned-DJ", pl: "Bulterier · on/jego · 28 · bokser, który został DJ-em" },
+      tag: { en: "The room tells you what it needs. If you're not listening, you're playing at people instead of for them.", pl: "Sala mówi ci, czego potrzebuje. Jeśli nie słuchasz, grasz przed ludźmi, a nie dla nich." } },
+    toro: { href: "toro.html", color: "#e6b23a", on: "#1a1206", font: '"Fraunces", Georgia, serif', name: "Toro", small: 'Hashimoto <span lang="ja">橋本</span>',
+      kicker: { en: "Cancrosa Files — 004", pl: "Cancrosa Files — 004" },
+      species: { en: "furred dragon", pl: "futrzasty smok" },
+      meta: { en: "Furred dragon · he/him · 19", pl: "Futrzasty smok · on/jego · 19" },
+      tag: { en: "The family wanted a tiger. He is a lantern.", pl: "Rodzina chciała tygrysa. On jest latarnią." } },
+    myr: { href: "myr.html", color: "#d9823f", on: "#140c06", font: '"Saira Stencil One", Impact, sans-serif', name: "Myr", small: "MYR-35",
+      kicker: { en: "Cancrosa Verse — deep space · working canon", pl: "Cancrosa Verse — głęboki kosmos · kanon roboczy" },
+      species: { en: "Protogen", pl: "Protogen" },
+      meta: { en: "Protogen · they/them · colossal · halfway to an anteater", pl: "Protogen · kolosalna · w połowie mrówkojad" },
+      tag: { en: "Former breaching unit. Deserted. Breaks only as a last resort — and only what is needed.", pl: "Była jednostka abordażowa. Zdezerterowała. Łamie tylko w ostateczności — i tylko to, co trzeba." } },
+    zarin: { href: "zarin.html", color: "#2fd46b", on: "#06110a", font: '"Space Grotesk", sans-serif', name: "Zarin", small: "Patchcurio",
+      kicker: { en: "Cancrosa Verse — deep space · working canon", pl: "Cancrosa Verse — głęboki kosmos · kanon roboczy" },
+      species: { en: "Avali · mechanic", pl: "Avali · mechanik" },
+      meta: { en: "Avali · he/him · mechanic", pl: "Avali · on/jego · mechanik" },
+      tag: { en: "He never sold any of it. He only wanted to know whether it would still run.", pl: "Nigdy niczego z tego nie sprzedał. Chciał tylko wiedzieć, czy to jeszcze działa." } },
+  };
+
+  // ---------- Niebo: gwiazdy, spadające gwiazdy, okna miasta, paralaksa ----------
+  const sky = document.querySelector(".sky");
+  const starsCv = document.getElementById("stars");
+  const ctx = starsCv.getContext("2d");
+  const constellation = document.getElementById("constellation");
+  let SW = 0, SH = 0, field = [], skyOn = true, mx = 0, my = 0, tx = 0, ty = 0;
+  function sizeSky() {
+    const r = sky.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    if (Math.abs(r.width - SW) < 1 && Math.abs(r.height - SH) < 80) return;
+    SW = r.width; SH = r.height;
+    starsCv.width = SW * d; starsCv.height = SH * d;
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    field = Array.from({ length: Math.round(Math.min(420, SW * SH / 3600)) }, () => {
+      const big = Math.random() < .07;
+      return { x: Math.random() * SW, y: Math.random() * SH * .86, r: big ? 1.2 + Math.random() : .35 + Math.random() * .75, p: Math.random() * 6.3, s: .4 + Math.random() * 1.4, z: .2 + Math.random() * .8, warm: Math.random() < .14 };
+    });
+    if (reduced) drawSky(0);
+  }
+  function drawSky(now) {
+    tx += (mx - tx) * .06; ty += (my - ty) * .06;
+    ctx.clearRect(0, 0, SW, SH);
+    for (const s of field) {
+      const a = reduced ? .7 : .35 + .65 * Math.abs(Math.sin(s.p + now / 1000 * s.s * .6));
+      ctx.globalAlpha = a * (.35 + s.z * .65);
+      ctx.fillStyle = s.warm ? "#ffd9a0" : "#e9eefc";
+      ctx.beginPath();
+      ctx.arc(s.x - tx * s.z * 14, s.y - ty * s.z * 9, s.r, 0, 6.2832);
+      ctx.fill();
+    }
+    const lift = Math.min(scrollY, SH) * .16;
+    constellation.style.transform = `translate(${(-tx * 8).toFixed(1)}px, ${(lift - ty * 6).toFixed(1)}px)`;
+    if (skyOn && !reduced) requestAnimationFrame(drawSky);
+  }
+  sizeSky();
+  addEventListener("resize", sizeSky);
+  sky.addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse") return;
+    mx = e.clientX / innerWidth * 2 - 1; my = e.clientY / innerHeight * 2 - 1;
+  });
+  if (!reduced) {
+    whileVisible(sky, () => { if (!skyOn) { skyOn = true; requestAnimationFrame(drawSky); } }, () => skyOn = false);
+    requestAnimationFrame(drawSky);
+    // Spadająca gwiazda co kilka sekund
+    (function shoot() {
+      setTimeout(() => {
+        if (skyOn && !document.hidden) {
+          const s = document.createElement("i");
+          s.className = "shoot";
+          s.style.left = (45 + Math.random() * 50) + "%";
+          s.style.top = (4 + Math.random() * 30) + "%";
+          sky.append(s);
+          requestAnimationFrame(() => s.classList.add("go"));
+          setTimeout(() => s.remove(), 1300);
+        }
+        shoot();
+      }, 6000 + Math.random() * 6000);
+    })();
+    // Okna miasta zapalają się i gasną
+    const wins = [...document.querySelectorAll(".city .win")];
+    let winTimer = null;
+    whileVisible(sky, () => {
+      if (winTimer) return;
+      winTimer = setInterval(() => {
+        for (let i = 0; i < 3; i++) {
+          const w = wins[Math.floor(Math.random() * wins.length)];
+          w.style.opacity = w.style.opacity === "0" ? (.3 + Math.random() * .6).toFixed(2) : "0";
+        }
+      }, 900);
+    }, () => { clearInterval(winTimer); winTimer = null; });
+  }
+
+  // Gwiazdy postaci: podświetlenie więzi, klik wybiera postać niżej
+  const starEls = [...document.querySelectorAll(".star")];
+  const bonds = [...document.querySelectorAll(".bond")];
+  function lightBonds(k, c) {
+    bonds.forEach(b => {
+      const on = k && (b.dataset.a === k || b.dataset.b === k);
+      b.classList.toggle("lit", !!on);
+      b.style.setProperty("--c", c || "");
+    });
+  }
+  starEls.forEach(s => {
+    const k = s.dataset.char, c = s.style.getPropertyValue("--c");
+    s.addEventListener("pointerenter", () => lightBonds(k, c));
+    s.addEventListener("focus", () => lightBonds(k, c));
+    s.addEventListener("pointerleave", () => lightBonds(null));
+    s.addEventListener("blur", () => lightBonds(null));
+    s.addEventListener("click", e => {
+      e.preventDefault();
+      select(k);
+      roster.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+      if (e.detail === 0) document.querySelector(`.pick[data-char="${k}"]`).focus({ preventScroll: true });
+    });
+  });
+
+  // ---------- Ekran wyboru postaci ----------
+  const roster = document.getElementById("postacie");
+  const stage = document.getElementById("stage");
+  const picks = [...document.querySelectorAll(".pick")];
+  const arts = [...document.querySelectorAll(".art")];
+  const sGo = document.getElementById("sGo");
+  const hoverable = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let current = null, swapTimer = null, hoverLock = false;
+  // Przewijanie przesuwa kafelki pod nieruchomy kursor — podgląd zmienia się dopiero, gdy mysz naprawdę się ruszy.
+  addEventListener("scroll", () => hoverLock = true, { passive: true });
+  let lastX = null, lastY = null;
+  addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse") return;
+    if (lastX === null || Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY) > 1) hoverLock = false;
+    lastX = e.clientX; lastY = e.clientY;
+  }, { capture: true, passive: true });
+
+  function renderStage() {
+    const c = CHARS[current];
+    document.getElementById("sKicker").textContent = t(c.kicker);
+    document.getElementById("sName").innerHTML = `${c.name}<small>${c.small}</small>`;
+    document.getElementById("sMeta").textContent = t(c.meta);
+    document.getElementById("sTag").textContent = t(c.tag);
+    sGo.href = c.href;
+    sGo.innerHTML = `${t({ en: "Enter", pl: "Wejdź" })}: ${c.name} <i>→</i>`;
+  }
+  function select(k, instant) {
+    if (k === current) return;
+    current = k;
+    try { sessionStorage.setItem("pick", k); } catch (e) {}
+    roster.dataset.theme = k;
+    document.documentElement.style.setProperty("--pick", CHARS[k].color);
+    picks.forEach(p => p.classList.toggle("on", p.dataset.char === k));
+    starEls.forEach(s => s.classList.toggle("on", s.dataset.char === k));
+    arts.forEach(a => a.classList.toggle("on", a.dataset.art === k));
+    clearTimeout(swapTimer);
+    if (instant || reduced) { renderStage(); stage.classList.remove("swap"); return; }
+    stage.classList.add("swap");
+    swapTimer = setTimeout(() => { renderStage(); stage.classList.remove("swap"); }, 170);
+  }
+
+  // Wejście na stronę postaci: kolor postaci rozlewa się z miejsca kliknięcia
+  const wipe = document.getElementById("wipe");
+  function go(k, x, y) {
+    select(k, true);
+    const c = CHARS[k];
+    if (reduced) { location.href = c.href; return; }
+    wipe.style.setProperty("--wc", c.color);
+    wipe.style.setProperty("--wt", c.on);
+    wipe.style.setProperty("--wf", c.font);
+    wipe.style.setProperty("--wx", x + "px");
+    wipe.style.setProperty("--wy", y + "px");
+    document.getElementById("wipeName").textContent = c.name;
+    wipe.classList.add("run");
+    setTimeout(() => location.href = c.href, 640);
+  }
+  addEventListener("pageshow", () => wipe.classList.remove("run"));
+
+  picks.forEach(p => {
+    const k = p.dataset.char;
+    let tap = null;
+    p.addEventListener("pointermove", e => { if (e.pointerType === "mouse" && !hoverLock && current !== k) select(k); });
+    p.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") tap = current === k; });
+    p.addEventListener("focus", () => select(k));
+    p.addEventListener("click", e => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      const wasTap = tap !== null, wasCurrent = tap;
+      tap = null;
+      // Dotyk: pierwsze stuknięcie tylko pokazuje postać, drugie wchodzi
+      if (wasTap && !wasCurrent) { select(k); return; }
+      const r = p.querySelector(".pick-img").getBoundingClientRect();
+      go(k, r.left + r.width / 2, r.top + r.height / 2);
+    });
+  });
+  sGo.addEventListener("click", e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    const r = sGo.getBoundingClientRect();
+    go(current, r.left + r.width / 2, r.top + r.height / 2);
+  });
+
+  // Sceny: korektor Ragnara, diody Myr, śnieg Zarina
+  (function buildArts() {
+    const eq = document.getElementById("eqBars"), mirror = document.getElementById("eqMirror");
+    const COLS = ["#ff2e88", "#26c6e0", "#b4e03c", "#9b5cff"];
+    for (let i = 0; i < 18; i++) {
+      const h = 60 + Math.round(Math.random() * 110);
+      [eq, mirror].forEach(g => {
+        const r = document.createElementNS(SVGNS, "rect");
+        r.setAttribute("x", 40 + i * 18); r.setAttribute("y", 232 - h); r.setAttribute("width", 12); r.setAttribute("height", h); r.setAttribute("rx", 2);
+        r.setAttribute("fill", COLS[i % 4]); r.setAttribute("class", "eqbar");
+        r.style.setProperty("--t", (.35 + Math.random() * .5).toFixed(2) + "s");
+        r.style.setProperty("--d", (-Math.random()).toFixed(2) + "s");
+        g.append(r);
+      });
+    }
+    const grid = document.getElementById("ledGrid");
+    const eyes = document.createElementNS(SVGNS, "g");
+    eyes.setAttribute("class", "eyes");
+    const EYE = [".XXX.", "XXXXX", ".XXX."];
+    const lit = new Set();
+    [[4, 3], [15, 3]].forEach(([c0, r0]) => EYE.forEach((row, ry) => [...row].forEach((ch, rx) => { if (ch === "X") lit.add(`${c0 + rx},${r0 + ry}`); })));
+    const mouth = new Set(["10,8", "11,9", "12,8", "13,9"]);
+    for (let r = 0; r < 11; r++) for (let c = 0; c < 24; c++) {
+      const led = document.createElementNS(SVGNS, "circle");
+      led.setAttribute("cx", 96 + c * 9); led.setAttribute("cy", 98 + r * 10); led.setAttribute("r", 3.2);
+      const isEye = lit.has(`${c},${r}`);
+      led.setAttribute("class", isEye || mouth.has(`${c},${r}`) ? "led lit" : "led");
+      (isEye ? eyes : grid).append(led);
+    }
+    grid.append(eyes);
+    const flakes = document.getElementById("flakes");
+    for (let i = 0; i < 22; i++) {
+      const f = document.createElementNS(SVGNS, "circle");
+      f.setAttribute("cx", 300 + Math.random() * 120); f.setAttribute("cy", 10 + Math.random() * 230); f.setAttribute("r", (1 + Math.random() * 1.8).toFixed(1));
+      f.setAttribute("class", "flake");
+      f.style.setProperty("--t", (1.6 + Math.random() * 1.6).toFixed(2) + "s");
+      f.style.setProperty("--d", (-Math.random() * 3).toFixed(2) + "s");
+      flakes.append(f);
+    }
+  })();
+
+  let saved = null;
+  try { saved = sessionStorage.getItem("pick"); } catch (e) {}
+  select(CHARS[saved] ? saved : "vince", true);
+
+  // ---------- Radio: trzy stacje muzyki ----------
+  const STATIONS = [
+    { at: 16, name: "Ranger", viz: "road", tag: { en: "SIGNAL", pl: "SYGNAŁ" },
+      desc: { en: "A journey. Light enough to carry you, but built for motion. The destination doesn't matter — what matters is that somewhere between the first and the last bar it takes you along.", pl: "Podróż. Lekka, żeby cię niosła, ale zbudowana do ruchu. Nie liczy się cel — liczy się to, że gdzieś między pierwszym a ostatnim taktem zabiera cię ze sobą." } },
+    { at: 50, name: "Manifesto", viz: "talk", tag: { en: "PROOF", pl: "DOWÓD" },
+      desc: { en: "Couch philosophy. A conversation where nobody's in a hurry. No right answers — something lands on the table, and the question is: what do you make of it?", pl: "Filozofia z kanapy. Rozmowa, w której nikt się nie spieszy. Bez dobrych odpowiedzi — coś ląduje na stole, a pytanie brzmi: co ty o tym myślisz?" } },
+    { at: 84, name: "Blueprint", viz: "plan", tag: { en: "MECHANISM", pl: "MECHANIZM" },
+      desc: { en: "Playing with form. Not just how the music sounds but how it arrives: structure, context, the shape of the whole — the layer most people skip. Here it is the point.", pl: "Zabawa formą. Nie tylko jak muzyka brzmi, ale jak przychodzi: struktura, kontekst, kształt całości — warstwa, którą większość pomija. Tutaj to ona jest sednem." } },
+  ];
+  const tune = document.getElementById("tune");
+  const presets = [...document.querySelectorAll(".presets button")];
+  const station = () => STATIONS.find(s => Math.abs(s.at - tune.value) <= 7) || null;
+  function renderRadio() {
+    const v = +tune.value, s = station();
+    document.getElementById("needle").style.left = (4 + v * .92) + "%";
+    document.getElementById("freq").textContent = "FM " + (87.5 + v * .205).toFixed(1);
+    presets.forEach(b => b.setAttribute("aria-pressed", String(!!s && +b.dataset.at === s.at)));
+    document.getElementById("stName").textContent = s ? s.name : t({ en: "Between stations", pl: "Między stacjami" });
+    document.getElementById("stTag").textContent = s ? t(s.tag) : "";
+    document.getElementById("stDesc").textContent = s ? t(s.desc) : t({ en: "Just static. Turn the dial — or pick a station.", pl: "Sam szum. Pokręć gałką — albo wybierz stację." });
+    tune.setAttribute("aria-valuetext", s ? s.name : t({ en: "static", pl: "szum" }));
+  }
+  tune.addEventListener("input", renderRadio);
+  presets.forEach(b => b.addEventListener("click", () => {
+    const from = +tune.value, to = +b.dataset.at, t0 = performance.now();
+    if (reduced) { tune.value = to; renderRadio(); return; }
+    (function step(now) {
+      const k = Math.min(1, (now - t0) / 450), e = 1 - Math.pow(1 - k, 3);
+      tune.value = Math.round(from + (to - from) * e);
+      renderRadio();
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }));
+
+  const viz = document.getElementById("viz"), vctx = viz.getContext("2d");
+  let VW = 0, VH = 0, vizOn = false;
+  function sizeViz() {
+    const r = viz.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    VW = r.width; VH = r.height; viz.width = VW * d; viz.height = VH * d; vctx.setTransform(d, 0, 0, d, 0, 0);
+  }
+  const PLAN = [[.12, .82, .88, .82], [.18, .82, .18, .42], [.82, .82, .82, .42], [.18, .42, .5, .18], [.5, .18, .82, .42], [.18, .42, .82, .42], [.34, .82, .34, .56], [.34, .56, .46, .56], [.46, .56, .46, .82], [.58, .52, .72, .52], [.58, .52, .58, .64], [.72, .52, .72, .64], [.58, .64, .72, .64]];
+  function drawViz(now) {
+    const s = station(), T = now / 1000;
+    vctx.clearRect(0, 0, VW, VH);
+    if (!s) {
+      for (let i = 0; i < 700; i++) { vctx.fillStyle = `rgba(236,227,211,${Math.random() * .5})`; vctx.fillRect(Math.random() * VW, Math.random() * VH, 2, 2); }
+    } else if (s.viz === "road") {
+      const hz = VH * .38, cx = VW / 2;
+      vctx.strokeStyle = "rgba(230,172,96,.5)"; vctx.lineWidth = 1;
+      vctx.beginPath(); vctx.moveTo(0, hz); vctx.lineTo(VW, hz); vctx.stroke();
+      vctx.beginPath(); vctx.moveTo(cx - 4, hz); vctx.lineTo(VW * .08, VH); vctx.moveTo(cx + 4, hz); vctx.lineTo(VW * .92, VH); vctx.stroke();
+      vctx.fillStyle = "#e6ac60";
+      for (let i = 0; i < 8; i++) {
+        const p = (i / 8 + T * .35) % 1, y = hz + (VH - hz) * p * p, w = 1 + p * 5, l = 2 + p * 22;
+        vctx.fillRect(cx - w / 2, y, w, l);
+      }
+      vctx.fillStyle = "rgba(255,216,160,.55)";
+      vctx.beginPath(); vctx.arc(cx, hz, VH * .16, Math.PI, 0); vctx.fill();
+    } else if (s.viz === "talk") {
+      const mid = VH / 2, turn = Math.sin(T * .7);
+      [[Math.max(0, turn), "#ece3d3", 0], [Math.max(0, -turn), "#e6ac60", 1.7]].forEach(([amp, col, ph]) => {
+        vctx.strokeStyle = col; vctx.lineWidth = 2; vctx.globalAlpha = .25 + amp * .75;
+        vctx.beginPath();
+        for (let x = 0; x <= VW; x += 4) {
+          const env = Math.sin(x / VW * Math.PI);
+          const y = mid + Math.sin(x * .045 + T * 3 + ph) * Math.sin(x * .013 + T * 1.3) * VH * .32 * (.12 + amp) * env;
+          x ? vctx.lineTo(x, y) : vctx.moveTo(x, y);
+        }
+        vctx.stroke();
+      });
+      vctx.globalAlpha = 1;
+    } else {
+      vctx.strokeStyle = "rgba(127,178,255,.12)"; vctx.lineWidth = 1;
+      for (let x = 0; x < VW; x += 16) { vctx.beginPath(); vctx.moveTo(x, 0); vctx.lineTo(x, VH); vctx.stroke(); }
+      for (let y = 0; y < VH; y += 16) { vctx.beginPath(); vctx.moveTo(0, y); vctx.lineTo(VW, y); vctx.stroke(); }
+      const p = (T % 7) / 5.5 * PLAN.length;
+      vctx.strokeStyle = "#7fb2ff"; vctx.lineWidth = 2; vctx.shadowColor = "#7fb2ff"; vctx.shadowBlur = 6;
+      PLAN.forEach(([x1, y1, x2, y2], i) => {
+        const k = Math.max(0, Math.min(1, p - i));
+        if (!k) return;
+        vctx.beginPath(); vctx.moveTo(x1 * VW, y1 * VH); vctx.lineTo((x1 + (x2 - x1) * k) * VW, (y1 + (y2 - y1) * k) * VH); vctx.stroke();
+      });
+      vctx.shadowBlur = 0;
+    }
+    if (vizOn && !reduced) requestAnimationFrame(drawViz);
+  }
+  sizeViz();
+  addEventListener("resize", () => { sizeViz(); if (reduced) drawViz(performance.now()); });
+  tune.addEventListener("input", () => { if (reduced) drawViz(performance.now()); });
+  presets.forEach(b => b.addEventListener("click", () => { if (reduced) setTimeout(() => drawViz(performance.now()), 0); }));
+  whileVisible(viz, () => { if (!vizOn) { vizOn = true; sizeViz(); requestAnimationFrame(drawViz); } }, () => vizOn = false);
+
+  // ---------- Terminal TTRPG ----------
+  const CRT = {
+    en: ["> foe --status", "SYSTEM     Fallout: Equestria", "PLATFORM   Foundry VTT", "SHEET      S.P.E.C.I.A.L.  [OK]", "SATS       [OK]", "ITEMS      1000+", "COMBAT     tracker  [OK]", "CASINO     blackjack · hold'em", "> "],
+    pl: ["> foe --status", "SYSTEM     Fallout: Equestria", "PLATFORMA  Foundry VTT", "KARTA      S.P.E.C.I.A.L.  [OK]", "SATS       [OK]", "PRZEDMIOTY 1000+", "WALKA      tracker  [OK]", "KASYNO     blackjack · hold'em", "> "],
+  };
+  const crt = document.getElementById("crt");
+  let crtTimer = null, crtDone = false;
+  function typeCrt(instant) {
+    clearInterval(crtTimer);
+    const text = CRT[CHAR.lang()].join("\n");
+    const cur = '<span class="cur"></span>';
+    if (instant || reduced) { crt.innerHTML = ""; crt.append(text); crt.insertAdjacentHTML("beforeend", cur); crtDone = true; return; }
+    let i = 0;
+    crtTimer = setInterval(() => {
+      i += 2;
+      crt.textContent = text.slice(0, i);
+      crt.insertAdjacentHTML("beforeend", cur);
+      if (i >= text.length) { clearInterval(crtTimer); crtDone = true; }
+    }, 22);
+  }
+  let crtStarted = false;
+  whileVisible(crt, () => { if (!crtStarted) { crtStarted = true; typeCrt(); } }, () => {});
+
+  // ---------- Telewizor: brak sygnału ----------
+  const tv = document.getElementById("tv"), tvScreen = document.getElementById("tvScreen");
+  const sctx = document.getElementById("static").getContext("2d");
+  const img = sctx.createImageData(96, 72);
+  let tvOn = false, tvLast = 0, flipTimer = null;
+  function drawStatic(now) {
+    if (now - tvLast > 60 || reduced) {
+      tvLast = now;
+      for (let i = 0; i < img.data.length; i += 4) { const v = Math.random() * 200; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+      sctx.putImageData(img, 0, 0);
+    }
+    if (tvOn && !reduced) requestAnimationFrame(drawStatic);
+  }
+  function renderTv() {
+    document.getElementById("tvSig").textContent = tv.classList.contains("flip") ? t({ en: "COMING SOON", pl: "WKRÓTCE" }) : t({ en: "NO SIGNAL", pl: "BRAK SYGNAŁU" });
+  }
+  tvScreen.addEventListener("click", () => {
+    tv.classList.add("flip"); renderTv();
+    clearTimeout(flipTimer);
+    flipTimer = setTimeout(() => { tv.classList.remove("flip"); renderTv(); }, 2400);
+  });
+  drawStatic(0);
+  whileVisible(tvScreen, () => { if (!tvOn) { tvOn = true; requestAnimationFrame(drawStatic); } }, () => tvOn = false);
+
+  // ---------- Kontakt: drzwi otwierają się, gdy do nich dojdziesz ----------
+  const contact = document.getElementById("kontakt");
+  if (reduced || !("IntersectionObserver" in window)) contact.classList.add("open");
+  else {
+    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) { contact.classList.add("open"); o.disconnect(); } }, { threshold: .3 });
+    o.observe(contact);
+  }
+
+  // Czcionki postaci ładują się z wyprzedzeniem, żeby zmiana stylu nie mrugała
+  addEventListener("load", () => setTimeout(() => {
+    ['800 1em "Archivo Wide"', '800 1em "Baloo 2"', '400 1em "Anton"', '700 1em "Fraunces"', 'italic 500 1em "Fraunces"', '400 1em "Saira Stencil One"', '700 1em "Space Grotesk"',
+     '400 1em "Nunito"', '800 1em "Nunito"', '400 1em "Barlow"', '400 1em "IBM Plex Mono"', '600 1em "Caveat"']
+      .forEach(f => document.fonts.load(f, "AaŁłóę").catch(() => {}));
+  }, 300));
+
+  CHAR.onLang(() => {
+    renderStage();
+    document.getElementById("rosterHint").textContent = hoverable
+      ? t({ en: "Hover to preview · click to enter", pl: "Najedź, żeby podejrzeć · kliknij, żeby wejść" })
+      : t({ en: "Tap to preview · tap again to enter", pl: "Stuknij, żeby podejrzeć · stuknij jeszcze raz, żeby wejść" });
+    starEls.forEach(s => s.querySelector(".sp").textContent = t(CHARS[s.dataset.char].species));
+    renderRadio();
+    renderTv();
+    if (crtStarted) typeCrt(crtDone);
+  });
   CHAR.init();
 </script>
 </body>
