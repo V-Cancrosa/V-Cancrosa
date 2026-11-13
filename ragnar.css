@@ -225,6 +225,18 @@ footer { padding: 3rem 0; border-top: 1px solid var(--rule); }
 .others a { font: 400 .66rem var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: 1px solid var(--rule); border-radius: 999px; padding: .35rem .7rem; }
 .others a:hover { color: #fff; border-color: var(--magenta); }
 
+/* ---------- Pożyczone konto: wpis o czwartej nad ranem ---------- */
+.night-post { max-width: 40rem; margin: clamp(3rem, 7vw, 5rem) auto 0; padding: clamp(1.3rem, 3vw, 2rem); border-radius: 22px; border: 1px solid var(--rule); background: linear-gradient(165deg, #140b22, #07040c 70%); box-shadow: 0 0 50px rgba(155,92,255,.12); scroll-margin-top: 6rem; }
+.night-post header { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.2rem; }
+.night-post header img { width: 2.4rem; height: 2.4rem; border-radius: 50%; object-fit: cover; object-position: 50% 15%; border: 2px solid #e3a43f; }
+.night-post header b { font: 600 .95rem var(--body); color: #fff; }
+.night-post header .mono { margin-left: auto; }
+.night-post p { font-size: 1.04rem; }
+.night-post > div + div { margin-top: 1rem; }
+.night-post .four { display: flex; align-items: center; gap: .9rem; margin: 2rem 0 1.1rem; font: 300 2.4rem/1 var(--body); letter-spacing: -.02em; color: #fff; }
+.night-post .four::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--magenta), transparent); }
+.night-post .sig { margin-top: 1.4rem; font: 400 .9rem var(--mono); letter-spacing: .1em; color: var(--magenta); }
+
 @media (max-width: 960px) {
   .hero .wrap, .look, .call, .deck-grid { grid-template-columns: 1fr; }
   .floor { border-right: 0; border-bottom: 1px solid var(--rule); }

@@ -810,7 +810,7 @@
     { who: "toro", art: "ritsu", en: "Home is the inside of an old bridge: cold brick, dead machinery, one barred window over the water. Reads bleak. It isn't — you learn where the light falls and build the rest from whatever the day hands you.", pl: "Dom to wnętrze starego mostu: zimna cegła, martwe maszyny, jedno zakratowane okno nad wodą. Brzmi ponuro. A nie jest — uczysz się, gdzie pada światło, a resztę budujesz z tego, co przyniesie dzień." },
     { who: "vince", art: "lupy", en: "The form had a field: “Ear tuft?” Yes or no. … There was no box for “arguably,” so I ticked no.", pl: "Formularz miał pole: „Pędzelek na uchu?”. Tak albo nie. … Nie było kratki „w zasadzie”, więc zaznaczyłem nie." },
     { who: "chip", art: "ivy", en: "And yes — I made the eggs. Nobody in this picture is going to mention the eggs.", pl: "I tak — to ja zrobiłem jajka. Nikt na tym obrazku nie wspomni o jajkach." },
-    { who: "ragnar", art: "nova", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
+    { who: "ragnar", art: "nova", more: "ragnar.html#noc", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
     { who: "vince", art: "hai", en: "You made me walk all the way to this waterfall but I must admit it… Peace and quiet and serenity. Sometimes a break from Ragnar's presence is required.", pl: "Kazałeś mi iść aż do tego wodospadu, ale muszę przyznać… Spokój, cisza i ukojenie. Czasem przerwa od obecności Ragnara jest konieczna." },
     { who: "vince", art: "ivy", en: "Ragnar is, above everything, someone who lives outward. His laughter is loud and from the chest. I'm the brain. Ragnar is the heart.", pl: "Ragnar jest przede wszystkim kimś, kto żyje na zewnątrz. Śmieje się głośno, z piersi. Ja jestem mózgiem. Ragnar jest sercem." },
   ];
@@ -849,6 +849,11 @@
         const a = document.createElement("a");
         a.href = ART[p.art][1]; a.textContent = ART[p.art][0];
         art.append(a);
+      }
+      if (p.more) {
+        const m = document.createElement("a");
+        m.href = p.more; m.className = "post-more"; m.textContent = t({ en: "Read the whole post →", pl: "Przeczytaj cały wpis →" });
+        art.append(document.createElement("br"), m);
       }
     }
     nextPost.disabled = pAnswer === null;
