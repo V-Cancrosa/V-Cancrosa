@@ -42,6 +42,7 @@
     <a href="#wardrobe"><span lang="en">Wardrobe</span><span lang="pl">Garderoba</span></a>
     <a href="#mind"><span lang="en">Mind</span><span lang="pl">Umysł</span></a>
     <a href="#close"><span lang="en">Close ones</span><span lang="pl">Bliscy</span></a>
+    <a href="#gallery"><span lang="en">Gallery</span><span lang="pl">Galeria</span></a>
   </nav>
   <div class="langs">
     <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
@@ -58,7 +59,7 @@
       <div>
         <p class="kicker">Cancrosa Files — 001 <b>· Maned wolf</b></p>
         <h1><span>Vincent</span><span>Cancrosa</span></h1>
-        <p class="sub mono"><span lang="en">“Vince” · Chrysocyon brachyurus · he/him · 28</span><span lang="pl">„Vince” · Chrysocyon brachyurus · on/jego · 28</span></p>
+        <p class="sub mono"><span lang="en">“Vince” · Chrysocyon brachyurus · he/him · <span data-age>28</span></span><span lang="pl">„Vince” · Chrysocyon brachyurus · on/jego · <span data-age>28</span></span></p>
         <ul class="motto">
           <li>Walls have endings. <small lang="pl">Mury mają koniec.</small></li>
           <li>Tunnels have exits. <small lang="pl">Tunele mają wyjścia.</small></li>
@@ -88,7 +89,7 @@
 
       <dl class="stats" data-reveal="3">
         <div class="stat"><dt lang="en">Height</dt><dt lang="pl">Wzrost</dt><dd><span data-count="193">193</span><small>cm</small><i>6′4″</i></dd></div>
-        <div class="stat"><dt lang="en">Age</dt><dt lang="pl">Wiek</dt><dd><span data-count="28">28</span><small lang="en">yrs</small><small lang="pl">lat</small></dd></div>
+        <div class="stat"><dt lang="en">Age</dt><dt lang="pl">Wiek</dt><dd><span data-count="28" data-age>28</span><small lang="en">yrs</small><small lang="pl">lat</small><i>17.11.1997</i></dd></div>
         <div class="stat"><dt lang="en">Species</dt><dt lang="pl">Gatunek</dt><dd style="font-size:clamp(1.1rem,2vw,1.5rem)"><span lang="en">Maned wolf</span><span lang="pl">Wilk grzywiasty</span><i>Chrysocyon brachyurus</i></dd></div>
         <div class="stat"><dt lang="en">Stance</dt><dt lang="pl">Postawa</dt><dd style="font-size:clamp(1.1rem,2vw,1.5rem)"><span lang="en">Digitigrade</span><span lang="pl">Digitigradalna</span><i lang="en">no human baseline</i><i lang="pl">świat bez ludzi</i></dd></div>
       </dl>
@@ -96,14 +97,14 @@
       <div class="spec" data-reveal>
         <div class="sheet" id="sheet">
           <img src="img/vince-ref.webp" width="1000" height="636" alt="Vince's reference sheet" data-en-alt="Vince's reference sheet: front and back view, head studies, palette and outfit" data-pl-alt="Ref sheet Vince'a: przód i tył, studia głowy, paleta i strój">
-          <button type="button" class="btn ghost zoom zoom-btn" data-full="img/vince-ref.webp" data-caption="Reference sheet · art by Ash">⤢</button>
+          <button type="button" class="btn ghost zoom zoom-btn" data-full="img/vince-ref.webp" data-caption="Reference sheet · art by Ash (SpicyMustelid)">⤢</button>
         </div>
         <aside class="spec-panel" aria-live="polite">
           <div class="num" id="specNum">09</div>
           <h3 id="specTitle"></h3>
           <p id="specText"></p>
           <ul class="spec-list" id="specList"></ul>
-          <p class="mono credit"><span lang="en">Reference sheet · art by Ash</span><span lang="pl">Ref sheet · art: Ash</span></p>
+          <p class="mono credit"><span lang="en">Reference sheet · art by <a href="https://bsky.app/profile/spicymustelidz.bsky.social">Ash (SpicyMustelid)</a></span><span lang="pl">Ref sheet · art: <a href="https://bsky.app/profile/spicymustelidz.bsky.social">Ash (SpicyMustelid)</a></span></p>
         </aside>
       </div>
     </div>
@@ -404,14 +405,70 @@
       </div>
     </div>
   </section>
+  <!-- ================= OCZAMI INNYCH ================= -->
+  <section id="gallery">
+    <div class="wrap">
+      <p class="kicker" data-reveal>07 <b>/ <span lang="en">Seen by others</span><span lang="pl">Oczami innych</span></b></p>
+      <h2 data-reveal><span lang="en">Drawn by<br><em>other hands.</em></span><span lang="pl">Narysowany<br><em>innymi rękami.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Commissions, gifts and one document. Every artist named, every link live — he would check.</p>
+      <p class="intro" data-reveal="2" lang="pl">Zamówienia, prezenty i jeden dokument. Każdy artysta podpisany, każdy link działa — sprawdziłby.</p>
+
+      <div class="gallery">
+        <figure class="plate g-wide" data-reveal>
+          <button type="button" class="zoom shot" data-full="img/vince-nightpaw.webp" data-caption="The Night Paw · art by amanda_rice910">
+            <img src="img/vince-nightpaw.webp" width="1400" height="1400" loading="lazy" alt="Vince in a neon bar" data-en-alt="Vince lounging in a purple booth at The Night Paw bar: black hoodie, headphones round his neck, a glass with ice beside him" data-pl-alt="Vince rozparty w fioletowej loży baru The Night Paw: czarna bluza, słuchawki na szyi, obok szklanka z lodem">
+          </button>
+          <figcaption><span class="no">G—01</span><b>The Night Paw</b><span><span lang="en">art by</span><span lang="pl">art:</span> <a href="https://www.instagram.com/amanda_rice910/">amanda_rice910</a></span></figcaption>
+        </figure>
+        <figure class="plate" data-reveal="2">
+          <button type="button" class="zoom shot" data-full="img/vince-philosopher.webp" data-caption="Philosopher · art by janet_arts2">
+            <img src="img/vince-philosopher.webp" width="1000" height="1000" loading="lazy" alt="Vince, thinking" data-en-alt="Vince in close-up against a starry blue background, chin on his hand, thinking" data-pl-alt="Vince w zbliżeniu na tle gwiaździstego granatu, z brodą na dłoni, zamyślony">
+          </button>
+          <figcaption><span class="no">G—02</span><b>Philosopher</b><span><span lang="en">art by</span><span lang="pl">art:</span> <a href="https://www.instagram.com/janet_arts2/">janet_arts2</a></span></figcaption>
+        </figure>
+
+        <article class="plate idcard g-wide" data-reveal>
+          <header class="id-top"><span class="no">G—03</span><span lang="en">Identification card · city office pilot</span><span lang="pl">Dowód osobisty · pilotaż urzędu miasta</span><span class="issued">ISSUED 28/09/2026</span></header>
+          <dl class="id-data">
+            <div><dt>FN</dt><dd>Vincent</dd></div>
+            <div><dt>LN</dt><dd>Cancrosa</dd></div>
+            <div><dt>DOB</dt><dd>17/11/1997</dd></div>
+            <div><dt lang="en">Nationality</dt><dt lang="pl">Obywatelstwo</dt><dd lang="en">Polish</dd><dd lang="pl">polskie</dd></div>
+            <div><dt lang="en">Species</dt><dt lang="pl">Gatunek</dt><dd lang="en">Maned wolf</dd><dd lang="pl">Wilk grzywiasty</dd></div>
+            <div><dt lang="en">Eyes</dt><dt lang="pl">Oczy</dt><dd lang="en">Amber</dd><dd lang="pl">Bursztynowe</dd></div>
+            <div><dt>HGT</dt><dd>6′4″</dd></div>
+            <div><dt lang="en">Ear tuft?</dt><dt lang="pl">Pędzelek na uchu?</dt><dd><button type="button" class="tuft" id="tuftBtn" aria-expanded="false" aria-controls="tuftNote"><span lang="en">NO</span><span lang="pl">NIE</span>*</button></dd></div>
+          </dl>
+          <div class="tuft-note" id="tuftNote" hidden>
+            <p lang="en">“The form had a field: ‘Ear tuft?’ Not the fluff inside — I have plenty of that, and nobody asked. The tip. A few darker strands. Could be a tuft. Could be the fur just changing colour on its way up. There was no box for ‘arguably’, so I ticked no.”</p>
+            <p lang="pl">„Formularz miał pole: »Pędzelek na uchu?«. Nie chodzi o puch w środku — tego mam dużo i nikt nie pytał. Czubek. Kilka ciemniejszych włosków. Może pędzelek. Może po prostu futro zmienia kolor w drodze do góry. Nie było kratki »w zasadzie«, więc zaznaczyłem nie.”</p>
+            <p class="mono" lang="en">Issued yesterday. Valid for ten years. The question stays open. The document doesn't. — Vince. 001.</p>
+            <p class="mono" lang="pl">Wydany wczoraj. Ważny dziesięć lat. Pytanie zostaje otwarte. Dokument nie. — Vince. 001.</p>
+          </div>
+          <blockquote class="id-quote"><span lang="en">“If the state lets you choose your own face, choose carefully.”</span><span lang="pl">„Jeśli państwo pozwala ci wybrać własną twarz, wybieraj ostrożnie.”</span> <cite>— Toro</cite></blockquote>
+          <p class="mono id-credit"><span lang="en">Front of the real card designed by</span><span lang="pl">Projekt awersu prawdziwej karty:</span> <a href="https://www.instagram.com/privv._.lupy/">privv._.lupy</a></p>
+        </article>
+
+        <article class="plate neg" data-reveal="2">
+          <div class="neg-film" aria-hidden="true"><span>ECNIV</span></div>
+          <span class="no">G—04</span>
+          <h3>Ecniv</h3>
+          <p lang="en">In the old town a street artist who introduced himself as ArturoAthens drew Vince — and the portrait came out negative. Then it stepped off the canvas, stood in front of them for a moment and disappeared into the crowd. Chip and Ragnar blame the cleaning fumes. He knows what he saw.</p>
+          <p lang="pl">Na starym mieście uliczny artysta, który przedstawił się jako ArturoAthens, narysował Vince'a — a portret wyszedł w negatywie. Potem zszedł z płótna, postał chwilę przed nimi i zniknął w tłumie. Chip i Ragnar zwalają to na opary środków czystości. On wie, co widział.</p>
+          <button type="button" class="btn ghost" id="ecnivBtn"><span lang="en">Develop the negative</span><span lang="pl">Wywołaj negatyw</span></button>
+          <p class="mono"><span lang="en">Portraits by</span><span lang="pl">Portrety:</span> <a href="https://x.com/ArturoAthens">ArturoAthens</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap foot">
     <div>
       <p class="kicker"><span lang="en">Canon &amp; world</span><span lang="pl">Kanon i świat</span></p>
-      <p lang="en">Vince exists in a fully digitigrade world — anthropomorphic species throughout, no human baseline. Reference sheet art by Ash. Final design details will be confirmed with the commissioned reference sheet.</p>
-      <p lang="pl">Vince żyje w świecie w pełni digitigradalnym — wszędzie antropomorficzne gatunki, bez ludzi. Ref sheet: Ash. Ostateczne szczegóły zostaną potwierdzone w zamówionym ref sheecie.</p>
+      <p lang="en">Vince exists in a fully digitigrade world — anthropomorphic species throughout, no human baseline. Reference sheet art by <a href="https://bsky.app/profile/spicymustelidz.bsky.social">Ash (SpicyMustelid)</a>. Final design details will be confirmed with the commissioned reference sheet.</p>
+      <p lang="pl">Vince żyje w świecie w pełni digitigradalnym — wszędzie antropomorficzne gatunki, bez ludzi. Ref sheet: <a href="https://bsky.app/profile/spicymustelidz.bsky.social">Ash (SpicyMustelid)</a>. Ostateczne szczegóły zostaną potwierdzone w zamówionym ref sheecie.</p>
     </div>
     <div>
       <p class="kicker"><span lang="en">Other characters</span><span lang="pl">Pozostałe postacie</span></p>
@@ -426,6 +483,10 @@
 <script>
   const { t } = CHAR;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Wiek liczony z dowodu: urodzony 17.11.1997.
+  const AGE = (() => { const n = new Date(); return n.getFullYear() - 1997 - (n.getMonth() < 10 || (n.getMonth() === 10 && n.getDate() < 17) ? 1 : 0); })();
+  document.querySelectorAll("[data-age]").forEach(el => { el.textContent = AGE; if (el.dataset.count) el.dataset.count = AGE; });
 
   // ---------- Oś kręgosłupa i rozsuwanie motywu przy przewijaniu ----------
   const axis = document.querySelector(".axis");
@@ -651,6 +712,36 @@
     n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pickPerson(n.dataset.who); } });
   });
   people.forEach(p => p.addEventListener("mouseenter", () => pickPerson(p.dataset.who)));
+
+  // ---------- Galeria: dowód i negatyw ----------
+  const tuftBtn = document.getElementById("tuftBtn");
+  tuftBtn.addEventListener("click", () => {
+    const open = tuftBtn.getAttribute("aria-expanded") !== "true";
+    tuftBtn.setAttribute("aria-expanded", String(open));
+    document.getElementById("tuftNote").hidden = !open;
+  });
+  // Ecniv: na chwilę wszystko w negatywie, potem wraca miedziane złoto
+  let ecnivTimer = null;
+  function ecniv() {
+    if (document.documentElement.classList.contains("ecniv")) return;
+    document.documentElement.classList.add("ecniv");
+    CHAR.toast(t({ en: "Ecniv was here.", pl: "Ecniv tu był." }));
+    clearTimeout(ecnivTimer);
+    ecnivTimer = setTimeout(() => {
+      document.documentElement.classList.remove("ecniv");
+      CHAR.toast(t({ en: "…and the copper-gold came back.", pl: "…i wróciło miedziane złoto." }));
+    }, 3400);
+  }
+  document.getElementById("ecnivBtn").addEventListener("click", ecniv);
+  // Kto wpisze „ecniv” na klawiaturze, też go zobaczy
+  let typed = "";
+  addEventListener("keydown", e => {
+    if (e.target.closest("input, textarea") || e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-5);
+    if (typed === "ecniv") ecniv();
+  });
+
+  CHAR.birthday({ month: 11, day: 17, text: { en: "17.11 — Happy birthday, Vince. He'll analyse this too.", pl: "17.11 — Wszystkiego najlepszego, Vince. To też przeanalizuje." } });
 
   CHAR.onLang(() => { renderSpot(); renderMark(); renderSwap(); renderNight(); });
   CHAR.init();

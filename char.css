@@ -36,6 +36,17 @@ dialog.lightbox button { position: fixed; top: 1rem; right: 1rem; width: 2.4rem;
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+/* Urodziny postaci */
+.bday {
+  position: fixed; left: 50%; top: 4.6rem; z-index: 55; transform: translateX(-50%); display: flex; align-items: center; gap: .8rem; max-width: calc(100vw - 2rem);
+  background: var(--toast-bg, #111214); color: var(--toast-fg, #f3efe7); border: 1px solid var(--toast-border, currentColor); border-radius: 999px;
+  padding: .5rem .6rem .5rem 1.1rem; font: var(--toast-font, 400 .72rem/1.4 ui-monospace, monospace); box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  animation: bday-in .6s cubic-bezier(.2,.7,.2,1);
+}
+.bday::before { content: ""; flex: none; width: .55rem; height: .55rem; border-radius: 50%; background: #ffc35c; box-shadow: 0 0 10px #ffc35c; }
+.bday button { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 1px solid currentColor; background: none; cursor: pointer; font-size: .7rem; opacity: .7; }
+@keyframes bday-in { from { opacity: 0; transform: translate(-50%, -10px); } }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

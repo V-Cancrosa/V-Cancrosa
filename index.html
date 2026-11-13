@@ -234,6 +234,53 @@
     </div>
   </section>
 
+  <!-- ================= KTO JEST NA KONCIE VINCE'A ================= -->
+  <section class="sec account" id="konto" aria-labelledby="konto-h">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">@vincent_cancrosa</p>
+        <h2 id="konto-h"><span lang="en">Who's on Vince's account?</span><span lang="pl">Kto jest na koncie Vince'a?</span></h2>
+        <p class="intro" lang="en">He locks everything — except his phone. Read the post, guess who wrote it.</p>
+        <p class="intro" lang="pl">Zamyka wszystko — poza telefonem. Przeczytaj wpis i zgadnij, kto go napisał.</p>
+      </div>
+
+      <div class="account-grid">
+      <div class="feed" data-reveal>
+        <article class="post" id="post">
+          <header class="post-head"><img src="img/vince-thumb.webp" alt="" width="400" height="300"><b>vincent_cancrosa</b><span class="mono" id="postNo"></span></header>
+          <p class="post-text" id="postText"></p>
+          <div class="post-reveal" id="postReveal" aria-live="polite"><p class="post-sig" id="postSig"></p><p class="mono post-art" id="postArt"></p></div>
+        </article>
+        <div class="guess" id="guess" role="group" aria-label="Who wrote it?" data-en-label="Who wrote it?" data-pl-label="Kto to napisał?">
+          <button type="button" data-who="vince" style="--c:#e3a43f">Vince</button>
+          <button type="button" data-who="ragnar" style="--c:#ff2e88">Ragnar</button>
+          <button type="button" data-who="chip" style="--c:#4f8ae8">Chip</button>
+          <button type="button" data-who="toro" style="--c:#e6b23a">Toro</button>
+        </div>
+        <div class="post-foot"><span class="mono" id="score"></span><button type="button" class="btn ghost" id="nextPost"></button></div>
+      </div>
+
+      <div class="artists" data-reveal>
+        <p class="kicker"><span lang="en">Drawn by · thank you</span><span lang="pl">Narysowali · dziękuję</span></p>
+        <ul>
+          <li><a href="https://bsky.app/profile/spicymustelidz.bsky.social"><b>Ash (SpicyMustelid)</b><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span></a></li>
+          <li><a href="https://www.furaffinity.net/gallery/chilibi/"><b>Chilibi</b><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span></a></li>
+          <li><a href="https://www.instagram.com/ivyfox_/"><b>ivyfox_</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span></a></li>
+          <li><a href="https://www.instagram.com/ritsu_fur1/"><b>Ritsu</b><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span></a></li>
+          <li><a href="https://www.instagram.com/amanda_rice910/"><b>amanda_rice910</b><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span></a></li>
+          <li><a href="https://www.instagram.com/janet_arts2/"><b>janet_arts2</b><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span></a></li>
+          <li><a href="https://www.instagram.com/furlynx_/"><b>furlynx_</b><span lang="en">Fusk — Chip's D&amp;D character</span><span lang="pl">Fusk — postać Chipa do D&amp;D</span></a></li>
+          <li><a href="https://x.com/ArturoAthens"><b>ArturoAthens</b><span lang="en">Vince's portraits · Ecniv</span><span lang="pl">portrety Vince'a · Ecniv</span></a></li>
+          <li><a href="https://x.com/haibrushstrokes"><b>Hai Brush Strokes</b><span lang="en">the waterfall</span><span lang="pl">wodospad</span></a></li>
+          <li><a href="https://www.tiktok.com/@jimmyfursuits"><b>jimmyfursuits</b><span lang="en">chibi stickers</span><span lang="pl">naklejki chibi</span></a></li>
+          <li><a href="https://www.instagram.com/nova_thewolfie1/"><b>nova_thewolfie1</b><span lang="en">mountains, waves, caves, forest</span><span lang="pl">góry, fale, jaskinie, las</span></a></li>
+          <li><a href="https://www.instagram.com/privv._.lupy/"><b>privv._.lupy</b><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span></a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PROJEKTY ================= -->
   <section class="sec projects" id="projekty" aria-labelledby="projekty-h">
     <div class="wrap">
@@ -339,11 +386,13 @@
   }
 
   // ---------- Postacie ----------
+  // Wiek Vince'a liczony z dowodu: urodzony 17.11.1997.
+  const VINCE_AGE = (() => { const n = new Date(); return n.getFullYear() - 1997 - (n.getMonth() < 10 || (n.getMonth() === 10 && n.getDate() < 17) ? 1 : 0); })();
   const CHARS = {
     vince: { href: "vince.html", color: "#e3a43f", on: "#120d05", font: '"Archivo Wide", "Archivo", sans-serif', name: "Vince", small: "Vincent Cancrosa",
       kicker: { en: "Cancrosa Files — 001 · main fursona", pl: "Cancrosa Files — 001 · główna fursona" },
       species: { en: "maned wolf", pl: "wilk grzywiasty" },
-      meta: { en: "Maned wolf · he/him · 28", pl: "Wilk grzywiasty · on/jego · 28" },
+      meta: { en: "Maned wolf · he/him · " + VINCE_AGE, pl: "Wilk grzywiasty · on/jego · " + VINCE_AGE },
       tag: { en: "Walls have endings. Tunnels have exits. Bridges have a reason.", pl: "Mury mają koniec. Tunele mają wyjścia. Mosty mają powód." } },
     chip: { href: "chip.html", color: "#2f6bd8", on: "#fff", font: '"Baloo 2", "Nunito", sans-serif', name: "Chip", small: "Chipper Cancrosa",
       kicker: { en: "Cancrosa Files — 002", pl: "Cancrosa Files — 002" },
@@ -748,8 +797,82 @@
       .forEach(f => document.fonts.load(f, "AaŁłóę").catch(() => {}));
   }, 300));
 
+  // ---------- Kto jest na koncie Vince'a? ----------
+  const SIG = { vince: "— Vince. 001.", ragnar: "— R. 🖤", chip: "— Chip 🥚", toro: "— Toro 🏮" };
+  const ART = {
+    ivy: ["ivyfox_", "https://www.instagram.com/ivyfox_/"], chilibi: ["Chilibi", "https://www.furaffinity.net/gallery/chilibi/"], ritsu: ["Ritsu", "https://www.instagram.com/ritsu_fur1/"],
+    lupy: ["privv._.lupy", "https://www.instagram.com/privv._.lupy/"], nova: ["nova_thewolfie1", "https://www.instagram.com/nova_thewolfie1/"], hai: ["Hai Brush Strokes", "https://x.com/haibrushstrokes"],
+  };
+  const POSTS = [
+    { who: "chip", art: "ivy", en: "Yeah. Him. Mr. Architect-of-Control. Locks everything, double-checks everything, reads the terms and conditions — and somehow the one thing he never secures is his own phone.", pl: "No. On. Pan Architekt Kontroli. Wszystko zamyka, wszystko sprawdza dwa razy, czyta regulaminy — a jedyne, czego jakoś nigdy nie zabezpiecza, to własny telefon." },
+    { who: "vince", art: "chilibi", en: "Say hello to my ward: Chipper Cancrosa, though he prefers Chip. I wouldn't try calling him Chocolate Chip — his expression would turn more sour than a lemon.", pl: "Przywitajcie się z moim podopiecznym: Chipper Cancrosa, choć woli Chip. Nie radzę mówić do niego Chocolate Chip — mina skwaśniałaby mu bardziej niż cytryna." },
+    { who: "ragnar", art: null, en: "The studs. I got them for him a while back — nothing loud, nothing flashy. This is a man who takes everything apart before he'll let himself feel it — analyses his own coffee order. When I gave him these he just… went quiet.", pl: "Kolczyki. Kupiłem mu je jakiś czas temu — nic głośnego, nic krzykliwego. To facet, który rozbiera wszystko na części, zanim pozwoli sobie coś poczuć — analizuje własne zamówienie kawy. Kiedy mu je dałem, po prostu… ucichł." },
+    { who: "toro", art: "ritsu", en: "Home is the inside of an old bridge: cold brick, dead machinery, one barred window over the water. Reads bleak. It isn't — you learn where the light falls and build the rest from whatever the day hands you.", pl: "Dom to wnętrze starego mostu: zimna cegła, martwe maszyny, jedno zakratowane okno nad wodą. Brzmi ponuro. A nie jest — uczysz się, gdzie pada światło, a resztę budujesz z tego, co przyniesie dzień." },
+    { who: "vince", art: "lupy", en: "The form had a field: “Ear tuft?” Yes or no. … There was no box for “arguably,” so I ticked no.", pl: "Formularz miał pole: „Pędzelek na uchu?”. Tak albo nie. … Nie było kratki „w zasadzie”, więc zaznaczyłem nie." },
+    { who: "chip", art: "ivy", en: "And yes — I made the eggs. Nobody in this picture is going to mention the eggs.", pl: "I tak — to ja zrobiłem jajka. Nikt na tym obrazku nie wspomni o jajkach." },
+    { who: "ragnar", art: "nova", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
+    { who: "vince", art: "hai", en: "You made me walk all the way to this waterfall but I must admit it… Peace and quiet and serenity. Sometimes a break from Ragnar's presence is required.", pl: "Kazałeś mi iść aż do tego wodospadu, ale muszę przyznać… Spokój, cisza i ukojenie. Czasem przerwa od obecności Ragnara jest konieczna." },
+    { who: "vince", art: "ivy", en: "Ragnar is, above everything, someone who lives outward. His laughter is loud and from the chest. I'm the brain. Ragnar is the heart.", pl: "Ragnar jest przede wszystkim kimś, kto żyje na zewnątrz. Śmieje się głośno, z piersi. Ja jestem mózgiem. Ragnar jest sercem." },
+  ];
+  const NAMES = { vince: "Vince", ragnar: "Ragnar", chip: "Chip", toro: "Toro" };
+  const guessBtns = [...document.querySelectorAll("#guess button")];
+  const nextPost = document.getElementById("nextPost");
+  let pIdx = 0, pScore = 0, pAnswer = null;
+  function renderPost() {
+    const done = pIdx >= POSTS.length;
+    document.getElementById("post").classList.toggle("end", done);
+    document.getElementById("postNo").textContent = done ? "" : `${pIdx + 1} / ${POSTS.length}`;
+    document.getElementById("score").textContent = t({ en: "Score: ", pl: "Wynik: " }) + pScore;
+    const sig = document.getElementById("postSig"), art = document.getElementById("postArt");
+    if (done) {
+      document.getElementById("postText").textContent = pScore === POSTS.length ? t({ en: "Every one. Vince would like to know how — in writing.", pl: "Wszystkie. Vince chciałby wiedzieć jak — na piśmie." })
+        : pScore >= 6 ? t({ en: "Close. Chip says someone peeked.", pl: "Blisko. Chip twierdzi, że ktoś podglądał." })
+        : t({ en: "That's the whole problem with his account: you never actually know.", pl: "Na tym polega cały problem z jego kontem: nigdy tak naprawdę nie wiadomo." });
+      sig.textContent = `${pScore} / ${POSTS.length}`;
+      art.textContent = "";
+      guessBtns.forEach(b => { b.disabled = true; b.className = ""; });
+      nextPost.textContent = t({ en: "Read them again", pl: "Jeszcze raz" });
+      return;
+    }
+    const p = POSTS[pIdx];
+    document.getElementById("postText").textContent = t(p);
+    guessBtns.forEach(b => {
+      b.disabled = pAnswer !== null;
+      b.className = pAnswer === null ? "" : b.dataset.who === p.who ? "right" : b.dataset.who === pAnswer ? "wrong" : "";
+    });
+    if (pAnswer === null) { sig.textContent = ""; art.textContent = ""; }
+    else {
+      sig.textContent = (pAnswer === p.who ? t({ en: "Right. ", pl: "Zgadza się. " }) : t({ en: "No. ", pl: "Nie. " })) + SIG[p.who];
+      art.textContent = "";
+      if (p.art) {
+        art.append(t({ en: "Art in the original post: ", pl: "Art we wpisie: " }));
+        const a = document.createElement("a");
+        a.href = ART[p.art][1]; a.textContent = ART[p.art][0];
+        art.append(a);
+      }
+    }
+    nextPost.disabled = pAnswer === null;
+    nextPost.textContent = pIdx === POSTS.length - 1 ? t({ en: "See the score", pl: "Pokaż wynik" }) : t({ en: "Next post", pl: "Następny wpis" });
+  }
+  guessBtns.forEach(b => b.addEventListener("click", () => {
+    if (pAnswer !== null || pIdx >= POSTS.length) return;
+    pAnswer = b.dataset.who;
+    if (pAnswer === POSTS[pIdx].who) pScore++;
+    renderPost();
+  }));
+  nextPost.addEventListener("click", () => {
+    if (pIdx >= POSTS.length) { pIdx = 0; pScore = 0; }
+    else pIdx++;
+    pAnswer = null;
+    nextPost.disabled = false;
+    renderPost();
+  });
+
+  CHAR.birthday({ month: 11, day: 17, text: { en: "17.11 — Happy birthday, Vince. He'll analyse this too.", pl: "17.11 — Wszystkiego najlepszego, Vince. To też przeanalizuje." } });
+
   CHAR.onLang(() => {
     renderStage();
+    renderPost();
     document.getElementById("rosterHint").textContent = hoverable
       ? t({ en: "Hover to preview · click to enter", pl: "Najedź, żeby podejrzeć · kliknij, żeby wejść" })
       : t({ en: "Tap to preview · tap again to enter", pl: "Stuknij, żeby podejrzeć · stuknij jeszcze raz, żeby wejść" });

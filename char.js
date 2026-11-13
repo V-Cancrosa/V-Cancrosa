@@ -103,5 +103,19 @@ const CHAR = (() => {
     setLang(lang());
   }
 
-  return { init, t, toast, copy, lang, onLang: fn => listeners.push(fn) };
+  // Urodziny: w podany dzień (albo z ?bday w adresie, do podglądu) pokazuje pasek z życzeniami.
+  function birthday({ month, day, text }) {
+    const now = new Date();
+    if (!((now.getMonth() + 1 === month && now.getDate() === day) || /[?&]bday\b/.test(location.search))) return;
+    const bar = document.createElement("div");
+    bar.className = "bday";
+    bar.setAttribute("role", "status");
+    bar.innerHTML = `<span lang="en"></span><span lang="pl"></span><button type="button" aria-label="Close / Zamknij">✕</button>`;
+    bar.querySelector('[lang="en"]').textContent = text.en;
+    bar.querySelector('[lang="pl"]').textContent = text.pl;
+    bar.querySelector("button").addEventListener("click", () => bar.remove());
+    document.body.append(bar);
+  }
+
+  return { init, t, toast, copy, lang, birthday, onLang: fn => listeners.push(fn) };
 })();

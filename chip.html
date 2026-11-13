@@ -51,6 +51,7 @@
     <a href="#story"><span lang="en">Story</span><span lang="pl">Historia</span></a>
     <a href="#under"><span lang="en">Underneath</span><span lang="pl">Pod spodem</span></a>
     <a href="#people"><span lang="en">People</span><span lang="pl">Ludzie</span></a>
+    <a href="#dnd">D&amp;D</a>
   </nav>
   <div class="tools">
     <button type="button" class="jar" id="jar" aria-live="polite" data-en-label="Cookies left" data-pl-label="Zostało ciasteczek" aria-label="Cookies left"><svg aria-hidden="true"><use href="#cookie"/></svg><span id="jarN">12</span></button>
@@ -83,7 +84,7 @@
         <div class="shot" id="shot">
           <img src="img/chip-polaroid.webp" width="585" height="865" alt="Chip's reference" data-en-alt="Chip: small furred kobold with striped horns, a blue hoodie with cookies and a bell on his collar" data-pl-alt="Chip: mały futrzasty kobold z prążkowanymi rogami, w niebieskiej bluzie w ciasteczka, z dzwonkiem na obroży">
         </div>
-        <button type="button" class="zoom ref-zoom" data-full="img/chip-ref.webp" data-caption="Chipper “Chip” Cancrosa" data-en-label="Open the full reference sheet" data-pl-label="Otwórz pełną kartę referencyjną" aria-label="Open the full reference sheet">⤢</button>
+        <button type="button" class="zoom ref-zoom" data-full="img/chip-ref.webp" data-caption="Chipper “Chip” Cancrosa · art by Chilibi" data-en-label="Open the full reference sheet" data-pl-label="Otwórz pełną kartę referencyjną" aria-label="Open the full reference sheet">⤢</button>
         <figcaption><span lang="en">002. the face is a default setting.</span><span lang="pl">002. ta mina to ustawienie domyślne.</span></figcaption>
       </figure>
     </div>
@@ -334,13 +335,48 @@
       </div>
     </div>
   </section>
+  <!-- ================= D&D: FUSK ================= -->
+  <section id="dnd">
+    <div class="wrap">
+      <p class="kicker" data-reveal>06 · D&amp;D</p>
+      <h2 data-reveal><span lang="en">At the table, <em>he's Fusk.</em></span><span lang="pl">Przy stole <em>jest Fuskiem.</em></span></h2>
+      <p class="intro" data-reveal="2" lang="en">Chip's Dungeons &amp; Dragons character. He'll tell you it's just a game.</p>
+      <p class="intro" data-reveal="2" lang="pl">Postać Chipa do Dungeons &amp; Dragons. Powie ci, że to tylko gra.</p>
+
+      <div class="dnd">
+        <figure class="fusk card" data-reveal>
+          <button type="button" class="zoom fusk-shot" data-full="img/fusk.webp" data-caption="Fusk · Chip's D&amp;D character · art by furlynx_">
+            <img src="img/fusk.webp" width="1600" height="900" loading="lazy" alt="Fusk" data-en-alt="Fusk: a pale-maned monkey with goggles, a cape and a glowing amulet, crouched underwater with a ghostly blue creature behind him" data-pl-alt="Fusk: małpa z jasną grzywą, w goglach i pelerynie, ze świecącym amuletem, przykucnięta pod wodą, za nią widmowe niebieskie stworzenie">
+          </button>
+          <figcaption><span class="hand">Fusk</span> <span><span lang="en">art by</span><span lang="pl">art:</span> <a href="https://www.instagram.com/furlynx_/">furlynx_</a></span></figcaption>
+        </figure>
+        <div class="card dnd-sheet" data-reveal="2">
+          <p class="hand"><span lang="en">character sheet. do not touch.</span><span lang="pl">karta postaci. nie dotykać.</span></p>
+          <dl>
+            <div><dt lang="en">Character</dt><dt lang="pl">Postać</dt><dd>Fusk</dd></div>
+            <div><dt lang="en">Player</dt><dt lang="pl">Gracz</dt><dd>Chip</dd></div>
+            <div><dt lang="en">Gear</dt><dt lang="pl">Ekwipunek</dt><dd lang="en">goggles, cape, a strapped book, a glowing amulet</dd><dd lang="pl">gogle, peleryna, księga na pasku, świecący amulet</dd></div>
+          </dl>
+          <div class="roll">
+            <button type="button" class="die" id="die" data-en-label="Roll a d20" data-pl-label="Rzuć k20" aria-label="Roll a d20">
+              <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 L90 27 L90 73 L50 96 L10 73 L10 27 Z" fill="#fffaf0" stroke="#4a2a17" stroke-width="4" stroke-linejoin="round"/><path d="M50 4 L30 40 L70 40 Z M30 40 L10 27 M70 40 L90 27 M30 40 L50 80 L70 40 M30 40 L10 73 M70 40 L90 73 M50 80 L50 96 M50 80 L10 73 M50 80 L90 73" fill="none" stroke="#4a2a17" stroke-width="2.5" stroke-linejoin="round"/><text id="dieNum" x="50" y="64" text-anchor="middle">20</text></svg>
+            </button>
+            <div>
+              <button type="button" class="btn" id="rollBtn"><span lang="en">Roll a d20</span><span lang="pl">Rzuć k20</span></button>
+              <p class="hand roll-msg" id="rollMsg" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap foot">
     <div>
-      <p lang="en">Canon: the chocolate-chip markings come from a cracked enchanted bell — that passive origin is his core. Fully digitigrade world, no human baseline. Reference sheet art: artist credit pending.</p>
-      <p lang="pl">Kanon: czekoladowe kropki pochodzą z pękniętego zaczarowanego dzwonka — to bierne pochodzenie jest jego rdzeniem. Świat w pełni digitigradalny, bez ludzi. Ref sheet: autor do uzupełnienia.</p>
+      <p lang="en">Canon: the chocolate-chip markings come from a cracked enchanted bell — that passive origin is his core. Fully digitigrade world, no human baseline. Reference sheet art: <a href="https://www.furaffinity.net/gallery/chilibi/">Chilibi</a> (adopted design).</p>
+      <p lang="pl">Kanon: czekoladowe kropki pochodzą z pękniętego zaczarowanego dzwonka — to bierne pochodzenie jest jego rdzeniem. Świat w pełni digitigradalny, bez ludzi. Ref sheet: <a href="https://www.furaffinity.net/gallery/chilibi/">Chilibi</a> (adoptowany projekt).</p>
     </div>
     <div class="others">
       <a href="vince.html">Vince</a><a href="ragnar.html">Ragnar</a><a href="toro.html">Toro</a><a href="myr.html">Myr</a><a href="zarin.html">Zarin</a><a href="index.html">The One Above Them</a>
@@ -615,9 +651,36 @@
     stealObs.unobserve(e.target);
     steal();
   }), { threshold: .35 });
-  ["bell", "coat", "story", "under", "people"].forEach(id => stealObs.observe(document.getElementById(id)));
+  ["bell", "coat", "story", "under", "people", "dnd"].forEach(id => stealObs.observe(document.getElementById(id)));
 
-  CHAR.onLang(() => { renderBell(); renderNote(); renderCatch(); });
+  // ---------- D&D: rzut k20 za Fuska ----------
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dieEl = document.getElementById("die"), dieNum = document.getElementById("dieNum"), rollMsg = document.getElementById("rollMsg");
+  let lastRoll = null, rolling = false;
+  function renderRoll() {
+    if (lastRoll === null) { rollMsg.textContent = ""; return; }
+    rollMsg.textContent = lastRoll === 20 ? t({ en: "nat 20. don't make it a thing.", pl: "naturalna dwudziestka. nie róbcie z tego afery." })
+      : lastRoll === 1 ? t({ en: "nat 1. that didn't happen.", pl: "jedynka. tego nie było." })
+      : lastRoll >= 10 ? t({ en: lastRoll + ". told you.", pl: lastRoll + ". a nie mówiłem." })
+      : t({ en: lastRoll + ". fine. it's fine.", pl: lastRoll + ". dobra. jest dobrze." });
+  }
+  function roll() {
+    if (rolling) return;
+    rolling = true;
+    const final = 1 + Math.floor(Math.random() * 20);
+    const done = () => { dieNum.textContent = final; lastRoll = final; rolling = false; dieEl.classList.remove("spin"); renderRoll(); };
+    if (reduced) { done(); return; }
+    dieEl.classList.remove("spin"); void dieEl.offsetWidth; dieEl.classList.add("spin");
+    let n = 0;
+    const shuffle = setInterval(() => {
+      dieNum.textContent = 1 + Math.floor(Math.random() * 20);
+      if (++n >= 9) { clearInterval(shuffle); done(); }
+    }, 70);
+  }
+  dieEl.addEventListener("click", roll);
+  document.getElementById("rollBtn").addEventListener("click", roll);
+
+  CHAR.onLang(() => { renderBell(); renderNote(); renderCatch(); renderRoll(); });
   CHAR.init();
 </script>
 </body>
