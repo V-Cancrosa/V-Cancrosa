@@ -292,6 +292,12 @@ footer { border-top: 1px solid var(--rule); padding: 3.5rem 0 3rem; background: 
 .neg p.mono { font-size: .64rem; }
 .neg .btn { margin: .4rem 0 1rem; }
 
+.chip-note { padding: 1.3rem 1.4rem 1.4rem; border-left-color: #4f8ae8; }
+.chip-note p { font-size: .98rem; }
+.chip-note p.mono { margin: .5rem 0 1rem; font-size: .64rem; }
+.chip-note em { font-style: italic; color: var(--cream); }
+.chip-note .sig { margin-top: 1.2rem; font: 400 .9rem var(--mono); letter-spacing: .08em; color: #4f8ae8; }
+
 /* Ecniv: cała strona na chwilę w negatywie */
 html { transition: filter .6s ease; }
 html.ecniv { filter: invert(1) hue-rotate(180deg); }
