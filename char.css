@@ -36,6 +36,11 @@ dialog.lightbox button { position: fixed; top: 1rem; right: 1rem; width: 2.4rem;
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+/* Konto artysty przejęte albo nieaktywne: zamiast linku do konta — link do ostrzeżenia */
+.acct-warn::after { content: " \26A0\FE0E"; }
+/* Utwór z wpisu: link do wyszukiwania, bez odtwarzania */
+.song { font-size: .82rem; opacity: .85; }
+
 /* Urodziny postaci */
 .bday {
   position: fixed; left: 50%; top: 4.6rem; z-index: 55; transform: translateX(-50%); display: flex; align-items: center; gap: .8rem; max-width: calc(100vw - 2rem);

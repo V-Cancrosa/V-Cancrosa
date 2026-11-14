@@ -288,6 +288,22 @@ section { position: relative; }
 .artists b { font: 700 .95rem var(--body); color: var(--cream); }
 .artists span { font-size: .82rem; color: var(--muted); }
 
+.artists a.warn { border-color: rgba(255,120,80,.35); }
+.artists small { font: 400 .72rem var(--mono); color: #ff9a7a; }
+.acct-notice { margin-top: 1rem; padding: 1rem 1.1rem; border-radius: 10px; border: 1px solid rgba(255,120,80,.35); background: rgba(255,120,80,.05); scroll-margin-top: 5rem; }
+.acct-notice .kicker { color: #ff9a7a; }
+.acct-notice > p:not(.kicker) { font-size: .9rem; }
+.artist-form { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid rgba(236,227,211,.08); }
+.artist-form summary { cursor: pointer; font: 700 .92rem var(--body); color: var(--cream); }
+.artist-form form { display: grid; gap: .75rem; margin-top: .9rem; }
+.artist-form label { display: grid; gap: .3rem; font: 400 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.artist-form input, .artist-form textarea { width: 100%; padding: .55rem .7rem; border-radius: 6px; border: 1px solid rgba(236,227,211,.16); background: #0b0c10; color: var(--cream); font: 400 .95rem var(--body); letter-spacing: 0; text-transform: none; }
+.artist-form input:focus-visible, .artist-form textarea:focus-visible { border-color: var(--gold); outline-offset: 1px; }
+.artist-form .hp { position: absolute; left: -9999px; }
+.artist-form .btn { justify-self: start; }
+.form-note { margin: 0; font-size: .85rem; }
+.form-status { min-height: 1.3em; margin: 0; font: 400 .8rem var(--mono); color: var(--gold-b); }
+
 /* ---------- Projekty ---------- */
 .projects { background: linear-gradient(#0a0b0f, var(--night)); }
 .radio {

@@ -260,12 +260,12 @@
         <div class="post-foot"><span class="mono" id="score"></span><button type="button" class="btn ghost" id="nextPost"></button></div>
       </div>
 
-      <div class="artists" data-reveal>
+      <div class="artists" id="artysci" data-reveal>
         <p class="kicker"><span lang="en">Drawn by · thank you</span><span lang="pl">Narysowali · dziękuję</span></p>
         <ul>
           <li><a href="https://bsky.app/profile/spicymustelidz.bsky.social"><b>Ash (SpicyMustelid)</b><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span></a></li>
           <li><a href="https://www.furaffinity.net/gallery/chilibi/"><b>Chilibi</b><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span></a></li>
-          <li><a href="https://www.instagram.com/ivyfox_/"><b>ivyfox_</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span></a></li>
+          <li><a class="warn" href="#uwaga"><b>ivyfox_ ⚠︎</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span><small lang="en">account taken over — no link</small><small lang="pl">konto przejęte — bez linku</small></a></li>
           <li><a href="https://www.instagram.com/ritsu_fur1/"><b>Ritsu</b><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span></a></li>
           <li><a href="https://www.instagram.com/amanda_rice910/"><b>amanda_rice910</b><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span></a></li>
           <li><a href="https://www.instagram.com/janet_arts2/"><b>janet_arts2</b><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span></a></li>
@@ -273,9 +273,30 @@
           <li><a href="https://x.com/ArturoAthens"><b>ArturoAthens</b><span lang="en">Vince's portraits · Ecniv</span><span lang="pl">portrety Vince'a · Ecniv</span></a></li>
           <li><a href="https://x.com/haibrushstrokes"><b>Hai Brush Strokes</b><span lang="en">the waterfall</span><span lang="pl">wodospad</span></a></li>
           <li><a href="https://www.tiktok.com/@jimmyfursuits"><b>jimmyfursuits</b><span lang="en">chibi stickers</span><span lang="pl">naklejki chibi</span></a></li>
-          <li><a href="https://www.instagram.com/nova_thewolfie1/"><b>nova_thewolfie1</b><span lang="en">mountains, waves, caves, forest</span><span lang="pl">góry, fale, jaskinie, las</span></a></li>
+          <li><a class="warn" href="#uwaga"><b>nova_thewolfie1 ⚠︎</b><span lang="en">mountains, waves, caves, forest</span><span lang="pl">góry, fale, jaskinie, las</span><small lang="en">account inactive — link on hold</small><small lang="pl">konto nieaktywne — link wstrzymany</small></a></li>
           <li><a href="https://www.instagram.com/privv._.lupy/"><b>privv._.lupy</b><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span></a></li>
         </ul>
+        <div class="acct-notice" id="uwaga">
+          <p class="kicker">⚠︎ <span lang="en">Two accounts to watch out for</span><span lang="pl">Dwa konta, na które trzeba uważać</span></p>
+          <p lang="en"><b>ivyfox_</b> — her Instagram has been taken over by someone else. Her art stays credited here, but there's no link until she gets the account back. Please don't follow it, buy anything from it or send it anything.</p>
+          <p lang="pl"><b>ivyfox_</b> — jej Instagram przejął ktoś obcy. Jej arty zostają tu podpisane, ale linku nie będzie, dopóki nie odzyska konta. Nie obserwujcie go, nic od niego nie kupujcie i nic mu nie wysyłajcie.</p>
+          <p lang="en"><b>nova_thewolfie1</b> — her account is inactive right now. The link comes back as soon as she lets me know where it should point.</p>
+          <p lang="pl"><b>nova_thewolfie1</b> — jej konto jest teraz nieaktywne. Link wróci, gdy tylko da znać, dokąd ma prowadzić.</p>
+          <details class="artist-form">
+            <summary><span lang="en">Lost your account? Write to me</span><span lang="pl">Odebrano ci konto? Napisz do mnie</span></summary>
+            <form id="artistForm" novalidate>
+              <p class="form-note" lang="en">This goes straight to my inbox — my address stays hidden. Add the code I'll send you another way (Bluesky, Telegram, a mutual friend): that's how I'll know the message really comes from you and not from whoever has your account.</p>
+              <p class="form-note" lang="pl">Wiadomość trafi prosto do mojej skrzynki, a mój adres zostaje ukryty. Dopisz kod, który wyślę ci inną drogą (Bluesky, Telegram, wspólni znajomi): po nim poznam, że piszesz naprawdę ty, a nie ktoś, kto ma twoje konto.</p>
+              <label><span lang="en">Artist name / old handle</span><span lang="pl">Nazwa artystyczna / dawny login</span><input name="artist" required maxlength="80" autocomplete="nickname"></label>
+              <label><span lang="en">Where can I reply?</span><span lang="pl">Gdzie mogę odpisać?</span><input name="reply_where" required maxlength="160"></label>
+              <label><span lang="en">Code from me</span><span lang="pl">Kod ode mnie</span><input name="code" required maxlength="60" autocomplete="off" spellcheck="false"></label>
+              <label><span lang="en">Message</span><span lang="pl">Wiadomość</span><textarea name="message" rows="4" maxlength="2000"></textarea></label>
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit" class="btn"><span lang="en">Send</span><span lang="pl">Wyślij</span></button>
+              <p class="form-status" id="formStatus" role="status"></p>
+            </form>
+          </details>
+        </div>
       </div>
       </div>
     </div>
@@ -800,19 +821,19 @@
   // ---------- Kto jest na koncie Vince'a? ----------
   const SIG = { vince: "— Vince. 001.", ragnar: "— R. 🖤", chip: "— Chip 🥚", toro: "— Toro 🏮" };
   const ART = {
-    ivy: ["ivyfox_", "https://www.instagram.com/ivyfox_/"], chilibi: ["Chilibi", "https://www.furaffinity.net/gallery/chilibi/"], ritsu: ["Ritsu", "https://www.instagram.com/ritsu_fur1/"],
-    lupy: ["privv._.lupy", "https://www.instagram.com/privv._.lupy/"], nova: ["nova_thewolfie1", "https://www.instagram.com/nova_thewolfie1/"], hai: ["Hai Brush Strokes", "https://x.com/haibrushstrokes"],
+    ivy: ["ivyfox_ ⚠︎", "#uwaga"], chilibi: ["Chilibi", "https://www.furaffinity.net/gallery/chilibi/"], ritsu: ["Ritsu", "https://www.instagram.com/ritsu_fur1/"],
+    lupy: ["privv._.lupy", "https://www.instagram.com/privv._.lupy/"], nova: ["nova_thewolfie1 ⚠︎", "#uwaga"], hai: ["Hai Brush Strokes", "https://x.com/haibrushstrokes"],
   };
   const POSTS = [
-    { who: "chip", art: "ivy", en: "Yeah. Him. Mr. Architect-of-Control. Locks everything, double-checks everything, reads the terms and conditions — and somehow the one thing he never secures is his own phone.", pl: "No. On. Pan Architekt Kontroli. Wszystko zamyka, wszystko sprawdza dwa razy, czyta regulaminy — a jedyne, czego jakoś nigdy nie zabezpiecza, to własny telefon." },
-    { who: "vince", art: "chilibi", en: "Say hello to my ward: Chipper Cancrosa, though he prefers Chip. I wouldn't try calling him Chocolate Chip — his expression would turn more sour than a lemon.", pl: "Przywitajcie się z moim podopiecznym: Chipper Cancrosa, choć woli Chip. Nie radzę mówić do niego Chocolate Chip — mina skwaśniałaby mu bardziej niż cytryna." },
-    { who: "ragnar", art: null, en: "The studs. I got them for him a while back — nothing loud, nothing flashy. This is a man who takes everything apart before he'll let himself feel it — analyses his own coffee order. When I gave him these he just… went quiet.", pl: "Kolczyki. Kupiłem mu je jakiś czas temu — nic głośnego, nic krzykliwego. To facet, który rozbiera wszystko na części, zanim pozwoli sobie coś poczuć — analizuje własne zamówienie kawy. Kiedy mu je dałem, po prostu… ucichł." },
-    { who: "toro", art: "ritsu", en: "Home is the inside of an old bridge: cold brick, dead machinery, one barred window over the water. Reads bleak. It isn't — you learn where the light falls and build the rest from whatever the day hands you.", pl: "Dom to wnętrze starego mostu: zimna cegła, martwe maszyny, jedno zakratowane okno nad wodą. Brzmi ponuro. A nie jest — uczysz się, gdzie pada światło, a resztę budujesz z tego, co przyniesie dzień." },
-    { who: "vince", art: "lupy", en: "The form had a field: “Ear tuft?” Yes or no. … There was no box for “arguably,” so I ticked no.", pl: "Formularz miał pole: „Pędzelek na uchu?”. Tak albo nie. … Nie było kratki „w zasadzie”, więc zaznaczyłem nie." },
-    { who: "chip", art: "ivy", en: "And yes — I made the eggs. Nobody in this picture is going to mention the eggs.", pl: "I tak — to ja zrobiłem jajka. Nikt na tym obrazku nie wspomni o jajkach." },
-    { who: "ragnar", art: "nova", more: "ragnar.html#noc", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
-    { who: "vince", art: "hai", en: "You made me walk all the way to this waterfall but I must admit it… Peace and quiet and serenity. Sometimes a break from Ragnar's presence is required.", pl: "Kazałeś mi iść aż do tego wodospadu, ale muszę przyznać… Spokój, cisza i ukojenie. Czasem przerwa od obecności Ragnara jest konieczna." },
-    { who: "vince", art: "ivy", en: "Ragnar is, above everything, someone who lives outward. His laughter is loud and from the chest. I'm the brain. Ragnar is the heart.", pl: "Ragnar jest przede wszystkim kimś, kto żyje na zewnątrz. Śmieje się głośno, z piersi. Ja jestem mózgiem. Ragnar jest sercem." },
+    { song: ["Navjaxx, Staarz", "moths (over slowed)"], who: "chip", art: "ivy", en: "Yeah. Him. Mr. Architect-of-Control. Locks everything, double-checks everything, reads the terms and conditions — and somehow the one thing he never secures is his own phone.", pl: "No. On. Pan Architekt Kontroli. Wszystko zamyka, wszystko sprawdza dwa razy, czyta regulaminy — a jedyne, czego jakoś nigdy nie zabezpiecza, to własny telefon." },
+    { song: ["aqunos", "It looks delicious!"], who: "vince", art: "chilibi", en: "Say hello to my ward: Chipper Cancrosa, though he prefers Chip. I wouldn't try calling him Chocolate Chip — his expression would turn more sour than a lemon.", pl: "Przywitajcie się z moim podopiecznym: Chipper Cancrosa, choć woli Chip. Nie radzę mówić do niego Chocolate Chip — mina skwaśniałaby mu bardziej niż cytryna." },
+    { song: ["Yom", "Garden of Eden"], who: "ragnar", art: null, en: "The studs. I got them for him a while back — nothing loud, nothing flashy. This is a man who takes everything apart before he'll let himself feel it — analyses his own coffee order. When I gave him these he just… went quiet.", pl: "Kolczyki. Kupiłem mu je jakiś czas temu — nic głośnego, nic krzykliwego. To facet, który rozbiera wszystko na części, zanim pozwoli sobie coś poczuć — analizuje własne zamówienie kawy. Kiedy mu je dałem, po prostu… ucichł." },
+    { song: ["Diego Mitre", "Paint It, Black (Cello Version)"], who: "toro", art: "ritsu", en: "Home is the inside of an old bridge: cold brick, dead machinery, one barred window over the water. Reads bleak. It isn't — you learn where the light falls and build the rest from whatever the day hands you.", pl: "Dom to wnętrze starego mostu: zimna cegła, martwe maszyny, jedno zakratowane okno nad wodą. Brzmi ponuro. A nie jest — uczysz się, gdzie pada światło, a resztę budujesz z tego, co przyniesie dzień." },
+    { song: ["FETISH", "Come Check This"], who: "vince", art: "lupy", en: "The form had a field: “Ear tuft?” Yes or no. … There was no box for “arguably,” so I ticked no.", pl: "Formularz miał pole: „Pędzelek na uchu?”. Tak albo nie. … Nie było kratki „w zasadzie”, więc zaznaczyłem nie." },
+    { song: ["Navjaxx, Staarz", "moths (over slowed)"], who: "chip", art: "ivy", en: "And yes — I made the eggs. Nobody in this picture is going to mention the eggs.", pl: "I tak — to ja zrobiłem jajka. Nikt na tym obrazku nie wspomni o jajkach." },
+    { song: ["GØDA", "Hypnotic Dark Neoclassical"], who: "ragnar", art: "nova", more: "ragnar.html#noc", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
+    { song: ["Músicas Relaxantes Originais", "Serene Flow"], who: "vince", art: "hai", en: "You made me walk all the way to this waterfall but I must admit it… Peace and quiet and serenity. Sometimes a break from Ragnar's presence is required.", pl: "Kazałeś mi iść aż do tego wodospadu, ale muszę przyznać… Spokój, cisza i ukojenie. Czasem przerwa od obecności Ragnara jest konieczna." },
+    { song: ["MARXO", "LEVEL UP!"], who: "vince", art: "ivy", en: "Ragnar is, above everything, someone who lives outward. His laughter is loud and from the chest. I'm the brain. Ragnar is the heart.", pl: "Ragnar jest przede wszystkim kimś, kto żyje na zewnątrz. Śmieje się głośno, z piersi. Ja jestem mózgiem. Ragnar jest sercem." },
   ];
   const NAMES = { vince: "Vince", ragnar: "Ragnar", chip: "Chip", toro: "Toro" };
   const guessBtns = [...document.querySelectorAll("#guess button")];
@@ -850,6 +871,12 @@
         a.href = ART[p.art][1]; a.textContent = ART[p.art][0];
         art.append(a);
       }
+      if (p.song) {
+        const sg = document.createElement("a");
+        sg.href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(p.song.join(" "));
+        sg.textContent = p.song.join(" — ");
+        art.append(document.createElement("br"), "♪ " + t({ en: "Music on the post: ", pl: "Muzyka we wpisie: " }), sg);
+      }
       if (p.more) {
         const m = document.createElement("a");
         m.href = p.more; m.className = "post-more"; m.textContent = t({ en: "Read the whole post →", pl: "Przeczytaj cały wpis →" });
@@ -873,11 +900,48 @@
     renderPost();
   });
 
+  // ---------- Formularz dla artystów, którym odebrano konto ----------
+  // Klucz dostępu z web3forms.com. Jest publiczny z założenia i nie zdradza adresu e-mail; pusty = formularz jeszcze nieaktywny.
+  const FORM_KEY = "";
+  const artistForm = document.getElementById("artistForm"), formStatus = document.getElementById("formStatus");
+  let formState = null;
+  function renderForm() {
+    const M = {
+      missing: { en: "Fill in your name, where to reply and the code.", pl: "Uzupełnij nazwę, miejsce na odpowiedź i kod." },
+      off: { en: "The form isn't switched on yet. Until it is, reach me through the contact links at the bottom of the page.", pl: "Formularz nie jest jeszcze włączony. Do tego czasu napisz przez kontakty na dole strony." },
+      sending: { en: "Sending…", pl: "Wysyłam…" },
+      ok: { en: "Sent. I'll check the code and reply where you asked.", pl: "Wysłane. Sprawdzę kod i odpiszę we wskazane miejsce." },
+      err: { en: "Something went wrong. Try again in a moment, or use the contact links at the bottom of the page.", pl: "Coś poszło nie tak. Spróbuj za chwilę albo napisz przez kontakty na dole strony." },
+    };
+    formStatus.textContent = formState ? t(M[formState]) : "";
+  }
+  artistForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(artistForm));
+    if (data.botcheck) return;
+    if (!data.artist.trim() || !data.reply_where.trim() || !data.code.trim()) { formState = "missing"; renderForm(); return; }
+    if (!FORM_KEY) { formState = "off"; renderForm(); return; }
+    formState = "sending"; renderForm();
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ access_key: FORM_KEY, subject: "The One Above Them — account recovery: " + data.artist, from_name: data.artist,
+          artist: data.artist, reply_where: data.reply_where, code: data.code, message: data.message }),
+      });
+      const j = await res.json();
+      formState = j.success ? "ok" : "err";
+      if (j.success) artistForm.reset();
+    } catch (err) { formState = "err"; }
+    renderForm();
+  });
+
   CHAR.birthday({ month: 11, day: 17, text: { en: "17.11 — Happy birthday, Vince. He'll analyse this too.", pl: "17.11 — Wszystkiego najlepszego, Vince. To też przeanalizuje." } });
 
   CHAR.onLang(() => {
     renderStage();
     renderPost();
+    renderForm();
     document.getElementById("rosterHint").textContent = hoverable
       ? t({ en: "Hover to preview · click to enter", pl: "Najedź, żeby podejrzeć · kliknij, żeby wejść" })
       : t({ en: "Tap to preview · tap again to enter", pl: "Stuknij, żeby podejrzeć · stuknij jeszcze raz, żeby wejść" });
