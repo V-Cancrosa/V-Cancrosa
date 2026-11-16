@@ -385,7 +385,8 @@ section { position: relative; }
 .tv.flip .tv-screen .bars { opacity: 1; }
 .tv-screen .sig { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: .3rem .7rem; white-space: nowrap; font: 700 .72rem var(--mono); letter-spacing: .2em; color: #fff; background: rgba(0,0,0,.75); }
 .tv-screen::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.55)), repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
-.tv .kicker { color: var(--muted); }
+.tv .kicker { color: var(--gold); }
+.tv .btn { align-self: flex-start; margin-top: auto; }
 
 /* ---------- Kontakt: drzwi są otwarte ---------- */
 .contact { overflow: hidden; }
