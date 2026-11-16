@@ -5,6 +5,8 @@
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body { margin: 0; overflow-x: clip; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
+/* Atrybut hidden ma wygrywać z każdym display ustawionym w stylach (np. img { display: block }) */
+[hidden] { display: none !important; }
 button { font: inherit; color: inherit; }
 
 /* Język: widać tylko wybraną wersję */
