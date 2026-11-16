@@ -249,7 +249,7 @@
         <article class="post" id="post">
           <header class="post-head"><img src="img/vince-thumb.webp" alt="" width="400" height="300"><b>vincent_cancrosa</b><span class="mono" id="postNo"></span></header>
           <p class="post-text" id="postText"></p>
-          <div class="post-reveal" id="postReveal" aria-live="polite"><p class="post-sig" id="postSig"></p><p class="mono post-art" id="postArt"></p></div>
+          <img class="post-sticker" id="postSticker" alt="" width="120" height="120" hidden><div class="post-reveal" id="postReveal" aria-live="polite"><p class="post-sig" id="postSig"></p><p class="mono post-art" id="postArt"></p></div>
         </article>
         <div class="guess" id="guess" role="group" aria-label="Who wrote it?" data-en-label="Who wrote it?" data-pl-label="Kto to napisał?">
           <button type="button" data-who="vince" style="--c:#e3a43f">Vince</button>
@@ -262,19 +262,21 @@
 
       <div class="artists" id="artysci" data-reveal>
         <p class="kicker"><span lang="en">Drawn by · thank you</span><span lang="pl">Narysowali · dziękuję</span></p>
-        <ul>
-          <li><a href="https://bsky.app/profile/spicymustelidz.bsky.social"><b>Ash (SpicyMustelid)</b><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span></a></li>
-          <li><a href="https://www.furaffinity.net/gallery/chilibi/"><b>Chilibi</b><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span></a></li>
-          <li><a class="warn" href="#uwaga"><b>ivyfox_ ⚠︎</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span><small lang="en">account taken over — no link</small><small lang="pl">konto przejęte — bez linku</small></a></li>
-          <li><a href="https://www.instagram.com/ritsu_fur1/"><b>Ritsu</b><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span></a></li>
-          <li><a href="https://www.instagram.com/amanda_rice910/"><b>amanda_rice910</b><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span></a></li>
-          <li><a href="https://www.instagram.com/janet_arts2/"><b>janet_arts2</b><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span></a></li>
-          <li><a href="https://www.instagram.com/furlynx_/"><b>furlynx_</b><span lang="en">Fusk — Chip's D&amp;D character</span><span lang="pl">Fusk — postać Chipa do D&amp;D</span></a></li>
-          <li><a href="https://x.com/ArturoAthens"><b>ArturoAthens</b><span lang="en">Vince's portraits · Ecniv</span><span lang="pl">portrety Vince'a · Ecniv</span></a></li>
-          <li><a href="https://x.com/haibrushstrokes"><b>Hai Brush Strokes</b><span lang="en">the waterfall</span><span lang="pl">wodospad</span></a></li>
-          <li><a href="https://www.tiktok.com/@jimmyfursuits"><b>jimmyfursuits</b><span lang="en">chibi stickers</span><span lang="pl">naklejki chibi</span></a></li>
-          <li><a class="warn" href="#uwaga"><b>nova_thewolfie1 ⚠︎</b><span lang="en">mountains, waves, caves, forest</span><span lang="pl">góry, fale, jaskinie, las</span><small lang="en">account inactive — link on hold</small><small lang="pl">konto nieaktywne — link wstrzymany</small></a></li>
-          <li><a href="https://www.instagram.com/privv._.lupy/"><b>privv._.lupy</b><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span></a></li>
+        <ul class="artist-list">
+          <li><b>Ash (SpicyMustelid)</b><span lang="en">Vince — reference sheet</span><span lang="pl">Vince — ref sheet</span><span class="alinks"><a href="https://bsky.app/profile/spicymustelidz.bsky.social">Bluesky</a></span></li>
+          <li><b>Chilibi</b><span lang="en">Chip — adopted design</span><span lang="pl">Chip — adoptowany projekt</span><span class="alinks"><a href="https://www.furaffinity.net/gallery/chilibi/">FurAffinity</a><a href="https://ych.art/user/chilibi">YCH</a><a href="https://chilibi.carrd.co/">Carrd</a><a href="https://www.instagram.com/chilibi.png/">Instagram</a><a href="https://x.com/chilibii">X</a><a href="https://toyhou.se/chilibi">Toyhouse</a><a href="https://www.reddit.com/user/Glittering-Amount-68/">Reddit</a><a class="tip" href="https://www.paypal.com/donate/?hosted_button_id=E227Q3LJ3SKNS"><span lang="en">Tip ♥</span><span lang="pl">Napiwek ♥</span></a></span></li>
+          <li class="warn"><b>ivyfox_ ⚠︎</b><span lang="en">Ragnar · the kitchen morning</span><span lang="pl">Ragnar · poranek w kuchni</span><small lang="en">account taken over — no link</small><small lang="pl">konto przejęte — bez linku</small><span class="alinks"><a href="#uwaga"><span lang="en">read the note</span><span lang="pl">przeczytaj uwagę</span></a></span></li>
+          <li><b>Ritsu</b><span lang="en">Toro — adopted design</span><span lang="pl">Toro — adoptowany projekt</span><span class="alinks"><a href="https://www.instagram.com/ritsu_fur1/">Instagram</a></span></li>
+          <li><b>amanda_rice910</b><span lang="en">Vince · The Night Paw</span><span lang="pl">Vince · The Night Paw</span><span class="alinks"><a href="https://www.instagram.com/amanda_rice910/">Instagram</a></span></li>
+          <li><b>janet_arts2</b><span lang="en">Vince · Philosopher</span><span lang="pl">Vince · Philosopher</span><span class="alinks"><a href="https://www.instagram.com/janet_arts2/">Instagram</a></span></li>
+          <li><b>furlynx_</b><span lang="en">Fusk — Chip's D&amp;D character</span><span lang="pl">Fusk — postać Chipa do D&amp;D</span><span class="alinks"><a href="https://www.instagram.com/furlynx_/">Instagram</a><a href="https://furlynx.carrd.co/">Carrd</a><a href="https://www.reddit.com/user/Greedy_Count_498/">Reddit</a></span></li>
+          <li><b>emberknox21</b><span lang="en">Vince — mountains, waves, caves, forest</span><span lang="pl">Vince — góry, fale, jaskinie, las</span><small class="soon" lang="en">link coming</small><small class="soon" lang="pl">link wkrótce</small></li>
+          <li><b>Bamboopanda101</b><span lang="en">Vince's icons · Ecniv</span><span lang="pl">ikony Vince'a · Ecniv</span><small class="soon" lang="en">link coming</small><small class="soon" lang="pl">link wkrótce</small></li>
+          <li><b>ArturoAthens</b><span lang="en">credited in the Ecniv post</span><span lang="pl">podpisany we wpisie o Ecnivie</span><span class="alinks"><a href="https://x.com/ArturoAthens">X</a></span></li>
+          <li><b>Hai Brush Strokes</b><span lang="en">Vince · the waterfall</span><span lang="pl">Vince · wodospad</span><span class="alinks"><a href="https://x.com/haibrushstrokes">X</a></span></li>
+          <li><b>jimmyfursuits</b><span lang="en">Vince · chibi stickers</span><span lang="pl">Vince · naklejki chibi</span><span class="alinks"><a href="https://www.tiktok.com/@jimmyfursuits">TikTok</a></span></li>
+          <li class="warn"><b>nova_thewolfie1 ⚠︎</b><span lang="en">places from the trip posts</span><span lang="pl">miejsca z wpisów o wyprawach</span><small lang="en">account inactive — link on hold</small><small lang="pl">konto nieaktywne — link wstrzymany</small><span class="alinks"><a href="#uwaga"><span lang="en">read the note</span><span lang="pl">przeczytaj uwagę</span></a></span></li>
+          <li><b>privv._.lupy</b><span lang="en">Vince's ID card design</span><span lang="pl">projekt dowodu Vince'a</span><span class="alinks"><a href="https://www.instagram.com/privv._.lupy/">Instagram</a></span></li>
         </ul>
         <div class="acct-notice" id="uwaga">
           <p class="kicker">⚠︎ <span lang="en">Two accounts to watch out for</span><span lang="pl">Dwa konta, na które trzeba uważać</span></p>
@@ -822,7 +824,7 @@
   const SIG = { vince: "— Vince. 001.", ragnar: "— R. 🖤", chip: "— Chip 🥚", toro: "— Toro 🏮" };
   const ART = {
     ivy: ["ivyfox_ ⚠︎", "#uwaga"], chilibi: ["Chilibi", "https://www.furaffinity.net/gallery/chilibi/"], ritsu: ["Ritsu", "https://www.instagram.com/ritsu_fur1/"],
-    lupy: ["privv._.lupy", "https://www.instagram.com/privv._.lupy/"], nova: ["nova_thewolfie1 ⚠︎", "#uwaga"], hai: ["Hai Brush Strokes", "https://x.com/haibrushstrokes"],
+    lupy: ["privv._.lupy", "https://www.instagram.com/privv._.lupy/"], nova: ["nova_thewolfie1 ⚠︎", "#uwaga"], ember: ["emberknox21", null], hai: ["Hai Brush Strokes", "https://x.com/haibrushstrokes"],
   };
   const POSTS = [
     { song: ["Navjaxx, Staarz", "moths (over slowed)"], who: "chip", art: "ivy", en: "Yeah. Him. Mr. Architect-of-Control. Locks everything, double-checks everything, reads the terms and conditions — and somehow the one thing he never secures is his own phone.", pl: "No. On. Pan Architekt Kontroli. Wszystko zamyka, wszystko sprawdza dwa razy, czyta regulaminy — a jedyne, czego jakoś nigdy nie zabezpiecza, to własny telefon." },
@@ -831,7 +833,7 @@
     { song: ["Diego Mitre", "Paint It, Black (Cello Version)"], who: "toro", art: "ritsu", en: "Home is the inside of an old bridge: cold brick, dead machinery, one barred window over the water. Reads bleak. It isn't — you learn where the light falls and build the rest from whatever the day hands you.", pl: "Dom to wnętrze starego mostu: zimna cegła, martwe maszyny, jedno zakratowane okno nad wodą. Brzmi ponuro. A nie jest — uczysz się, gdzie pada światło, a resztę budujesz z tego, co przyniesie dzień." },
     { song: ["FETISH", "Come Check This"], who: "vince", art: "lupy", en: "The form had a field: “Ear tuft?” Yes or no. … There was no box for “arguably,” so I ticked no.", pl: "Formularz miał pole: „Pędzelek na uchu?”. Tak albo nie. … Nie było kratki „w zasadzie”, więc zaznaczyłem nie." },
     { song: ["Navjaxx, Staarz", "moths (over slowed)"], who: "chip", art: "ivy", en: "And yes — I made the eggs. Nobody in this picture is going to mention the eggs.", pl: "I tak — to ja zrobiłem jajka. Nikt na tym obrazku nie wspomni o jajkach." },
-    { song: ["GØDA", "Hypnotic Dark Neoclassical"], who: "ragnar", art: "nova", more: "ragnar.html#noc", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
+    { song: ["GØDA", "Hypnotic Dark Neoclassical"], who: "ragnar", art: "ember", more: "ragnar.html#noc", en: "Me? I grew up on punching bags, sirens at 3 AM and bass shaking the booth. Out there, nothing. No traffic, no crowd, not even wind. Silence that loud should be illegal.", pl: "Ja? Wychowałem się na workach treningowych, syrenach o trzeciej w nocy i basie trzęsącym kabiną DJ-a. A tam — nic. Zero ruchu, żadnego tłumu, nawet wiatru. Taka głośna cisza powinna być nielegalna." },
     { song: ["Músicas Relaxantes Originais", "Serene Flow"], who: "vince", art: "hai", en: "You made me walk all the way to this waterfall but I must admit it… Peace and quiet and serenity. Sometimes a break from Ragnar's presence is required.", pl: "Kazałeś mi iść aż do tego wodospadu, ale muszę przyznać… Spokój, cisza i ukojenie. Czasem przerwa od obecności Ragnara jest konieczna." },
     { song: ["MARXO", "LEVEL UP!"], who: "vince", art: "ivy", en: "Ragnar is, above everything, someone who lives outward. His laughter is loud and from the chest. I'm the brain. Ragnar is the heart.", pl: "Ragnar jest przede wszystkim kimś, kto żyje na zewnątrz. Śmieje się głośno, z piersi. Ja jestem mózgiem. Ragnar jest sercem." },
   ];
@@ -845,11 +847,19 @@
     document.getElementById("postNo").textContent = done ? "" : `${pIdx + 1} / ${POSTS.length}`;
     document.getElementById("score").textContent = t({ en: "Score: ", pl: "Wynik: " }) + pScore;
     const sig = document.getElementById("postSig"), art = document.getElementById("postArt");
+    const sticker = document.getElementById("postSticker");
+    const showSticker = mood => {
+      sticker.hidden = !mood;
+      if (!mood) return;
+      sticker.src = "img/sticker-" + mood + ".webp";
+      sticker.classList.remove("pop"); void sticker.offsetWidth; sticker.classList.add("pop");
+    };
     if (done) {
       document.getElementById("postText").textContent = pScore === POSTS.length ? t({ en: "Every one. Vince would like to know how — in writing.", pl: "Wszystkie. Vince chciałby wiedzieć jak — na piśmie." })
         : pScore >= 6 ? t({ en: "Close. Chip says someone peeked.", pl: "Blisko. Chip twierdzi, że ktoś podglądał." })
         : t({ en: "That's the whole problem with his account: you never actually know.", pl: "Na tym polega cały problem z jego kontem: nigdy tak naprawdę nie wiadomo." });
       sig.textContent = `${pScore} / ${POSTS.length}`;
+      showSticker(pScore === POSTS.length ? "love" : pScore >= 6 ? "no" : "huh");
       art.textContent = "";
       guessBtns.forEach(b => { b.disabled = true; b.className = ""; });
       nextPost.textContent = t({ en: "Read them again", pl: "Jeszcze raz" });
@@ -861,15 +871,18 @@
       b.disabled = pAnswer !== null;
       b.className = pAnswer === null ? "" : b.dataset.who === p.who ? "right" : b.dataset.who === pAnswer ? "wrong" : "";
     });
+    showSticker(pAnswer === null ? null : pAnswer === p.who ? "yes" : "huh");
     if (pAnswer === null) { sig.textContent = ""; art.textContent = ""; }
     else {
       sig.textContent = (pAnswer === p.who ? t({ en: "Right. ", pl: "Zgadza się. " }) : t({ en: "No. ", pl: "Nie. " })) + SIG[p.who];
       art.textContent = "";
       if (p.art) {
         art.append(t({ en: "Art in the original post: ", pl: "Art we wpisie: " }));
-        const a = document.createElement("a");
-        a.href = ART[p.art][1]; a.textContent = ART[p.art][0];
-        art.append(a);
+        if (ART[p.art][1]) {
+          const a = document.createElement("a");
+          a.href = ART[p.art][1]; a.textContent = ART[p.art][0];
+          art.append(a);
+        } else art.append(ART[p.art][0]);
       }
       if (p.song) {
         const sg = document.createElement("a");

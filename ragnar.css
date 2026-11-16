@@ -249,6 +249,9 @@ footer { padding: 3rem 0; border-top: 1px solid var(--rule); }
 .night-post header img { width: 2.4rem; height: 2.4rem; border-radius: 50%; object-fit: cover; object-position: 50% 15%; border: 2px solid #e3a43f; }
 .night-post header b { font: 600 .95rem var(--body); color: #fff; }
 .night-post header .mono { margin-left: auto; }
+.np-shot { display: block; width: 100%; padding: 0; margin: 0 0 .5rem; border: 0; border-radius: 14px; overflow: hidden; background: none; cursor: zoom-in; }
+.np-shot img { width: 100%; height: auto; }
+.night-post .np-credit { margin: 0 0 1.2rem; font-size: .62rem; }
 .night-post p { font-size: 1.04rem; }
 .night-post > div + div { margin-top: 1rem; }
 .night-post .four { display: flex; align-items: center; gap: .9rem; margin: 2rem 0 1.1rem; font: 300 2.4rem/1 var(--body); letter-spacing: -.02em; color: #fff; }
