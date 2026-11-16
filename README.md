@@ -15,6 +15,8 @@ Strona z postaciami (fursonami) i projektami. Statyczna, bez zależności z zewn
 Teksty są w dwóch językach: każdy fragment ma parę `<span lang="en">…</span><span lang="pl">…</span>`
 (albo dwa akapity z `lang`), a CSS pokazuje tylko wybrany język. Teksty z JS idą przez `CHAR.t({ en, pl })`.
 
+Efekty zaadaptowane z CodePen (MIT) i ich autorzy: `CREDITS.md`. W kodzie każda adaptacja ma komentarz ze źródłem.
+
 Miejsca do uzupełnienia są oznaczone ✎ albo komentarzem w kodzie.
 
 Własna domena: plik `CNAME` z nazwą domeny + rekordy DNS według

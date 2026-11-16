@@ -403,7 +403,16 @@
     const key = CMDS[q] ? q : ALIASES[q];
     if (!key) { print(t({ en: "This unit does not recognise that command. Type “help”.", pl: "Ta jednostka nie rozpoznaje tej komendy. Wpisz „help”." })); return; }
     const out = CMDS[key][CHAR.lang()];
-    out.forEach(l => print(l, CMDS[key].i ? "i" : ""));
+    const show = () => out.forEach(l => print(l, CMDS[key].i ? "i" : ""));
+    if (reduced) { show(); return; }
+    // Jednostka chwilę przetwarza — trzy migające diody przed odpowiedzią
+    const proc = document.createElement("p");
+    proc.className = "proc";
+    proc.setAttribute("aria-hidden", "true");
+    proc.innerHTML = "<i></i>";
+    termOut.append(proc);
+    termOut.scrollTop = termOut.scrollHeight;
+    setTimeout(() => { proc.remove(); show(); }, 480);
   }
   document.getElementById("termForm").addEventListener("submit", e => { e.preventDefault(); run(termIn.value); termIn.value = ""; });
   document.querySelectorAll(".term-chips button").forEach(b => b.addEventListener("click", () => run(b.dataset.cmd)));

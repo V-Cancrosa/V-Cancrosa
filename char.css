@@ -29,6 +29,14 @@ dialog.lightbox img { max-width: 96vw; max-height: 88vh; object-fit: contain; }
 dialog.lightbox p { margin: .6rem 0 0; text-align: center; font: 400 .7rem/1.5 ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: #bdb8ae; }
 dialog.lightbox button { position: fixed; top: 1rem; right: 1rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(0,0,0,.6); color: #fff; cursor: pointer; }
 
+/* Otwieranie podglądu. Domyślnie miękkie powiększenie; strona może wybrać inne przez --lb-anim.
+   „lb-unfold” na podstawie: Modal Animations — Jesse Couch, codepen.io/designcouch/pen/obvKxm (MIT). */
+dialog.lightbox[open] { animation: var(--lb-anim, lb-blow) var(--lb-dur, .45s) cubic-bezier(.2,.8,.2,1); }
+dialog.lightbox[open]::backdrop { animation: lb-fade .3s ease; }
+@keyframes lb-blow { from { transform: scale(.88); opacity: 0; } }
+@keyframes lb-unfold { 0% { transform: scaleY(.005) scaleX(0); } 50% { transform: scaleY(.005) scaleX(1); } 100% { transform: none; } }
+@keyframes lb-fade { from { opacity: 0; } }
+
 /* Komunikat */
 .toast {
   position: fixed; left: 50%; bottom: 1.5rem; z-index: 60; transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;

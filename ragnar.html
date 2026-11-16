@@ -226,6 +226,7 @@
       <div class="call">
         <p class="kicker call-kick" data-reveal><span lang="en">The shadow · 2:14 AM</span><span lang="pl">Cień · 2:14</span></p>
         <div class="phone" id="phone" data-reveal>
+          <i class="neon n-top" aria-hidden="true"></i><i class="neon n-bottom" aria-hidden="true"></i>
           <div class="ph-status" aria-hidden="true"><span>2:14</span><i>LTE · 12%</i></div>
           <div class="ph-head">
             <img src="img/vince-thumb.webp" alt="" width="400" height="300">
@@ -627,6 +628,7 @@
     clearTimeout(tTimer);
     thread.textContent = "";
     tIdx = 0; fast = false; tState = "playing";
+    phone.classList.add("lit");
     if (reduced) {
       THREAD.forEach((_, i) => addMsg(i));
       thread.querySelector(".call-card b").textContent = mmss(40 * 60 + 12);

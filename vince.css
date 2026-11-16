@@ -322,12 +322,26 @@ footer { border-top: 1px solid var(--rule); padding: 3.5rem 0 3rem; background: 
 .trip-q { margin: 0; padding: .3rem .9rem .9rem; font: italic 400 .86rem/1.5 var(--body); color: var(--ink); }
 .trip-q a { font-style: normal; font-size: .82rem; }
 
+/* Wyprawy: po najechaniu złota linia obiega kartę jak kreślarska ramka.
+   Na podstawie: [PURE CSS] border animation without svg — Rplus, codepen.io/Rplus/pen/abPLGx (MIT); clip zastąpiony clip-path. */
+.trip { position: relative; }
+.trip::before, .trip::after { content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--gold);
+  opacity: 0; transition: opacity .3s; animation: trace 5s linear infinite paused; }
+.trip::before { animation-delay: -2.5s; }
+.trip:hover::before, .trip:hover::after, .trip:focus-within::before, .trip:focus-within::after { opacity: 1; animation-play-state: running; }
+@keyframes trace {
+  0%, 100% { clip-path: inset(0 0 calc(100% - 2px) 0); }
+  25% { clip-path: inset(0 calc(100% - 2px) 0 0); }
+  50% { clip-path: inset(calc(100% - 2px) 0 0 0); }
+  75% { clip-path: inset(0 0 0 calc(100% - 2px)); }
+}
+
 /* Ecniv: cała strona na chwilę w negatywie */
 html { transition: filter .6s ease; }
 html.ecniv { filter: invert(1) hue-rotate(180deg); }
 
 /* ---------- Kolory podglądu i komunikatu (mechanika w char.css) ---------- */
-:root { --skip-bg: var(--gold); --skip-fg: #000; --toast-border: var(--gold); --toast-fg: var(--cream); --toast-font: 400 .7rem/1.4 var(--mono); }
+:root { --lb-anim: lb-unfold; --lb-dur: .8s; --skip-bg: var(--gold); --skip-fg: #000; --toast-border: var(--gold); --toast-fg: var(--cream); --toast-font: 400 .7rem/1.4 var(--mono); }
 
 /* ---------- Mniejsze ekrany ---------- */
 @media (max-width: 960px) {

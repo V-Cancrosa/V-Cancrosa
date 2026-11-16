@@ -126,6 +126,14 @@ details.zor th { font: 500 .66rem var(--mono); letter-spacing: .14em; text-trans
 .term-bar { display: flex; justify-content: space-between; padding: .5rem .9rem; background: #16181b; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .term-out { height: 17rem; overflow-y: auto; padding: .9rem; }
 .term-out p { margin: 0 0 .15rem; }
+/* Kropki przetwarzania. Na podstawie: Three Dots — Zongbin, codepen.io/nzbin/pen/GGrXbp (MIT), wariant dot-flashing. */
+.term-out .proc { height: 1.6em; padding-left: 15px; display: flex; align-items: center; }
+.term-out .proc i, .term-out .proc i::before, .term-out .proc i::after { width: 7px; height: 7px; border-radius: 50%; background: var(--bone); animation: dot-flash .5s infinite linear alternate; }
+.term-out .proc i { position: relative; animation-delay: .25s; }
+.term-out .proc i::before, .term-out .proc i::after { content: ""; position: absolute; top: 0; }
+.term-out .proc i::before { left: -12px; animation-delay: 0s; }
+.term-out .proc i::after { left: 12px; animation-delay: .5s; }
+@keyframes dot-flash { 0% { background: var(--bone); } 50%, 100% { background: rgba(237,230,214,.2); } }
 .term-out .cmd { color: var(--rust-2); }
 .term-out .i { color: var(--bone); font-weight: 500; }
 .term-in { display: flex; align-items: center; gap: .5rem; border-top: 1px solid #22252a; padding: .6rem .9rem; }

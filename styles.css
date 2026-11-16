@@ -104,33 +104,33 @@ section { position: relative; }
 
 /* ---------- Wybór postaci ---------- */
 .roster {
-  --bg: #0e0f11; --ink2: #ece3d3; --muted2: #9a917f; --accent: #e3a43f; --on: #120d05; --tile: rgba(255,255,255,.035); --tline: rgba(227,164,63,.28);
+  --accent2: #ece3cf; --bg: #0e0f11; --ink2: #ece3d3; --muted2: #9a917f; --accent: #e3a43f; --on: #120d05; --tile: rgba(255,255,255,.035); --tline: rgba(227,164,63,.28);
   --head: "Archivo Wide", "Archivo", sans-serif; --head-w: 800; --head-st: 125%; --head-tt: uppercase; --head-ls: .01em;
   --tbody: var(--body); --tmono: var(--mono); --rad: 2px; --go-shadow: none;
   padding: clamp(5rem, 9vw, 7rem) 0 clamp(5rem, 9vw, 7rem); overflow: hidden; isolation: isolate;
   background-color: var(--bg); color: var(--ink2); transition: background-color .6s, color .6s;
 }
-.roster[data-theme="chip"] {
+.roster[data-theme="chip"] { --accent2: #cda36a;
   --bg: #f1dcb7; --ink2: #4a2a17; --muted2: #7a5638; --accent: #2f6bd8; --on: #fff; --tile: rgba(255,250,240,.55); --tline: rgba(74,42,23,.3);
   --head: "Baloo 2", "Nunito", sans-serif; --head-w: 800; --head-st: 100%; --head-tt: none; --head-ls: -.01em;
   --tbody: "Nunito", var(--body); --tmono: "Nunito", var(--body); --rad: 999px; --go-shadow: 3px 3px 0 #4a2a17;
 }
-.roster[data-theme="ragnar"] {
+.roster[data-theme="ragnar"] { --accent2: #26c6e0;
   --bg: #0c0812; --ink2: #efe3c9; --muted2: #a497b5; --accent: #ff2e88; --on: #fff; --tile: rgba(255,46,136,.06); --tline: rgba(38,198,224,.35);
   --head: "Anton", Impact, sans-serif; --head-w: 400; --head-st: 100%; --head-tt: uppercase; --head-ls: .01em;
   --tbody: var(--body); --tmono: var(--mono); --rad: 0; --go-shadow: 0 0 24px rgba(255,46,136,.45);
 }
-.roster[data-theme="toro"] {
+.roster[data-theme="toro"] { --accent2: #5aa63f;
   --bg: #0e1424; --ink2: #f0e2b8; --muted2: #a8a58e; --accent: #e6b23a; --on: #1a1206; --tile: rgba(230,178,58,.06); --tline: rgba(230,178,58,.3);
   --head: "Fraunces", Georgia, serif; --head-w: 700; --head-st: 100%; --head-tt: none; --head-ls: -.03em;
   --tbody: "Nunito", var(--body); --tmono: "Nunito", var(--body); --rad: 999px; --go-shadow: 0 0 26px rgba(230,178,58,.35);
 }
-.roster[data-theme="myr"] {
+.roster[data-theme="myr"] { --accent2: #ede6d6;
   --bg: #1c1f23; --ink2: #ede6d6; --muted2: #9c9688; --accent: #d9823f; --on: #140c06; --tile: rgba(237,230,214,.04); --tline: rgba(217,130,63,.4);
   --head: "Saira Stencil One", Impact, sans-serif; --head-w: 400; --head-st: 100%; --head-tt: uppercase; --head-ls: .05em;
   --tbody: "Barlow", var(--body); --tmono: "IBM Plex Mono", var(--mono); --rad: 2px; --go-shadow: none;
 }
-.roster[data-theme="zarin"] {
+.roster[data-theme="zarin"] { --accent2: #1fc7b5;
   --bg: #14171b; --ink2: #dfe5e8; --muted2: #9aa4ad; --accent: #2fd46b; --on: #06110a; --tile: rgba(207,232,242,.05); --tline: rgba(31,199,181,.35);
   --head: "Space Grotesk", var(--body); --head-w: 700; --head-st: 100%; --head-tt: none; --head-ls: -.04em;
   --tbody: var(--body); --tmono: var(--mono); --rad: 6px; --go-shadow: 0 0 22px rgba(47,212,107,.35);
@@ -212,6 +212,12 @@ section { position: relative; }
 
 /* Sceny postaci na scenie wyboru */
 .stage-art { position: relative; aspect-ratio: 4 / 3; }
+/* Poświata pod sceną w dwóch kolorach postaci. Na podstawie: Animated Back Glow — George Hastings, codepen.io/georgehastings/pen/xgwxgo (MIT). */
+.stage-art { isolation: isolate; }
+.stage-art::before { content: ""; position: absolute; inset: 14% 12% 4%; z-index: -1; border-radius: 50%; opacity: .4; filter: blur(46px); transform: scale(.9);
+  background: linear-gradient(270deg, var(--accent), var(--accent2), var(--accent)); background-size: 200% 200%; animation: backglow 10s ease infinite; transition: opacity .6s; }
+.roster[data-theme="chip"] .stage-art::before { opacity: .3; }
+@keyframes backglow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 .art { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; visibility: hidden; transition: opacity .4s, visibility 0s .4s; }
 .art.on { opacity: 1; visibility: visible; transition: opacity .4s; }
 .art svg { width: 100%; height: 100%; overflow: visible; }
@@ -348,7 +354,24 @@ section { position: relative; }
   background: radial-gradient(120% 120% at 50% 40%, #0b2414, #04100a); color: #7dff9e; font: 400 .8rem/1.6 var(--mono);
   text-shadow: 0 0 6px rgba(125,255,158,.55); box-shadow: inset 0 0 50px rgba(0,0,0,.7), 0 0 0 1px rgba(125,255,158,.2);
 }
-.crt::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); }
+/* Ekran jak w terminalu z Fallouta: przesuwający się pas skanowania, odblaski szkła, linie i lekkie migotanie.
+   Na podstawie: Fallout 3 Terminal — J Holmes, codepen.io/32bitkid/pen/DrXOVg (MIT)
+   oraz Fallout Terminal Inspired CSS Theme — Mack Richardson, codepen.io/macktropolis/pen/vNMRpK (MIT). */
+.crt::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; background-repeat: no-repeat;
+  background-image: linear-gradient(0deg, transparent 0%, rgba(32,128,32,.18) 2%, rgba(64,200,96,.5) 3%, rgba(32,128,32,.18) 3%, transparent 100%);
+  animation: crt-scan 7.5s linear infinite; }
+.crt::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background-image: radial-gradient(ellipse 50% 15% at 50% 15%, rgba(255,255,255,.05), transparent), radial-gradient(ellipse 50% 6% at 50% 10%, rgba(255,255,255,.08), transparent),
+    radial-gradient(ellipse 200% 22% at 50% 0%, rgba(0,0,0,.45), transparent), repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);
+  animation: crt-flicker .12s steps(1) infinite; }
+@keyframes crt-scan { 0% { background-position: 0 -14rem; } 35%, 100% { background-position: 0 14rem; } }
+@keyframes crt-flicker { 0% { opacity: .96; } 25% { opacity: 1; } 50% { opacity: .93; } 75% { opacity: .99; } }
+.crt pre { position: relative; text-shadow: 0 0 1ex rgba(64,255,96,.55), 0 0 2px rgba(255,255,255,.55); }
+.term .btn.term-link { border: 0; padding: .4rem 0; color: #7dff9e; font: 400 .9rem var(--mono); letter-spacing: .06em; text-transform: none; text-shadow: 0 0 8px rgba(125,255,158,.45); }
+.term .btn.term-link::before { content: "> [ "; }
+.term .btn.term-link::after { content: " ]"; }
+.term .btn.term-link:hover { background: none; color: #fff; }
+@media (prefers-reduced-motion: reduce) { .crt::before, .crt::after { animation: none; } }
 .crt pre { margin: 0; font: inherit; white-space: pre-wrap; }
 .crt .cur { display: inline-block; width: .6em; height: 1em; vertical-align: -.15em; background: #7dff9e; animation: cur 1s steps(1) infinite; }
 @keyframes cur { 50% { opacity: 0; } }
@@ -396,6 +419,9 @@ section { position: relative; }
 
 footer { border-top: 1px solid rgba(236,227,211,.06); padding: 2rem 0 3rem; }
 .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 2rem; font-size: .8rem; color: var(--muted); }
+.foot a { color: var(--muted); }
+.foot a:hover { color: var(--cream); }
+.fx-credits { flex-basis: 100%; font-size: .72rem; opacity: .85; }
 
 @media (max-width: 960px) {
   .sky-grid { grid-template-columns: 1fr; gap: .5rem; }

@@ -343,7 +343,7 @@
           <p lang="en">I run sessions and write tools for them. A fan-made system for Foundry VTT: a character sheet with S.P.E.C.I.A.L., SATS, a catalogue of over a thousand items, a combat tracker and a casino with blackjack and Texas Hold'em.</p>
           <p lang="pl">Prowadzę sesje i piszę do nich narzędzia. Fanowski system do Foundry VTT: karta postaci z S.P.E.C.I.A.L., SATS, katalog ponad tysiąca przedmiotów, tracker walki i kasyno z blackjackiem i Texas Hold'em.</p>
           <div class="crt" aria-hidden="true"><pre id="crt"></pre></div>
-          <a class="btn" href="https://github.com/V-Cancrosa/FoE-CharacterSheet">GitHub</a>
+          <a class="btn term-link" href="https://github.com/V-Cancrosa/FoE-CharacterSheet"><span lang="en">open on GitHub</span><span lang="pl">otwórz na GitHubie</span></a>
         </article>
         <article class="proj tv" id="tv" data-reveal="2">
           <button type="button" class="tv-screen" id="tvScreen" data-en-label="Switch channel" data-pl-label="Przełącz kanał" aria-label="Switch channel">
@@ -389,6 +389,7 @@
   <div class="wrap foot">
     <span>© <span id="year">2026</span> The One Above Them</span>
     <span lang="en">Illustrations belong to their artists.</span><span lang="pl">Ilustracje należą do ich autorów.</span>
+    <span class="fx-credits"><span lang="en">Some effects adapted from CodePen (MIT):</span><span lang="pl">Część efektów zaadaptowana z CodePen (MIT):</span> <a href="https://codepen.io/32bitkid/pen/DrXOVg">J Holmes</a>, <a href="https://codepen.io/macktropolis/pen/vNMRpK">Mack Richardson</a>, <a href="https://codepen.io/simeydotme/pen/PwwYZOe">Simey</a>, <a href="https://codepen.io/designcouch/pen/obvKxm">Jesse Couch</a>, <a href="https://codepen.io/Rplus/pen/abPLGx">Rplus</a>, <a href="https://codepen.io/georgehastings/pen/xgwxgo">George Hastings</a>, <a href="https://codepen.io/nzbin/pen/GGrXbp">Zongbin</a> · <a href="https://github.com/V-Cancrosa/v-cancrosa.github.io/blob/main/CREDITS.md"><span lang="en">details</span><span lang="pl">szczegóły</span></a></span>
   </div>
 </footer>
 
@@ -764,17 +765,20 @@
   const crt = document.getElementById("crt");
   let crtTimer = null, crtDone = false;
   function typeCrt(instant) {
-    clearInterval(crtTimer);
+    clearTimeout(crtTimer);
     const text = CRT[CHAR.lang()].join("\n");
     const cur = '<span class="cur"></span>';
     if (instant || reduced) { crt.innerHTML = ""; crt.append(text); crt.insertAdjacentHTML("beforeend", cur); crtDone = true; return; }
+    // Pisanie znak po znaku z nierównym rytmem, jak w terminalu z Fallouta (J Holmes, codepen.io/32bitkid/pen/DrXOVg, MIT)
     let i = 0;
-    crtTimer = setInterval(() => {
-      i += 2;
+    const step = () => {
+      i++;
       crt.textContent = text.slice(0, i);
       crt.insertAdjacentHTML("beforeend", cur);
-      if (i >= text.length) { clearInterval(crtTimer); crtDone = true; }
-    }, 22);
+      if (i >= text.length) { crtDone = true; return; }
+      crtTimer = setTimeout(step, text[i - 1] === "\n" ? 160 : 6 + Math.random() * 34);
+    };
+    crtTimer = setTimeout(step, 300);
   }
   let crtStarted = false;
   whileVisible(crt, () => { if (!crtStarted) { crtStarted = true; typeCrt(); } }, () => {});
